@@ -1,0 +1,5 @@
+name: Entity
+description: An object which has an identity that defines it
+attributes:
+  - name
+  - description
