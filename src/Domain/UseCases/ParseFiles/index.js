@@ -1,33 +1,36 @@
-const fs = require('fs')
-const yaml = require('js-yaml')
-const glob = require('glob')
-const write = require('write')
-
 const DEFAULTS = {
   pattern: `${process.env.PWD}/**/*.yml`,
   output: 'domain'
 }
 
-function parseFile(error, file) {
-  const jsonFile = yaml.safeLoad(file)
+const DEPENDENCIES = {
+  fs: require('fs'),
+  yaml: require('js-yaml'),
+  glob: require('glob'),
+  write: require('write')
+}
+
+function parseFile(error, data) {
+  const jsonFile = this.resolution.yaml.safeLoad(data)
 
   const { name } = jsonFile
 
-  write(`${this.output}/${name}.json`, JSON.stringify(jsonFile, null, '  '))
+  this.resolution.write(`${this.output}/${name}.json`, JSON.stringify(jsonFile, null, '  '))
 }
 
 function readFile(filePath) {
-  fs.readFile(filePath, 'utf8', parseFile.bind(this))
+  this.resolution.fs.readFile(filePath, 'utf8', parseFile.bind(this))
 }
 
 function sendToParser(error, files) {
   files.forEach(readFile, this)
 }
 
-async function ParseFiles(params) {
+function ParseFiles(params, injection) {
   const { pattern, output } = Object.assign({}, DEFAULTS, params)
+  const resolution = Object.assign({}, DEPENDENCIES, injection)
 
-  glob(pattern, sendToParser.bind({ output }))
+  resolution.glob(pattern, sendToParser.bind({ resolution, output }))
 }
 
 module.exports = ParseFiles

@@ -7,9 +7,16 @@
   "author": "Marcos Vinícius C. da Silva <marvinc.silva@gmail.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "test": "cucumber-js src/Domain/UseCases/**/*.feature --require src/Domain/UseCases/**/*.steps.js"
+  },
   "dependencies": {
     "glob": "^7.1.2",
     "js-yaml": "^3.11.0",
     "write": "^1.0.3"
+  },
+  "devDependencies": {
+    "cucumber": "^4.0.0",
+    "sinon": "^4.4.8"
   }
 }
