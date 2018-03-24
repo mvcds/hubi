@@ -31,6 +31,8 @@
     "precommit": "yarn coverage"
   },
   "dependencies": {
+    "colors": "^1.2.1",
+    "commander": "^2.15.1",
     "glob": "^7.1.2",
     "js-yaml": "^3.11.0",
     "write": "^1.0.3"
@@ -53,7 +55,8 @@
       "src/**/*.js"
     ],
     "exclude": [
-      "src/**/*.steps.js"
+      "src/**/*.steps.js",
+      "src/CLI"
     ],
     "reporter": [
       "lcov",
@@ -61,5 +64,8 @@
     ],
     "cache": true,
     "all": true
+  },
+  "bin": {
+    "ubi": "./index.js"
   }
 }

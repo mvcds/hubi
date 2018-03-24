@@ -1,8 +1,3 @@
-const DEFAULTS = {
-  pattern: `${process.env.PWD}/**/*.yml`,
-  output: 'domain'
-}
-
 const DEPENDENCIES = {
   fs: require('fs'),
   yaml: require('js-yaml'),
@@ -26,8 +21,7 @@ function sendToParser(error, files) {
   files.forEach(readFile, this)
 }
 
-function ParseFiles(params, injection) {
-  const { pattern, output } = Object.assign({}, DEFAULTS, params)
+function ParseFiles({ pattern, output }, injection) {
   const resolution = Object.assign({}, DEPENDENCIES, injection)
 
   resolution.glob(pattern, sendToParser.bind({ resolution, output }))
