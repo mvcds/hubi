@@ -9,12 +9,16 @@
   "private": false,
   "watch": {
     "test": {
-      "patterns": ["src"],
+      "patterns": [
+        "src"
+      ],
       "extensions": "js,feature",
       "quiet": true
     },
     "coverage": {
-      "patterns": ["src"],
+      "patterns": [
+        "src"
+      ],
       "extensions": "js,feature",
       "quiet": true
     }
@@ -23,7 +27,8 @@
     "test": "cucumber-js src/Domain/UseCases/**/*.feature --require src/Domain/UseCases/**/*.steps.js",
     "test:watch": "npm-watch test",
     "coverage": "nyc yarn test",
-    "coverage:watch": "npm-watch coverage"
+    "coverage:watch": "npm-watch coverage",
+    "precommit": "yarn coverage"
   },
   "dependencies": {
     "glob": "^7.1.2",
@@ -32,6 +37,7 @@
   },
   "devDependencies": {
     "cucumber": "^4.0.0",
+    "husky": "^0.14.3",
     "npm-watch": "^0.3.0",
     "nyc": "^11.6.0",
     "sinon": "^4.4.8"
