@@ -49,10 +49,10 @@ Then('the domain file is read', function () {
   this.injection.fs.readFile.verify()
 })
 
-Then('the domain file is converted into json', function () {
+Then('the domain file is converted into a source file', function () {
   this.injection.yaml.safeLoad.verify()
 })
 
-Then('the domain file is parsed', function () {
+Then('the source file is saved on output folder', function () {
   this.injection.write.verify()
 })
