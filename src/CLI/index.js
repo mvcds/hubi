@@ -5,11 +5,11 @@ const DEPENDENCIES = {
   path: require('path')
 }
 
-//TODO: use only one Regex
+//  TODO: use only one Regex
 function isValidFile (file) {
-  return this.base !== file
-    && /\.js$/i.test(file)
-    && !/\.test.js$/i.test(file)
+  return this.base !== file &&
+    /\.js$/i.test(file) &&
+    !/\.test.js$/i.test(file)
 }
 
 function addCommand (file) {
