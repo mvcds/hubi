@@ -6,15 +6,15 @@ const DEPENDENCIES = {
 }
 
 function parseFile (_, data) {
-  const jsonFile = this.resolution.yaml.safeLoad(data)
+  const jsonFile = this.yaml.safeLoad(data)
 
   const { name } = jsonFile
 
-  this.resolution.write(`${this.output}/${name}.json`, JSON.stringify(jsonFile, null, '  '))
+  this.write(`${this.output}/${name}.json`, JSON.stringify(jsonFile, null, '  '))
 }
 
 function readFile (filePath) {
-  this.resolution.fs.readFile(filePath, 'utf8', parseFile.bind(this))
+  this.fs.readFile(filePath, 'utf8', parseFile.bind(this))
 }
 
 function sendToParser (_, files) {
@@ -24,7 +24,7 @@ function sendToParser (_, files) {
 function ParseFiles ({ pattern, output }, injection) {
   const resolution = Object.assign({}, DEPENDENCIES, injection)
 
-  resolution.glob(pattern, sendToParser.bind({ resolution, output }))
+  resolution.glob(pattern, sendToParser.bind({ ...resolution, output }))
 }
 
 module.exports = ParseFiles
