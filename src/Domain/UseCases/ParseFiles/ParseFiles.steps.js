@@ -33,10 +33,10 @@ When('I run ParseFiles', function () {
 
   this.injection.yaml.safeLoad
     .withExactArgs('content')
-    .returns({ name: 'name' })
+    .returns({ name: 'name', attributes: [ 'foo' ] })
 
   this.injection.write
-    .withExactArgs(`${this.args.output}/name.json`, match.string)
+    .withExactArgs(`${this.args.output}/name.ubi.js`, match.string)
 
   return ParseFiles(this.args, this.injection)
 })

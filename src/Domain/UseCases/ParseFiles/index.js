@@ -14,7 +14,7 @@ function parseFile (_, fileContent) {
 
   const entity = new Entity({ domain }, this)
 
-  this.write(`${this.output}/${name}.json`, entity.parse())
+  this.write(`${this.output}/${name}.ubi.js`, entity.parse())
 }
 
 function readFile (filePath) {
