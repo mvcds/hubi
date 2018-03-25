@@ -1,3 +1,5 @@
+const Entity = require('../../Entities/Entity')
+
 const DEPENDENCIES = {
   fs: require('fs'),
   yaml: require('js-yaml'),
@@ -6,11 +8,13 @@ const DEPENDENCIES = {
 }
 
 function parseFile (_, fileContent) {
-  const jsonContent = this.yaml.safeLoad(fileContent)
+  const domain = this.yaml.safeLoad(fileContent)
 
-  const { name } = jsonContent
+  const { name } = domain
 
-  this.write(`${this.output}/${name}.json`, JSON.stringify(jsonContent, null, '  '))
+  const entity = new Entity({ domain }, this)
+
+  this.write(`${this.output}/${name}.json`, entity.parse())
 }
 
 function readFile (filePath) {
