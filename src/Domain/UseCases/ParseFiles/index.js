@@ -5,12 +5,12 @@ const DEPENDENCIES = {
   write: require('write')
 }
 
-function parseFile (_, data) {
-  const jsonFile = this.yaml.safeLoad(data)
+function parseFile (_, fileContent) {
+  const jsonContent = this.yaml.safeLoad(fileContent)
 
-  const { name } = jsonFile
+  const { name } = jsonContent
 
-  this.write(`${this.output}/${name}.json`, JSON.stringify(jsonFile, null, '  '))
+  this.write(`${this.output}/${name}.json`, JSON.stringify(jsonContent, null, '  '))
 }
 
 function readFile (filePath) {
