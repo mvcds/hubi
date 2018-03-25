@@ -1,6 +1,6 @@
 const DEPENDENCIES = {
   fs: require('fs'),
-  location: __filename,
+  cliFile: __filename,
   require,
   path: require('path')
 }
@@ -12,21 +12,20 @@ function isValidFile (file) {
     && !/\.test.js$/i.test(file)
 }
 
-function addUsage (file) {
-  const name = file.substr(0, file.lastIndexOf('.'))
-  const full = this.path.join(this.target, file)
+function addCommand (file) {
+  const path = this.path.join(this.target, file)
 
-  this.require(full)(this.program)
+  this.require(path)(this.program)
 }
 
 function ReadProgram (program, injection) {
-  const { fs, require, location, path } = Object.assign({}, DEPENDENCIES, injection)
+  const { fs, require, cliFile, path } = Object.assign({}, DEPENDENCIES, injection)
 
-  const target = path.dirname(location)
-  const base = path.basename(location)
+  const target = path.dirname(cliFile)
+  const base = path.basename(cliFile)
 
   const ignoreInvalidFiles = isValidFile.bind({ base })
-  const installCommand = addUsage.bind({ program, target, require, path })
+  const installCommand = addCommand.bind({ program, target, require, path })
 
   fs.readdirSync(target)
     .filter(ignoreInvalidFiles)
