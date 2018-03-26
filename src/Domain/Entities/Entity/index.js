@@ -1,8 +1,5 @@
-function parseAttribute (schema, key) {
-  return {
-    ...schema,
-    [key]: 'string'
-  }
+const DEPENDENCIES = {
+  AttributeParser: require('../../Values/AttributeParser')
 }
 
 function applyTemplate (schema) {
@@ -14,8 +11,16 @@ module.exports = SCHEMA
 `
 }
 
-function parse ({ attributes }) {
-  const schema = attributes.reduce(parseAttribute, {})
+function addAttribute (schema, attribute) {
+  return {
+    ...schema,
+    ...attribute.parse()
+  }
+}
+
+function parse (AttributeParser) {
+  const schema = this.attributes.map(AttributeParser)
+    .reduce(addAttribute, {})
 
   const content = applyTemplate(schema)
 
@@ -23,7 +28,9 @@ function parse ({ attributes }) {
 }
 
 function Entity ({ domain }, injection) {
-  this.parse = parse.bind(this, domain)
+  const { AttributeParser } = Object.assign({}, DEPENDENCIES, injection)
+
+  this.parse = parse.bind(domain, AttributeParser)
 
   return this
 }

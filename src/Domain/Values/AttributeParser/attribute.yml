@@ -1,0 +1,5 @@
+name: Attribute
+description: An object's characteristic
+attributes:
+  - name: name
+  - type
