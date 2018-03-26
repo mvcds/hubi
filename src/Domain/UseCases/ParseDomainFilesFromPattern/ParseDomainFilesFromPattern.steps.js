@@ -1,7 +1,7 @@
 const { Given, When, Then } = require('cucumber')
 const { mock, match } = require('sinon')
 
-const ParseFiles = require('./')
+const ParseDomainFilesFromPattern = require('./')
 
 Given('some glob pattern', function () {
   this.args = Object.assign({}, this.args, { pattern: 'pattern' })
@@ -11,7 +11,7 @@ Given('some output folder', function () {
   this.args = Object.assign({}, this.args, { output: 'output' })
 })
 
-When('I run ParseFiles', function () {
+When('I run ParseDomainFilesFromPattern', function () {
   this.injection = Object.assign({}, this.injection, {
     glob: mock('glob'),
     fs: {
@@ -38,7 +38,7 @@ When('I run ParseFiles', function () {
   this.injection.write
     .withExactArgs(`${this.args.output}/name.ubi.js`, match.string)
 
-  return ParseFiles(this.args, this.injection)
+  return ParseDomainFilesFromPattern(this.args, this.injection)
 })
 
 Then('the glob pattern find a domain file', function () {

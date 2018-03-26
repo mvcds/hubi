@@ -25,10 +25,10 @@ function sendToParser (_, files) {
   files.forEach(readFile, this)
 }
 
-function ParseFiles ({ pattern, output }, injection) {
+function ParseDomainFilesFromPattern ({ pattern, output }, injection) {
   const resolution = Object.assign({}, DEPENDENCIES, injection)
 
   resolution.glob(pattern, sendToParser.bind({ ...resolution, output }))
 }
 
-module.exports = ParseFiles
+module.exports = ParseDomainFilesFromPattern
