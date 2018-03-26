@@ -1,28 +1,18 @@
-const Entity = require('../../Entities/Entity')
+const ParseDomainFileIntoSourceFile = require('../ParseDomainFileIntoSourceFile')
 
 const DEPENDENCIES = {
-  fs: require('fs'),
-  yaml: require('js-yaml'),
-  glob: require('glob'),
-  write: require('write')
+  glob: require('glob')
 }
 
-function parseFile (_, fileContent) {
-  const domain = this.yaml.safeLoad(fileContent)
-
-  const { name } = domain
-
-  const entity = new Entity({ domain }, this)
-
-  this.write(`${this.output}/${name}.ubi.js`, entity.parse())
-}
-
-function readFile (filePath) {
-  this.fs.readFile(filePath, 'utf8', parseFile.bind(this))
+function parseDomainFile (filePath) {
+  ParseDomainFileIntoSourceFile({
+    domain: filePath,
+    source: this.output
+  }, this)
 }
 
 function sendToParser (_, files) {
-  files.forEach(readFile, this)
+  files.forEach(parseDomainFile, this)
 }
 
 function ParseDomainFilesFromPattern ({ pattern, output }, injection) {
