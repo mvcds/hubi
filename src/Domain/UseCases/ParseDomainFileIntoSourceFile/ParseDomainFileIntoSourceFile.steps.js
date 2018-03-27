@@ -29,5 +29,5 @@ Then('the atribute has type {string}', function (type) {
 
   const expectation = `'attribute': '${type}'`
 
-  assert.ok(result.includes(expectation))
+  assert.ok(result.includes(expectation), result)
 })

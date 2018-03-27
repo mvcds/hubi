@@ -1,0 +1,5 @@
+name: Decimal
+description: Its attribute is a decimal
+attributes:
+  - name: attribute
+    type: decimal

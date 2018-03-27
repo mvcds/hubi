@@ -1,0 +1,5 @@
+name: Float
+description: Its attribute is a float
+attributes:
+  - name: attribute
+    type: float

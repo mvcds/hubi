@@ -1,0 +1,5 @@
+name: Shape
+description: Its attribute is a shape
+attributes:
+  - name: attribute
+    type: shape

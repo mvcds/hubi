@@ -7,8 +7,6 @@ function StringAttribute (attribute) {
   }))
 }
 
-StringAttribute.isMatch = function isMatch (type) {
-  return type === 'string' || type === undefined
-}
+StringAttribute.isMatch = Attribute.includes('string', undefined)
 
 module.exports = StringAttribute

@@ -1,0 +1,5 @@
+name: Number
+description: Its attribute is a number
+attributes:
+  - name: attribute
+    type: number

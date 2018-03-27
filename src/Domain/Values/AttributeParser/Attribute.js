@@ -20,4 +20,8 @@ function Attribute ({
   this.parse = parse.bind(this)
 }
 
+Attribute.includes = function includes (...types) {
+  return (type) => types.includes(type)
+}
+
 module.exports = Attribute

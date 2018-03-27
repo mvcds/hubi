@@ -7,8 +7,6 @@ function BooleanAttribute (attribute) {
   }))
 }
 
-BooleanAttribute.isMatch = function isMatch (type) {
-  return type === 'bool' || type === 'boolean'
-}
+BooleanAttribute.isMatch = Attribute.includes('bool', 'boolean')
 
 module.exports = BooleanAttribute

@@ -1,0 +1,5 @@
+name: Int
+description: Its attribute is a short integer
+attributes:
+  - name: attribute
+    type: int

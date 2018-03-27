@@ -32,3 +32,48 @@ Feature: Parse Domain File Into Source
     Given "boolean.fixture" file
     When I run ParseDomainFileIntoSourceFile
     Then the atribute has type "boolean"
+
+  Scenario: Short integer attribute
+    Given "int.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "integer"
+
+  Scenario: Long integer attribute
+    Given "integer.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "integer"
+
+  Scenario: Float attribute
+    Given "float.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "float"
+
+  Scenario: Number attribute
+    Given "number.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "float"
+
+  Scenario: Decimal attribute
+    Given "decimal.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "float"
+
+  Scenario: Date attribute
+    Given "date.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "date"
+
+  Scenario: JSON attribute
+    Given "json.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "json"
+
+  Scenario: Object attribute
+    Given "object.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "object"
+
+  Scenario: Shape attribute
+    Given "shape.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "object"

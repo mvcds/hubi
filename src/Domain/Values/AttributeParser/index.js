@@ -1,7 +1,12 @@
 const DEPENDENCIES = {
   attributes: [
     require('./StringAttribute'),
-    require('./BooleanAttribute')
+    require('./BooleanAttribute'),
+    require('./IntegerAttribute'),
+    require('./DateAttribute'),
+    require('./FloatAttribute'),
+    require('./ObjectAttribute'),
+    require('./JSONAttribute')
   ]
 }
 
