@@ -1,0 +1,5 @@
+name: Bool
+description: Its attribute is a short boolean
+attributes:
+  - name: attribute
+    type: bool

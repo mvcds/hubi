@@ -27,10 +27,10 @@ function parse (AttributeParser) {
   return content.replace(/"/g, "'")
 }
 
-function Entity ({ domain }, injection) {
+function Entity ({ data }, injection) {
   const { AttributeParser } = Object.assign({}, DEPENDENCIES, injection)
 
-  this.parse = parse.bind(domain, AttributeParser)
+  this.parse = parse.bind(data, AttributeParser)
 
   return this
 }

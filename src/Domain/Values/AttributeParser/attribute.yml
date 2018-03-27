@@ -2,4 +2,8 @@ name: Attribute
 description: An object's characteristic
 attributes:
   - name: name
+    required: true
   - type
+  - name: required
+    type: boolean
+    default: false

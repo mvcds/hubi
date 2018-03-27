@@ -1,0 +1,5 @@
+name: Required
+description: Its attribute is required
+attributes:
+  - name: attribute
+    required: true

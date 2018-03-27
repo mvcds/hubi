@@ -1,6 +1,7 @@
 const DEPENDENCIES = {
   attributes: [
-    require('./StringAttribute')
+    require('./StringAttribute'),
+    require('./BooleanAttribute')
   ]
 }
 

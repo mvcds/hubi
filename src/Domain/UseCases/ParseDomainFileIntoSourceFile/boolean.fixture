@@ -1,0 +1,5 @@
+name: Boolean
+description: Its attribute is a long boolean
+attributes:
+  - name: attribute
+    type: boolean

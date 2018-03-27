@@ -1,14 +1,10 @@
-function parse () {
-  return {
-    [this.name]: this.type
-  }
-}
+const Attribute = require('./Attribute')
 
 function StringAttribute (attribute) {
-  this.name = attribute.name
-  this.type = 'string'
-
-  this.parse = parse.bind(this)
+  Object.assign(this, new Attribute({
+    ...attribute,
+    type: 'string'
+  }))
 }
 
 StringAttribute.isMatch = function isMatch (type) {

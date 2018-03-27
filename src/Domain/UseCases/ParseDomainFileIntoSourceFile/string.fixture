@@ -1,0 +1,5 @@
+name: String
+description: Its attribute is a explicit string
+attributes:
+  - name: attribute
+    type: string
