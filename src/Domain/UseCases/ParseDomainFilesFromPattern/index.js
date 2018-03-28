@@ -4,21 +4,21 @@ const DEPENDENCIES = {
   glob: require('glob')
 }
 
-function parseDomainFile (filePath) {
-  ParseDomainFileIntoSourceFile({
+async function parseDomainFile (filePath) {
+  return ParseDomainFileIntoSourceFile({
     domain: filePath,
     source: this.output
   }, this)
 }
 
-function sendToParser (_, files) {
-  files.forEach(parseDomainFile, this)
-}
-
-function ParseDomainFilesFromPattern ({ pattern, output }, injection) {
+async function ParseDomainFilesFromPattern ({ pattern, output }, injection) {
   const resolution = Object.assign({}, DEPENDENCIES, injection)
 
-  resolution.glob(pattern, sendToParser.bind({ ...resolution, output }))
+  const files = resolution.glob.sync(pattern)
+
+  const promises = files.map(parseDomainFile, { ...resolution, output })
+
+  return Promise.all(promises)
 }
 
 module.exports = ParseDomainFilesFromPattern

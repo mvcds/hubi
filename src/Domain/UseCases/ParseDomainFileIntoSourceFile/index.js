@@ -6,23 +6,24 @@ const DEPENDENCIES = {
   write: require('write')
 }
 
-function parseFile (_, fileContent) {
-  const rawEntity = this.yaml.safeLoad(fileContent)
+const READ_OPTIONS = {
+  encoding: 'utf8'
+}
 
-  const { name } = rawEntity
+function createEntityFromDomainFile (content, yaml) {
+  const data = yaml.safeLoad(content)
 
-  const entity = new Entity({ data: rawEntity }, this)
-
-  this.write(`${this.source}/${name}.ubi.js`, entity.parse())
-  this.resolve()
+  return new Entity(data)
 }
 
 async function ParseDomainFileIntoSourceFile ({ domain, source }, injection) {
   const { fs, yaml, write } = Object.assign({}, DEPENDENCIES, injection)
 
-  return new Promise((resolve) => {
-    fs.readFile(domain, 'utf8', parseFile.bind({ source, yaml, write, resolve }))
-  })
+  const domainFileContent = fs.readFileSync(domain, READ_OPTIONS)
+
+  const entity = createEntityFromDomainFile(domainFileContent, yaml)
+
+  write(`${source}/${entity.name}.ubi.js`, entity.parse())
 }
 
 module.exports = ParseDomainFileIntoSourceFile

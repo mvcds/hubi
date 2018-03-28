@@ -1,16 +1,14 @@
+const RequiresAttribute = require('../../Services/RequiresAttribute')
+
 function parse () {
   const type = this.isRequired ? `${this.type}.required` : this.type
 
   return { [this.name]: type }
 }
 
-function requires (attribute) {
-  throw new Error(`The attribute "${attribute}" is required`)
-}
-
 function Attribute ({
-  name = requires('name'),
-  type = requires('type'),
+  name = RequiresAttribute('name'),
+  type = RequiresAttribute('type'),
   required = false
 }) {
   this.name = name

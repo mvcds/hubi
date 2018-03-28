@@ -13,9 +13,11 @@ Given('some output folder', function () {
 
 When('I run ParseDomainFilesFromPattern', function () {
   this.injection = Object.assign({}, this.injection, {
-    glob: mock('glob'),
+    glob: {
+      sync: mock('glob.sync')
+    },
     fs: {
-      readFile: mock('fs.readFile')
+      readFileSync: mock('fs.readFileSync')
     },
     yaml: {
       safeLoad: mock('yaml.safeLoad')
@@ -23,30 +25,34 @@ When('I run ParseDomainFilesFromPattern', function () {
     write: mock('write')
   })
 
-  this.injection.glob
-    .withExactArgs(this.args.pattern, match.func)
-    .callsArgWith(1, null, [ 'file' ])
+  this.injection.glob.sync
+    .withExactArgs(this.args.pattern)
+    .returns([ 'file' ])
 
-  this.injection.fs.readFile
-    .withExactArgs('file', 'utf8', match.func)
-    .callsArgWith(2, null, 'content')
+  this.injection.fs.readFileSync
+    .withExactArgs('file', match.object)
+    .returns('content')
 
   this.injection.yaml.safeLoad
     .withExactArgs('content')
-    .returns({ name: 'name', attributes: [ 'foo' ] })
+    .returns({
+      name: 'bar',
+      description: 'desc',
+      attributes: [ 'foo' ]
+    })
 
   this.injection.write
-    .withExactArgs(`${this.args.output}/name.ubi.js`, match.string)
+    .withExactArgs(`${this.args.output}/bar.ubi.js`, match.string)
 
   return ParseDomainFilesFromPattern(this.args, this.injection)
 })
 
 Then('the glob pattern find a domain file', function () {
-  this.injection.glob.verify()
+  this.injection.glob.sync.verify()
 })
 
 Then('the domain file is read', function () {
-  this.injection.fs.readFile.verify()
+  this.injection.fs.readFileSync.verify()
 })
 
 Then('the domain file is converted into a source file', function () {

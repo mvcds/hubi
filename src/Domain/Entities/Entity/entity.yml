@@ -5,3 +5,4 @@ attributes:
     required: true
   - name: description
     required: true
+  - name: attributes

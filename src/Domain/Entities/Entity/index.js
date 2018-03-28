@@ -1,3 +1,5 @@
+const RequiresAttribute = require('../../Services/RequiresAttribute')
+
 const DEPENDENCIES = {
   AttributeParser: require('../../Values/AttributeParser')
 }
@@ -18,8 +20,8 @@ function addAttribute (schema, attribute) {
   }
 }
 
-function parse (AttributeParser) {
-  const schema = this.attributes.map(AttributeParser)
+function parse () {
+  const schema = this.attributes
     .reduce(addAttribute, {})
 
   const content = applyTemplate(schema)
@@ -27,10 +29,18 @@ function parse (AttributeParser) {
   return content.replace(/"/g, "'")
 }
 
-function Entity ({ data }, injection) {
+function Entity ({
+  name = RequiresAttribute('name'),
+  description = RequiresAttribute('description'),
+  attributes = RequiresAttribute('attributes')
+}, injection) {
   const { AttributeParser } = Object.assign({}, DEPENDENCIES, injection)
 
-  this.parse = parse.bind(data, AttributeParser)
+  this.name = name
+  this.description = description
+  this.attributes = attributes.map(AttributeParser)
+
+  this.parse = parse.bind(this)
 
   return this
 }
