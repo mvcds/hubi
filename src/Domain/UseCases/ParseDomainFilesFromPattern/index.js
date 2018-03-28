@@ -7,7 +7,8 @@ const DEPENDENCIES = {
 async function parseDomainFile (filePath) {
   return ParseDomainFileIntoSourceFile({
     domain: filePath,
-    source: this.output
+    source: this.output,
+    parser: 'ubi'
   }, this)
 }
 

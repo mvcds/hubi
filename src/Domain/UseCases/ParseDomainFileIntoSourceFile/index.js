@@ -1,9 +1,12 @@
 const Entity = require('../../Entities/Entity')
+const ubi = require('../../Values/UbiParser')
 
 const DEPENDENCIES = {
   fs: require('fs'),
   yaml: require('js-yaml'),
-  write: require('write')
+  parsers: {
+    ubi
+  }
 }
 
 const READ_OPTIONS = {
@@ -16,14 +19,17 @@ function createEntityFromDomainFile (content, yaml) {
   return new Entity(data)
 }
 
-async function ParseDomainFileIntoSourceFile ({ domain, source }, injection) {
-  const { fs, yaml, write } = Object.assign({}, DEPENDENCIES, injection)
+//  TODO: parser as an object
+async function ParseDomainFileIntoSourceFile ({ domain, source, parser: parserName }, injection) {
+  const { fs, yaml, parsers } = Object.assign({}, DEPENDENCIES, injection)
 
   const domainFileContent = fs.readFileSync(domain, READ_OPTIONS)
 
   const entity = createEntityFromDomainFile(domainFileContent, yaml)
 
-  write(`${source}/${entity.name}.ubi.js`, entity.parse())
+  const parser = new parsers[parserName]({ entity, source })
+
+  parser.parse(injection)
 }
 
 module.exports = ParseDomainFileIntoSourceFile
