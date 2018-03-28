@@ -13,7 +13,7 @@ function isValidFile (file) {
 }
 
 function addCommand (file) {
-  const path = this.path.join(this.target, file)
+  const path = this.path.join(__dirname, file)
 
   this.require(path)(this.program)
 }
@@ -21,13 +21,12 @@ function addCommand (file) {
 function ReadProgram (program, injection) {
   const { fs, require, cliFile, path } = Object.assign({}, DEPENDENCIES, injection)
 
-  const target = path.dirname(cliFile)
   const base = path.basename(cliFile)
 
   const ignoreInvalidFiles = isValidFile.bind({ base })
-  const installCommand = addCommand.bind({ program, target, require, path })
+  const installCommand = addCommand.bind({ program, require, path })
 
-  fs.readdirSync(target)
+  fs.readdirSync(__dirname)
     .filter(ignoreInvalidFiles)
     .forEach(installCommand)
 }

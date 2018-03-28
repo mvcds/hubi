@@ -5,7 +5,6 @@ const cli = require('./index')
 describe('CLI', () => {
   const injection = {
     path: {
-      dirname: mock('path.dirname'),
       basename: mock('path.basename'),
       join: mock('path.join')
     },
@@ -33,17 +32,14 @@ describe('CLI', () => {
   ], [])
 
   before(() => {
-    injection.path.dirname
-      .withExactArgs(cliFile)
-      .returns(dir)
     injection.path.basename
       .withExactArgs(cliFile)
       .returns(`${index}.js`)
     injection.path.join
-      .withExactArgs(dir, `${other}.js`)
+      .withExactArgs(__dirname, `${other}.js`)
       .returns(commandFile)
     injection.fs.readdirSync
-      .withExactArgs(dir)
+      .withExactArgs(__dirname)
       .returns(files)
     injection.require
       .withExactArgs(commandFile)
@@ -53,8 +49,6 @@ describe('CLI', () => {
   })
 
   it('Uses CLI', () => cli(program, { ...injection, cliFile }))
-
-  it('Gets the CLI file\'s directory', () => injection.path.dirname.verify())
 
   it('Gets the CLI file\'s basename', () => injection.path.basename.verify())
 
