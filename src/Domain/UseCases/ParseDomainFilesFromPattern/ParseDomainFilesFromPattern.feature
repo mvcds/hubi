@@ -10,4 +10,4 @@ Feature: Parse Domain Files From Pattern
     Then the glob pattern find a domain file
       And the domain file is read
       And the domain file is converted into a source file
-      And the source file is saved on output folder
+      And the source file is parsed

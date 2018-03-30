@@ -12,6 +12,22 @@ Given('some output folder', function () {
 })
 
 When('I run ParseDomainFilesFromPattern', function () {
+  const object = {
+    name: 'bar',
+    description: 'desc',
+    attributes: [ 'foo' ]
+  }
+
+  const expectation = JSON.stringify({
+    bar: {
+      attributes: [
+        { foo: 'string' }
+      ]
+    }
+  }, null, 2)
+
+  this.args = Object.assign({}, this.args, { parserName: 'log' })
+
   this.injection = Object.assign({}, this.injection, {
     glob: {
       sync: mock('glob.sync')
@@ -35,14 +51,10 @@ When('I run ParseDomainFilesFromPattern', function () {
 
   this.injection.yaml.safeLoad
     .withExactArgs('content')
-    .returns({
-      name: 'bar',
-      description: 'desc',
-      attributes: [ 'foo' ]
-    })
+    .returns(object)
 
   this.injection.write
-    .withExactArgs(`${this.args.output}/bar.ubi.js`, match.string)
+    .withExactArgs(expectation)
 
   return ParseDomainFilesFromPattern(this.args, this.injection)
 })
@@ -59,6 +71,6 @@ Then('the domain file is converted into a source file', function () {
   this.injection.yaml.safeLoad.verify()
 })
 
-Then('the source file is saved on output folder', function () {
+Then('the source file is parsed', function () {
   this.injection.write.verify()
 })
