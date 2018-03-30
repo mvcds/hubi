@@ -3,7 +3,7 @@ Feature: Parse Domain File Into Source
   I want to parse a domain file into a source one
   In order to have a useful file
 
-  Scenario: Simbple attribute
+  Scenario: Simple attribute
     Given "simple.fixture" file
     When I run ParseDomainFileIntoSourceFile
     Then the atribute has type "string"
