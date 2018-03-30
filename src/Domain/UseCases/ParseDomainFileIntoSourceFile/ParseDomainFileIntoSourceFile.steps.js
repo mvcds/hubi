@@ -18,7 +18,7 @@ When('I run ParseDomainFileIntoSourceFile', async function () {
     write: mock('write')
   })
 
-  this.args = Object.assign({}, this.args, { parserName: 'ubi' })
+  this.args = Object.assign({}, this.args, { translator: 'ubi' })
   this.args = Object.assign({}, this.args, { source: 'someFolder' })
 
   this.injection.write

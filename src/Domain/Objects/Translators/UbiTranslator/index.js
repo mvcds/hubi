@@ -16,7 +16,7 @@ module.exports = SCHEMA
 function addAttribute (schema, attribute) {
   return {
     ...schema,
-    ...attribute.parse()
+    ...UbiTranslator.parse(attribute)
   }
 }
 
@@ -29,7 +29,7 @@ function transform (entity) {
   return content.replace(/"/g, "'")
 }
 
-function parse (injection) {
+function translate (injection) {
   const { write } = Object.assign({}, DEPENDENCIES, injection)
 
   const result = transform(this.entity)
@@ -44,7 +44,15 @@ function UbiTranslator ({
   this.entity = entity
   this.source = source
 
-  this.parse = parse.bind(this)
+  this.translate = translate.bind(this)
+}
+
+UbiTranslator.parse = function (attribute) {
+  const { isRequired, type, name } = attribute
+
+  const attr = `${type}${isRequired ? '.required' : ''}`
+
+  return { [name]: attr }
 }
 
 module.exports = UbiTranslator

@@ -1,5 +1,7 @@
 const RequiresAttribute = require('../../../Services/RequiresAttribute')
 
+const UbiTranslator = require('../UbiTranslator')
+
 const DEPENDENCIES = {
   write: console.log
 }
@@ -7,7 +9,7 @@ const DEPENDENCIES = {
 function addAttribute (schema, attribute) {
   return [
     ...schema,
-    attribute.parse()
+    UbiTranslator.parse(attribute)
   ]
 }
 
@@ -15,14 +17,19 @@ function transform (entity) {
   const attributes = entity.attributes
     .reduce(addAttribute, [])
 
-  const asString = JSON.stringify({
-    [ entity.name ]: { attributes }
-  }, null, 2)
+  const transformed = {
+    [ entity.name ]: {
+      description: entity.description,
+      attributes
+    }
+  }
+
+  const asString = JSON.stringify(transformed, null, 2)
 
   return asString
 }
 
-function parse (injection) {
+function translate (injection) {
   const { write } = Object.assign({}, DEPENDENCIES, injection)
 
   const result = transform(this.entity)
@@ -35,7 +42,7 @@ function LogTranslator ({
 }) {
   this.entity = entity
 
-  this.parse = parse.bind(this)
+  this.translate = translate.bind(this)
 }
 
 module.exports = LogTranslator

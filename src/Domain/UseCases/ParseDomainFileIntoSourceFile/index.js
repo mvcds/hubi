@@ -1,11 +1,12 @@
 const Entity = require('../../Entities/Entity')
-const ubi = require('../../Objects/Translator/UbiTranslator')
-const log = require('../../Objects/Translator/LogTranslator')
+
+const ubi = require('../../Objects/Translators/UbiTranslator')
+const log = require('../../Objects/Translators/LogTranslator')
 
 const DEPENDENCIES = {
   fs: require('fs'),
   yaml: require('js-yaml'),
-  parsers: {
+  translators: {
     ubi,
     log
   }
@@ -22,16 +23,15 @@ function createEntityFromDomainFile (content, yaml) {
 }
 
 //  TODO: parser as an object
-async function ParseDomainFileIntoSourceFile ({ domain, source, parserName }, injection) {
-  const { fs, yaml, parsers } = Object.assign({}, DEPENDENCIES, injection)
+async function ParseDomainFileIntoSourceFile ({ domain, source, translator }, injection) {
+  const { fs, yaml, translators } = Object.assign({}, DEPENDENCIES, injection)
 
   const domainFileContent = fs.readFileSync(domain, READ_OPTIONS)
 
   const entity = createEntityFromDomainFile(domainFileContent, yaml)
 
-  const parser = new parsers[parserName]({ entity, source })
-
-  parser.parse(injection)
+  return new translators[translator]({ entity, source })
+    .translate(injection)
 }
 
 module.exports = ParseDomainFileIntoSourceFile

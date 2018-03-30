@@ -20,13 +20,14 @@ When('I run ParseDomainFilesFromPattern', function () {
 
   const expectation = JSON.stringify({
     bar: {
+      description: 'desc',
       attributes: [
         { foo: 'string' }
       ]
     }
   }, null, 2)
 
-  this.args = Object.assign({}, this.args, { parserName: 'log' })
+  this.args = Object.assign({}, this.args, { translator: 'log' })
 
   this.injection = Object.assign({}, this.injection, {
     glob: {

@@ -7,7 +7,7 @@ function ParseDomainFileIntoSourceFileCommand (program) {
     .description('Parses a domain files into source file')
     .option('-s, --source [source]', 'Path to the source file')
     .option('-d, --domain [domain]', 'Path to the domain file')
-    .option('-n, --parser-name [parserName]', 'Parse\'s name (log|ubi)', 'log')
+    .option('-t, --translator [translator]', 'Language translator (log|ubi)', 'log')
     .action(ParseDomainFileIntoSourceFile)
 }
 
