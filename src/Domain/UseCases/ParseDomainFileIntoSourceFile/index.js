@@ -1,6 +1,6 @@
 const Entity = require('../../Entities/Entity')
-const ubi = require('../../Objects/UbiParser')
-const log = require('../../Objects/LogParser')
+const ubi = require('../../Objects/Translator/UbiTranslator')
+const log = require('../../Objects/Translator/LogTranslator')
 
 const DEPENDENCIES = {
   fs: require('fs'),

@@ -1,4 +1,4 @@
-const RequiresAttribute = require('../../Services/RequiresAttribute')
+const RequiresAttribute = require('../../../Services/RequiresAttribute')
 
 const DEPENDENCIES = {
   write: console.log
@@ -30,7 +30,7 @@ function parse (injection) {
   write(result)
 }
 
-function LogParser ({
+function LogTranslator ({
   entity = RequiresAttribute('entity')
 }) {
   this.entity = entity
@@ -38,4 +38,4 @@ function LogParser ({
   this.parse = parse.bind(this)
 }
 
-module.exports = LogParser
+module.exports = LogTranslator

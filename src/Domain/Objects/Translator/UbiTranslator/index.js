@@ -1,4 +1,4 @@
-const RequiresAttribute = require('../../Services/RequiresAttribute')
+const RequiresAttribute = require('../../../Services/RequiresAttribute')
 
 const DEPENDENCIES = {
   write: require('write')
@@ -37,7 +37,7 @@ function parse (injection) {
   write(`${this.source}/${this.entity.name}.ubi.js`, result)
 }
 
-function UbiParser ({
+function UbiTranslator ({
   entity = RequiresAttribute('entity'),
   source = RequiresAttribute('source')
 }) {
@@ -47,4 +47,4 @@ function UbiParser ({
   this.parse = parse.bind(this)
 }
 
-module.exports = UbiParser
+module.exports = UbiTranslator
