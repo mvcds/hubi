@@ -46,8 +46,9 @@
     "test:watch": "npm-watch test",
     "coverage": "nyc yarn test",
     "coverage:watch": "npm-watch coverage",
-    "lint": "standard --env mocha | snazzy",
-    "lint:fix": "standard --env mocha | snazzy",
+    "standard": "standard --env mocha",
+    "lint": "(yarn standard) | snazzy",
+    "lint:fix": "(yarn standard --fix) | snazzy",
     "precommit": "yarn lint:fix && yarn coverage"
   },
   "dependencies": {
