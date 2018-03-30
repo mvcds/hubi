@@ -1,0 +1,7 @@
+name: Typed Array
+description: Its attribute is a typed array
+attributes:
+  - name: attribute
+    type: array
+    of: Person
+

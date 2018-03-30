@@ -82,3 +82,13 @@ Feature: Parse Domain File Into Source
     Given "entity.fixture" file
     When I run ParseDomainFileIntoSourceFile
     Then the atribute has type "Person"
+
+  Scenario: Simple array attribute
+    Given "simple-array.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "[object]"
+
+  Scenario: Typed attribute
+    Given "typed-array.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "[Person]"

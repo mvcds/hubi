@@ -48,9 +48,11 @@ function UbiTranslator ({
 }
 
 UbiTranslator.parse = function (attribute) {
-  const { isRequired, type, name } = attribute
+  const { isRequired, type, name, of: arrayOf } = attribute
 
-  const attr = `${type}${isRequired ? '.required' : ''}`
+  const wrapped = arrayOf ? `[${arrayOf}]` : type
+
+  const attr = `${wrapped}${isRequired ? '.required' : ''}`
 
   return { [name]: attr }
 }

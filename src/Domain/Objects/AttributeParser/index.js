@@ -6,7 +6,8 @@ const DEPENDENCIES = {
     require('./DateAttribute'),
     require('./FloatAttribute'),
     require('./ObjectAttribute'),
-    require('./JSONAttribute')
+    require('./JSONAttribute'),
+    require('./ArrayAttribute')
   ],
   defaultAttribute: require('./Attribute')
 }

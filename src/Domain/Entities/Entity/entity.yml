@@ -6,3 +6,5 @@ attributes:
   - name: description
     required: true
   - name: attributes
+    type: array
+    of: Attribute
