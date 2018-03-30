@@ -1,7 +1,7 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
 const DEPENDENCIES = {
-  AttributeParser: require('../../Values/AttributeParser')
+  AttributeParser: require('../../Objects/AttributeParser')
 }
 
 function Entity ({
