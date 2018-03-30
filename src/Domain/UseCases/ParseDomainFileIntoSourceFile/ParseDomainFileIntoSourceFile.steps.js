@@ -7,8 +7,8 @@ const ParseDomainFileIntoSourceFile = require('./')
 
 const DIRECTORY = path.dirname(__filename)
 
-Given('{string} file', function (fixture) {
-  const domain = `${DIRECTORY}/${fixture}`
+Given('{string} file', function (fixtureName) {
+  const domain = `${DIRECTORY}/fixtures/${fixtureName}`
 
   this.args = Object.assign({}, this.args, { domain })
 })
