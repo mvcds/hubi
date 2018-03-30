@@ -8,3 +8,4 @@ attributes:
   - name: attributes
     type: array
     of: Attribute
+    required: true

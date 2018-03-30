@@ -39,7 +39,7 @@ function translate (injection) {
 
 function UbiTranslator ({
   entity = RequiresAttribute('entity'),
-  source = RequiresAttribute('source')
+  source
 }) {
   this.entity = entity
   this.source = source

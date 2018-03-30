@@ -4,3 +4,4 @@ attributes:
   - name: entity
     type: Entity
     required: true
+  - source
