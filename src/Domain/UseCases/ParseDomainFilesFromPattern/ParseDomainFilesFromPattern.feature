@@ -6,6 +6,7 @@ Feature: Parse Domain Files From Pattern
   Scenario: Happy path
     Given some glob pattern
       And some output folder
+      And translator is log
     When I run ParseDomainFilesFromPattern
     Then the glob pattern find a domain file
       And the domain file is read

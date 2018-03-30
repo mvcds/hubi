@@ -13,13 +13,14 @@ Given('{string} file', function (fixtureName) {
   this.args = Object.assign({}, this.args, { domain })
 })
 
+Given('translator is ubi', function () {
+  this.args = Object.assign({}, this.args, { translator: 'ubi' })
+})
+
 When('I run ParseDomainFileIntoSourceFile', async function () {
   this.injection = Object.assign({}, this.injection, {
     write: mock('write')
   })
-
-  this.args = Object.assign({}, this.args, { translator: 'ubi' })
-  this.args = Object.assign({}, this.args, { source: 'someFolder' })
 
   this.injection.write
     .withExactArgs(match.string, match.string)

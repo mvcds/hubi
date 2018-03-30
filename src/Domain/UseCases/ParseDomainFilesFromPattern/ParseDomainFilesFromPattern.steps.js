@@ -11,6 +11,10 @@ Given('some output folder', function () {
   this.args = Object.assign({}, this.args, { output: 'output' })
 })
 
+Given('translator is log', function () {
+  this.args = Object.assign({}, this.args, { translator: 'log' })
+})
+
 When('I run ParseDomainFilesFromPattern', function () {
   const object = {
     name: 'bar',
@@ -26,8 +30,6 @@ When('I run ParseDomainFilesFromPattern', function () {
       ]
     }
   }, null, 2)
-
-  this.args = Object.assign({}, this.args, { translator: 'log' })
 
   this.injection = Object.assign({}, this.injection, {
     glob: {
