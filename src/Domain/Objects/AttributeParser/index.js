@@ -7,26 +7,29 @@ const DEPENDENCIES = {
     require('./FloatAttribute'),
     require('./ObjectAttribute'),
     require('./JSONAttribute')
-  ]
+  ],
+  defaultAttribute: require('./Attribute')
 }
 
 function isMatch (parser) {
   return parser.isMatch(this.type)
 }
 
-function AttributeParser (attribute, injection) {
-  if (typeof attribute === 'string') {
-    const typedAttribute = { name: attribute }
+function AttributeParser (data, injection) {
+  if (typeof data === 'string') {
+    const typedAttribute = { name: data }
 
     return AttributeParser(typedAttribute, injection)
   }
 
-  const { attributes } = Object.assign({}, DEPENDENCIES, injection)
-  const { type } = attribute
+  const { attributes, defaultAttribute } = Object.assign({}, DEPENDENCIES, injection)
+  const { type } = data
 
-  const Attribute = attributes.find(isMatch, { type })
+  const attribute = attributes.find(isMatch, { type })
 
-  return new Attribute(attribute)
+  const Attribute = attribute || defaultAttribute
+
+  return new Attribute(data)
 }
 
 module.exports = AttributeParser

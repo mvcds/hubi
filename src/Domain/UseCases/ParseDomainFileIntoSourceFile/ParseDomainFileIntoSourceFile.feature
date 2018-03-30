@@ -77,3 +77,8 @@ Feature: Parse Domain File Into Source
     Given "shape.fixture" file
     When I run ParseDomainFileIntoSourceFile
     Then the atribute has type "object"
+
+  Scenario: Entity attribute
+    Given "entity.fixture" file
+    When I run ParseDomainFileIntoSourceFile
+    Then the atribute has type "Person"
