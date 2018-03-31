@@ -9,7 +9,8 @@ const DEPENDENCIES = {
   translators: {
     ubi,
     log
-  }
+  },
+  write: console.log
 }
 
 const READ_OPTIONS = {
@@ -22,16 +23,18 @@ function createEntityFromDomainFile (content, yaml) {
   return new Entity(data)
 }
 
-//  TODO: parser as an object
+//  TODO: translator as an object
 async function ParseDomainFileIntoSourceFile ({ domain, source, translator }, injection) {
-  const { fs, yaml, translators } = Object.assign({}, DEPENDENCIES, injection)
+  const { fs, yaml, translators, write } = Object.assign({}, DEPENDENCIES, injection)
 
   const domainFileContent = fs.readFileSync(domain, READ_OPTIONS)
 
   const entity = createEntityFromDomainFile(domainFileContent, yaml)
 
-  return new translators[translator]({ entity, source })
-    .translate(injection)
+  const translation = new translators[translator]({ entities: [ entity ], source })
+    .translate()
+
+  write(translation)
 }
 
 module.exports = ParseDomainFileIntoSourceFile

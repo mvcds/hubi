@@ -1,8 +1,4 @@
-const RequiresAttribute = require('../../../Services/RequiresAttribute')
-
-const DEPENDENCIES = {
-  write: require('write')
-}
+const Translator = require('../Translator')
 
 function applyTemplate (schema) {
   const asString = JSON.stringify(schema, null, '  ')
@@ -29,22 +25,8 @@ function transform (entity) {
   return content.replace(/"/g, "'")
 }
 
-function translate (injection) {
-  const { write } = Object.assign({}, DEPENDENCIES, injection)
-
-  const result = transform(this.entity)
-
-  write(`${this.source}/${this.entity.name}.ubi.js`, result)
-}
-
-function UbiTranslator ({
-  entity = RequiresAttribute('entity'),
-  source
-}) {
-  this.entity = entity
-  this.source = source
-
-  this.translate = translate.bind(this)
+function UbiTranslator ({ entities }) {
+  Object.assign(this, new Translator({ entities, transform }))
 }
 
 UbiTranslator.parse = function (attribute) {

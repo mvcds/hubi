@@ -57,7 +57,7 @@ When('I run ParseDomainFilesFromPattern', function () {
     .returns(object)
 
   this.injection.write
-    .withExactArgs(expectation)
+    .withExactArgs([ expectation ])
 
   return ParseDomainFilesFromPattern(this.args, this.injection)
 })

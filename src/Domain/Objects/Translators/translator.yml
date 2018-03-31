@@ -1,7 +1,7 @@
 name: Translator
 description: An object which translate the entity's attributes to a given language
 attributes:
-  - name: entity
-    type: Entity
+  - name: entities
+    type: array
+    of: Entity
     required: true
-  - source

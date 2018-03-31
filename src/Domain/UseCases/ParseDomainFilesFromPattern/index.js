@@ -1,7 +1,8 @@
 const ParseDomainFileIntoSourceFile = require('../ParseDomainFileIntoSourceFile')
 
 const DEPENDENCIES = {
-  glob: require('glob')
+  glob: require('glob'),
+  write: console.log
 }
 
 async function parseDomainFile (filePath) {

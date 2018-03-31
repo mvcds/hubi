@@ -24,13 +24,13 @@ When('I run ParseDomainFileIntoSourceFile', async function () {
   })
 
   this.injection.write
-    .withExactArgs(match.string, match.string)
+    .withExactArgs(match.array)
 
   return ParseDomainFileIntoSourceFile(args, this.injection)
 })
 
 Then('the atribute has type {string}', function (type) {
-  const [ [, result] ] = this.injection.write.args
+  const [ [ [ result ] ] ] = this.injection.write.args
   const filename = `${__dirname}/fixtures/${this.aux.fixtureName}.result.fixture`
 
   const expected = fs.readFileSync(filename, 'utf8')
