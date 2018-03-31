@@ -1,5 +1,0 @@
-const SCHEMA = {
-  'attribute': 'json'
-}
-
-module.exports = SCHEMA

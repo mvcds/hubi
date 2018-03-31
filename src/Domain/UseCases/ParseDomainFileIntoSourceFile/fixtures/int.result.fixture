@@ -1,5 +1,0 @@
-const SCHEMA = {
-  'attribute': 'integer'
-}
-
-module.exports = SCHEMA

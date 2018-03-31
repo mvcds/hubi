@@ -1,5 +1,0 @@
-name: Integer
-description: Its attribute is a long integer
-attributes:
-  - name: attribute
-    type: integer

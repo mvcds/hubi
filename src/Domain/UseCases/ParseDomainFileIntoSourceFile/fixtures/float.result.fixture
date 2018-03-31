@@ -1,5 +1,0 @@
-const SCHEMA = {
-  'attribute': 'float'
-}
-
-module.exports = SCHEMA

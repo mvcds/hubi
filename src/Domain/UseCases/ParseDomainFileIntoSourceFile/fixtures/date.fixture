@@ -1,5 +1,0 @@
-name: Date
-description: Its attribute is a ong data
-attributes:
-  - name: attribute
-    type: date

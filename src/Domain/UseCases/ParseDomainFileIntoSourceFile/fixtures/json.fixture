@@ -1,5 +1,0 @@
-name: JSON
-description: Its attribute is a json
-attributes:
-  - name: attribute
-    type: json

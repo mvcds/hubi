@@ -1,5 +1,0 @@
-const SCHEMA = {
-  'attribute': '[object]'
-}
-
-module.exports = SCHEMA

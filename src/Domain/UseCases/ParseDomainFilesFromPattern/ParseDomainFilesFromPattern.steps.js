@@ -1,6 +1,8 @@
 const { Given, When, Then } = require('cucumber')
 const { mock, match } = require('sinon')
 
+const AttributeFactory = require('../../Objects/AttributeParser/Attribute.factory')
+
 const ParseDomainFilesFromPattern = require('./')
 
 Given('some glob pattern', function () {
@@ -16,17 +18,19 @@ Given('translator is log', function () {
 })
 
 When('I run ParseDomainFilesFromPattern', function () {
+  const attribute = AttributeFactory.String()
+
   const object = {
     name: 'bar',
     description: 'desc',
-    attributes: [ 'foo' ]
+    attributes: [ attribute ]
   }
 
   const expectation = JSON.stringify({
     bar: {
       description: 'desc',
       attributes: [
-        { foo: 'string' }
+        { [ attribute.name ]: 'string' }
       ]
     }
   }, null, 2)

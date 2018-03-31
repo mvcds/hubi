@@ -1,5 +1,0 @@
-const SCHEMA = {
-  'attribute': 'date'
-}
-
-module.exports = SCHEMA

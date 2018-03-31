@@ -1,5 +1,0 @@
-name: Shape
-description: Its attribute is an object
-attributes:
-  - name: attribute
-    type: object

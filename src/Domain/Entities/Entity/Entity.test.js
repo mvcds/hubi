@@ -1,11 +1,12 @@
 const assert = require('assert')
+const { lorem } = require('faker')
 
 const Entity = require('./')
 
 describe('Entity', () => {
   context('Without name', () => {
     it('Throws on nameless', () => {
-      const test = () => Entity({ description: 'foo', attributes: [] })
+      const test = () => Entity({ description: lorem.word(), attributes: [] })
 
       assert.throws(test, /The attribute "name" is required$/)
     })
@@ -13,7 +14,7 @@ describe('Entity', () => {
 
   context('Without description', () => {
     it('Throws on descriptionless', () => {
-      const test = () => Entity({ name: 'foo', attributes: [] })
+      const test = () => Entity({ name: lorem.word(), attributes: [] })
 
       assert.throws(test, /The attribute "description" is required$/)
     })
@@ -21,7 +22,7 @@ describe('Entity', () => {
 
   context('Without attributes', () => {
     it('Throws on attributeless', () => {
-      const test = () => Entity({ name: 'foo', description: 'foo' })
+      const test = () => Entity({ name: lorem.word(), description: lorem.word() })
 
       assert.throws(test, /The attribute "attributes" is required$/)
     })

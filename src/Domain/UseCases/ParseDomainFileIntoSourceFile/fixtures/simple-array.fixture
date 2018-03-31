@@ -1,5 +1,0 @@
-name: Simple Array
-description: Its attribute is a simple array
-attributes:
-  - name: attribute
-    type: array
