@@ -1,0 +1,5 @@
+const SCHEMA = {
+  'attribute': 'boolean'
+}
+
+module.exports = SCHEMA

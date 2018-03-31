@@ -1,0 +1,5 @@
+const SCHEMA = {
+  'attribute': 'Person'
+}
+
+module.exports = SCHEMA

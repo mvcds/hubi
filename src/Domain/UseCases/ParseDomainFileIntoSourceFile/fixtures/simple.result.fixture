@@ -1,0 +1,5 @@
+const SCHEMA = {
+  'attribute': 'string'
+}
+
+module.exports = SCHEMA
