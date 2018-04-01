@@ -81,14 +81,15 @@
     ],
     "exclude": [
       "src/**/*.steps.js",
-      "src/**/*.test.js"
+      "src/**/*.test.js",
+      "src/CLI/*.js"
     ],
     "reporter": [
       "lcov",
       "text-summary"
     ],
     "cache": true,
-    "all": false
+    "all": true
   },
   "bin": {
     "ubi": "./index.js"
