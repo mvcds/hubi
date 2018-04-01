@@ -1,0 +1,7 @@
+name: File
+description: Represents a file
+attributes:
+  - name: path
+    required: true
+  - name: content
+    required: true

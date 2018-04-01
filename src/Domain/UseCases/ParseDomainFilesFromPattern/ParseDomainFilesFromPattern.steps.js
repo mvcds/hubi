@@ -1,7 +1,10 @@
+const fs = require('fs')
+const assert = require('assert')
 const { Given, When, Then } = require('cucumber')
 const { mock, match } = require('sinon')
 
-const AttributeFactory = require('../../Objects/AttributeParser/Attribute.factory')
+const FILE_RESULT = fs.readFileSync(`${__dirname}/fixture/file.result.fixture`, 'utf8')
+const file = `${__dirname}/fixture/file.fixture`
 
 const ParseDomainFilesFromPattern = require('./')
 
@@ -18,50 +21,19 @@ Given('translator is log', function () {
 })
 
 When('I run ParseDomainFilesFromPattern', function () {
-  const attribute = AttributeFactory.String()
-
-  const object = {
-    name: 'bar',
-    description: 'desc',
-    attributes: [ attribute ]
-  }
-
-  const expectation = JSON.stringify({
-    bar: {
-      description: 'desc',
-      attributes: [
-        { [ attribute.name ]: 'string' }
-      ]
-    }
-  }, null, 2)
-
   this.injection = Object.assign({}, this.injection, {
     glob: {
       sync: mock('glob.sync')
-    },
-    fs: {
-      readFileSync: mock('fs.readFileSync')
-    },
-    yaml: {
-      safeLoad: mock('yaml.safeLoad')
     },
     write: mock('write')
   })
 
   this.injection.glob.sync
     .withExactArgs(this.args.pattern)
-    .returns([ 'file' ])
-
-  this.injection.fs.readFileSync
-    .withExactArgs('file', match.object)
-    .returns('content')
-
-  this.injection.yaml.safeLoad
-    .withExactArgs('content')
-    .returns(object)
+    .returns([ file ])
 
   this.injection.write
-    .withExactArgs([ expectation ])
+    .withExactArgs([ match.string ])
 
   return ParseDomainFilesFromPattern(this.args, this.injection)
 })
@@ -70,14 +42,13 @@ Then('the glob pattern find a domain file', function () {
   this.injection.glob.sync.verify()
 })
 
-Then('the domain file is read', function () {
-  this.injection.fs.readFileSync.verify()
-})
-
-Then('the domain file is converted into a source file', function () {
-  this.injection.yaml.safeLoad.verify()
-})
-
-Then('the source file is parsed', function () {
+Then('an ubiquitous entity is created', function () {
   this.injection.write.verify()
+
+  const [ [ result ] ] = this.injection.write.args
+
+  const entity = JSON.parse(FILE_RESULT)
+  const expectation = JSON.parse(result)
+
+  assert.deepEqual(entity, expectation)
 })

@@ -1,0 +1,13 @@
+{
+  "File": {
+    "description": "Represents a file",
+    "attributes": [
+      {
+        "path": "string.required"
+      },
+      {
+        "content": "string.required"
+      }
+    ]
+  }
+}
