@@ -1,3 +1,5 @@
+const RequiresAttribute = require('../../Services/RequiresAttribute')
+
 const ParseDomainFileIntoSourceFile = require('../ParseDomainFileIntoSourceFile')
 
 const DEPENDENCIES = {
@@ -13,7 +15,11 @@ async function parseDomainFile (filePath) {
   }, this)
 }
 
-async function ParseDomainFilesFromPattern ({ pattern, output, translator }, injection) {
+async function ParseDomainFilesFromPattern ({
+  pattern = RequiresAttribute('pattern'),
+  output = RequiresAttribute('output'),
+  translator = RequiresAttribute('translator')
+}, injection) {
   const resolution = Object.assign({}, DEPENDENCIES, injection)
 
   const files = resolution.glob.sync(pattern)

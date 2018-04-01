@@ -1,3 +1,5 @@
+const RequiresAttribute = require('../../Services/RequiresAttribute')
+
 const Entity = require('../../Entities/Entity')
 
 const ubi = require('../../Objects/Translator/UbiTranslator')
@@ -24,14 +26,17 @@ function createEntityFromDomainFile (content, yaml) {
 }
 
 //  TODO: translator as an object
-async function ParseDomainFileIntoSourceFile ({ domain, source, translator }, injection) {
+async function ParseDomainFileIntoSourceFile ({
+  domain = RequiresAttribute('domain'),
+  translator = RequiresAttribute('translator')
+}, injection) {
   const { fs, yaml, translators, write } = Object.assign({}, DEPENDENCIES, injection)
 
   const domainFileContent = fs.readFileSync(domain, READ_OPTIONS)
 
   const entity = createEntityFromDomainFile(domainFileContent, yaml)
 
-  const translation = new translators[translator]({ entities: [ entity ], source })
+  const translation = new translators[translator]({ entities: [ entity ] })
     .translate()
 
   write(translation)
