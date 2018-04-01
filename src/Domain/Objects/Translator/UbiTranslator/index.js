@@ -1,4 +1,4 @@
-const Translator = require('../Translator')
+const Translator = require('../')
 
 function applyTemplate (schema) {
   const asString = JSON.stringify(schema, null, '  ')

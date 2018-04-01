@@ -1,4 +1,4 @@
-const Translator = require('../Translator')
+const Translator = require('../')
 const UbiTranslator = require('../UbiTranslator')
 
 function addAttribute (schema, attribute) {
