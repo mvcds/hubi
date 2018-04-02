@@ -40,3 +40,9 @@ Then('the entity {string} has {int} dependencies', function (entityName, expecta
 
   assert.equal(dependencies.length, expectation)
 })
+
+Then('the entity {string} has {int} dependents', function (entityName, expectation) {
+  const dependents = this.result.dependentsOf(entityName)
+
+  assert.equal(dependents.length, expectation)
+})

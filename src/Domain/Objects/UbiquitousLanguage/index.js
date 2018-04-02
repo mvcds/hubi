@@ -38,12 +38,51 @@ function dependenciesOf ({ language }, entityName) {
   return term.dependencies
 }
 
+function hasAttribute ({ type }) {
+  return type === this.name
+}
+
+function whoReferences ([ , { entity } ]) {
+  const { entity: { name } } = this.term
+
+  const references = entity.attributes
+    .some(hasAttribute, { name })
+
+  return references
+}
+
+function countDependents (acc, [ _, { entity } ]) {
+  const { language, entities } = acc
+
+  const result = dependentsOf({ language }, entity.name)
+
+  return {
+    ...acc,
+    entities: [ ...entities, ...result, entity ]
+  }
+}
+
+function dependentsOf ({ language }, entityName) {
+  const term = language.get(entityName)
+
+  if (term.dependents) return term.dependents
+
+  const { entities } = Array.from(language)
+    .filter(whoReferences, { term, language })
+    .reduce(countDependents, { entities: [], language })
+
+  term.dependents = entities
+
+  return term.dependents
+}
+
 function UbiquitousLanguage ({
   entities = RequiresAttribute('entities')
 }) {
   const language = entities.reduce(addTerm, new Map())
 
   this.dependenciesOf = dependenciesOf.bind(this, { language })
+  this.dependentsOf = dependentsOf.bind(this, { language })
 }
 
 module.exports = UbiquitousLanguage
