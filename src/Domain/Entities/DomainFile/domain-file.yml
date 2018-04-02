@@ -1,5 +1,5 @@
-name: Entity
-description: An object which has an identity that defines it
+name: Domain File
+description: A file containing ubiquitous information
 attributes:
   - name: name
     required: true

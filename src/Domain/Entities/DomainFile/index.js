@@ -4,7 +4,7 @@ const DEPENDENCIES = {
   AttributeParser: require('../../Objects/AttributeParser')
 }
 
-function Entity ({
+function DomainFile ({
   name = RequiresAttribute('name'),
   description = RequiresAttribute('description'),
   attributes = RequiresAttribute('attributes')
@@ -18,4 +18,4 @@ function Entity ({
   return this
 }
 
-module.exports = Entity
+module.exports = DomainFile

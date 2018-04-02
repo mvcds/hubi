@@ -1,6 +1,6 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
-const Entity = require('../../Entities/Entity')
+const Entity = require('../../Entities/DomainFile')
 
 const DEPENDENCIES = {
   fs: require('fs'),
