@@ -1,0 +1,7 @@
+name: Ubiquitous Language
+description: A common language for everybody
+attributes:
+  - name: entities
+    required: true
+    type: array
+    of: Entity
