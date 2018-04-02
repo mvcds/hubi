@@ -1,0 +1,6 @@
+name: Car
+description: Moves around
+attributes:
+  - name: engine
+    required: true
+    type: Engine

@@ -1,0 +1,6 @@
+name: Driver
+description: Drives a car
+attributes:
+  - name: car
+    required: true
+    type: Car

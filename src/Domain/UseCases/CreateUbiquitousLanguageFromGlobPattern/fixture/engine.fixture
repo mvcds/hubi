@@ -1,0 +1,7 @@
+name: Engine
+description: Powers a car
+attributes:
+  - name: horses
+    required: true
+    type: float
+    precision: 1

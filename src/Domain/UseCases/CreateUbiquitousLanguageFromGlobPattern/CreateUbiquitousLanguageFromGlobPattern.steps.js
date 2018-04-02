@@ -1,3 +1,4 @@
+const assert = require('assert')
 const { Given, When, Then } = require('cucumber')
 const { mock } = require('sinon')
 const { lorem } = require('faker')
@@ -32,4 +33,10 @@ When('I run CreateUbiquitousLanguageFromGlobPattern', async function () {
 
 Then('the glob pattern is read', function () {
   this.injection.glob.sync.verify()
+})
+
+Then('the entity {string} has {int} dependencies', function (entityName, expectation) {
+  const dependencies = this.result.dependenciesOf(entityName)
+
+  assert.equal(dependencies.length, expectation)
 })
