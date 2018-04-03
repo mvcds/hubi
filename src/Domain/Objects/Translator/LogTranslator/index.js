@@ -12,12 +12,12 @@ function transform (entity) {
   const attributes = entity.attributes
     .reduce(addAttribute, [])
 
-  return JSON.stringify({
+  return {
     [ entity.name ]: {
       description: entity.description,
       attributes
     }
-  }, null, 2)
+  }
 }
 
 function LogTranslator ({ entities }) {

@@ -7,6 +7,12 @@ function addTerm (language, entity) {
   return language.set(entity.name, { entity })
 }
 
+//  TODO: do not expose the language's entitites
+function getEntitites ({ language }) {
+  return Array.from(language)
+    .map(([ , { entity } ]) => entity)
+}
+
 function UbiquitousLanguage ({
   entities = RequiresAttribute('entities')
 }) {
@@ -14,6 +20,7 @@ function UbiquitousLanguage ({
 
   this.dependenciesOf = dependenciesOf.bind(this, { language })
   this.dependentsOf = dependentsOf.bind(this, { language })
+  this.getEntitites = getEntitites.bind(null, { language })
 }
 
 module.exports = UbiquitousLanguage
