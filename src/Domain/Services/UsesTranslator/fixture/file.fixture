@@ -1,0 +1,16 @@
+{
+  "name": "File",
+  "description": "lorem ipsum",
+  "attributes": [
+    {
+      "name": "name",
+      "type": "string",
+      "isRequired": true
+    },
+    {
+      "name": "content",
+      "type": "array",
+      "of": "number"
+    }
+  ]
+}

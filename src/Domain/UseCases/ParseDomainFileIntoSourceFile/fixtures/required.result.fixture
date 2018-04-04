@@ -1,5 +1,0 @@
-const SCHEMA = {
-  'attribute': 'string.required'
-}
-
-module.exports = SCHEMA

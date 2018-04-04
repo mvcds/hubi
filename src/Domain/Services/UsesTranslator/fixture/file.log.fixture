@@ -1,0 +1,13 @@
+{
+  "File": {
+    "description": "lorem ipsum",
+    "attributes": [
+      {
+        "name": "string.required"
+      },
+      {
+        "content": "[number]"
+      }
+    ]
+  }
+}

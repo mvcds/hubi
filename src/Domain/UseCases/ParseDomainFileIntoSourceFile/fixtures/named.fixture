@@ -1,4 +1,0 @@
-name: Named
-description: Its attribute has no explicit type
-attributes:
-  - name: attribute

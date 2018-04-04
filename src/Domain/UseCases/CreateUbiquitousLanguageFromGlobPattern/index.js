@@ -1,15 +1,27 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
-const CreateUbiquitousEntity = require('../CreateUbiquitousEntity')
+const DomainFile = require('../../Entities/DomainFile')
 
 const UbiquitousLanguage = require('../../Objects/UbiquitousLanguage')
 
 const DEPENDENCIES = {
-  glob: require('glob')
+  glob: require('glob'),
+  fs: require('fs'),
+  yaml: require('js-yaml')
 }
 
-async function createEntitty (filePath) {
-  return CreateUbiquitousEntity({ filePath }, this)
+const READ_OPTIONS = {
+  encoding: 'utf8'
+}
+
+async function readDomainFile (filePath) {
+  const { fs, yaml } = this
+
+  const file = fs.readFileSync(filePath, READ_OPTIONS)
+
+  const asJSON = yaml.safeLoad(file)
+
+  return new DomainFile(asJSON)
 }
 
 async function CreateUbiquitousLanguageFromGlobPattern ({
@@ -20,7 +32,7 @@ async function CreateUbiquitousLanguageFromGlobPattern ({
   const files = glob.sync(globPattern)
 
   const entities = await Promise.all(
-    files.map(createEntitty, injected)
+    files.map(readDomainFile, injected)
   )
 
   return new UbiquitousLanguage({ entities })
