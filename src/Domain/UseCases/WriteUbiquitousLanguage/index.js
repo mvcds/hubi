@@ -7,27 +7,17 @@ const DEPENDENCIES = {
   write: require('write')
 }
 
-function save (entity, index) {
-  //  TODO: language gives the filePath
-  const filePath = `${process.env.PWD}/${this.output}/${index}.ubi.js`
-
-  //  TODO: this decision does not belong here
-  const value = typeof entity === 'string' ? entity : JSON.stringify(entity, null, 2)
-
-  this.write(filePath, value)
-}
-
-async function SaveUbiquitousLanguageAsFiles ({
+async function WriteUbiquitousLanguage ({
   pattern: globPattern = RequiresAttribute('pattern'),
-  output = RequiresAttribute('output'),
-  translator: translatorName = RequiresAttribute('translator')
+  translator: translatorName = RequiresAttribute('translator'),
+  ...args
 }, injection) {
   const { write, ...injected } = Object.assign({}, DEPENDENCIES, injection)
 
   const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, injected)
   const translator = UsesTranslator({ translatorName, ubiquitousLanguage })
 
-  translator.translate().map(save, { write, output })
+  translator.translate().map(this.write, { write, ...args })
 }
 
-module.exports = SaveUbiquitousLanguageAsFiles
+module.exports = WriteUbiquitousLanguage
