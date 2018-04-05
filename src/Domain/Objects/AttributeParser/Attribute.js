@@ -1,13 +1,14 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
-function Attribute ({
-  name = RequiresAttribute('name'),
-  type = RequiresAttribute('type'),
-  required = false
-}) {
-  this.name = name
-  this.type = type
-  this.isRequired = required
+function Attribute (data) {
+  RequiresAttribute(data, {
+    name: 'name',
+    type: 'type'
+  })
+
+  this.name = data.name
+  this.type = data.type
+  this.isRequired = data.required || false
 }
 
 Attribute.includes = function includes (...types) {

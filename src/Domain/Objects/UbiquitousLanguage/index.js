@@ -13,10 +13,12 @@ function getEntitites ({ language }) {
     .map(([ , { entity } ]) => entity)
 }
 
-function UbiquitousLanguage ({
-  entities = RequiresAttribute('entities')
-}) {
-  const language = entities.reduce(addTerm, new Map())
+function UbiquitousLanguage (data) {
+  RequiresAttribute(data, {
+    entities: 'entities'
+  })
+
+  const language = data.entities.reduce(addTerm, new Map())
 
   this.dependenciesOf = dependenciesOf.bind(this, { language })
   this.dependentsOf = dependentsOf.bind(this, { language })

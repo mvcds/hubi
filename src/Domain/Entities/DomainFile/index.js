@@ -4,16 +4,18 @@ const DEPENDENCIES = {
   AttributeParser: require('../../Objects/AttributeParser')
 }
 
-function DomainFile ({
-  name = RequiresAttribute('name'),
-  description = RequiresAttribute('description'),
-  attributes = RequiresAttribute('attributes')
-}, injection) {
+function DomainFile (data, injection) {
+  RequiresAttribute(data, {
+    name: 'name',
+    description: 'description',
+    attributes: 'attributes'
+  })
+
   const { AttributeParser } = Object.assign({}, DEPENDENCIES, injection)
 
-  this.name = name
-  this.description = description
-  this.attributes = attributes.map(AttributeParser)
+  this.name = data.name
+  this.description = data.description
+  this.attributes = data.attributes.map(AttributeParser)
 
   return this
 }

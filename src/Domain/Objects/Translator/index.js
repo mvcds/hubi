@@ -27,10 +27,14 @@ function translate ({ entities, transform }, { writer, output }, { pen }) {
   return translation
 }
 
-function Translator ({
-  entities = RequiresAttribute('entities'),
-  transform = RequiresAttribute('transform function')
-}) {
+function Translator (data) {
+  RequiresAttribute(data, {
+    entities: 'entities',
+    transform: 'transform function'
+  })
+
+  const { entities, transform } = data
+
   this.translate = translate.bind(this, { entities, transform })
 }
 

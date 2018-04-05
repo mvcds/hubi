@@ -7,11 +7,13 @@ const DEPENDENCIES = {
   pen: require('write')
 }
 
-async function WriteUbiquitousLanguage ({
-  pattern: globPattern = RequiresAttribute('pattern'),
-  translator: translatorName = RequiresAttribute('translator'),
-  output
-}, injection) {
+async function WriteUbiquitousLanguage (data, injection) {
+  RequiresAttribute(data, {
+    pattern: 'pattern',
+    translator: 'translator'
+  })
+
+  const { pattern: globPattern, translator: translatorName, output } = data
   const { pen, ...injected } = Object.assign({}, DEPENDENCIES, injection)
   const { writer } = this
 

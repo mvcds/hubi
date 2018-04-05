@@ -8,13 +8,15 @@ const TRANSLATORS = {
   log
 }
 
-function UsesTranslator ({
-  translatorName = RequiresAttribute('translator name'),
-  ubiquitousLanguage = RequiresAttribute('ubiquitous language')
-}) {
-  const Translator = TRANSLATORS[translatorName]
+function UsesTranslator (data) {
+  RequiresAttribute(data, {
+    translatorName: 'translator name',
+    ubiquitousLanguage: 'ubiquitous language'
+  })
 
-  const entities = ubiquitousLanguage.getEntitites()
+  const Translator = TRANSLATORS[data.translatorName]
+
+  const entities = data.ubiquitousLanguage.getEntitites()
 
   return new Translator({ entities })
 }

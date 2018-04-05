@@ -24,12 +24,14 @@ async function readDomainFile (filePath) {
   return new DomainFile(asJSON)
 }
 
-async function CreateUbiquitousLanguageFromGlobPattern ({
-  globPattern = RequiresAttribute('glob pattern')
-}, injection) {
+async function CreateUbiquitousLanguageFromGlobPattern (data, injection) {
+  RequiresAttribute(data, {
+    globPattern: 'glob pattern'
+  })
+
   const { glob, ...injected } = Object.assign({}, DEPENDENCIES, injection)
 
-  const files = glob.sync(globPattern)
+  const files = glob.sync(data.globPattern)
 
   const entities = await Promise.all(
     files.map(readDomainFile, injected)
