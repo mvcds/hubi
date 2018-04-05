@@ -49,7 +49,9 @@
     "standard": "standard --env mocha",
     "lint": "(yarn standard) | snazzy",
     "lint:fix": "(yarn standard --fix) | snazzy",
-    "precommit": "yarn lint:fix && yarn coverage"
+    "validate": "yarn lint:fix && yarn coverage",
+    "precommit": "yarn validate",
+    "prepare": "yarn validate"
   },
   "dependencies": {
     "colors": "^1.2.1",
