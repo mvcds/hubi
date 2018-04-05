@@ -28,6 +28,6 @@ This project is still on its initial versions and lacks translators (the files r
 
 The first translators I am aiming to are those below, but feel free to contribute with new ones:
 
-[X] Ubi: my useless "language" was used as a proof of concept
-[ ] [Joi](https://github.com/hapijs/joi): as the default translator to replace Ubi
-[ ] Site: a way to automatically create a site that developers, domain-experts, managers, etc can access to consult the ubiquitous language
+- [X] Ubi: my useless "language" was used as a proof of concept
+- [ ] [Joi](https://github.com/hapijs/joi): as the default translator to replace Ubi
+- [ ] Site: a way to automatically create a site that developers, domain-experts, managers, etc can access to consult the ubiquitous language
