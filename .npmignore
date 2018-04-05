@@ -1,0 +1,6 @@
+.editorconfig
+.gitattributes
+.nvmrc
+coverage
+.nyc_output
+**/*.ubi.js
