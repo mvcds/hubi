@@ -4,20 +4,21 @@ const UsesTranslator = require('../../Services/UsesTranslator')
 const CreateUbiquitousLanguage = require('../CreateUbiquitousLanguageFromGlobPattern')
 
 const DEPENDENCIES = {
-  write: require('write')
+  pen: require('write')
 }
 
 async function WriteUbiquitousLanguage ({
   pattern: globPattern = RequiresAttribute('pattern'),
   translator: translatorName = RequiresAttribute('translator'),
-  ...args
+  output
 }, injection) {
-  const { write, ...injected } = Object.assign({}, DEPENDENCIES, injection)
+  const { pen, ...injected } = Object.assign({}, DEPENDENCIES, injection)
+  const { writer } = this
 
   const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, injected)
   const translator = UsesTranslator({ translatorName, ubiquitousLanguage })
 
-  translator.translate().map(this.write, { write, ...args })
+  return translator.translate({ writer, output }, { pen })
 }
 
 module.exports = WriteUbiquitousLanguage

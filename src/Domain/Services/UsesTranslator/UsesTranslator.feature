@@ -5,6 +5,9 @@ Feature: Uses Translator
 
   Scenario Outline: Known translator
     Given the <translator> translator
+      And set writer
+      And some output
+      And a pen
     When I call UsesTranslator
     Then translation yield expected file
 
