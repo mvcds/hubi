@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Ubiquitous language helper",
   "main": "index.js",
   "repository": "git@github.com:mvcds/hubi.git",
@@ -51,7 +51,7 @@
     "lint:fix": "(yarn standard --fix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
     "precommit": "yarn validate",
-    "prepare": "yarn validate"
+    "prepack": "yarn validate"
   },
   "dependencies": {
     "colors": "^1.2.1",
