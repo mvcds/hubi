@@ -64,7 +64,7 @@ Then('pen was used', function () {
 Then('a filePath was provided', function () {
   const [ [ { filePath } ] ] = this.aux.writer.args
 
-  const expectation = `${this.args.output}/File`
+  const expectation = `${this.args.output}/file`
 
   assert.ok(filePath.includes(expectation))
 })

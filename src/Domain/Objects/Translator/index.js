@@ -2,7 +2,7 @@ const RequiresAttribute = require('../../Services/RequiresAttribute')
 
 function toTransformed (entity) {
   return {
-    name: entity.name,
+    name: entity.name.toLowerCase().split(' ').join('-'),
     entity: this.transform(entity)
   }
 }

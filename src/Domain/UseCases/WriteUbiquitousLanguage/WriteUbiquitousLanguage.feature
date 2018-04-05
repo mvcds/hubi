@@ -3,7 +3,7 @@ Feature: Write Ubiquitous Language
   I want translate domain entities into source files
   In order to be able to use them
 
-  Scenario Outline: Known translator
+  Scenario Outline: Write Ubiquitous Language
     Given the <translator> translator
       And a pattern
       And some output
