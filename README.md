@@ -2,7 +2,7 @@
 
 > Teach `hubi` your [ubiquitous language](https://martinfowler.com/bliki/UbiquitousLanguage.html) and it will write relevant source files for you
 
-The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain files](#domain-files) and generates whatever you teach it, using data from the domain language so you don't have to manually change your Joi Schemas, JS objects, Sequelize Models, GraphQL types, C# classes, etc.
+The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain files](#domain-files) and generates whatever you teach it, using your domain language so you don't have to manually change your Joi Schemas, JS objects, Sequelize Models, GraphQL types, C# classes, etc.
 
 ## Getting started
 
@@ -28,7 +28,7 @@ node_modules/.bin/hubi save --pattern src/**/*.yml --output domain --translator 
 
 * `--pattern | -p` is a glob pattern to the [domain files](#domain-files)
 * `--output | -o` is the folder to which files will be saved - in the future files should be redirected to specific folders but right now they are concentrated on the `output` directory 😞
-* `--translator | -t` which [translator](#missing-translators), AKA the file resposnible to translate domain files into source files, should be used, at this stage (prof of concept) the only "useful" value is `ubi` because it is similar to what the JoiTranslator will output
+* `--translator | -t` which [translator](#missing-translators), AKA the file responsible to translate domain files into source files, should be used, at this stage (proof of concept) the only "useful" value is `ubi` because it is similar to what the JoiTranslator will output
 
 ## Notes
 
@@ -40,7 +40,7 @@ So, even if you don't know/use DDD you can still use `hubi` to reap the benefits
 
 ### Missing Translators
 
-This project is still on its initial versions and lacks translators, so some of your needs may not be attended right now.
+This project is still in its initial versions and lacks translators, so some of your needs may not be attended right now.
 
 The first translators I am aiming to are those below, but feel free to contribute with new ones:
 
