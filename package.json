@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Ubiquitous language helper",
   "main": "index.js",
   "repository": "git@github.com:mvcds/hubi.git",
