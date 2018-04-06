@@ -48,7 +48,7 @@
     "coverage:watch": "npm-watch coverage",
     "standard": "standard --env mocha",
     "lint": "(yarn standard) | snazzy",
-    "lint:fix": "(yarn standard --fix) | snazzy",
+    "lint:fix": "(yarn standard --fgit ix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
     "bump": "np"
   },
