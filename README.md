@@ -48,3 +48,9 @@ The first translators I am aiming to are those below, but feel free to contribut
 - [X] Log: also part of the POC
 - [ ] [Joi](https://github.com/hapijs/joi): as the default translator to replace Ubi
 - [ ] Site: a way to automatically create a site that developers, domain-experts, managers, etc can access to consult the ubiquitous language
+
+### Should I pronounce the "h"?
+
+No. The package name was supposed to be "ubi" (as in ubiquitous) but the name was already taken on npm, so I've used the only mute letter we have in Portuguese.
+
+By pronouncing the "h" most Brazilians will never understand if you're referring to the Ruby programming language or this project. That sound ~~in that position~~ is not natural for us, so most of us simply can't tell "rot" and "hot", or "ruby" and "hubi", apart, for instance.
