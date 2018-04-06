@@ -30,6 +30,14 @@ node_modules/.bin/hubi save --pattern src/**/*.yml --output domain --translator 
 * `--output | -o` is the folder to which files will be saved - in the future files should be redirected to specific folders but right now they are concentrated on the `output` directory 😞
 * `--translator | -t` which [translator](#missing-translators), AKA the file responsible to translate domain files into source files, should be used, at this stage (proof of concept) the only "useful" value is `ubi` because it is similar to what the JoiTranslator will output
 
+### Domain files
+
+Each domain file (YAML) represents one knowledge on the ubiquitous language. With  `name` and `description` you already can talk to domain experts on their own terms.
+
+For developers, the field `attributes` is more interesting, because that is the part which is replicated by `hubi` to the  Joi Schema, GraphQL type, C# class, and whatever you use. Checkout the supported [types](src/Domain/Objects/AttributeParser/AttributeParser.test.js) at this moment.
+
+> In the future we plan to have `hubi` using its own domain files to generate itself so the *domain file entity* itself is a [sample](src/Domain/Entities/DomainFile/domain-file.yml)!
+
 ## Notes
 
 ### For those who don't know/use [domain-driven design [DDD]](https://airbrake.io/blog/software-design/domain-driven-design)
