@@ -48,7 +48,7 @@ So, even if you don't know/use DDD you can still use `hubi` to reap the benefits
 
 ### Missing Translators
 
-This project is still in its initial versions and lacks translators, so some of your needs may not be attended right now.
+:warning: This project is still in its initial versions and lacks translators, so some of your needs may not be attended right now.
 
 The first translators I am aiming to are those below, but feel free to contribute with new ones:
 
