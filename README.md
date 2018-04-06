@@ -34,7 +34,7 @@ node_modules/.bin/hubi save --pattern src/**/*.yml --output domain --translator 
 
 Each domain file (YAML) represents one knowledge on the ubiquitous language. With  `name` and `description` you already can talk to domain experts on their own terms.
 
-For developers, the field `attributes` is more interesting, because that is the part which is replicated by `hubi` to the  Joi Schema, GraphQL type, C# class, and whatever you use. Checkout the supported [types](src/Domain/Objects/AttributeParser/AttributeParser.test.js) at this moment.
+For developers, the field `attributes` is more interesting, because that is the part which is replicated by `hubi` to the  Joi Schema, GraphQL type, C# class, and whatever you use. Checkout the supported [types](src/Domain/Objects/AttributeParser/index.js) at this moment.
 
 > In the future we plan to have `hubi` using its own domain files to generate itself so the *domain file entity* itself is a [sample](src/Domain/Entities/DomainFile/domain-file.yml)!
 
@@ -48,7 +48,7 @@ So, even if you don't know/use DDD you can still use `hubi` to reap the benefits
 
 ### Missing Translators
 
-This project is still in its initial versions and lacks translators, so some of your needs may not be attended right now.
+:warning: This project is still in its initial versions and lacks translators, so some of your needs may not be attended right now.
 
 The first translators I am aiming to are those below, but feel free to contribute with new ones:
 
