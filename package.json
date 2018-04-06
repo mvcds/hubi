@@ -51,7 +51,7 @@
     "lint:fix": "(yarn standard --fgit ix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
     "precommit": "yarn validate",
-    "bump": "np"
+    "bump": "np  --no-cleanup"
   },
   "dependencies": {
     "colors": "^1.2.1",
