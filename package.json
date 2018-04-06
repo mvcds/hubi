@@ -3,7 +3,10 @@
   "version": "0.0.8",
   "description": "Ubiquitous language helper",
   "main": "index.js",
-  "repository": "git@github.com:mvcds/hubi.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mvcds/hubi.git"
+  },
   "author": "Marcos Vinícius C. da Silva <marvinc.silva@gmail.com>",
   "license": "MIT",
   "private": false,
