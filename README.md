@@ -10,13 +10,15 @@ The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain 
 
 ### Installing
 
-We recommend that `hubi` is installed in locally with your favorite package manager, mine is `yarn`
+Install `hubi` locally with your favorite package manager, mine is [`yarn`](https://yarnpkg.com/).
 
 ```
 yarn add hubi --dev
 ```
 
 You may also use `npm` to install it, the only important part is that it should be installed as a developer tool, so packages depending on yours won't download it.
+
+> In case you're working on a personal project, it is okay to have it installed globally but with teams, the ideal is that everyone is using the same version, thus we recommend to install it locally instead.
 
 ### CLI
 
