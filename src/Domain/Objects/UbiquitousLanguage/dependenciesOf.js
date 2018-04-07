@@ -22,18 +22,18 @@ function countDependencies (acc, entity) {
 }
 
 function dependenciesOf ({ language, normalizeName }, entityName) {
-  const term = language.get(normalizeName(entityName))
+  const token = language.get(normalizeName(entityName))
 
-  if (term.dependencies) return term.dependencies
+  if (token.dependencies) return token.dependencies
 
-  const { entities } = term.entity.attributes
+  const { entities } = token.entity.attributes
     .filter(isKnownAttribute, { language, normalizeName })
     .map(fromAttributeToEntity, { language, normalizeName })
     .reduce(countDependencies, { entities: [], language, normalizeName })
 
-  term.dependencies = entities
+  token.dependencies = entities
 
-  return term.dependencies
+  return token.dependencies
 }
 
 module.exports = dependenciesOf

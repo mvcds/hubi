@@ -35,14 +35,14 @@ Then('the glob pattern is read', function () {
   this.injection.glob.sync.verify()
 })
 
-Then('the entity {string} has {int} dependencies', function (entityName, expectation) {
-  const dependencies = this.result.dependenciesOf(entityName)
+Then('the token {string} has {int} dependencies', function (token, expectation) {
+  const dependencies = this.result.dependenciesOf(token)
 
   assert.equal(dependencies.length, expectation)
 })
 
-Then('the entity {string} has {int} dependents', function (entityName, expectation) {
-  const dependents = this.result.dependentsOf(entityName)
+Then('the token {string} has {int} dependents', function (token, expectation) {
+  const dependents = this.result.dependentsOf(token)
 
   assert.equal(dependents.length, expectation)
 })

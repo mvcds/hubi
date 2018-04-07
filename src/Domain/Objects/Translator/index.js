@@ -20,7 +20,7 @@ async function write ({ name, entity }) {
 }
 
 function translate ({ ubiquitousLanguage, transform }, { writer, output }, { pen }) {
-  const translation = ubiquitousLanguage.getEntities().map(toTransformed, { transform })
+  const translation = ubiquitousLanguage.getTokens().map(toTransformed, { transform })
 
   translation.forEach(write, { writer, pen, output })
 

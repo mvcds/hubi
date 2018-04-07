@@ -3,7 +3,7 @@ function hasAttribute ({ type }) {
 }
 
 function whoReferences ([ , { entity } ]) {
-  const { normalizeName, term: { entity: { name } } } = this
+  const { normalizeName, token: { entity: { name } } } = this
 
   return entity.attributes
     .some(hasAttribute, {
@@ -24,17 +24,17 @@ function countDependents (acc, [ _, { entity } ]) {
 }
 
 function dependentsOf ({ language, normalizeName }, entityName) {
-  const term = language.get(normalizeName(entityName))
+  const token = language.get(normalizeName(entityName))
 
-  if (term.dependents) return term.dependents
+  if (token.dependents) return token.dependents
 
   const { entities } = Array.from(language)
-    .filter(whoReferences, { term, language, normalizeName })
+    .filter(whoReferences, { token, language, normalizeName })
     .reduce(countDependents, { entities: [], language, normalizeName })
 
-  term.dependents = entities
+  token.dependents = entities
 
-  return term.dependents
+  return token.dependents
 }
 
 module.exports = dependentsOf
