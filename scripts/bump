@@ -15,3 +15,5 @@ yarn validate || is_valid=0
   echo "Branch has failed validation"
   exit 1
 fi
+
+npm publish
