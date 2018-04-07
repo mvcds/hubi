@@ -1,18 +1,21 @@
 function hasAttribute ({ type }) {
-  return type === this.name
+  return this.normalizeName(type) === this.name
 }
 
 function whoReferences ([ , { entity } ]) {
-  const { entity: { name } } = this.term
+  const { normalizeName, term: { entity: { name } } } = this
 
   return entity.attributes
-    .some(hasAttribute, { name })
+    .some(hasAttribute, {
+      name: normalizeName(name),
+      normalizeName
+    })
 }
 
 function countDependents (acc, [ _, { entity } ]) {
-  const { language, entities } = acc
+  const { language, entities, normalizeName } = acc
 
-  const dependents = dependentsOf({ language }, entity.name)
+  const dependents = dependentsOf({ language, normalizeName }, entity.name)
 
   return {
     ...acc,
@@ -20,14 +23,14 @@ function countDependents (acc, [ _, { entity } ]) {
   }
 }
 
-function dependentsOf ({ language }, entityName) {
-  const term = language.get(entityName)
+function dependentsOf ({ language, normalizeName }, entityName) {
+  const term = language.get(normalizeName(entityName))
 
   if (term.dependents) return term.dependents
 
   const { entities } = Array.from(language)
-    .filter(whoReferences, { term, language })
-    .reduce(countDependents, { entities: [], language })
+    .filter(whoReferences, { term, language, normalizeName })
+    .reduce(countDependents, { entities: [], language, normalizeName })
 
   term.dependents = entities
 

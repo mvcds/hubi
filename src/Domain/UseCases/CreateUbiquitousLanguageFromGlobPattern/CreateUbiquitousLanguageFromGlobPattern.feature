@@ -7,8 +7,8 @@ Feature: Create Ubiquitous Language From Glob Pattern
     Given a pattern to "file"
     When I run CreateUbiquitousLanguageFromGlobPattern
     Then the glob pattern is read
-      And the entity "File" has 0 dependencies
-      And the entity "File" has 0 dependents
+      And the entity "file" has 0 dependencies
+      And the entity "file" has 0 dependents
 
   Scenario Outline: Simple references
     Given a pattern to <first>
@@ -16,12 +16,12 @@ Feature: Create Ubiquitous Language From Glob Pattern
       And a pattern to <third>
     When I run CreateUbiquitousLanguageFromGlobPattern
     Then the glob pattern is read
-      And the entity "Engine" has 0 dependencies
-      And the entity "Car" has 1 dependencies
-      And the entity "Driver" has 2 dependencies
-      And the entity "Driver" has 0 dependents
-      And the entity "Car" has 1 dependents
-      And the entity "Engine" has 2 dependents
+      And the entity "engine" has 0 dependencies
+      And the entity "car" has 1 dependencies
+      And the entity "driver" has 2 dependencies
+      And the entity "driver" has 0 dependents
+      And the entity "car" has 1 dependents
+      And the entity "engine" has 2 dependents
 
     Examples:
       | first | second | third |

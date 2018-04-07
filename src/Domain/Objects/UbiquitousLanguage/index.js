@@ -3,8 +3,14 @@ const RequiresAttribute = require('../../Services/RequiresAttribute')
 const dependenciesOf = require('./dependenciesOf')
 const dependentsOf = require('./dependentsOf')
 
+function normalizeName (name) {
+  return name.toLowerCase().split(' ').join('-')
+}
+
 function addTerm (language, entity) {
-  return language.set(entity.name, { entity })
+  const term = normalizeName(entity.name)
+
+  return language.set(term, { entity })
 }
 
 //  TODO: do not expose the language's entitites
@@ -20,8 +26,8 @@ function UbiquitousLanguage (data) {
 
   const language = data.entities.reduce(addTerm, new Map())
 
-  this.dependenciesOf = dependenciesOf.bind(this, { language })
-  this.dependentsOf = dependentsOf.bind(this, { language })
+  this.dependenciesOf = dependenciesOf.bind(this, { language, normalizeName })
+  this.dependentsOf = dependentsOf.bind(this, { language, normalizeName })
   this.getEntities = getEntities.bind(null, { language })
 }
 

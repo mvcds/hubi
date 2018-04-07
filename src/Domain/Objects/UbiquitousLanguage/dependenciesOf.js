@@ -1,15 +1,19 @@
 function isKnownAttribute ({ type }) {
-  return this.language.has(type)
+  const name = this.normalizeName(type)
+
+  return this.language.has(name)
 }
 
 function fromAttributeToEntity ({ type }) {
-  return this.language.get(type).entity
+  const name = this.normalizeName(type)
+
+  return this.language.get(name).entity
 }
 
 function countDependencies (acc, entity) {
-  const { language, entities } = acc
+  const { language, entities, normalizeName } = acc
 
-  const dependencies = dependenciesOf({ language }, entity.name)
+  const dependencies = dependenciesOf({ language, normalizeName }, entity.name)
 
   return {
     ...acc,
@@ -17,15 +21,15 @@ function countDependencies (acc, entity) {
   }
 }
 
-function dependenciesOf ({ language }, entityName) {
-  const term = language.get(entityName)
+function dependenciesOf ({ language, normalizeName }, entityName) {
+  const term = language.get(normalizeName(entityName))
 
   if (term.dependencies) return term.dependencies
 
   const { entities } = term.entity.attributes
-    .filter(isKnownAttribute, { language })
-    .map(fromAttributeToEntity, { language })
-    .reduce(countDependencies, { entities: [], language })
+    .filter(isKnownAttribute, { language, normalizeName })
+    .map(fromAttributeToEntity, { language, normalizeName })
+    .reduce(countDependencies, { entities: [], language, normalizeName })
 
   term.dependencies = entities
 
