@@ -53,8 +53,7 @@
     "lint": "(yarn standard) | snazzy",
     "lint:fix": "(yarn standard --fix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
-    "precommit": "yarn validate",
-    "bump": "np"
+    "precommit": "yarn validate"
   },
   "dependencies": {
     "colors": "^1.2.1",
@@ -68,7 +67,6 @@
     "faker": "^4.1.0",
     "husky": "^0.14.3",
     "mocha": "^5.0.5",
-    "np": "^2.20.1",
     "npm-watch": "^0.3.0",
     "nyc": "^11.6.0",
     "sinon": "^4.4.8",

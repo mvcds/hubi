@@ -1,0 +1,8 @@
+#!/bin/sh
+
+output=$(git status -su)
+if [ -z "$output" ]; then
+  echo "cleaner than me"
+else
+  echo "You need a clean branch before bumping it up"
+fi
