@@ -14,9 +14,13 @@ function UsesTranslator (data) {
     ubiquitousLanguage: 'ubiquitous language'
   })
 
-  const Translator = TRANSLATORS[data.translatorName]
+  const { translatorName, ubiquitousLanguage } = data
 
-  const entities = data.ubiquitousLanguage.getEntitites()
+  const Translator = TRANSLATORS[translatorName]
+
+  if (!Translator) throw new Error(`It is not possible to use "${translatorName}" as a translator yet`)
+
+  const entities = ubiquitousLanguage.getEntitites()
 
   return new Translator({ entities })
 }
