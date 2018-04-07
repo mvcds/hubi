@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Humanitarian ubiquitous language helper",
   "main": "index.js",
   "repository": {
@@ -51,7 +51,7 @@
     "coverage:watch": "npm-watch coverage",
     "standard": "standard --env mocha",
     "lint": "(yarn standard) | snazzy",
-    "lint:fix": "(yarn standard --fgit ix) | snazzy",
+    "lint:fix": "(yarn standard --fix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
     "precommit": "yarn validate",
     "bump": "np"
