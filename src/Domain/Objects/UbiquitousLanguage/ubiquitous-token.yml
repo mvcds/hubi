@@ -1,0 +1,6 @@
+name: Ubiquitous Token
+description: A piece of the ubiquitous language
+attributes:
+  - name: entity
+    required: true
+    type: Entity
