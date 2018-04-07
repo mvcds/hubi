@@ -1,0 +1,6 @@
+const SCHEMA = {
+  'name': 'string.required',
+  'content': '[number]'
+}
+
+module.exports = SCHEMA

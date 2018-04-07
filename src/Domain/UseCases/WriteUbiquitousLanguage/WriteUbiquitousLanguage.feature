@@ -19,3 +19,4 @@ Feature: Write Ubiquitous Language
       | translator |
       | "ubi" |
       | "log" |
+      | "site" |

@@ -1,16 +1,18 @@
 {
   "name": "File",
-  "description": "lorem ipsum",
+  "description": "The abstraction of a file on your system",
   "attributes": [
     {
       "name": "name",
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "the complete system path to the file"
     },
     {
       "name": "content",
       "type": "array",
-      "of": "number"
+      "of": "number",
+      "description": "numbers representing its content - to be converted"
     }
   ]
 }
