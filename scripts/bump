@@ -1,8 +1,17 @@
 #!/bin/sh
 
-output=$(git status -su)
-if [ -z "$output" ]; then
-  echo "cleaner than me"
-else
+status=$(git status -su)
+if [ ! -z "$status" ]; then
   echo "You need a clean branch before bumping it up"
+  exit 1
+fi
+
+rm -fr node_modules
+yarn
+is_valid=1
+yarn validate || is_valid=0
+
+ if [ $is_valid -ne 1 ]; then
+  echo "Branch has failed validation"
+  exit 1
 fi
