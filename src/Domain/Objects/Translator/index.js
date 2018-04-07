@@ -19,8 +19,8 @@ async function write ({ name, entity }) {
   })
 }
 
-function translate ({ entities, transform }, { writer, output }, { pen }) {
-  const translation = entities.map(toTransformed, { transform })
+function translate ({ ubiquitousLanguage, transform }, { writer, output }, { pen }) {
+  const translation = ubiquitousLanguage.getEntities().map(toTransformed, { transform })
 
   translation.forEach(write, { writer, pen, output })
 
@@ -29,13 +29,13 @@ function translate ({ entities, transform }, { writer, output }, { pen }) {
 
 function Translator (data) {
   RequiresAttribute(data, {
-    entities: 'entities',
+    ubiquitousLanguage: 'ubiquitous language',
     transform: 'transform function'
   })
 
-  const { entities, transform } = data
+  const { ubiquitousLanguage, transform } = data
 
-  this.translate = translate.bind(this, { entities, transform })
+  this.translate = translate.bind(this, { ubiquitousLanguage, transform })
 }
 
 module.exports = Translator

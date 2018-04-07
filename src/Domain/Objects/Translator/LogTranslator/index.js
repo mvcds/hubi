@@ -20,8 +20,8 @@ function transform (entity) {
   }
 }
 
-function LogTranslator ({ entities }) {
-  Object.assign(this, new Translator({ entities, transform }))
+function LogTranslator (data) {
+  Object.assign(this, new Translator({ ...data, transform }))
 }
 
 module.exports = LogTranslator

@@ -22,9 +22,7 @@ function UsesTranslator (data) {
 
   if (!Translator) throw new Error(`It is not possible to use "${translatorName}" as a translator yet`)
 
-  const entities = ubiquitousLanguage.getEntitites()
-
-  return new Translator({ entities })
+  return new Translator({ ubiquitousLanguage })
 }
 
 module.exports = UsesTranslator
