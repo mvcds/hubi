@@ -6,6 +6,8 @@ The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain 
 
 ## Getting started
 
+:warning: For some reason, NPM is not showing the link to [github repository](https://github.com/mvcds/hubi).
+
 ### Installing
 
 We recommend that `hubi` is installed in locally with your favorite package manager, mine is `yarn`
