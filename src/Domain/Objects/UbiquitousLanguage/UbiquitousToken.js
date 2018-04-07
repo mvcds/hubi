@@ -16,6 +16,7 @@ function UbiquitousToken (data) {
   this.name = normalizeName(entity.name)
 }
 
+//  TODO: remove
 UbiquitousToken.normalizeName = normalizeName
 
 module.exports = UbiquitousToken
