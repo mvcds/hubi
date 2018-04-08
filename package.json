@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "0.0.17",
+  "version": "0.0.19",
   "description": "Humanitarian ubiquitous language helper",
   "main": "index.js",
   "repository": {
@@ -54,7 +54,7 @@
     "lint:fix": "(yarn standard --fix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
     "precommit": "yarn validate",
-    "release": "release-it --non-interactive && git commit -m \"fix version\" && git push"
+    "release": "yarn validate && release-it --non-interactive && git commit --no-verify -m \"fix version\" && git push"
   },
   "dependencies": {
     "colors": "^1.2.1",
