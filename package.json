@@ -54,7 +54,7 @@
     "lint:fix": "(yarn standard --fix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
     "precommit": "yarn validate",
-    "release": "release-it"
+    "release": "release-it --non-interactive"
   },
   "dependencies": {
     "colors": "^1.2.1",
