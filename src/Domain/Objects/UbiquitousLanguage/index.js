@@ -24,11 +24,9 @@ function UbiquitousLanguage (data) {
   const language = data.entities
     .reduce(addToken, new Map())
 
-  const privateData = { language, normalizeName: UbiquitousToken.normalizeName }
-
-  this.dependenciesOf = dependenciesOf.bind(this, privateData)
-  this.dependentsOf = dependentsOf.bind(this, privateData)
-  this.getTokens = getTokens.bind(null, privateData)
+  this.dependenciesOf = dependenciesOf.bind(this, { language })
+  this.dependentsOf = dependentsOf.bind(this, { language })
+  this.getTokens = getTokens.bind(null, { language })
 }
 
 module.exports = UbiquitousLanguage
