@@ -10,10 +10,15 @@ function addToken (language, entity) {
   return language.set(token.name, token)
 }
 
-//  TODO: do not expose the language's tokens
-function getTokens ({ language }) {
+function associateNameWithToken ([ name, token ]) {
+  const entity = this.interpretEntity(token.entity)
+
+  return { name, entity }
+}
+
+function interpret ({ language }, { interpretEntity }) {
   return Array.from(language)
-    .map(([ , { entity } ]) => entity)
+    .map(associateNameWithToken, { interpretEntity })
 }
 
 function UbiquitousLanguage (data) {
@@ -26,7 +31,7 @@ function UbiquitousLanguage (data) {
 
   this.dependenciesOf = dependenciesOf.bind(this, { language })
   this.dependentsOf = dependentsOf.bind(this, { language })
-  this.getTokens = getTokens.bind(null, { language })
+  this.interpret = interpret.bind(this, { language })
 }
 
 module.exports = UbiquitousLanguage

@@ -1,12 +1,5 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
-function toTransformed (entity) {
-  return {
-    name: entity.name.toLowerCase().split(' ').join('-'),
-    entity: this.transform(entity)
-  }
-}
-
 async function write ({ name, entity }) {
   const filePath = `${process.env.PWD}/${this.output}/${name}.ubi.js`
 
@@ -19,8 +12,8 @@ async function write ({ name, entity }) {
   })
 }
 
-function translate ({ ubiquitousLanguage, transform }, { writer, output }, { pen }) {
-  const translation = ubiquitousLanguage.getTokens().map(toTransformed, { transform })
+function translate ({ ubiquitousLanguage, interpretEntity }, { writer, output }, { pen }) {
+  const translation = ubiquitousLanguage.interpret({ interpretEntity })
 
   translation.forEach(write, { writer, pen, output })
 
@@ -30,12 +23,12 @@ function translate ({ ubiquitousLanguage, transform }, { writer, output }, { pen
 function Translator (data) {
   RequiresAttribute(data, {
     ubiquitousLanguage: 'ubiquitous language',
-    transform: 'transform function'
+    interpretEntity: 'interpret entity function'
   })
 
-  const { ubiquitousLanguage, transform } = data
+  const { ubiquitousLanguage, interpretEntity } = data
 
-  this.translate = translate.bind(this, { ubiquitousLanguage, transform })
+  this.translate = translate.bind(this, { ubiquitousLanguage, interpretEntity })
 }
 
 module.exports = Translator

@@ -16,7 +16,7 @@ function addAttribute (schema, attribute) {
   }
 }
 
-function transform (entity) {
+function interpretEntity (entity) {
   const schema = entity.attributes
     .reduce(addAttribute, {})
 
@@ -26,7 +26,7 @@ function transform (entity) {
 }
 
 function UbiTranslator (data) {
-  Object.assign(this, new Translator({ ...data, transform }))
+  Object.assign(this, new Translator({ ...data, interpretEntity }))
 }
 
 UbiTranslator.parse = function (attribute) {
