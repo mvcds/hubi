@@ -7,6 +7,19 @@ const DEPENDENCIES = {
   pen: require('write')
 }
 
+async function write ({ name, entity }) {
+  //  TODO: translator should format the name
+  const filePath = `${process.env.PWD}/${this.output}/${name}.ubi.js`
+
+  const value = typeof entity === 'object' ? JSON.stringify(entity, null, 2) : entity
+
+  return this.writer({
+    entity: value.trim(),
+    pen: this.pen,
+    filePath
+  })
+}
+
 async function WriteUbiquitousLanguage (data, injection) {
   RequiresAttribute(data, {
     pattern: 'pattern',
@@ -20,7 +33,11 @@ async function WriteUbiquitousLanguage (data, injection) {
   const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, injected)
   const translator = UsesTranslator({ translatorName, ubiquitousLanguage })
 
-  return translator.translate({ writer, output }, { pen })
+  const translation = translator.translate()
+
+  translation.forEach(write, { writer, pen, output })
+
+  return translation
 }
 
 module.exports = WriteUbiquitousLanguage
