@@ -108,5 +108,8 @@
     "env": [
       "mocha"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
