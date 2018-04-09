@@ -4,18 +4,18 @@ const UsesTranslator = require('../../Services/UsesTranslator')
 const CreateUbiquitousLanguage = require('../CreateUbiquitousLanguageFromGlobPattern')
 
 const DEPENDENCIES = {
-  pen: require('write')
+  write: require('write')
 }
 
-async function write ({ name, entity }) {
+async function writeTranslation ({ name, entity }) {
   //  TODO: translator should format the name
   const filePath = `${process.env.PWD}/${this.output}/${name}.ubi.js`
 
   const value = typeof entity === 'object' ? JSON.stringify(entity, null, 2) : entity
 
-  return this.writer({
+  return this.target({
     entity: value.trim(),
-    pen: this.pen,
+    write: this.write,
     filePath
   })
 }
@@ -27,15 +27,16 @@ async function WriteUbiquitousLanguage (data, injection) {
   })
 
   const { pattern: globPattern, translator: translatorName, output } = data
-  const { pen, ...injected } = Object.assign({}, DEPENDENCIES, injection)
-  const { writer } = this
+  const { write, ...injected } = Object.assign({}, DEPENDENCIES, injection)
+  const { target } = this
 
   const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, injected)
+
   const translator = UsesTranslator({ translatorName, ubiquitousLanguage })
 
   const translation = translator.translate()
 
-  translation.forEach(write, { writer, pen, output })
+  translation.forEach(writeTranslation, { target, write, output })
 
   return translation
 }

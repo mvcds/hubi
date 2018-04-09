@@ -1,6 +1,6 @@
 const WriteUbiquitousLanguage = require('../Domain/UseCases/WriteUbiquitousLanguage')
 
-function writer ({ entity }) {
+function target ({ entity }) {
   console.log(entity)
 }
 
@@ -11,7 +11,7 @@ function LogUbiquitousLanguageCommand (program) {
     .description('Logs the ubiquitous language entities to the console')
     .option('-p, --pattern [pattern]', 'Glob pattern pointing to domain files', 'src/**/*.yml')
     .option('-t, --translator [translator]', 'Language translator (log|ubi)', 'log')
-    .action(WriteUbiquitousLanguage.bind({ writer }))
+    .action(WriteUbiquitousLanguage.bind({ target }))
 }
 
 module.exports = LogUbiquitousLanguageCommand

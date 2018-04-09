@@ -22,47 +22,47 @@ Given('some output', function () {
   })
 })
 
-Given('set writer', function () {
+Given('set target function', function () {
   this.aux = Object.assign({}, this.aux, {
-    writer: mock('writer')
+    target: mock('target')
   })
 })
 
-Given('a pen', function () {
+Given('set write dependency', function () {
   this.injection = Object.assign({}, this.injection, {
-    pen: lorem.word()
+    write: lorem.word()
   })
 })
 
 When('I call WriteUbiquitousLanguage', async function () {
-  const { writer } = this.aux
+  const { target } = this.aux
 
-  writer.withExactArgs(match.object)
+  target.withExactArgs(match.object)
 
-  this.result = await WriteUbiquitousLanguage.call({ writer }, this.args, this.injection)
+  this.result = await WriteUbiquitousLanguage.call({ target }, this.args, this.injection)
 })
 
-Then('writter is invoked', function () {
-  this.aux.writer.verify()
+Then('the translation is written', function () {
+  this.aux.target.verify()
 })
 
 Then('translation was precise', function () {
   const filePath = `${__dirname}/fixture/file.${this.args.translator}.fixture`
 
-  const [ [ { entity } ] ] = this.aux.writer.args
+  const [ [ { entity } ] ] = this.aux.target.args
   const expectation = fs.readFileSync(filePath, 'utf8')
 
   assert.equal(entity, expectation.trim())
 })
 
-Then('pen was used', function () {
-  const [ [ { pen } ] ] = this.aux.writer.args
+Then('write was invoked', function () {
+  const [ [ { write } ] ] = this.aux.target.args
 
-  assert.equal(pen, this.injection.pen)
+  assert.equal(write, this.injection.write)
 })
 
 Then('a filePath was provided', function () {
-  const [ [ { filePath } ] ] = this.aux.writer.args
+  const [ [ { filePath } ] ] = this.aux.target.args
 
   const expectation = `${this.args.output}/file`
 
