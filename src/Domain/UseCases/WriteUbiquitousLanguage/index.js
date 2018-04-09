@@ -7,19 +7,6 @@ const DEPENDENCIES = {
   write: require('write')
 }
 
-async function writeTranslation ({ name, entity }) {
-  //  TODO: translator should format the name
-  const filePath = `${process.env.PWD}/${this.output}/${name}.ubi.js`
-
-  const value = typeof entity === 'object' ? JSON.stringify(entity, null, 2) : entity
-
-  return this.target({
-    entity: value.trim(),
-    write: this.write,
-    filePath
-  })
-}
-
 async function WriteUbiquitousLanguage (data, injection) {
   RequiresAttribute(data, {
     pattern: 'pattern',
@@ -34,11 +21,7 @@ async function WriteUbiquitousLanguage (data, injection) {
 
   const translator = UsesTranslator({ translatorName, ubiquitousLanguage })
 
-  const translation = translator.translate()
-
-  translation.forEach(writeTranslation, { target, write, output })
-
-  return translation
+  translator.translate({ target, output }, { write })
 }
 
 module.exports = WriteUbiquitousLanguage
