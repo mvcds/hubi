@@ -8,7 +8,7 @@ function addAttribute (schema, attribute) {
   ]
 }
 
-function interpretEntity (entity) {
+function translateEntity (entity) {
   const attributes = entity.attributes
     .reduce(addAttribute, [])
 
@@ -21,7 +21,7 @@ function interpretEntity (entity) {
 }
 
 function LogTranslator (data) {
-  Object.assign(this, new Translator({ ...data, interpretEntity }))
+  Object.assign(this, new Translator({ ...data, translateEntity }))
 }
 
 module.exports = LogTranslator

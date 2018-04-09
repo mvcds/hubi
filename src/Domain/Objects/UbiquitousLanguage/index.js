@@ -11,14 +11,14 @@ function addToken (language, entity) {
 }
 
 function associateNameWithToken ([ name, token ]) {
-  const entity = this.interpretEntity(token.entity)
+  const entity = this.translateEntity(token.entity)
 
   return { name, entity }
 }
 
-function interpret ({ language }, { interpretEntity }) {
+function withEachEntity ({ language }, { translateEntity }) {
   return Array.from(language)
-    .map(associateNameWithToken, { interpretEntity })
+    .map(associateNameWithToken, { translateEntity })
 }
 
 function UbiquitousLanguage (data) {
@@ -31,7 +31,7 @@ function UbiquitousLanguage (data) {
 
   this.dependenciesOf = dependenciesOf.bind(this, { language })
   this.dependentsOf = dependentsOf.bind(this, { language })
-  this.interpret = interpret.bind(this, { language })
+  this.withEachEntity = withEachEntity.bind(this, { language })
 }
 
 module.exports = UbiquitousLanguage
