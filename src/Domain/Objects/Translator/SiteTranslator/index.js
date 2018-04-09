@@ -1,6 +1,16 @@
 const pug = require('pug')
+const { tidy } = require('htmltidy')
+const { promisify } = require('util')
+
+const formatHTML = promisify(tidy)
 
 const Translator = require('../')
+
+const TIDY = {
+  doctype: 'html5',
+  hideComments: false,
+  indent: true
+}
 
 function applyEntityTemplate (schema) {
   const asString = JSON.stringify(schema, null, '  ')
@@ -27,12 +37,15 @@ function translateEntity (entity) {
   return content.replace(/"/g, "'")
 }
 
-function handleTranslation ({ translation, action }) {
+async function handleTranslation ({ translation, action }) {
   const file = `${__dirname}/site.pug`
 
-  const site = pug.renderFile(file, {})
+  const html = pug.renderFile(file, {})
 
-  action({ name: 'hubi', entity: site })
+  action({
+    name: 'hubi',
+    entity: await formatHTML(html, TIDY)
+  })
 }
 
 function UbiTranslator (data) {

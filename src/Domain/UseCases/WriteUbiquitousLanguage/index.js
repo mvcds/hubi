@@ -21,7 +21,7 @@ async function WriteUbiquitousLanguage (data, injection) {
 
   const translator = UsesTranslator({ translatorName, ubiquitousLanguage })
 
-  translator.translate({ target, output }, { write })
+  await translator.translate({ target, output }, { write })
 }
 
 module.exports = WriteUbiquitousLanguage

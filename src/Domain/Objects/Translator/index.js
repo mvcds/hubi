@@ -17,12 +17,12 @@ function forEach ({ translation, action }) {
   translation.forEach(action)
 }
 
-function translate ({ ubiquitousLanguage, translateEntity, handleTranslation = forEach }, { target, output }, { write }) {
+async function translate ({ ubiquitousLanguage, translateEntity, handleTranslation = forEach }, { target, output }, { write }) {
   const translation = ubiquitousLanguage.withEachEntity({ translateEntity })
 
   const action = sendToTarget.bind({ target, output, write })
 
-  handleTranslation({ translation, action })
+  await handleTranslation({ translation, action })
 }
 
 function Translator (data) {
