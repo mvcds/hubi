@@ -12,7 +12,7 @@
       "name": "content",
       "type": "array",
       "of": "number",
-      "description": "numbers representing its content - to be converted"
+      "description": "numbers representing its content to be converted"
     }
   ]
 }

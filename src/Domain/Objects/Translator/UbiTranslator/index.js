@@ -1,6 +1,6 @@
 const Translator = require('../')
 
-function applyTemplate (schema) {
+function applyEntityTemplate (schema) {
   const asString = JSON.stringify(schema, null, '  ')
 
   return `const SCHEMA = ${asString}
@@ -20,7 +20,7 @@ function translateEntity (entity) {
   const schema = entity.attributes
     .reduce(addAttribute, {})
 
-  const content = applyTemplate(schema)
+  const content = applyEntityTemplate(schema)
 
   return content.replace(/"/g, "'")
 }

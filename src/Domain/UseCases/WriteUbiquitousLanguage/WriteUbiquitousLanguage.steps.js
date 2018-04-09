@@ -64,7 +64,5 @@ Then('write was invoked', function () {
 Then('a filePath was provided', function () {
   const [ [ { filePath } ] ] = this.aux.target.args
 
-  const expectation = `${this.args.output}/file`
-
-  assert.ok(filePath.includes(expectation))
+  assert.ok(filePath.includes(this.args.output))
 })

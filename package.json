@@ -61,6 +61,7 @@
     "commander": "^2.15.1",
     "glob": "^7.1.2",
     "js-yaml": "^3.11.0",
+    "pug": "^2.0.3",
     "write": "^1.0.3"
   },
   "devDependencies": {

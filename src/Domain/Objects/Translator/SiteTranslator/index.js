@@ -1,6 +1,8 @@
+const pug = require('pug')
+
 const Translator = require('../')
 
-function applyTemplate (schema) {
+function applyEntityTemplate (schema) {
   const asString = JSON.stringify(schema, null, '  ')
 
   return `const SCHEMA = ${asString}
@@ -20,16 +22,17 @@ function translateEntity (entity) {
   const schema = entity.attributes
     .reduce(addAttribute, {})
 
-  const content = applyTemplate(schema)
+  const content = applyEntityTemplate(schema)
 
   return content.replace(/"/g, "'")
 }
 
 function handleTranslation ({ translation, action }) {
-  //  TODO: fix translations
-  for (const pair of translation) {
-    action(pair)
-  }
+  const file = `${__dirname}/site.pug`
+
+  const site = pug.renderFile(file, {})
+
+  action({ name: 'hubi', entity: site })
 }
 
 function UbiTranslator (data) {
