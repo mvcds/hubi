@@ -15,28 +15,28 @@
       "patterns": [
         "src"
       ],
-      "extensions": "js,feature,fixture",
+      "extensions": "js,feature,fixture,pug",
       "quiet": true
     },
     "test:unit": {
       "patterns": [
         "src"
       ],
-      "extensions": "js,feature,fixture",
+      "extensions": "js,feature,fixture,pug",
       "quiet": true
     },
     "test:integration": {
       "patterns": [
         "src"
       ],
-      "extensions": "js,feature,fixture",
+      "extensions": "js,feature,fixture,pug",
       "quiet": true
     },
     "coverage": {
       "patterns": [
         "src"
       ],
-      "extensions": "js,feature,fixture",
+      "extensions": "js,feature,fixture,pug",
       "quiet": true
     }
   },

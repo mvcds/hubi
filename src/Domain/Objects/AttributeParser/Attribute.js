@@ -9,6 +9,7 @@ function Attribute (data) {
   this.name = data.name
   this.type = data.type
   this.isRequired = data.required || false
+  this.description = data.description
 }
 
 Attribute.includes = function includes (...types) {

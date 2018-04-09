@@ -12,35 +12,14 @@ const TIDY = {
   indent: true
 }
 
-function applyEntityTemplate (schema) {
-  const asString = JSON.stringify(schema, null, '  ')
-
-  return `const SCHEMA = ${asString}
-
-module.exports = SCHEMA
-`
-}
-
-function addAttribute (schema, attribute) {
-  return {
-    ...schema,
-    ...UbiTranslator.parse(attribute)
-  }
-}
-
 function translateEntity (entity) {
-  const schema = entity.attributes
-    .reduce(addAttribute, {})
-
-  const content = applyEntityTemplate(schema)
-
-  return content.replace(/"/g, "'")
+  return entity
 }
 
-async function handleTranslation ({ translation, action }) {
+async function handleTranslation ({ translation: tokens, action }) {
   const file = `${__dirname}/site.pug`
 
-  const html = pug.renderFile(file, {})
+  const html = pug.renderFile(file, { tokens })
 
   action({
     name: 'hubi',
@@ -48,18 +27,8 @@ async function handleTranslation ({ translation, action }) {
   })
 }
 
-function UbiTranslator (data) {
+function SiteTranslator (data) {
   Object.assign(this, new Translator({ ...data, translateEntity, handleTranslation }))
 }
 
-UbiTranslator.parse = function (attribute) {
-  const { isRequired, type, name, of: arrayOf } = attribute
-
-  const wrapped = arrayOf ? `[${arrayOf}]` : type
-
-  const attr = `${wrapped}${isRequired ? '.required' : ''}`
-
-  return { [name]: attr }
-}
-
-module.exports = UbiTranslator
+module.exports = SiteTranslator

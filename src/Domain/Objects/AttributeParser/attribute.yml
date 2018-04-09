@@ -7,3 +7,4 @@ attributes:
   - name: required
     type: boolean
     default: false
+  - name: description

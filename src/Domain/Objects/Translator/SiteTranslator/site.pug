@@ -1,3 +1,17 @@
+mixin withAttribute({ name, description })
+  li
+    strong #{name}
+    | :
+    span #{description}
+
+mixin withToken({ name, entity })
+  details(id=name)
+    summary #{entity.name}
+    p #{entity.description}
+    ul
+      each attribute in entity.attributes
+        +withAttribute(attribute)
+
 doctype html
 html(lang="en")
   head
@@ -6,15 +20,5 @@ html(lang="en")
     title Hubi Site of Ubiquitous Language
     link(rel="stylesheet" href="")
   body
-    details#file
-      summary File
-      p The abstraction of a file on your system
-      ul
-        li
-          strong name
-          | :
-          span the complete system path to the file
-        li
-          strong content
-          | :
-          span numbers representing its content to be converted
+    each token in tokens
+      +withToken(token)
