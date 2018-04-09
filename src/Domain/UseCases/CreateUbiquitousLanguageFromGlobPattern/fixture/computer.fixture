@@ -1,0 +1,6 @@
+name: Computer
+description: An overpriced calculator
+attributes:
+  - name: motherboard
+    required: true
+    type: Motherboard

@@ -10,6 +10,13 @@ Feature: Create Ubiquitous Language From Glob Pattern
       And the entity "File" has 0 dependencies
       And the entity "File" has 0 dependents
 
+  Scenario: Missing reference entity
+    Given a pattern to "computer"
+    When I run CreateUbiquitousLanguageFromGlobPattern
+    Then the glob pattern is read
+      And the entity "Computer" has 0 dependencies
+      And the entity "Computer" has 0 dependents
+
   Scenario Outline: Simple references
     Given a pattern to <first>
       And a pattern to <second>
