@@ -13,10 +13,16 @@ async function sendToTarget ({ name, entity }) {
   })
 }
 
-function translate ({ ubiquitousLanguage, translateEntity }, { target, output }, { write }) {
+function forEach ({ translation, action }) {
+  translation.forEach(action)
+}
+
+function translate ({ ubiquitousLanguage, translateEntity, handleTranslation = forEach }, { target, output }, { write }) {
   const translation = ubiquitousLanguage.withEachEntity({ translateEntity })
 
-  translation.forEach(sendToTarget, { target, output, write })
+  const action = sendToTarget.bind({ target, output, write })
+
+  handleTranslation({ translation, action })
 }
 
 function Translator (data) {
@@ -25,9 +31,7 @@ function Translator (data) {
     translateEntity: 'interpret entity function'
   })
 
-  const { ubiquitousLanguage, translateEntity } = data
-
-  this.translate = translate.bind(null, { ubiquitousLanguage, translateEntity })
+  this.translate = translate.bind(null, data)
 }
 
 module.exports = Translator

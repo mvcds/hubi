@@ -25,8 +25,15 @@ function translateEntity (entity) {
   return content.replace(/"/g, "'")
 }
 
+function handleTranslation ({ translation, action }) {
+  //  TODO: fix translations
+  for (const pair of translation) {
+    action(pair)
+  }
+}
+
 function UbiTranslator (data) {
-  Object.assign(this, new Translator({ ...data, translateEntity }))
+  Object.assign(this, new Translator({ ...data, translateEntity, handleTranslation }))
 }
 
 UbiTranslator.parse = function (attribute) {
