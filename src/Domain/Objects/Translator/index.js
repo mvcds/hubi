@@ -1,8 +1,9 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
 async function sendToTarget ({ name, entity }) {
-  //  TODO: translator should format the name
-  const filePath = `${process.env.PWD}/${this.output}/${name}.ubi.js`
+  const translatorName = this.nameEntity({ name })
+
+  const filePath = `${process.env.PWD}/${this.output}/${translatorName}`
 
   const value = typeof entity === 'object' ? JSON.stringify(entity, null, 2) : entity
 
@@ -17,10 +18,19 @@ function forEach ({ translation, action }) {
   translation.forEach(action)
 }
 
-async function translate ({ ubiquitousLanguage, translateEntity, handleTranslation = forEach }, { target, output }, { write }) {
+function useDefaultName ({ name }) {
+  return `${name}.hubi.js`
+}
+
+async function translate (data, { target, output }, { write }) {
+  const { ubiquitousLanguage, translateEntity, handleTranslation, nameEntity } = Object.assign({}, {
+    handleTranslation: forEach,
+    nameEntity: useDefaultName
+  }, data)
+
   const translation = ubiquitousLanguage.withEachEntity({ translateEntity })
 
-  const action = sendToTarget.bind({ target, output, write })
+  const action = sendToTarget.bind({ target, output, write, nameEntity })
 
   await handleTranslation({ translation, action })
 }

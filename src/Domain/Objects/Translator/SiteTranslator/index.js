@@ -27,8 +27,17 @@ async function handleTranslation ({ translation: tokens, action }) {
   })
 }
 
+function nameEntity ({ name }) {
+  return `${name}.hubi.html`
+}
+
 function SiteTranslator (data) {
-  Object.assign(this, new Translator({ ...data, translateEntity, handleTranslation }))
+  Object.assign(this, new Translator({
+    ...data,
+    translateEntity,
+    handleTranslation,
+    nameEntity
+  }))
 }
 
 module.exports = SiteTranslator
