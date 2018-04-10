@@ -54,7 +54,10 @@
     "lint:fix": "(yarn standard --fix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
     "precommit": "yarn validate",
-    "release": "yarn validate && release-it --non-interactive && git commit --no-verify -m \"fix version\" && git push"
+    "release": "yarn release:pre && release-it --non-interactive && release:pos",
+    "release:major": "yarn release:pre && release-it major --non-interactive && release:pos",
+    "release:pre": "git pull && yarn validate",
+    "release:pos": "git commit --no-verify -m \"fix version\" && git push"
   },
   "dependencies": {
     "colors": "^1.2.1",
