@@ -54,8 +54,8 @@
     "lint:fix": "(yarn standard --fix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
     "precommit": "yarn validate",
-    "release": "yarn release:pre && release-it --non-interactive && release:pos",
-    "release:major": "yarn release:pre && release-it major --non-interactive && release:pos",
+    "release": "yarn release:pre && release-it --non-interactive && yarn release:pos",
+    "release:major": "yarn release:pre && release-it major --non-interactive && yarn release:pos",
     "release:pre": "git pull && yarn validate",
     "release:pos": "git commit --no-verify -m \"fix version\" && git push"
   },
