@@ -1,0 +1,23 @@
+mixin withAttribute({ name, description })
+  li
+    strong #{name}
+    span : #{description}
+
+mixin withToken({ name, entity })
+  details(id=name)
+    summary #{entity.name}
+    p #{entity.description}
+    ul
+      each attribute in entity.attributes
+        +withAttribute(attribute)
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title Hubi Site of Ubiquitous Language
+    link(rel="stylesheet" href="")
+  body
+    each token in tokens
+      +withToken(token)

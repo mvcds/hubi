@@ -3,4 +3,4 @@
 .nvmrc
 coverage
 .nyc_output
-**/*.ubi.js
+**/*.hubi.*

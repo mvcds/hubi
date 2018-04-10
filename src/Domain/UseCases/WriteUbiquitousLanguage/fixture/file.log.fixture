@@ -1,6 +1,6 @@
 {
   "File": {
-    "description": "lorem ipsum",
+    "description": "The abstraction of a file on your system",
     "attributes": [
       {
         "name": "string.required"

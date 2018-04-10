@@ -1,12 +1,18 @@
+const UbiquitousToken = require('./UbiquitousToken')
+
 function hasAttribute ({ type }) {
-  return type === this.name
+  return UbiquitousToken.normalizeName(type) === this.name
 }
 
 function whoReferences ([ , { entity } ]) {
-  const { entity: { name } } = this.term
+  const { token: { entity: { name } } } = this
+
+  const normalizedName = UbiquitousToken.normalizeName(name)
 
   return entity.attributes
-    .some(hasAttribute, { name })
+    .some(hasAttribute, {
+      name: normalizedName
+    })
 }
 
 function countDependents (acc, [ _, { entity } ]) {
@@ -21,17 +27,19 @@ function countDependents (acc, [ _, { entity } ]) {
 }
 
 function dependentsOf ({ language }, entityName) {
-  const term = language.get(entityName)
+  const normalizedName = UbiquitousToken.normalizeName(entityName)
 
-  if (term.dependents) return term.dependents
+  const token = language.get(normalizedName)
+
+  if (token.dependents) return token.dependents
 
   const { entities } = Array.from(language)
-    .filter(whoReferences, { term, language })
+    .filter(whoReferences, { token, language })
     .reduce(countDependents, { entities: [], language })
 
-  term.dependents = entities
+  token.dependents = entities
 
-  return term.dependents
+  return token.dependents
 }
 
 module.exports = dependentsOf

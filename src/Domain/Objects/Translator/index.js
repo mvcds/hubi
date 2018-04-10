@@ -1,41 +1,47 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
-function toTransformed (entity) {
-  return {
-    name: entity.name.toLowerCase().split(' ').join('-'),
-    entity: this.transform(entity)
-  }
-}
+async function sendToTarget ({ name, entity }) {
+  const translatorName = this.nameEntity({ name })
 
-async function write ({ name, entity }) {
-  const filePath = `${process.env.PWD}/${this.output}/${name}.ubi.js`
+  const filePath = `${process.env.PWD}/${this.output}/${translatorName}`
 
   const value = typeof entity === 'object' ? JSON.stringify(entity, null, 2) : entity
 
-  return this.writer({
+  return this.target({
     entity: value.trim(),
-    pen: this.pen,
+    write: this.write,
     filePath
   })
 }
 
-function translate ({ entities, transform }, { writer, output }, { pen }) {
-  const translation = entities.map(toTransformed, { transform })
+function forEach ({ translation, action }) {
+  translation.forEach(action)
+}
 
-  translation.forEach(write, { writer, pen, output })
+function useDefaultName ({ name }) {
+  return `${name}.hubi.js`
+}
 
-  return translation
+async function translate (data, { target, output }, { write }) {
+  const { ubiquitousLanguage, translateEntity, handleTranslation, nameEntity } = Object.assign({}, {
+    handleTranslation: forEach,
+    nameEntity: useDefaultName
+  }, data)
+
+  const translation = ubiquitousLanguage.withEachEntity({ translateEntity })
+
+  const action = sendToTarget.bind({ target, output, write, nameEntity })
+
+  await handleTranslation({ translation, action })
 }
 
 function Translator (data) {
   RequiresAttribute(data, {
-    entities: 'entities',
-    transform: 'transform function'
+    ubiquitousLanguage: 'ubiquitous language',
+    translateEntity: 'interpret entity function'
   })
 
-  const { entities, transform } = data
-
-  this.translate = translate.bind(this, { entities, transform })
+  this.translate = translate.bind(null, data)
 }
 
 module.exports = Translator

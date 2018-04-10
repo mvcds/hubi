@@ -1,6 +1,6 @@
 const Translator = require('../')
 
-function applyTemplate (schema) {
+function applyEntityTemplate (schema) {
   const asString = JSON.stringify(schema, null, '  ')
 
   return `const SCHEMA = ${asString}
@@ -16,17 +16,17 @@ function addAttribute (schema, attribute) {
   }
 }
 
-function transform (entity) {
+function translateEntity (entity) {
   const schema = entity.attributes
     .reduce(addAttribute, {})
 
-  const content = applyTemplate(schema)
+  const content = applyEntityTemplate(schema)
 
   return content.replace(/"/g, "'")
 }
 
-function UbiTranslator ({ entities }) {
-  Object.assign(this, new Translator({ entities, transform }))
+function UbiTranslator (data) {
+  Object.assign(this, new Translator({ ...data, translateEntity }))
 }
 
 UbiTranslator.parse = function (attribute) {

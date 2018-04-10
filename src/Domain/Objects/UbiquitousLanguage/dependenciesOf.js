@@ -1,9 +1,15 @@
+const UbiquitousToken = require('./UbiquitousToken')
+
 function isKnownAttribute ({ type }) {
-  return this.language.has(type)
+  const name = UbiquitousToken.normalizeName(type)
+
+  return this.language.has(name)
 }
 
 function fromAttributeToEntity ({ type }) {
-  return this.language.get(type).entity
+  const name = UbiquitousToken.normalizeName(type)
+
+  return this.language.get(name).entity
 }
 
 function countDependencies (acc, entity) {
@@ -17,19 +23,21 @@ function countDependencies (acc, entity) {
   }
 }
 
-function dependenciesOf ({ language }, entityName) {
-  const term = language.get(entityName)
+function dependenciesOf ({ language, normalizeName }, entityName) {
+  const normalizedName = UbiquitousToken.normalizeName(entityName)
 
-  if (term.dependencies) return term.dependencies
+  const token = language.get(normalizedName)
 
-  const { entities } = term.entity.attributes
+  if (token.dependencies) return token.dependencies
+
+  const { entities } = token.entity.attributes
     .filter(isKnownAttribute, { language })
     .map(fromAttributeToEntity, { language })
     .reduce(countDependencies, { entities: [], language })
 
-  term.dependencies = entities
+  token.dependencies = entities
 
-  return term.dependencies
+  return token.dependencies
 }
 
 module.exports = dependenciesOf

@@ -3,19 +3,19 @@ Feature: Create Ubiquitous Language From Glob Pattern
   I want to define domain files
   In order create an ubiquitous language
 
-  Scenario: Referenceless entity
+  Scenario: Referenceless token
     Given a pattern to "file"
     When I run CreateUbiquitousLanguageFromGlobPattern
     Then the glob pattern is read
-      And the entity "File" has 0 dependencies
-      And the entity "File" has 0 dependents
+      And the token "file" has 0 dependencies
+      And the token "file" has 0 dependents
 
-  Scenario: Missing reference entity
+  Scenario: Missing referenced token
     Given a pattern to "computer"
     When I run CreateUbiquitousLanguageFromGlobPattern
     Then the glob pattern is read
-      And the entity "Computer" has 0 dependencies
-      And the entity "Computer" has 0 dependents
+      And the token "computer" has 0 dependencies
+      And the token "computer" has 0 dependents
 
   Scenario Outline: Simple references
     Given a pattern to <first>
@@ -23,12 +23,12 @@ Feature: Create Ubiquitous Language From Glob Pattern
       And a pattern to <third>
     When I run CreateUbiquitousLanguageFromGlobPattern
     Then the glob pattern is read
-      And the entity "Engine" has 0 dependencies
-      And the entity "Car" has 1 dependencies
-      And the entity "Driver" has 2 dependencies
-      And the entity "Driver" has 0 dependents
-      And the entity "Car" has 1 dependents
-      And the entity "Engine" has 2 dependents
+      And the token "engine" has 0 dependencies
+      And the token "car" has 1 dependencies
+      And the token "driver" has 2 dependencies
+      And the token "driver" has 0 dependents
+      And the token "car" has 1 dependents
+      And the token "engine" has 2 dependents
 
     Examples:
       | first | second | third |

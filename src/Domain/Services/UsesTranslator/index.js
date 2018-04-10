@@ -2,10 +2,12 @@ const RequiresAttribute = require('../RequiresAttribute')
 
 const ubi = require('../../Objects/Translator/UbiTranslator')
 const log = require('../../Objects/Translator/LogTranslator')
+const site = require('../../Objects/Translator/SiteTranslator')
 
 const TRANSLATORS = {
   ubi,
-  log
+  log,
+  site
 }
 
 function UsesTranslator (data) {
@@ -14,11 +16,13 @@ function UsesTranslator (data) {
     ubiquitousLanguage: 'ubiquitous language'
   })
 
-  const Translator = TRANSLATORS[data.translatorName]
+  const { translatorName, ubiquitousLanguage } = data
 
-  const entities = data.ubiquitousLanguage.getEntitites()
+  const Translator = TRANSLATORS[translatorName]
 
-  return new Translator({ entities })
+  if (!Translator) throw new Error(`It is not possible to use "${translatorName}" as a translator yet`)
+
+  return new Translator({ ubiquitousLanguage })
 }
 
 module.exports = UsesTranslator

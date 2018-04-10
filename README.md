@@ -59,7 +59,7 @@ The first translators I am aiming to are those below, but feel free to contribut
 - [X] Ubi: my useless "language" was used as a proof of concept [POC]
 - [X] Log: also part of the POC
 - [ ] [Joi](https://github.com/hapijs/joi): as the default translator to replace Ubi
-- [ ] Site: a way to automatically create a site that developers, domain-experts, managers, etc can access to consult the ubiquitous language
+- [X] Site: a way to automatically create a site that developers, domain-experts, managers, etc can access to consult the ubiquitous language
 
 ### Should I pronounce the "h"?
 

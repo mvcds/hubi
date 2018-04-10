@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "0.0.20",
+  "version": "2.0.0",
   "description": "Humanitarian ubiquitous language helper",
   "main": "index.js",
   "repository": {
@@ -15,28 +15,28 @@
       "patterns": [
         "src"
       ],
-      "extensions": "js,feature,fixture",
+      "extensions": "js,feature,fixture,pug",
       "quiet": true
     },
     "test:unit": {
       "patterns": [
         "src"
       ],
-      "extensions": "js,feature,fixture",
+      "extensions": "js,feature,fixture,pug",
       "quiet": true
     },
     "test:integration": {
       "patterns": [
         "src"
       ],
-      "extensions": "js,feature,fixture",
+      "extensions": "js,feature,fixture,pug",
       "quiet": true
     },
     "coverage": {
       "patterns": [
         "src"
       ],
-      "extensions": "js,feature,fixture",
+      "extensions": "js,feature,fixture,pug",
       "quiet": true
     }
   },
@@ -54,13 +54,18 @@
     "lint:fix": "(yarn standard --fix) | snazzy",
     "validate": "yarn lint:fix && yarn coverage",
     "precommit": "yarn validate",
-    "release": "yarn validate && release-it --non-interactive && git commit --no-verify -m \"fix version\" && git push"
+    "release": "yarn release:pre && release-it --non-interactive && yarn release:pos",
+    "release:major": "yarn release:pre && release-it major --non-interactive && yarn release:pos",
+    "release:pre": "git pull && yarn validate",
+    "release:pos": "git commit --no-verify -m \"fix version\" && git push"
   },
   "dependencies": {
     "colors": "^1.2.1",
     "commander": "^2.15.1",
     "glob": "^7.1.2",
+    "htmltidy": "^0.0.6",
     "js-yaml": "^3.11.0",
+    "pug": "^2.0.3",
     "write": "^1.0.3"
   },
   "devDependencies": {
