@@ -56,8 +56,9 @@
     "precommit": "yarn validate",
     "release": "yarn release:pre && release-it --non-interactive && yarn release:pos",
     "release:major": "yarn release:pre && release-it major --non-interactive && yarn release:pos",
-    "release:pre": "git pull && yarn validate",
-    "release:pos": "git commit --no-verify -m \"fix version\" && git push"
+    "release:pre": "git checkout . && git clean -fd && git pull && yarn validate",
+    "release:pos": "yarn document && git add . && git commit --no-verify -m \"fix version\" && git push",
+    "document": "node index s -t site -o docs && mv docs/hubi.hubi.html docs/index.html"
   },
   "dependencies": {
     "colors": "^1.2.1",
