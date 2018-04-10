@@ -1,10 +1,14 @@
 name: Attribute
-description: An object's characteristic
+description: A token's characteristic
 attributes:
   - name: name
+    description: How the attirbute is referenced relativelly to its token
     required: true
-  - type
+  - name: type
+    description: What kind of token it is
   - name: required
+    description: A flag to mark the attribute as required when needed
     type: boolean
     default: false
   - name: description
+    description: Aa short sentence to teach or remind everyone what that attribute means

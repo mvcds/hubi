@@ -18,11 +18,11 @@
       </p>
       <ul>
         <li>
-          <strong>name</strong>:<span>the complete system path to
+          <strong>name</strong><span>: the complete system path to
           the file</span>
         </li>
         <li>
-          <strong>content</strong>:<span>numbers representing its
+          <strong>content</strong><span>: numbers representing its
           content to be converted</span>
         </li>
       </ul>

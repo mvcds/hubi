@@ -1,8 +1,7 @@
 mixin withAttribute({ name, description })
   li
     strong #{name}
-    | :
-    span #{description}
+    span : #{description}
 
 mixin withToken({ name, entity })
   details(id=name)
