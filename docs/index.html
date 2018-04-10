@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+      Hubi Site of Ubiquitous Language
+    </title>
+    <link rel="stylesheet" href="">
+  </head>
+  <body>
+    <details id="domain-file">
+      <summary>
+        Domain File
+      </summary>
+      <p>
+        A file containing information about a particular piece of
+        the ubiquitous language which will be transformed into a
+        token
+      </p>
+      <ul>
+        <li>
+          <strong>name</strong><span>: How people refer to the
+          token (should be unique across the domain to avoid
+          ambiguity)</span>
+        </li>
+        <li>
+          <strong>description</strong><span>: A short sentence to
+          teach or remind everyone what that token means</span>
+        </li>
+        <li>
+          <strong>attributes</strong><span>: A collection of
+          attributes a token is associated with (this collection is
+          specially useful for developers)</span>
+        </li>
+      </ul>
+    </details>
+    <details id="attribute">
+      <summary>
+        Attribute
+      </summary>
+      <p>
+        A token's characteristic
+      </p>
+      <ul>
+        <li>
+          <strong>name</strong><span>: How the attirbute is
+          referenced relativelly to its token</span>
+        </li>
+        <li>
+          <strong>type</strong><span>: What kind of token it
+          is</span>
+        </li>
+        <li>
+          <strong>required</strong><span>: A flag to mark the
+          attribute as required when needed</span>
+        </li>
+        <li>
+          <strong>description</strong><span>: Aa short sentence to
+          teach or remind everyone what that attribute means</span>
+        </li>
+      </ul>
+    </details>
+    <details id="translator">
+      <summary>
+        Translator
+      </summary>
+      <p>
+        An object which translates the tokens' into relevant source
+        files for developers
+      </p>
+      <ul>
+        <li>
+          <strong>ubiquitousLanguage</strong><span>: The language
+          the translator will work on</span>
+        </li>
+      </ul>
+    </details>
+    <details id="ubiquitous-language">
+      <summary>
+        Ubiquitous Language
+      </summary>
+      <p>
+        A common language for everybody
+      </p>
+      <ul>
+        <li>
+          <strong>entities</strong><span>: A collection of entities
+          which will be transformed into tokens</span>
+        </li>
+      </ul>
+    </details>
+    <details id="ubiquitous-token">
+      <summary>
+        Ubiquitous Token
+      </summary>
+      <p>
+        A piece of the ubiquitous language (phrase, expression,
+        term, etc)
+      </p>
+      <ul>
+        <li>
+          <strong>entity</strong><span>: The entity held by the
+          token</span>
+        </li>
+      </ul>
+    </details>
+  </body>
+</html>
