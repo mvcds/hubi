@@ -82,7 +82,7 @@ Saves the ubiquitous language entities into source files, the whole point of thi
 
 ### Contributing
 
-There is a [roadmap](ROADMAP.md) of things that need to be done, and you can help to make `hubi` better.
+There is a [roadmap](ROADMAP.md) of things that need to be done, and you can [help](CONTRIBUTING.md) to make `hubi` better.
 
 One of our most urgent needs are that we [miss usefult Translators](ROADMAP.md#translators), so people using GraphQL, Sequelize and others, may skip using `hubi` because it does not attend their needs yet.
 

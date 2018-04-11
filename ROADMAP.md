@@ -6,12 +6,16 @@ This roadmap is not a final list of things that will be done but rather a live d
 
 ## Priority (for this release)
 
+Someone is currently working on those
+
 - [ ] Joi Translator: allows users to use Joi
 - [ ] Extension of attributes: some attributes may have their own configuration, for instance string can have min and max but booleans cannot
 - [ ] Default attribute value: the value that will be used when no value is provided
 - [ ] Mark attribute as deprecated: so people can start not using it right now
 
-## Must haves (maybe on next release)
+## Must haves
+
+Help wanted!
 
 - [ ] Check for duplicated attributes: to warn users that they are overwritting something - we need to check a policty of what happens in this case
 - [ ] Entities' name resolution: to warn users that they are overwritting something - we need to check a policty of what happens in this case
@@ -19,6 +23,8 @@ This roadmap is not a final list of things that will be done but rather a live d
 - [ ] Cache: so some domain files are skipped
 
 ## Translators
+
+Help wanted!
 
 - [ ] Sequelize Translator: being able to change the model at least, migrations would be nice too but theiy are more difficult to do
 - [ ] GrapqhQL Translator: create GrapqhQL automatically
@@ -29,11 +35,15 @@ This roadmap is not a final list of things that will be done but rather a live d
 
 ## Site Translator
 
+Help wanted!
+
 - [ ] Improve look and feel of html: at the moment only the html is generated, and it is ugly
 - [ ] Add some functionality to the html: it would be nice to have a search, to use name anchors, sorting, prioritizing, etc
 - [ ] Allow to inject its own pug, css and/or js: so it is more custumable
 
-## Must haves (but not planned to be in the next release)
+## Future releases may have
+
+Please read about [how to contribute with items on the roadmap](CONTRIBUTING.md#roadmap-contributions) before attacking those one:
 
 - [ ] Contexts: so it is possible to run one command to update all the different translations
 - [ ] Config file: this way you don't have to input arguments in the command line
@@ -44,6 +54,8 @@ This roadmap is not a final list of things that will be done but rather a live d
 - [ ] Alias: some tokens have aliases
 
 ## Ideas and Suggestions
+
+You can still help by providing those!
 
 - [ ] Function attribute: allows functions to be used as attributes
 - [ ] Interface or Extension: inserts on a token all its interfaces and extensions
