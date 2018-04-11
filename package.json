@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Humanitarian ubiquitous language helper",
   "main": "index.js",
   "repository": {
@@ -8,6 +8,7 @@
     "url": "git@github.com:mvcds/hubi.git"
   },
   "author": "Marcos Vinícius C. da Silva <marvinc.silva@gmail.com>",
+  "homepage": "https://mvcds.github.io/hubi",
   "license": "MIT",
   "private": false,
   "watch": {
@@ -58,7 +59,8 @@
     "release:major": "yarn release:pre && release-it major --non-interactive && yarn release:pos",
     "release:pre": "git checkout . && git clean -fd && git pull && yarn validate",
     "release:pos": "yarn document && git add . && git commit --no-verify -m \"fix version\" && git push",
-    "document": "node index s -t site -o docs && mv docs/hubi.hubi.html docs/index.html"
+    "document": "node index s -t site -o docs && mv docs/hubi.hubi.html docs/index.html",
+    "coveralls": "yarn coverage && nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "colors": "^1.2.1",
@@ -70,10 +72,12 @@
     "write": "^1.0.3"
   },
   "devDependencies": {
+    "coveralls": "^3.0.0",
     "cucumber": "^4.0.0",
     "faker": "^4.1.0",
     "husky": "^0.14.3",
     "mocha": "^5.0.5",
+    "mocha-lcov-reporter": "^1.3.0",
     "npm-watch": "^0.3.0",
     "nyc": "^11.6.0",
     "release-it": "^7.3.0",
@@ -117,5 +121,17 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "keywords": [
+    "ubiquitous-language",
+    "nodejs",
+    "agnostic",
+    "language-agnostic",
+    "yml",
+    "configurable",
+    "cli",
+    "developer-tools",
+    "domain-driven-design",
+    "command-line"
+  ]
 }
