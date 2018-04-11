@@ -8,6 +8,7 @@
     "url": "git@github.com:mvcds/hubi.git"
   },
   "author": "Marcos Vinícius C. da Silva <marvinc.silva@gmail.com>",
+  "homepage": "https://mvcds.github.io/hubi",
   "license": "MIT",
   "private": false,
   "watch": {
