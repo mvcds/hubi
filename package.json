@@ -117,5 +117,17 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "keywords": [
+    "ubiquitous-language",
+    "nodejs",
+    "agnostic",
+    "language-agnostic",
+    "yml",
+    "configurable",
+    "cli",
+    "developer-tools",
+    "domain-driven-design",
+    "command-line"
+  ]
 }
