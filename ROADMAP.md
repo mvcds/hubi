@@ -8,7 +8,7 @@ This roadmap is not a final list of things that will be done but rather a live d
 
 Someone is currently working on those
 
-- [ ] Joi Translator: allows users to use Joi
+- [X] Joi Translator: allows users to use Joi
 - [ ] Extension of attributes: some attributes may have their own configuration, for instance string can have min and max but booleans cannot
 - [ ] Default attribute value: the value that will be used when no value is provided
 - [ ] Mark attribute as deprecated: so people can start not using it right now
@@ -40,6 +40,12 @@ Help wanted!
 - [ ] Improve look and feel of html: at the moment only the html is generated, and it is ugly
 - [ ] Add some functionality to the html: it would be nice to have a search, to use name anchors, sorting, prioritizing, etc
 - [ ] Allow to inject its own pug, css and/or js: so it is more custumable
+
+## Joi Translator
+
+Help wanted!
+
+- [ ] Allow to wrap schema into an Joi.Object(): so the exported object is already a Joi object
 
 ## Future releases may have
 

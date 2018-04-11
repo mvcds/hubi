@@ -26,6 +26,7 @@ The ones open for immediate contribution through coding are listed under:
 - [Must haves](ROADMAP.md#must-haves)
 - [Translators](ROADMAP.md#translators)
 - [Site Translator](ROADMAP.md#site-translator)
+- [Joi Translator](ROADMAP.md#joi-translator)
 
 In order to code for what [future releases may have](ROADMAP.md#future-releases-may-have), please explain how you plan to do it, as they have a high product value.
 

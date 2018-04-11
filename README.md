@@ -69,7 +69,7 @@ At the moment, `hubi` can only be used via command line
 Logs the ubiquitous language entities to the console, in order to allow you to read it before saving it
 
 * `--pattern | -p` is a glob pattern to your domain files, defaults to `src/**/*.yml`
-* `--translator | -t` which [translator](https://mvcds.github.io/hubi/#translator) will be use to put the domain files into the console, defaults to `log`, a value used when developing the proof of concept but rather useless - at this version, a better choice for you is `site`.
+* `--translator | -t` which [translator](https://mvcds.github.io/hubi/#translator) will be use to put the domain files into the console, defaults to `log`, a value used when developing the proof of concept but rather useless - at this version, a better choice for you is `site` or `joi`.
 
 ### save
 
