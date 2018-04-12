@@ -1,13 +1,13 @@
-const UbiquitousToken = require('./UbiquitousToken')
+const NormalizeName = require('../../Services/NormalizeName')
 
 function hasAttribute ({ type }) {
-  return UbiquitousToken.normalizeName(type) === this.name
+  return NormalizeName(type) === this.name
 }
 
 function whoReferences ([ , { entity } ]) {
   const { token: { entity: { name } } } = this
 
-  const normalizedName = UbiquitousToken.normalizeName(name)
+  const normalizedName = NormalizeName(name)
 
   return entity.attributes
     .some(hasAttribute, {
@@ -27,7 +27,7 @@ function countDependents (acc, [ _, { entity } ]) {
 }
 
 function dependentsOf ({ language }, entityName) {
-  const normalizedName = UbiquitousToken.normalizeName(entityName)
+  const normalizedName = NormalizeName(entityName)
 
   const token = language.get(normalizedName)
 
