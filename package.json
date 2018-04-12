@@ -60,7 +60,8 @@
     "release:pre": "git checkout . && git clean -fd && git pull && yarn validate",
     "release:pos": "yarn document && git add . && git commit --no-verify -m \"fix version\" && git push",
     "document": "node index s -t site -o docs && mv docs/hubi.hubi.html docs/index.html",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test:release": "find src -type f \\( -iname \\*.feature -o -iname \\*.test.js \\)"
   },
   "dependencies": {
     "colors": "^1.2.1",
