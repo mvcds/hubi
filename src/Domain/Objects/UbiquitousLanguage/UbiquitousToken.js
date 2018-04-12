@@ -1,8 +1,5 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
-
-function normalizeName (name) {
-  return name.toLowerCase().split(' ').join('-')
-}
+const NormalizeName = require('../../Services/NormalizeName')
 
 function UbiquitousToken (data) {
   RequiresAttribute(data, {
@@ -13,10 +10,7 @@ function UbiquitousToken (data) {
 
   this.entity = entity
 
-  this.name = normalizeName(entity.name)
+  this.name = NormalizeName(entity.name)
 }
-
-//  TODO: remove
-UbiquitousToken.normalizeName = normalizeName
 
 module.exports = UbiquitousToken
