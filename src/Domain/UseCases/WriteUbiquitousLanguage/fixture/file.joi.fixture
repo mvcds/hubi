@@ -1,6 +1,8 @@
+const Joi = require('joi')
+
 const SCHEMA = {
-  'name': 'string.required',
-  'content': '[number]'
+  'name': Joi.string().required(),
+  'content': Joi.array().items(Joi.number())
 }
 
 module.exports = SCHEMA

@@ -3,16 +3,30 @@ const Translator = require('../')
 function applyTemplate (schema) {
   const asString = JSON.stringify(schema, null, '  ')
 
-  return `const SCHEMA = ${asString}
+  return `const Joi = require('joi')
+
+const SCHEMA = ${asString}
 
 module.exports = SCHEMA
 `
 }
 
+function parse (attribute) {
+  const { isRequired, type, name, of: arrayOf } = attribute
+
+  const base = `Joi.${type}()`
+
+  const wrapped = arrayOf ? `${base}.items(Joi.${arrayOf}())` : base
+
+  const withRequirement = isRequired ? `${wrapped}.required()` : wrapped
+
+  return { [name]: withRequirement }
+}
+
 function addAttribute (schema, attribute) {
   return {
     ...schema,
-    ...JoiTranslator.parse(attribute)
+    ...parse(attribute)
   }
 }
 
@@ -27,16 +41,6 @@ function interpretToken (token) {
 
 function JoiTranslator (data) {
   Object.assign(this, new Translator({ ...data, interpretToken }))
-}
-
-JoiTranslator.parse = function (attribute) {
-  const { isRequired, type, name, of: arrayOf } = attribute
-
-  const wrapped = arrayOf ? `[${arrayOf}]` : type
-
-  const attr = `${wrapped}${isRequired ? '.required' : ''}`
-
-  return { [name]: attr }
 }
 
 module.exports = JoiTranslator
