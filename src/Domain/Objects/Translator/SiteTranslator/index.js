@@ -12,8 +12,8 @@ const TIDY = {
   indent: true
 }
 
-function translateEntity (entity) {
-  return entity
+function interpretToken (token) {
+  return token
 }
 
 async function handleTranslation ({ translation: tokens, action }) {
@@ -23,20 +23,20 @@ async function handleTranslation ({ translation: tokens, action }) {
 
   action({
     name: 'hubi',
-    entity: await formatHTML(html, TIDY)
+    object: await formatHTML(html, TIDY)
   })
 }
 
-function nameEntity ({ name }) {
+function nameFile ({ name }) {
   return `${name}.hubi.html`
 }
 
 function SiteTranslator (data) {
   Object.assign(this, new Translator({
     ...data,
-    translateEntity,
+    interpretToken,
     handleTranslation,
-    nameEntity
+    nameFile
   }))
 }
 

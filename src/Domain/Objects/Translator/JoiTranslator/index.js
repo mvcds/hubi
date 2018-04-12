@@ -1,6 +1,6 @@
 const Translator = require('../')
 
-function applyEntityTemplate (schema) {
+function applyTemplate (schema) {
   const asString = JSON.stringify(schema, null, '  ')
 
   return `const SCHEMA = ${asString}
@@ -16,17 +16,17 @@ function addAttribute (schema, attribute) {
   }
 }
 
-function translateEntity (entity) {
-  const schema = entity.attributes
+function interpretToken (token) {
+  const schema = token.attributes
     .reduce(addAttribute, {})
 
-  const content = applyEntityTemplate(schema)
+  const content = applyTemplate(schema)
 
   return content.replace(/"/g, "'")
 }
 
 function JoiTranslator (data) {
-  Object.assign(this, new Translator({ ...data, translateEntity }))
+  Object.assign(this, new Translator({ ...data, interpretToken }))
 }
 
 JoiTranslator.parse = function (attribute) {

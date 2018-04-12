@@ -1,14 +1,14 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
-async function sendToTarget ({ name, entity }) {
-  const translatorName = this.nameEntity({ name })
+async function sendToTarget ({ name, object }) {
+  const translatorName = this.nameFile({ name })
 
   const filePath = `${process.env.PWD}/${this.output}/${translatorName}`
 
-  const value = typeof entity === 'object' ? JSON.stringify(entity, null, 2) : entity
+  const value = typeof object === 'object' ? JSON.stringify(object, null, 2) : object
 
   return this.target({
-    entity: value.trim(),
+    object: value.trim(),
     write: this.write,
     filePath
   })
@@ -23,14 +23,14 @@ function useDefaultName ({ name }) {
 }
 
 async function translate (data, { target, output }, { write }) {
-  const { ubiquitousLanguage, translateEntity, handleTranslation, nameEntity } = Object.assign({}, {
+  const { ubiquitousLanguage, interpretToken, handleTranslation, nameFile } = Object.assign({}, {
     handleTranslation: forEach,
-    nameEntity: useDefaultName
+    nameFile: useDefaultName
   }, data)
 
-  const translation = ubiquitousLanguage.withEachEntity({ translateEntity })
+  const translation = ubiquitousLanguage.withEachToken({ interpretToken })
 
-  const action = sendToTarget.bind({ target, output, write, nameEntity })
+  const action = sendToTarget.bind({ target, output, write, nameFile })
 
   await handleTranslation({ translation, action })
 }
@@ -38,7 +38,7 @@ async function translate (data, { target, output }, { write }) {
 function Translator (data) {
   RequiresAttribute(data, {
     ubiquitousLanguage: 'ubiquitous language',
-    translateEntity: 'interpret entity function'
+    interpretToken: 'interpret token function'
   })
 
   this.translate = translate.bind(null, data)

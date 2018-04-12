@@ -12,7 +12,7 @@ function typedAttribute (data) {
   }
 }
 
-function Entity (type) {
+function Token (type) {
   return typedAttribute.call({ type })
 }
 
@@ -34,6 +34,6 @@ module.exports = {
   JSON: typedAttribute.bind({ type: 'json' }),
   Object: typedAttribute.bind({ type: 'object' }),
   Shape: typedAttribute.bind({ type: 'object' }),
-  Entity,
+  Token,
   Array: asArray
 }
