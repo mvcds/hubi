@@ -55,8 +55,8 @@ describe('AttributeParser', () => {
     it('Parsers shape value to object attribute', () => testType(AttributeFactory.Shape(), 'object'))
   })
 
-  context('Domain Object', () => {
-    it('Parsers domain object value to its name', () => {
+  context('Token', () => {
+    it('Parsers tokens value to its name', () => {
       const objectName = lorem.word()
 
       testType(AttributeFactory.Token(objectName), objectName)
