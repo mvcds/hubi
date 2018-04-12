@@ -21,7 +21,7 @@ async function readDomainFile (filePath) {
 
   const asJSON = yaml.safeLoad(file)
 
-  return new DomainFile(asJSON)
+  return new DomainFile(asJSON).tokenize()
 }
 
 async function CreateUbiquitousLanguageFromGlobPattern (data, injection) {
@@ -33,11 +33,11 @@ async function CreateUbiquitousLanguageFromGlobPattern (data, injection) {
 
   const files = glob.sync(data.globPattern)
 
-  const entities = await Promise.all(
+  const tokens = await Promise.all(
     files.map(readDomainFile, injected)
   )
 
-  return new UbiquitousLanguage({ entities })
+  return new UbiquitousLanguage({ tokens })
 }
 
 module.exports = CreateUbiquitousLanguageFromGlobPattern

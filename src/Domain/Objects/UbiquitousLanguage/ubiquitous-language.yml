@@ -1,8 +1,8 @@
 name: Ubiquitous Language
 description: A common language for everybody
 attributes:
-  - name: entities
-    description: A collection of entities which will be transformed into tokens
+  - name: tokens
+    description: A collection of ubiquitous tokens
     required: true
     type: array
-    of: Entity
+    of: Ubiquitous Token

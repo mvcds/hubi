@@ -3,12 +3,12 @@ mixin withAttribute({ name, description })
     strong #{name}
     span : #{description}
 
-mixin withToken({ name, entity })
+mixin withToken({ name, object })
   details(id=name)
-    summary #{entity.name}
-    p #{entity.description}
+    summary #{object.name}
+    p #{object.description}
     ul
-      each attribute in entity.attributes
+      each attribute in object.attributes
         +withAttribute(attribute)
 
 doctype html

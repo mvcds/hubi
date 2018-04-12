@@ -1,7 +1,0 @@
-name: Ubiquitous Token
-description: A piece of the ubiquitous language (phrase, expression, term, etc)
-attributes:
-  - name: entity
-    description: The entity held by the token
-    type: Entity
-    required: true
