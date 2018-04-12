@@ -15,7 +15,11 @@ async function sendToTarget ({ name, object }) {
 }
 
 function forEach ({ translation, action }) {
+  console.log(`Handling ${translation.length} translations`)
+
   translation.forEach(action)
+
+  console.log('Translation handled')
 }
 
 function useDefaultName ({ name }) {
@@ -29,6 +33,8 @@ async function translate (data, { target, output }, { write }) {
   }, data)
 
   const translation = ubiquitousLanguage.withEachToken({ interpretToken })
+
+  console.log('Translation has finished')
 
   const action = sendToTarget.bind({ target, output, write, nameFile })
 

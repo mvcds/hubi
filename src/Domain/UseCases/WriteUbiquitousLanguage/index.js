@@ -19,7 +19,11 @@ async function WriteUbiquitousLanguage (data, injection) {
 
   const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, injected)
 
+  console.log('Hubi knows your ubiquitous language')
+
   const translator = UsesTranslator({ translatorName, ubiquitousLanguage })
+
+  console.log(`Translator for "${translatorName}"" was found`)
 
   await translator.translate({ target, output }, { write })
 }

@@ -7,6 +7,8 @@ const DEPENDENCIES = {
 const UbiquitousToken = require('./UbiquitousToken')
 
 function tokenize () {
+  console.log(`Tokenizing "${this.name}"`)
+
   return new UbiquitousToken({ object: this })
 }
 
