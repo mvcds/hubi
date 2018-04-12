@@ -55,23 +55,23 @@ describe('AttributeParser', () => {
     it('Parsers shape value to object attribute', () => testType(AttributeFactory.Shape(), 'object'))
   })
 
-  context('Entity', () => {
-    it('Parsers entity value to its name', () => {
-      const entityName = lorem.word()
+  context('Token', () => {
+    it('Parsers tokens value to its name', () => {
+      const objectName = lorem.word()
 
-      testType(AttributeFactory.Entity(entityName), entityName)
+      testType(AttributeFactory.Token(objectName), objectName)
     })
   })
 
   context('Array', () => {
     it('Parsers array value to array attribute', () => testType(AttributeFactory.Array(), 'array'))
 
-    it('Parsers entity value to the array attibute', () => {
-      const entityName = lorem.word()
+    it('Parsers object value to the array attibute', () => {
+      const objectName = lorem.word()
 
-      const attribute = testType(AttributeFactory.Array(entityName), 'array')
+      const attribute = testType(AttributeFactory.Array(objectName), 'array')
 
-      assert.equal(attribute.of, entityName, `${attribute}`)
+      assert.equal(attribute.of, objectName, `${attribute}`)
     })
   })
 })

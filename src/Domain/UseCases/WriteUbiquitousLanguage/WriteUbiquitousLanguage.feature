@@ -1,6 +1,6 @@
 Feature: Write Ubiquitous Language
   As a use case
-  I want translate domain entities into source files
+  I want translate domain files into source files
   In order to be able to use them
 
   Scenario Outline: Write Ubiquitous Language

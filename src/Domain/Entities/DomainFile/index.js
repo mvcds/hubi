@@ -4,6 +4,12 @@ const DEPENDENCIES = {
   AttributeParser: require('../../Objects/AttributeParser')
 }
 
+const UbiquitousToken = require('./UbiquitousToken')
+
+function tokenize () {
+  return new UbiquitousToken({ object: this })
+}
+
 function DomainFile (data, injection) {
   RequiresAttribute(data, {
     name: 'name',
@@ -13,11 +19,9 @@ function DomainFile (data, injection) {
 
   const { AttributeParser } = Object.assign({}, DEPENDENCIES, injection)
 
-  this.name = data.name
-  this.description = data.description
-  this.attributes = data.attributes.map(AttributeParser)
+  const attributes = data.attributes.map(AttributeParser)
 
-  return this
+  this.tokenize = tokenize.bind({ ...data, attributes })
 }
 
 module.exports = DomainFile

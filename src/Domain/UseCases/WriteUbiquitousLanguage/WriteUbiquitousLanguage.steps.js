@@ -49,10 +49,10 @@ Then('the translation is written', function () {
 Then('translation was precise', function () {
   const filePath = `${__dirname}/fixture/file.${this.args.translator}.fixture`
 
-  const [ [ { entity } ] ] = this.aux.target.args
+  const [ [ { object } ] ] = this.aux.target.args
   const expectation = fs.readFileSync(filePath, 'utf8')
 
-  assert.equal(entity, expectation.trim())
+  assert.equal(object, expectation.trim())
 })
 
 Then('write was invoked', function () {

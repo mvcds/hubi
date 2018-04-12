@@ -5,6 +5,6 @@ attributes:
     description: The language the translator will work on
     type: Ubiquitous Language
     required: true
-  # - name: translateEntity
+  # - name: interpretToken
   #   type: function
   #   arguments:

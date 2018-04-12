@@ -1,41 +1,41 @@
-const UbiquitousToken = require('./UbiquitousToken')
+const NormalizeName = require('../../Services/NormalizeName')
 
 function isKnownAttribute ({ type }) {
-  const name = UbiquitousToken.normalizeName(type)
+  const name = NormalizeName(type)
 
   return this.language.has(name)
 }
 
-function fromAttributeToEntity ({ type }) {
-  const name = UbiquitousToken.normalizeName(type)
+function fromAttributeToobject ({ type }) {
+  const name = NormalizeName(type)
 
-  return this.language.get(name).entity
+  return this.language.get(name).object
 }
 
-function countDependencies (acc, entity) {
-  const { language, entities } = acc
+function countDependencies (acc, object) {
+  const { language, objects } = acc
 
-  const dependencies = dependenciesOf({ language }, entity.name)
+  const dependencies = dependenciesOf({ language }, object.name)
 
   return {
     ...acc,
-    entities: [ ...entities, ...dependencies, entity ]
+    objects: [ ...objects, ...dependencies, object ]
   }
 }
 
-function dependenciesOf ({ language, normalizeName }, entityName) {
-  const normalizedName = UbiquitousToken.normalizeName(entityName)
+function dependenciesOf ({ language, normalizeName }, objectName) {
+  const normalizedName = NormalizeName(objectName)
 
   const token = language.get(normalizedName)
 
   if (token.dependencies) return token.dependencies
 
-  const { entities } = token.entity.attributes
+  const { objects } = token.object.attributes
     .filter(isKnownAttribute, { language })
-    .map(fromAttributeToEntity, { language })
-    .reduce(countDependencies, { entities: [], language })
+    .map(fromAttributeToobject, { language })
+    .reduce(countDependencies, { objects: [], language })
 
-  token.dependencies = entities
+  token.dependencies = objects
 
   return token.dependencies
 }
