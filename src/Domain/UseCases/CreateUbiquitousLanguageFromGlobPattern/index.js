@@ -1,4 +1,5 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
+const { log } = require('../../Services/LogConditionally')
 
 const DomainFile = require('../../Entities/DomainFile')
 
@@ -33,13 +34,13 @@ async function CreateUbiquitousLanguageFromGlobPattern (data, injection) {
 
   const files = glob.sync(data.globPattern)
 
-  console.log(`Found ${files.length} domain files`)
+  log(`Found ${files.length} domain files`)
 
   const tokens = await Promise.all(
     files.map(readDomainFile, injected)
   )
 
-  console.log('Tokens have been created')
+  log('Tokens have been created')
 
   return new UbiquitousLanguage({ tokens })
 }

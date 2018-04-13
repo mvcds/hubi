@@ -1,4 +1,5 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
+const { log } = require('../../Services/LogConditionally')
 
 async function sendToTarget ({ name, object }) {
   const translatorName = this.nameFile({ name })
@@ -15,11 +16,11 @@ async function sendToTarget ({ name, object }) {
 }
 
 function forEach ({ translation, action }) {
-  console.log(`Handling ${translation.length} translations`)
+  log(`Handling ${translation.length} translations`)
 
   translation.forEach(action)
 
-  console.log('Translation handled')
+  log('Translation handled')
 }
 
 function useDefaultName ({ name }) {
@@ -34,7 +35,7 @@ async function translate (data, { target, output }, { write }) {
 
   const translation = ubiquitousLanguage.withEachToken({ interpretToken })
 
-  console.log('Translation has finished')
+  log('Translation has finished')
 
   const action = sendToTarget.bind({ target, output, write, nameFile })
 

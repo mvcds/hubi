@@ -1,4 +1,5 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
+const { log } = require('../../Services/LogConditionally')
 
 const DEPENDENCIES = {
   AttributeParser: require('../../Objects/AttributeParser')
@@ -7,7 +8,7 @@ const DEPENDENCIES = {
 const UbiquitousToken = require('./UbiquitousToken')
 
 function tokenize () {
-  console.log(`Tokenizing "${this.name}"`)
+  log(`Tokenizing "${this.name}"`)
 
   return new UbiquitousToken({ object: this })
 }
