@@ -1,5 +1,6 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const UsesTranslator = require('../../Services/UsesTranslator')
+const LogConditionally = require('../../Services/LogConditionally')
 
 const CreateUbiquitousLanguage = require('../CreateUbiquitousLanguageFromGlobPattern')
 
@@ -13,13 +14,19 @@ async function WriteUbiquitousLanguage (data, injection) {
     translator: 'translator'
   })
 
-  const { pattern: globPattern, translator: translatorName, output } = data
+  const { pattern: globPattern, translator: translatorName, output, verbose } = data
   const { write, ...injected } = Object.assign({}, DEPENDENCIES, injection)
   const { target } = this
 
+  LogConditionally({ canLog: verbose })
+
   const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, injected)
 
+  LogConditionally.log('Hubi knows your ubiquitous language')
+
   const translator = UsesTranslator({ translatorName, ubiquitousLanguage })
+
+  LogConditionally.log(`Translator for "${translatorName}" was found`)
 
   await translator.translate({ target, output }, { write })
 }

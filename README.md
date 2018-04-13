@@ -70,6 +70,7 @@ Logs the ubiquitous language entities to the console, in order to allow you to r
 
 * `--pattern | -p` is a glob pattern to your domain files, defaults to `src/**/*.yml`
 * `--translator | -t` which [translator](https://mvcds.github.io/hubi/#translator) will be use to put the domain files into the console, defaults to `log`, a value used when developing the proof of concept but rather useless - at this version, a better choice for you is `site`.
+* `--verbose | -v` which allows debugging
 
 ### save
 
