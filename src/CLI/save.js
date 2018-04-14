@@ -12,6 +12,7 @@ function SaveUbiquitousLanguageCommand (program) {
     .option('-p, --pattern [pattern]', 'Glob pattern pointing to domain files', 'src/**/*.yml')
     .option('-o, --output [output]', 'Output folder for source files', 'domain')
     .option('-t, --translator [translator]', 'Language translator (log|ubi|site|joi)', 'log')
+    .option('-v, --verbose [verbose]', 'When activated shows text on cli', false)
     .action(WriteUbiquitousLanguage.bind({ target }))
 }
 

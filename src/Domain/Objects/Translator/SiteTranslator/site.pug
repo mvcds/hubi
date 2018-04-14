@@ -4,7 +4,7 @@ mixin withAttribute({ name, description })
     span : #{description}
 
 mixin withToken({ name, object })
-  details(id=name)
+  details(id=name, name=name)
     summary #{object.name}
     p #{object.description}
     ul
@@ -17,7 +17,9 @@ html(lang="en")
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     title Hubi Site of Ubiquitous Language
-    link(rel="stylesheet" href="")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="hubi.js")
+    link(rel="stylesheet" href="hubi.css")
   body
     each token in tokens
       +withToken(token)
