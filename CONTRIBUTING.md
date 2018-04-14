@@ -8,7 +8,7 @@ This project and everyone participating in it is governed by its [Code of Conduc
 
 ## Contributions
 
-Even non-code contributions, may require you to open an issue. Use this template to help up even more.
+Even non-code contributions, may require you to open an issue. Use [this template](ISSUE_TEMPLATE.md) to help us even more.
 
 ### You don't need to code to help us
 
@@ -39,9 +39,9 @@ Check for feature requests as someone may be already working on something simila
 ### PR process
 
 1. You'll need to fork `hubi`
-1. Branch of from the target version you're acting upon
+1. Branch of from the last major version, naming your branch after the issue
 1. Make your changes
-1. Issue a pull requst compliant with its template
+1. Issue a pull requst compliant with its [template](PULL_REQUEST_TEMPLATE.md)
 1. Wait for merging
 
 ## Contributions not mentioned here
