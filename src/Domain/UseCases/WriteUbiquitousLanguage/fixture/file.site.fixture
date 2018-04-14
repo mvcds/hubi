@@ -6,10 +6,15 @@
     <title>
       Hubi Site of Ubiquitous Language
     </title>
-    <link rel="stylesheet" href="">
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+    <script src="hubi.js">
+</script>
+    <link rel="stylesheet" href="hubi.css">
   </head>
   <body>
-    <details id="file">
+    <details id="file" name="file">
       <summary>
         File
       </summary>
