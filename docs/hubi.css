@@ -5,8 +5,12 @@ body {
 
 details {
   padding: 8px;
-  border: 1px solid black;
+  border-top: 1px solid black;
   margin-top: -1px;
+}
+
+details:last-child {
+  border-bottom: 1px solid black;
 }
 
 summary {
