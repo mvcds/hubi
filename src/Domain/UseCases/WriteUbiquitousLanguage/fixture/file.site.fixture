@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="hubi.css">
   </head>
   <body>
+    <header class="hubi__info">
+      <span class="hubi__info__text">Generated with ❤ by <a href=
+      "https://www.npmjs.com/package/hubi" target=
+      "_blank">hubi</a></span>
+    </header>
     <details id="file" name="file">
       <summary>
         File

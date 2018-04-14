@@ -12,3 +12,19 @@ details {
 summary {
   font-weight: bold;
 }
+
+.hubi__info {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hubi__info a,
+.hubi__info a:active,
+.hubi__info a:hover,
+.hubi__info a:focus,
+.hubi__info a:visited,
+.hubi__info a:focus-within {
+  color: #000;
+}
