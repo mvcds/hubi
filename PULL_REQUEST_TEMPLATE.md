@@ -1,5 +1,7 @@
 _🚨 We'll only look at PRs which_
 
+Checkout the [first PR using this guideline](https://github.com/mvcds/hubi/pull/48) for clarrification._
+
 * Have concise title `Add continous integration`
 * Source is not your master
 * Target is the last release
@@ -15,22 +17,24 @@ _If your only label is "docs", skip this "Proposed changes" all together._
 
 _Brief about your changes. Why is it effective? Which alternatives have you considered?_
 
-## Closes
+## Relates
 
-* [Link to issue](NUMBER) _replace NUMBER by your issue number when appropriate_
-* [Link to issue](NUMBER) _replace NUMBER by your issue number when appropriate_
-* [Link to issue](NUMBER) _replace NUMBER by your issue number when appropriate_
+* Closes [short description](NUMBER) _replace NUMBER by your issue number when appropriate_
+*  Relates to [short description](NUMBER) _replace NUMBER by your issue number when appropriate_
+*  ...
 
 ## Checklist
 
 _Put an `x` in the boxes that apply. You can also fill these out after creating the PR. If you're unsure about any of them, don't hesitate to ask. We're here to help! This is simply a reminder of what we are going to look for before merging your code._
 
+_github even allow you to (un)check them on the PR_
+
 - [ ] I have reviewed the most recent version of [CONTRIBUTING](CONTRIBUTING.md) to this repository
-- [ ] Lint and tests pass locally with my changes
-- [ ] I have added tests that prove the PR works
+- [ ] I have validated that lint and tests pass locally with my changes
+- [ ] I have added tests that prove the PR works (if appropriate)
 - [ ] I have covered at least 50% of the code
 - [ ] I have added necessary documentation (if appropriate)
-- [ ] I have merged the last version into my PR
+- [ ] I have merged the last version into my PR (if appropriate)
 - [ ] I have reviewed the PR and consider it to be small (to make reviewing it easier)
 - Select one from the following about your PR, it...
   - [ ] is a non-breaking change (patch)
