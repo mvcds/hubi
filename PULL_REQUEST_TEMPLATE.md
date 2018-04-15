@@ -1,6 +1,6 @@
 _🚨 We'll only look at PRs which_
 
-Checkout the [first PR using this guideline](https://github.com/mvcds/hubi/pull/48) for clarrification._
+_Checkout the [first PR using this guideline](https://github.com/mvcds/hubi/pull/48) for clarrification._
 
 * Have concise title `Add continous integration`
 * Compare from a branch other than your master
