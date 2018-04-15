@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Humanitarian ubiquitous language helper",
   "main": "index.js",
   "repository": {
