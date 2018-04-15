@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "Humanitarian ubiquitous language helper",
   "main": "index.js",
   "repository": {
@@ -39,6 +39,14 @@
       ],
       "extensions": "js,feature,fixture,pug",
       "quiet": true
+    },
+    "document": {
+      "patterns": [
+        "src",
+        "docs"
+      ],
+      "extensions": "js,feature,fixture,pug,css",
+      "quiet": true
     }
   },
   "scripts": {
@@ -56,10 +64,12 @@
     "validate": "yarn lint:fix && yarn coverage",
     "precommit": "yarn validate",
     "release": "yarn release:pre && release-it --non-interactive && yarn release:pos",
+    "release:minor": "yarn release:pre && release-it minor --non-interactive && yarn release:pos",
     "release:major": "yarn release:pre && release-it major --non-interactive && yarn release:pos",
-    "release:pre": "git checkout . && git clean -fd && git pull && yarn validate",
+    "release:pre": "git checkout . && git clean -fd && yarn validate",
     "release:pos": "yarn document && git add . && git commit --no-verify -m \"fix version\" && git push",
     "document": "node index s -t site -o docs && mv docs/hubi.hubi.html docs/index.html",
+    "document:watch": "npm-watch document",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test:release": "find src -type f \\( -iname \\*.feature -o -iname \\*.test.js \\)"
   },

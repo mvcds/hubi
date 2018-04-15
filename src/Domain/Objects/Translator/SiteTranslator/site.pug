@@ -21,5 +21,6 @@ html(lang="en")
     script(src="hubi.js")
     link(rel="stylesheet" href="hubi.css")
   body
+    include hubi.pug
     each token in tokens
       +withToken(token)

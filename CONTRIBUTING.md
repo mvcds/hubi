@@ -30,6 +30,8 @@ You can do all below in any order you want, as much as you like
 
 Open up a pull request after one of the issues on our [dynamic roadmap](https://github.com/mvcds/hubi/projects/1?card_filter_query=label%3Aavailable+no%3Aassignee).
 
+You are not required, but it would be nice to be familiar with [`hubi`'s ubiquitous language](https://mvcds.github.io/hubi#all) in order to write some quality code.
+
 #### I want to do something that is not on the roadmap
 
 You can! We are open-source, eh?
