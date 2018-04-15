@@ -6,15 +6,15 @@ For detailed changelogs check the [releases page](https://github.com/mvcds/hubi/
 
 ## [v3](https://github.com/mvcds/hubi/releases/tag/3.2.0)
 
+(Also tagged by mistake)
+
 Added
 
 * [Joi translator](https://github.com/mvcds/hubi/pull/51)
 * [Verbose flag](https://github.com/mvcds/hubi/pull/16)
-* The necessity to a changelog file
+* Start using this format of changelog
 
 ## [v2](https://github.com/mvcds/hubi/releases/tag/2.0.0)
-
-Generate a site from the [domain files](https://mvcds.github.io/hubi/#translator).
 
 Added
 
