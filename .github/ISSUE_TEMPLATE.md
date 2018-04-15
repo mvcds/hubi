@@ -27,7 +27,7 @@ _But I got that_
 
 _🚨 Feature Request_
 
-_Firstly, search the open issues for [feature requests](https://github.com/mvcds/hubi/labels/feature%20request).
+_Firstly, search the open issues for [feature requests](https://github.com/mvcds/hubi/labels/feature%20request)._
 
 # Desciption
 
