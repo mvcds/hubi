@@ -39,8 +39,12 @@ function interpretToken (token) {
   return content.replace(/"/g, "'")
 }
 
+function nameFile ({ name }) {
+  return `${name}.joi.js`
+}
+
 function JoiTranslator (data) {
-  Object.assign(this, new Translator({ ...data, interpretToken }))
+  Object.assign(this, new Translator({ ...data, interpretToken, nameFile }))
 }
 
 module.exports = JoiTranslator
