@@ -1,14 +1,11 @@
+const pug = require('pug')
+
 const Translator = require('../')
 
 function applyTemplate (schema) {
-  const asString = JSON.stringify(schema, null, '  ')
+  const file = `${__dirname}/joi.pug`
 
-  return `const Joi = require('joi')
-
-const SCHEMA = ${asString}
-
-module.exports = SCHEMA
-`
+  return pug.renderFile(file, { schema })
 }
 
 function parse (attribute) {
@@ -36,6 +33,7 @@ function interpretToken (token) {
 
   const content = applyTemplate(schema)
 
+  //  TODO: lint burden should be placed on end-user
   return content.replace(/"/g, "'")
 }
 

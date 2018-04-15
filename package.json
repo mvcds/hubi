@@ -97,7 +97,7 @@
     "standard": "^11.0.1"
   },
   "nyc": {
-    "check-coverage": false,
+    "check-coverage": true,
     "per-file": true,
     "lines": 100,
     "statements": 100,

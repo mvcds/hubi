@@ -2,7 +2,7 @@ const Joi = require('joi')
 
 const SCHEMA = {
   'name': Joi.string().required(),
-  'content': Joi.array().items(Joi.number())
+  'content': Joi.array().items(Joi.number()),
 }
 
 module.exports = SCHEMA

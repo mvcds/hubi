@@ -20,4 +20,4 @@ Feature: Write Ubiquitous Language
       | "ubi" |
       | "log" |
       | "site" |
-      # | "joi" |
+      | "joi" |
