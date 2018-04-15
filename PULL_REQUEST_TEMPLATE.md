@@ -3,8 +3,8 @@ _🚨 We'll only look at PRs which_
 Checkout the [first PR using this guideline](https://github.com/mvcds/hubi/pull/48) for clarrification._
 
 * Have concise title `Add continous integration`
-* Source is not your master
-* Target is the last release
+* Compare from a branch other than your master
+* Have the last last release as their base
 * Use at least one of the labels bellow, ignore this item if source files were not touched
   * [bug](https://github.com/mvcds/hubi/labels/bug) for fixing bugs, errors and miss behaviours
   * [feature request](https://github.com/mvcds/hubi/labels/feature%20request) for issues not marked on the [roadmap](https://github.com/mvcds/hubi/projects/1?card_filter_query=label%3Aavailable+no%3Aassignee)
