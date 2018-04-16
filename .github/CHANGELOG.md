@@ -4,7 +4,7 @@ Breaking changes for each major release. Take a look at [keep a changelog](https
 
 For detailed changelogs check the [releases page](https://github.com/mvcds/hubi/releases).
 
-## [v3](https://github.com/mvcds/hubi/releases/tag/3.2.0)
+## [v3](https://github.com/mvcds/hubi/releases/tag/3.3.0)
 
 (Also tagged by mistake)
 
