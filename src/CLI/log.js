@@ -10,7 +10,7 @@ function LogUbiquitousLanguageCommand (program) {
     .alias('l')
     .description('Logs the ubiquitous language objects to the console')
     .option('-p, --pattern [pattern]', 'Glob pattern pointing to domain files', 'src/**/*.yml')
-    .option('-t, --translator [translator]', 'Language translator (log|ubi|site)', 'log')
+    .option('-t, --translator [translator]', 'Language translator (log|ubi|site|joi)', 'log')
     .option('-v, --verbose [verbose]', 'When activated shows text on cli', false)
     .action(WriteUbiquitousLanguage.bind({ target }))
 }

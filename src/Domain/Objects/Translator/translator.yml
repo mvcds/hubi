@@ -1,5 +1,5 @@
 name: Translator
-description: An object which translates the tokens' into relevant source files for developers
+description: An object which translates the ubiquitous language's tokens relevant source files for developers
 attributes:
   - name: ubiquitousLanguage
     description: The language the translator will work on

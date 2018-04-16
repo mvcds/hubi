@@ -3,4 +3,4 @@
 .nvmrc
 coverage
 .nyc_output
-**/*.hubi.*
+domain

@@ -1,8 +1,8 @@
-_🚨 We'll only look at PRs which_
+_🚨 We'll only merge PRs which follow the folowing requirements, but you can open it anytime you want_
 
 _Checkout the [first PR using this guideline](https://github.com/mvcds/hubi/pull/48) for clarrification._
 
-* Have concise title `Add continous integration`
+* Have concise title e.g. `Add continous integration`
 * Compare from a branch other than your master
 * Have the last last release as their base
 * Use at least one of the labels bellow, ignore this item if source files were not touched
@@ -10,6 +10,7 @@ _Checkout the [first PR using this guideline](https://github.com/mvcds/hubi/pull
   * [feature request](https://github.com/mvcds/hubi/labels/feature%20request) for issues not marked on the [roadmap](https://github.com/mvcds/hubi/projects/1?card_filter_query=label%3Aavailable+no%3Aassignee)
   * [release](https://github.com/mvcds/hubi/labels/release) for issues related to the "product release"
 * Use the label [docs](https://github.com/mvcds/hubi/labels/docs) when PR contains typo-fixings, rephrasings which improve documental understanding and changes on the ubiquitous language
+* Contain breaking changes not annotaded on the [changelog](.github/CHANGELOG.md). For minor changes, it may also be required, after discussion.
 
 # Proposed changes
 
@@ -21,6 +22,7 @@ _Brief about your changes. Why is it effective? Which alternatives have you cons
 
 * Closes [short description](NUMBER) _replace NUMBER by your issue number when appropriate_
 *  Relates to [short description](NUMBER) _replace NUMBER by your issue number when appropriate_
+*  Implements the idea described on [short description](NUMBER), but using an alternative approach
 *  ...
 
 ## Checklist

@@ -4,11 +4,13 @@ const RequiresAttribute = require('../RequiresAttribute')
 const ubi = require('../../Objects/Translator/UbiTranslator')
 const log = require('../../Objects/Translator/LogTranslator')
 const site = require('../../Objects/Translator/SiteTranslator')
+const joi = require('../../Objects/Translator/JoiTranslator')
 
 const TRANSLATORS = {
   ubi,
   log,
-  site
+  site,
+  joi
 }
 
 function UsesTranslator (data) {

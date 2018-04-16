@@ -1,12 +1,12 @@
+const pug = require('pug')
+
 const Translator = require('../')
 
 function applyTemplate (schema) {
+  const file = `${__dirname}/ubi.pug`
   const asString = JSON.stringify(schema, null, '  ')
 
-  return `const SCHEMA = ${asString}
-
-module.exports = SCHEMA
-`
+  return pug.renderFile(file, { schema: asString })
 }
 
 function addAttribute (schema, attribute) {
@@ -22,6 +22,7 @@ function interpretToken (token) {
 
   const content = applyTemplate(schema)
 
+  //  TODO: lint burden should be placed on end-user
   return content.replace(/"/g, "'")
 }
 
