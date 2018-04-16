@@ -2,7 +2,8 @@ const assert = require('assert')
 const { lorem } = require('faker')
 
 const parser = require('./')
-const AttributeFactory = require('./Attribute.factory')
+
+const AttributeFactory = require('./Attributes/Attribute.factory')
 
 const testType = (data, expectation) => {
   const value = parser(data)
