@@ -1,8 +1,11 @@
 const Attribute = require('./Attribute')
+const { Range, decorateWith } = require('./Decorators')
 
-function FloatAttribute (attribute) {
-  Object.assign(this, new Attribute({
-    ...attribute,
+const decorate = decorateWith(Range)
+
+function FloatAttribute (data) {
+  Object.assign(this, decorate(data), new Attribute({
+    ...data,
     type: 'float'
   }))
 }

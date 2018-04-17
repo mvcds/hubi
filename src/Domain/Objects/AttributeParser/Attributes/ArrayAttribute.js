@@ -1,12 +1,15 @@
 const Attribute = require('./Attribute')
+const { Range, decorateWith } = require('./Decorators')
 
-function ArrayAttribute (attribute) {
-  Object.assign(this, new Attribute({
-    ...attribute,
+const decorate = decorateWith(Range)
+
+function ArrayAttribute (data) {
+  Object.assign(this, decorate(data), new Attribute({
+    ...data,
     type: 'array'
   }))
 
-  this.of = attribute.of || 'object'
+  this.of = data.of || 'object'
 }
 
 ArrayAttribute.isMatch = Attribute.includes('array')

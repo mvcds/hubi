@@ -1,8 +1,11 @@
 const Attribute = require('./Attribute')
+const { Range, decorateWith } = require('./Decorators')
 
-function IntegerAttribute (attribute) {
-  Object.assign(this, new Attribute({
-    ...attribute,
+const decorate = decorateWith(Range)
+
+function IntegerAttribute (data) {
+  Object.assign(this, decorate(data), new Attribute({
+    ...data,
     type: 'integer'
   }))
 }
