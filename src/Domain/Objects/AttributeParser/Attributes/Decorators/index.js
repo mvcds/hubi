@@ -1,26 +1,21 @@
-const fs = require('fs')
-const path = require('path')
+const Range = require('./Range.js')
 
-function isValidFile (file) {
-  return this.base !== file
-}
-
-const base = path.basename(__filename)
-
-const ignoreInvalidFiles = isValidFile.bind({ base })
-
-function requireFile (files, filePath) {
-  const name = path.parse(filePath).name
-  const file = require(`${__dirname}/${filePath}`)
-
+function assign ({ attribute, data }, Decorator) {
   return {
-    ...files,
-    [name]: file
+    attribute: Object.assign(attribute, new Decorator(data)),
+    data
   }
 }
 
-const files = fs.readdirSync(__dirname)
-  .filter(ignoreInvalidFiles)
-  .reduce(requireFile, {})
+function decorate (attribute, data) {
+  return this.decorators.reduce(assign, { attribute, data })
+}
 
-module.exports = files
+function decorateWith (...decorators) {
+  return decorate.bind({ decorators })
+}
+
+module.exports = {
+  decorateWith,
+  Range
+}

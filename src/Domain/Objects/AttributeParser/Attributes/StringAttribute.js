@@ -1,11 +1,11 @@
 const Attribute = require('./Attribute')
-const { Range, extendWith } = require('./Decorators')
+const { Range, decorateWith } = require('./Decorators')
 
-const extend = extendWith(Range)
+const decorate = decorateWith(Range)
 
-function StringAttribute (attribute) {
-  Object.assign(this, extend(this, attribute), new Attribute({
-    ...attribute,
+function StringAttribute (data) {
+  Object.assign(this, decorate(this, data), new Attribute({
+    ...data,
     type: 'string'
   }))
 }
