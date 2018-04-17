@@ -1,14 +1,19 @@
 const Range = require('./Range.js')
 
-function assign ({ attribute, data }, Decorator) {
+function assign ({ decoration, data }, Decorator) {
   return {
-    attribute: Object.assign(attribute, new Decorator(data)),
+    decoration: Object.assign(decoration, new Decorator(data)),
     data
   }
 }
 
-function decorate (attribute, data) {
-  return this.decorators.reduce(assign, { attribute, data })
+function decorate (data) {
+  const { decoration } = this.decorators.reduce(assign, {
+    data,
+    decoration: {}
+  })
+
+  return decoration
 }
 
 function decorateWith (...decorators) {

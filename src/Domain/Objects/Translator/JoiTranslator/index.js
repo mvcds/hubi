@@ -9,7 +9,7 @@ function applyTemplate (schema) {
 }
 
 function parse (attribute) {
-  const { isRequired, type, name, of: arrayOf } = attribute
+  const { isRequired, type, name, of: arrayOf, ...data } = attribute
 
   const base = `Joi.${type}()`
 

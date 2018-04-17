@@ -4,7 +4,7 @@ const { Range, decorateWith } = require('./Decorators')
 const decorate = decorateWith(Range)
 
 function StringAttribute (data) {
-  Object.assign(this, decorate(this, data), new Attribute({
+  Object.assign(this, decorate(data), new Attribute({
     ...data,
     type: 'string'
   }))
