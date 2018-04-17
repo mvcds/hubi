@@ -2,22 +2,20 @@ const pug = require('pug')
 
 const Translator = require('../')
 
+const Attribute = require('./Attribute')
+
 function applyTemplate (schema) {
   const file = `${__dirname}/joi.pug`
 
   return pug.renderFile(file, { schema })
 }
 
-function parse (attribute) {
-  const { isRequired, type, name, of: arrayOf, ...data } = attribute
+function parse ({ name, ...data }) {
+  const attribute = new Attribute(data)
 
-  const base = `Joi.${type}()`
+  const joi = attribute.parse()
 
-  const wrapped = arrayOf ? `${base}.items(Joi.${arrayOf}())` : base
-
-  const withRequirement = isRequired ? `${wrapped}.required()` : wrapped
-
-  return { [name]: withRequirement }
+  return { [name]: joi }
 }
 
 function addAttribute (schema, attribute) {
