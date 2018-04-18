@@ -2,9 +2,9 @@
 
 > Teach `hubi` your [ubiquitous language](https://martinfowler.com/bliki/UbiquitousLanguage.html) and it will write relevant source files for you
 
-:warning: this is a work in progress, so it may not atend all your needs yet
+:warning: work in progress which currently only partially supports [joi](https://github.com/hapijs/joi), and generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
 
-The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain files](https://mvcds.github.io/hubi/#domain-file) and generates whatever you teach it, using your [domain language](https://mvcds.github.io/hubi/#ubiquitous-language) so you don't have to manually change your [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
+The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain files](https://mvcds.github.io/hubi/#domain-file) to learn your ubiquitous language and then generates relevant source files, so you don't have to manually change your [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
 
 ## Getting started
 
@@ -24,22 +24,23 @@ You may also use `npm` to install it, the only important part is that it should 
 
 ### Define an ubiquitous language
 
-Teaching `hubi` your ubiquitous language is a matter of creating domain files (YAML) using `hubi`'s own domain file as a [sample](src/Domain/Entities/DomainFile/domain-file.yml).
+Teaching `hubi` your ubiquitous language is a matter of creating domain files (YAML). You can take a look at `hubi`'s own domain file as a [sample](src/Domain/Entities/DomainFile/domain-file.yml).
 
-Let's pretend our ubiquitous language has an npm-package [token](https://mvcds.github.io/hubi/#ubiquitous-token):
+Let's pretend our ubiquitous language has a custumer[token](https://mvcds.github.io/hubi/#ubiquitous-token):
 
 ```yaml
-# src/domain/entities/npm-package.yml
-name: NPM Package
-description: A node project distributed through NPM
+# src/domain/entities/custumer.yml
+name: Custumer
+description: A person who has an account and therefore can buy stuff
 attributes:
   - name: name
-    description: The unique package name, e.g. `hubi`
+    description: How to address the person
     type: string # if type is ommited, then "string" is used
     required: true
-  - name: version
-    description: The package's lastest version
+  - name: email
+    description: The external unique identifier of a custumer
     required: true
+  ...
 ```
 
 ### Generate relevant source files
@@ -49,7 +50,7 @@ Add a new npm script to your `package.json`, so you can run it on a whim:
 ```json
 {
   ...
-  "hubi": "hubi save --pattern src/**/*.yml --output domain --translator log"
+  "hubi:log": "hubi save --pattern src/**/*.yml --output domain --translator log"
   ...
 }
 ```
@@ -57,12 +58,12 @@ Add a new npm script to your `package.json`, so you can run it on a whim:
 And from the command line call it to generate files you can use:
 
 ```shell
-yarn hubi
+yarn hubi:log
 ```
 
 ## CLI
 
-At the moment, `hubi` can only be used via command line
+At the moment, `hubi` can only be used via command line, and thus you can script upon it.
 
 ### log
 
