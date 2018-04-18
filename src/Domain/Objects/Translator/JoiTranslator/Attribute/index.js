@@ -1,5 +1,6 @@
 const DECORATORS = {
-  max: require('./range.js')
+  max: require('./range.js'),
+  min: require('./range.js')
 }
 
 function decorate (decorations, [ kind, data ]) {
