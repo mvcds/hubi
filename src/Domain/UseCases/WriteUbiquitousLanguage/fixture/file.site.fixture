@@ -19,20 +19,23 @@
       "https://www.npmjs.com/package/hubi" target=
       "_blank">hubi</a></span>
     </header>
-    <details id="file" name="file">
-      <summary>
+    <details class="token" id="file" name="file">
+      <summary class="token__name">
         File
       </summary>
-      <p>
+      <p class="token__description">
         The abstraction of a file on your system
       </p>
-      <ul>
-        <li>
-          <strong>name</strong><span>: the complete system path to
+      <ul class="token__attributes">
+        <li class="attribute">
+          <strong class="attribute__name">name</strong><span class=
+          "attribute__description">: the complete system path to
           the file</span>
         </li>
-        <li>
-          <strong>content</strong><span>: numbers representing its
+        <li class="attribute">
+          <strong class=
+          "attribute__name">content</strong><span class=
+          "attribute__description">: numbers representing its
           content to be converted</span>
         </li>
       </ul>

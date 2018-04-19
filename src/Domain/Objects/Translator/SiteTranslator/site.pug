@@ -1,13 +1,13 @@
 mixin withAttribute({ name, description })
-  li
-    strong #{name}
-    span : #{description}
+  li(class="attribute")
+    strong(class="attribute__name") #{name}
+    span(class="attribute__description") : #{description}
 
 mixin withToken({ name, object })
-  details(id=name, name=name)
-    summary #{object.name}
-    p #{object.description}
-    ul
+  details(id=name, name=name, class="token")
+    summary(class="token__name") #{object.name}
+    p(class="token__description") #{object.description}
+    ul(class="token__attributes")
       each attribute in object.attributes
         +withAttribute(attribute)
 

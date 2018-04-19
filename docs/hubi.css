@@ -3,17 +3,17 @@ body {
   padding: 0;
 }
 
-details {
+.token {
   padding: 8px;
   border-top: 1px solid black;
   margin-top: -1px;
 }
 
-details:last-child {
+.token:last-child {
   border-bottom: 1px solid black;
 }
 
-summary {
+.token__title {
   font-weight: bold;
 }
 
