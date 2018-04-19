@@ -17,6 +17,15 @@ body {
   font-weight: bold;
 }
 
+.attribute__deprecation-note {
+  display: flex;
+  align-items: center;
+}
+
+.attribute__deprecation-note__icon {
+  color:  red;
+}
+
 .hubi__info {
   padding: 8px;
   display: flex;

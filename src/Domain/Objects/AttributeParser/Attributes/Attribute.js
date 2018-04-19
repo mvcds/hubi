@@ -10,6 +10,7 @@ function Attribute (data) {
   this.type = data.type
   this.isRequired = data.required || false
   this.description = data.description
+  this.deprecated = data.deprecated
 }
 
 Attribute.includes = function includes (...types) {

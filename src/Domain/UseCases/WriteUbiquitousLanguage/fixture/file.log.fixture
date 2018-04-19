@@ -7,6 +7,9 @@
       },
       {
         "content": "[number]"
+      },
+      {
+        "size": "integer"
       }
     ]
   }

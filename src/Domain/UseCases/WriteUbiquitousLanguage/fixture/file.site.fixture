@@ -38,6 +38,15 @@
           "attribute__description">: numbers representing its
           content to be converted</span>
         </li>
+        <li class="attribute">
+          <strong class="attribute__name">size</strong><span class=
+          "attribute__description">: content's size in bytes</span>
+          <div class="attribute__deprecation-note">
+            <span class=
+            "attribute__deprecation-note__icon">⚠</span><span>its
+            size will be calculated from content in vX.Y.Z</span>
+          </div>
+        </li>
       </ul>
     </details>
   </body>

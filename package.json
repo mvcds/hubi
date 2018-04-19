@@ -45,7 +45,7 @@
         "src",
         "docs"
       ],
-      "extensions": "js,feature,fixture,pug,css",
+      "extensions": "js,feature,fixture,pug,css,yml",
       "quiet": true
     }
   },
