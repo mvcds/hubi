@@ -10,7 +10,6 @@ _Checkout the [first PR using this guideline](https://github.com/mvcds/hubi/pull
   * [feature request](https://github.com/mvcds/hubi/labels/feature%20request) for issues not marked on the [roadmap](https://github.com/mvcds/hubi/projects/1?card_filter_query=label%3Aavailable+no%3Aassignee)
   * [release](https://github.com/mvcds/hubi/labels/release) for issues related to the "product release"
 * Use the label [docs](https://github.com/mvcds/hubi/labels/docs) when PR contains typo-fixings, rephrasings which improve documental understanding and changes on the ubiquitous language
-* Contain breaking changes not annotaded on the [changelog](.github/CHANGELOG.md). For minor changes, it may also be required, after discussion.
 
 # Proposed changes
 

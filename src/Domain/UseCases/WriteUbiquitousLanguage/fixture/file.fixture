@@ -6,7 +6,8 @@
       "name": "name",
       "type": "string",
       "required": true,
-      "description": "the complete system path to the file"
+      "description": "the complete system path to the file",
+      "max": 255
     },
     {
       "name": "content",

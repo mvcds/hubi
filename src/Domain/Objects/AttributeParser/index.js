@@ -1,15 +1,15 @@
 const DEPENDENCIES = {
   attributes: [
-    require('./StringAttribute'),
-    require('./BooleanAttribute'),
-    require('./IntegerAttribute'),
-    require('./DateAttribute'),
-    require('./FloatAttribute'),
-    require('./ObjectAttribute'),
-    require('./JSONAttribute'),
-    require('./ArrayAttribute')
+    require('./Attributes/StringAttribute'),
+    require('./Attributes/BooleanAttribute'),
+    require('./Attributes/IntegerAttribute'),
+    require('./Attributes/DateAttribute'),
+    require('./Attributes/FloatAttribute'),
+    require('./Attributes/ObjectAttribute'),
+    require('./Attributes/JSONAttribute'),
+    require('./Attributes/ArrayAttribute')
   ],
-  defaultAttribute: require('./Attribute')
+  defaultAttribute: require('./Attributes/Attribute')
 }
 
 function isMatch (parser) {

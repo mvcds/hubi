@@ -1,4 +1,4 @@
-const RequiresAttribute = require('../../Services/RequiresAttribute')
+const RequiresAttribute = require('../../../Services/RequiresAttribute')
 
 function Attribute (data) {
   RequiresAttribute(data, {
