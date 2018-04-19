@@ -70,7 +70,7 @@
     "release:pos": "yarn document && git add . && git commit --no-verify -m \"fix version\" && git push",
     "document": "node index s -t site -o docs && mv docs/hubi.hubi.html docs/index.html",
     "document:watch": "npm-watch document",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "mkdir .nyc_output && nyc report --reporter=text-lcov | coveralls",
     "test:release": "find src -type f \\( -iname \\*.feature -o -iname \\*.test.js \\)"
   },
   "dependencies": {
