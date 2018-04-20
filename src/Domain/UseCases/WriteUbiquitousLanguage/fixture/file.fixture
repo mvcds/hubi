@@ -14,6 +14,11 @@
       "type": "array",
       "of": "number",
       "description": "numbers representing its content to be converted"
+    },
+    {
+      "name": "size",
+      "type": "integer",
+      "description": "the content's size"
     }
   ]
 }

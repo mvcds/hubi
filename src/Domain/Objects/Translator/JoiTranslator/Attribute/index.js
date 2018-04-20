@@ -3,6 +3,8 @@ const DECORATORS = {
   min: require('./range.js')
 }
 
+const NUMBERS = ['float', 'integer']
+
 function decorate (decorations, [ kind, data ]) {
   const decorate = DECORATORS[kind]
 
@@ -16,13 +18,21 @@ function decorate (decorations, [ kind, data ]) {
   ]
 }
 
+function asBase (type) {
+  if (!NUMBERS.includes(type)) return `Joi.${type}()`
+
+  const base = 'Joi.number()'
+
+  return type === 'integer' ? `${base}.integer()` : base
+}
+
 function parse () {
   const { isRequired, type, of: arrayOf, ...data } = this
 
   const decorations = Object.entries(data)
     .reduce(decorate, [])
 
-  const base = `Joi.${type}()`
+  const base = asBase(type)
 
   const wrapped = arrayOf ? `${base}.items(Joi.${arrayOf}())` : base
 
