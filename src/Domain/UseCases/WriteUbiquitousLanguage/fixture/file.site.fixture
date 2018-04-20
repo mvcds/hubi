@@ -35,6 +35,9 @@
           <strong>content</strong><span>: numbers representing its
           content to be converted</span>
         </li>
+        <li>
+          <strong>size</strong><span>: the content's size</span>
+        </li>
       </ul>
     </details>
   </body>
