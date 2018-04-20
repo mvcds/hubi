@@ -19,24 +19,33 @@
       "https://www.npmjs.com/package/hubi" target=
       "_blank">hubi</a></span>
     </header>
-    <details id="file" name="file">
-      <summary>
-        File
+    <details class="token" id="file" name="file">
+      <summary class="token__title">
+        <span class="token__name">File</span>
       </summary>
-      <p>
+      <p class="token__description">
         The abstraction of a file on your system
       </p>
-      <ul>
-        <li>
-          <strong>name</strong><span>: the complete system path to
+      <ul class="token__attributes">
+        <li class="attribute">
+          <strong class="attribute__name">name</strong><span class=
+          "attribute__description">: the complete system path to
           the file</span>
         </li>
-        <li>
-          <strong>content</strong><span>: numbers representing its
+        <li class="attribute">
+          <strong class=
+          "attribute__name">content</strong><span class=
+          "attribute__description">: numbers representing its
           content to be converted</span>
         </li>
-        <li>
-          <strong>size</strong><span>: the content's size</span>
+        <li class="attribute">
+          <strong class="attribute__name">size</strong><span class=
+          "attribute__description">: content's size in
+          bytes</span><span class=
+          "attribute__deprecation-note"><span class=
+          "attribute__deprecation-note__icon">⚠</span><span>its
+          size will be calculated from content in
+          vX.Y.Z</span></span>
         </li>
       </ul>
     </details>

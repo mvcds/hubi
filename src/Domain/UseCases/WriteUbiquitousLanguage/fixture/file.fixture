@@ -18,7 +18,11 @@
     {
       "name": "size",
       "type": "integer",
-      "description": "the content's size"
+      "required": false,
+      "description": "content's size in bytes",
+      "deprecated": {
+        "message": "its size will be calculated from content in vX.Y.Z"
+      }
     }
   ]
 }

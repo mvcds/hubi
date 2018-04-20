@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "3.5.1",
+  "version": "3.6.0",
   "description": "Humanitarian ubiquitous language helper",
   "main": "index.js",
   "repository": {
@@ -45,7 +45,7 @@
         "src",
         "docs"
       ],
-      "extensions": "js,feature,fixture,pug,css",
+      "extensions": "js,feature,fixture,pug,css,yml",
       "quiet": true
     }
   },
@@ -53,7 +53,7 @@
     "test": "yarn test:unit && yarn test:integration",
     "test:integration": "cucumber-js \"src/Domain/UseCases/**/*.feature\"",
     "test:integration:watch": "npm-watch test:integration",
-    "test:unit": "mocha \"src/**/*.test.js\" --colors --sort --bail --recursive",
+    "test:unit": "mocha \"src/**/*.test.js\" --colors --sort --bail --recursive --retries 2",
     "test:unit:watch": "npm-watch test:unit",
     "test:watch": "npm-watch test",
     "coverage": "nyc yarn test",
@@ -66,11 +66,11 @@
     "release": "yarn release:pre && release-it --non-interactive && yarn release:pos",
     "release:minor": "yarn release:pre && release-it minor --non-interactive && yarn release:pos",
     "release:major": "yarn release:pre && release-it major --non-interactive && yarn release:pos",
-    "release:pre": "git checkout . && git clean -fd && yarn validate",
+    "release:pre": "git checkout . && git clean -fd && git push -u && yarn validate",
     "release:pos": "yarn document && git add . && git commit --no-verify -m \"fix version\" && git push",
     "document": "node index s -t site -o docs && mv docs/hubi.hubi.html docs/index.html",
     "document:watch": "npm-watch document",
-    "coveralls": "yarn coverage && nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test:release": "find src -type f \\( -iname \\*.feature -o -iname \\*.test.js \\)"
   },
   "dependencies": {

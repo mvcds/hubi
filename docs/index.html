@@ -19,98 +19,146 @@
       "https://www.npmjs.com/package/hubi" target=
       "_blank">hubi</a></span>
     </header>
-    <details id="domain-file" name="domain-file">
-      <summary>
-        Domain File
+    <details class="token" id="domain-file" name="domain-file">
+      <summary class="token__title">
+        <span class="token__name">Domain File</span>
       </summary>
-      <p>
+      <p class="token__description">
         A file containing information about a particular piece of
         the ubiquitous language which will be transformed into a
         token
       </p>
-      <ul>
-        <li>
-          <strong>name</strong><span>: How people refer to the
-          token (should be unique across the domain to avoid
+      <ul class="token__attributes">
+        <li class="attribute">
+          <strong class="attribute__name">name</strong><span class=
+          "attribute__description">: How people refer to the token
+          (should be unique across the domain to avoid
           ambiguity)</span>
         </li>
-        <li>
-          <strong>description</strong><span>: A short sentence to
-          teach or remind everyone what that token means</span>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">description</strong><span class=
+          "attribute__description">: A short sentence to teach or
+          remind everyone what that token means</span>
         </li>
-        <li>
-          <strong>attributes</strong><span>: A collection of
-          attributes a token is associated with (this collection is
-          specially useful for developers)</span>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">attributes</strong><span class=
+          "attribute__description">: A collection of attributes a
+          token is associated with (this collection is specially
+          useful for developers)</span>
         </li>
       </ul>
     </details>
-    <details id="ubiquitous-token" name="ubiquitous-token">
-      <summary>
-        Ubiquitous Token
+    <details class="token" id="ubiquitous-token" name=
+    "ubiquitous-token">
+      <summary class="token__title">
+        <span class="token__name">Ubiquitous Token</span>
       </summary>
-      <p>
+      <p class="token__description">
         A piece of the ubiquitous language (phrase, expression,
         term, etc) extracted from the domain file
       </p>
-      <ul>
-        <li>
-          <strong>object</strong><span>: The object held by the
+      <ul class="token__attributes">
+        <li class="attribute">
+          <strong class=
+          "attribute__name">object</strong><span class=
+          "attribute__description">: The object held by the
           token</span>
         </li>
       </ul>
     </details>
-    <details id="attribute" name="attribute">
-      <summary>
-        Attribute
+    <details class="token" id="attribute" name="attribute">
+      <summary class="token__title">
+        <span class="token__name">Attribute</span>
       </summary>
-      <p>
+      <p class="token__description">
         A token's characteristic
       </p>
-      <ul>
-        <li>
-          <strong>name</strong><span>: How the attirbute is
+      <ul class="token__attributes">
+        <li class="attribute">
+          <strong class="attribute__name">name</strong><span class=
+          "attribute__description">: How the attirbute is
           referenced relativelly to its token</span>
         </li>
-        <li>
-          <strong>type</strong><span>: What kind of token it
+        <li class="attribute">
+          <strong class="attribute__name">type</strong><span class=
+          "attribute__description">: What kind of token it
           is</span>
         </li>
-        <li>
-          <strong>required</strong><span>: A flag to mark the
-          attribute as required when needed</span>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">required</strong><span class=
+          "attribute__description">: A flag to mark the attribute
+          as required when needed</span>
         </li>
-        <li>
-          <strong>description</strong><span>: Aa short sentence to
-          teach or remind everyone what that attribute means</span>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">description</strong><span class=
+          "attribute__description">: Aa short sentence to teach or
+          remind everyone what that attribute means</span>
         </li>
       </ul>
     </details>
-    <details id="translator" name="translator">
-      <summary>
-        Translator
+    <details class="token" id="parser" name="parser">
+      <summary class="token__title">
+        <span class="token__name">Parser</span><span class=
+        "token__deprecation-note"><span class=
+        "token__deprecation-note__icon token__deprecation-note__icon--error">⚠</span><span>Renamed
+        to "Translator", kept as deprecation example</span></span>
       </summary>
-      <p>
+      <p class="token__description">
+        An object which translates tokens into relevant source
+        files for developers
+      </p>
+      <ul class="token__attributes">
+        <li class="attribute">
+          <strong class=
+          "attribute__name">tokens</strong><span class=
+          "attribute__description">: The tokens the translator will
+          work on</span>
+        </li>
+      </ul>
+    </details>
+    <details class="token" id="translator" name="translator">
+      <summary class="token__title">
+        <span class="token__name">Translator</span>
+      </summary>
+      <p class="token__description">
         An object which translates the ubiquitous language's tokens
         relevant source files for developers
       </p>
-      <ul>
-        <li>
-          <strong>ubiquitousLanguage</strong><span>: The language
-          the translator will work on</span>
+      <ul class="token__attributes">
+        <li class="attribute">
+          <strong class=
+          "attribute__name">ubiquitousLanguage</strong><span class=
+          "attribute__description">: The language the translator
+          will work on</span>
+        </li>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">tokens</strong><span class=
+          "attribute__description">: The tokens the translator will
+          work on</span><span class=
+          "attribute__deprecation-note"><span class=
+          "attribute__deprecation-note__icon attribute__deprecation-note__icon--error">⚠</span><span>Use
+          "ubiquitousLanguage" instead</span></span>
         </li>
       </ul>
     </details>
-    <details id="ubiquitous-language" name="ubiquitous-language">
-      <summary>
-        Ubiquitous Language
+    <details class="token" id="ubiquitous-language" name=
+    "ubiquitous-language">
+      <summary class="token__title">
+        <span class="token__name">Ubiquitous Language</span>
       </summary>
-      <p>
+      <p class="token__description">
         A common language for everybody
       </p>
-      <ul>
-        <li>
-          <strong>tokens</strong><span>: A collection of ubiquitous
+      <ul class="token__attributes">
+        <li class="attribute">
+          <strong class=
+          "attribute__name">tokens</strong><span class=
+          "attribute__description">: A collection of ubiquitous
           tokens</span>
         </li>
       </ul>

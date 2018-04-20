@@ -1,5 +1,7 @@
 const RequiresAttribute = require('../../../Services/RequiresAttribute')
 
+const Deprecated = require('../../Deprecated')
+
 function Attribute (data) {
   RequiresAttribute(data, {
     name: 'name',
@@ -10,6 +12,8 @@ function Attribute (data) {
   this.type = data.type
   this.isRequired = data.required || false
   this.description = data.description
+
+  Object.assign(this, new Deprecated(this, data.deprecated))
 }
 
 Attribute.includes = function includes (...types) {

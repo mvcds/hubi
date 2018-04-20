@@ -5,6 +5,13 @@ attributes:
     description: The language the translator will work on
     type: Ubiquitous Language
     required: true
+  - name: tokens
+    description: The tokens the translator will work on
+    type: array
+    of: Ubiquitous Token
+    deprecated:
+      message: Use "ubiquitousLanguage" instead
+      error: true
   # - name: interpretToken
   #   type: function
   #   arguments:

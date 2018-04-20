@@ -75,4 +75,36 @@ describe('AttributeParser', () => {
       assert.equal(attribute.of, objectName, `${attribute}`)
     })
   })
+
+  context('Deprecation', () => {
+    const testDeprecation = ({ deprecated }, message, error) => {
+      it('Matches the message', () => assert.equal(deprecated.message, message))
+
+      it('Matches the error', () => assert.equal(deprecated.error, error))
+    }
+
+    describe('Textual deprecation', () => {
+      const text = lorem.sentence()
+
+      const attribute = parser(AttributeFactory.DeprecatedWithText(text))
+
+      testDeprecation(attribute, text, false)
+    })
+
+    describe('Boolean deprecation', () => {
+      const name = lorem.word()
+
+      const attribute = parser(AttributeFactory.DeprecatedWithBoolean(name))
+
+      testDeprecation(attribute, `"${name}" is marked as deprecated`, false)
+    })
+
+    describe('Deprecation object', () => {
+      const name = lorem.sentence()
+
+      const attribute = parser(AttributeFactory.DeprecatedWithError(name))
+
+      testDeprecation(attribute, `"${name}" is marked as deprecated`, true)
+    })
+  })
 })
