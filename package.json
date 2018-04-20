@@ -53,7 +53,7 @@
     "test": "yarn test:unit && yarn test:integration",
     "test:integration": "cucumber-js \"src/Domain/UseCases/**/*.feature\"",
     "test:integration:watch": "npm-watch test:integration",
-    "test:unit": "mocha \"src/**/*.test.js\" --colors --sort --bail --recursive",
+    "test:unit": "mocha \"src/**/*.test.js\" --colors --sort --bail --recursive --retries 2",
     "test:unit:watch": "npm-watch test:unit",
     "test:watch": "npm-watch test",
     "coverage": "nyc yarn test",
