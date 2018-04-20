@@ -12,3 +12,4 @@ attributes:
     default: false
   - name: description
     description: Aa short sentence to teach or remind everyone what that attribute means
+  # - name: deprecated

@@ -20,8 +20,8 @@
       "_blank">hubi</a></span>
     </header>
     <details class="token" id="file" name="file">
-      <summary class="token__name">
-        File
+      <summary class="token__title">
+        <span class="token__name">File</span>
       </summary>
       <p class="token__description">
         The abstraction of a file on your system
@@ -40,12 +40,12 @@
         </li>
         <li class="attribute">
           <strong class="attribute__name">size</strong><span class=
-          "attribute__description">: content's size in bytes</span>
-          <div class="attribute__deprecation-note">
-            <span class=
-            "attribute__deprecation-note__icon">⚠</span><span>its
-            size will be calculated from content in vX.Y.Z</span>
-          </div>
+          "attribute__description">: content's size in
+          bytes</span><span class=
+          "attribute__deprecation-note"><span class=
+          "attribute__deprecation-note__icon">⚠</span><span>its
+          size will be calculated from content in
+          vX.Y.Z</span></span>
         </li>
       </ul>
     </details>

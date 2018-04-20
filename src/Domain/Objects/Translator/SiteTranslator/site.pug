@@ -1,6 +1,6 @@
-mixin withDeprecation({ message, error })
-  - var classes = error ? "attribute__deprecation-note__icon attribute__deprecation-note__icon--error" : "attribute__deprecation-note__icon"
-  div(class="attribute__deprecation-note")
+mixin withDeprecation (type, { message, error })
+  - var classes = error ? `${type}__deprecation-note__icon ${type}__deprecation-note__icon--error` : `${type}__deprecation-note__icon`
+  span(class=`${type}__deprecation-note`)
     span(class=classes) ⚠
     span #{message}
 
@@ -9,11 +9,21 @@ mixin withAttribute({ name, description, deprecated })
     strong(class="attribute__name") #{name}
     span(class="attribute__description") : #{description}
     if (deprecated)
-      +withDeprecation(deprecated)
+      +withDeprecation("attribute", deprecated)
+
+mixin withTokenDeprecation({ message, error })
+  - var classes = error ? "token__deprecation-note__icon token__deprecation-note__icon--error" : "token__deprecation-note__icon"
+  span(class="token__deprecation-note")
+    span(class=classes) ⚠
+    span #{message}
 
 mixin withToken({ name, object })
   details(id=name, name=name, class="token")
-    summary(class="token__name") #{object.name}
+    summary(class="token__title")
+      span(class="token__name") #{object.name}
+      if (object.deprecated)
+        +withDeprecation("token", object.deprecated)
+
     p(class="token__description") #{object.description}
     ul(class="token__attributes")
       each attribute in object.attributes

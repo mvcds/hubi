@@ -14,14 +14,25 @@ body {
 }
 
 .token__title {
+  display: flex;
+  align-items: center;
+}
+
+.token__name {
   font-weight: bold;
 }
 
+.token__deprecation-note,
 .attribute__deprecation-note {
   display: flex;
   align-items: center;
 }
 
+.token__deprecation-note__icon {
+  margin-left: 8px;
+}
+
+.token__deprecation-note__icon,
 .attribute__deprecation-note__icon {
   color:  #FFEB3B;
   margin-right: 4px;
@@ -29,15 +40,18 @@ body {
   align-items: center;
 }
 
+.token__deprecation-note__icon::after,
 .attribute__deprecation-note__icon::after {
   content: "warning";
   margin-left: 4px;
 }
 
+.token__deprecation-note__icon--error,
 .attribute__deprecation-note__icon--error {
   color:  #FF5722;
 }
 
+.token__deprecation-note__icon--error::after,
 .attribute__deprecation-note__icon--error::after {
   content: "error";
 }
