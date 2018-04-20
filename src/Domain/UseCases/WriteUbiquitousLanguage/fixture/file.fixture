@@ -20,7 +20,9 @@
       "type": "integer",
       "required": false,
       "description": "content's size in bytes",
-      "deprecated": "its size will be calculated from content in vX.Y.Z"
+      "deprecated": {
+        "message": "its size will be calculated from content in vX.Y.Z"
+      }
     }
   ]
 }

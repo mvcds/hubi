@@ -1,4 +1,4 @@
-const { lorem } = require('faker')
+const { lorem, random } = require('faker')
 
 function TypelessObject ({ name = lorem.word() } = {}) {
   return { name }
@@ -20,7 +20,25 @@ function asArray (type) {
   return typedAttribute.call({ type: 'array' }, { of: type })
 }
 
-module.exports = {
+function DeprecatedWithText (deprecated) {
+  const type = random.objectElement(PRIMITIVES)
+
+  return type({ deprecated })
+}
+
+function DeprecatedWithBoolean (name) {
+  const type = random.objectElement(PRIMITIVES)
+
+  return type({ name, deprecated: true })
+}
+
+function DeprecatedWithError (name) {
+  const type = random.objectElement(PRIMITIVES)
+
+  return type({ name, deprecated: { error: true } })
+}
+
+const PRIMITIVES = {
   TypelessObject,
   String: typedAttribute.bind({ type: 'string' }),
   Bool: typedAttribute.bind({ type: 'bool' }),
@@ -33,7 +51,14 @@ module.exports = {
   Integer: typedAttribute.bind({ type: 'integer' }),
   JSON: typedAttribute.bind({ type: 'json' }),
   Object: typedAttribute.bind({ type: 'object' }),
-  Shape: typedAttribute.bind({ type: 'object' }),
+  Shape: typedAttribute.bind({ type: 'object' })
+}
+
+module.exports = {
+  ...PRIMITIVES,
   Token,
-  Array: asArray
+  Array: asArray,
+  DeprecatedWithText,
+  DeprecatedWithBoolean,
+  DeprecatedWithError
 }

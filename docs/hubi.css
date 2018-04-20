@@ -23,7 +23,23 @@ body {
 }
 
 .attribute__deprecation-note__icon {
-  color:  red;
+  color:  #FFEB3B;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.attribute__deprecation-note__icon::after {
+  content: "warning";
+  margin-left: 4px;
+}
+
+.attribute__deprecation-note__icon--error {
+  color:  #FF5722;
+}
+
+.attribute__deprecation-note__icon--error::after {
+  content: "error";
 }
 
 .hubi__info {

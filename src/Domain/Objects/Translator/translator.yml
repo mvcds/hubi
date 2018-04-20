@@ -9,7 +9,9 @@ attributes:
     description: The tokens the translator will work on
     type: array
     of: Ubiquitous Token
-    deprecated: Renamed to "ubiquitousLanguage"
+    deprecated:
+      message: Use "ubiquitousLanguage" instead
+      error: true
   # - name: interpretToken
   #   type: function
   #   arguments:
