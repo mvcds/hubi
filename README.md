@@ -2,9 +2,9 @@
 
 > Teach `hubi` your [ubiquitous language](https://martinfowler.com/bliki/UbiquitousLanguage.html) and it will write relevant source files for you
 
-:warning: work in progress which currently only partially supports [joi](https://github.com/hapijs/joi), and generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
-
 The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain files](https://mvcds.github.io/hubi/#domain-file) to learn your ubiquitous language and then generates relevant source files, so you don't have to manually change your [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
+
+:warning: work in progress which currently only partially supports [joi](https://github.com/hapijs/joi), and generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
 
 ## Getting started
 
@@ -26,7 +26,7 @@ You may also use `npm` to install it, the only important part is that it should 
 
 Teaching `hubi` your ubiquitous language is a matter of creating domain files (YAML). You can take a look at `hubi`'s own domain file as a [sample](src/Domain/Entities/DomainFile/domain-file.yml).
 
-Let's pretend our ubiquitous language has a custumer[token](https://mvcds.github.io/hubi/#ubiquitous-token):
+Let's pretend our ubiquitous language has a custumer [token](https://mvcds.github.io/hubi/#ubiquitous-token):
 
 ```yaml
 # src/domain/entities/custumer.yml
@@ -64,6 +64,10 @@ yarn hubi:log
 ## CLI
 
 At the moment, `hubi` can only be used via command line, and thus you can script upon it.
+
+### help
+
+Show the commands bellow
 
 ### log
 
