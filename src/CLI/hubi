@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+const { version } = require('../../package.json')
+const program = require('commander')
+
+program.version(version, '-v, --version')
+  .command('log', 'Logs the ubiquitous language objects to the console').alias('l')
+  .command('save', 'Saves the ubiquitous language objects as files').alias('s')
+  .parse(process.argv)

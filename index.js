@@ -1,9 +1,17 @@
-#!/usr/bin/env node
+const WriteUbiquitousLanguage = require('./src/Domain/UseCases/WriteUbiquitousLanguage')
 
-const { version } = require('./package.json')
-const program = require('commander')
+function logLanguage ({ object }) {
+  console.log(object)
+}
 
-require('./src/CLI')(program)
+// TODO: injection here
+function writeLanguage ({ object, write, filePath }) {
+  write(filePath, object)
+}
 
-program.version(version, '-v, --version')
-  .parse(process.argv)
+const Hubi = {
+  log: WriteUbiquitousLanguage.bind({ target: logLanguage }),
+  save: WriteUbiquitousLanguage.bind({ target: writeLanguage })
+}
+
+module.exports = Hubi
