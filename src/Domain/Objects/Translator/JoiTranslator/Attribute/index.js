@@ -27,10 +27,7 @@ function asBase (type) {
 }
 
 function parse () {
-  const { isRequired, type, of: arrayOf, ...data } = this
-
-  const decorations = Object.entries(data)
-    .reduce(decorate, [])
+  const { isRequired, type, of: arrayOf, default: standard, ...data } = this
 
   const base = asBase(type)
 
@@ -38,7 +35,12 @@ function parse () {
 
   const parsed = isRequired ? `${wrapped}.required()` : wrapped
 
-  return parsed.concat(decorations)
+  const decorations = Object.entries(data)
+    .reduce(decorate, [])
+
+  const decorated = parsed.concat(decorations)
+
+  return standard === undefined ? decorated : decorated.concat(`.default(${standard})`)
 }
 
 function Attribute (data) {
