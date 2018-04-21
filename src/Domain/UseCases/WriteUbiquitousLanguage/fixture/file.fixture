@@ -22,7 +22,8 @@
       "description": "content's size in bytes",
       "deprecated": {
         "message": "its size will be calculated from content in vX.Y.Z"
-      }
+      },
+      "default": 0
     }
   ]
 }

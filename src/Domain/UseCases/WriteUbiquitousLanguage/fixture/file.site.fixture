@@ -40,6 +40,7 @@
         </li>
         <li class="attribute">
           <strong class="attribute__name">size</strong><span class=
+          "attribute__default">(0)</span><span class=
           "attribute__description">: content's size in
           bytes</span><span class=
           "attribute__deprecation-note"><span class=

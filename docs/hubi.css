@@ -56,6 +56,11 @@ body {
   content: "error";
 }
 
+.attribute__default {
+  margin-left: 4px;
+  font-family: monospace, serif;
+}
+
 .hubi__info {
   padding: 8px;
   display: flex;
