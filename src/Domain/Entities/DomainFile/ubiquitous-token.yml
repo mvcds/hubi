@@ -1,7 +1,0 @@
-name: Ubiquitous Token
-description: A piece of the ubiquitous language (phrase, expression, term, etc) extracted from the domain file
-attributes:
-  - name: object
-    description: The object held by the token
-    type: Domain File
-    required: true

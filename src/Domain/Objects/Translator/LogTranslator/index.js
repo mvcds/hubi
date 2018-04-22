@@ -13,7 +13,7 @@ function interpretToken (token) {
     .reduce(addAttribute, [])
 
   return {
-    [ token.name ]: {
+    [ token.rawName ]: {
       description: token.description,
       attributes
     }

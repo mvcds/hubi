@@ -8,10 +8,10 @@ attributes:
     description: What kind of token it is
     default: '"string"'
   - name: required
-    description: A flag to mark the attribute as required when needed
+    description: A flag to mark the attribute as required
     type: boolean
     default: false
   - name: description
     description: A short sentence to teach or remind everyone what that attribute means
-  # - name: deprecated - may be an object or a boolean
-  # - name: default - its type depends on the attribute's type
+  # - name: default # its type depends on the attribute's type
+  # - name: deprecated # can be a string, a boolean or an object

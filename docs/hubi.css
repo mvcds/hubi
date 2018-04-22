@@ -34,7 +34,7 @@ body {
 
 .token__deprecation-note__icon,
 .attribute__deprecation-note__icon {
-  color:  #FFEB3B;
+  color:  #EB3BFF;
   margin-right: 4px;
   display: flex;
   align-items: center;

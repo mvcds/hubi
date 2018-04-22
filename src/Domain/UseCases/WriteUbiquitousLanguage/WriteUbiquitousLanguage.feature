@@ -7,7 +7,7 @@ Feature: Write Ubiquitous Language
     Given the <translator> translator
       And a pattern
       And some output
-      And set target function
+      And set action function
       And set write dependency
     When I call WriteUbiquitousLanguage
     Then the translation is written

@@ -1,17 +1,17 @@
 const WriteUbiquitousLanguage = require('./src/Domain/UseCases/WriteUbiquitousLanguage')
 
-function logLanguage ({ object }) {
+function log ({ object }) {
   console.log(object)
 }
 
 // TODO: injection here
-function writeLanguage ({ object, write, filePath }) {
+function save ({ object, write, filePath }) {
   write(filePath, object)
 }
 
 const Hubi = {
-  log: WriteUbiquitousLanguage.bind({ target: logLanguage }),
-  save: WriteUbiquitousLanguage.bind({ target: writeLanguage })
+  log: WriteUbiquitousLanguage.bind({ action: log }),
+  save: WriteUbiquitousLanguage.bind({ action: save })
 }
 
 module.exports = Hubi

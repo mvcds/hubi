@@ -21,12 +21,15 @@
     </header>
     <details class="token" id="domain-file" name="domain-file">
       <summary class="token__title">
-        <span class="token__name">Domain File</span>
+        <span class="token__name">Domain File</span><span class=
+        "token__deprecation-note"><span class=
+        "token__deprecation-note__icon">⚠</span><span>It does not
+        map to a source file</span></span>
       </summary>
       <p class="token__description">
-        A file containing information about a particular piece of
-        the ubiquitous language which will be transformed into a
-        token
+        An YAML file containing information about a particular
+        piece of the ubiquitous language which will be transformed
+        into a token
       </p>
       <ul class="token__attributes">
         <li class="attribute">
@@ -48,6 +51,11 @@
           token is associated with (this collection is specially
           useful for developers)</span>
         </li>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">filePath</strong><span class=
+          "attribute__description">: A path to it</span>
+        </li>
       </ul>
     </details>
     <details class="token" id="ubiquitous-token" name=
@@ -61,10 +69,29 @@
       </p>
       <ul class="token__attributes">
         <li class="attribute">
+          <strong class="attribute__name">name</strong><span class=
+          "attribute__description">: How people refer to the token
+          (should be unique across the domain to avoid
+          ambiguity)</span>
+        </li>
+        <li class="attribute">
           <strong class=
-          "attribute__name">object</strong><span class=
-          "attribute__description">: The object held by the
-          token</span>
+          "attribute__name">description</strong><span class=
+          "attribute__description">: A short sentence to teach or
+          remind everyone what that token means</span>
+        </li>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">attributes</strong><span class=
+          "attribute__description">: A collection of attributes a
+          token is associated with (this collection is specially
+          useful for developers)</span>
+        </li>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">filePath</strong><span class=
+          "attribute__description">: The path to its file
+          domain</span>
         </li>
       </ul>
     </details>
@@ -92,33 +119,13 @@
           "attribute__name">required</strong><span class=
           "attribute__default">(false)</span><span class=
           "attribute__description">: A flag to mark the attribute
-          as required when needed</span>
+          as required</span>
         </li>
         <li class="attribute">
           <strong class=
           "attribute__name">description</strong><span class=
           "attribute__description">: A short sentence to teach or
           remind everyone what that attribute means</span>
-        </li>
-      </ul>
-    </details>
-    <details class="token" id="parser" name="parser">
-      <summary class="token__title">
-        <span class="token__name">Parser</span><span class=
-        "token__deprecation-note"><span class=
-        "token__deprecation-note__icon token__deprecation-note__icon--error">⚠</span><span>Renamed
-        to "Translator", kept as deprecation example</span></span>
-      </summary>
-      <p class="token__description">
-        An object which translates tokens into relevant source
-        files for developers
-      </p>
-      <ul class="token__attributes">
-        <li class="attribute">
-          <strong class=
-          "attribute__name">tokens</strong><span class=
-          "attribute__description">: The tokens the translator will
-          work on</span>
         </li>
       </ul>
     </details>
