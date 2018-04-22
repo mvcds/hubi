@@ -1,14 +1,14 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const { log } = require('../../Services/LogConditionally')
 
-async function sendToTarget ({ name, object }) {
+async function sendToaction ({ name, object }) {
   const translatorName = this.nameFile({ name })
 
   const filePath = `${process.env.PWD}/${this.output}/${translatorName}`
 
   const value = typeof object === 'object' ? JSON.stringify(object, null, 2) : object
 
-  return this.target({
+  return this.action({
     object: value.trim(),
     write: this.write,
     filePath
@@ -27,7 +27,7 @@ function useDefaultName ({ name }) {
   return `${name}.hubi.js`
 }
 
-async function translate (data, { target, output }, { write }) {
+async function translate (data, { action, output }, { write }) {
   const { ubiquitousLanguage, interpretToken, handleTranslation, nameFile } = Object.assign({}, {
     handleTranslation: forEach,
     nameFile: useDefaultName
@@ -37,9 +37,10 @@ async function translate (data, { target, output }, { write }) {
 
   log('Translation has finished')
 
-  const action = sendToTarget.bind({ target, output, write, nameFile })
-
-  await handleTranslation({ translation, action })
+  await handleTranslation({
+    translation,
+    action: sendToaction.bind({ action, output, write, nameFile })
+  })
 }
 
 function Translator (data) {
