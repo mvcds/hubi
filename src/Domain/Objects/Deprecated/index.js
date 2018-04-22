@@ -1,11 +1,17 @@
-function Deprecated (object, data) {
-  if (!data) return {}
+function Deprecated ({ name, deprecated }) {
+  if (!deprecated) return {}
 
-  if (typeof data === 'string') return new Deprecated(object, { message: data })
+  if (typeof deprecated === 'string') {
+    const depreciation = {
+      message: deprecated
+    }
+
+    return new Deprecated({ name, deprecated: depreciation })
+  }
 
   this.deprecated = {
-    message: data.message || `"${object.name}" is marked as deprecated`,
-    error: !!data.error
+    message: deprecated.message || `"${name}" is marked as deprecated`,
+    error: !!deprecated.error
   }
 }
 
