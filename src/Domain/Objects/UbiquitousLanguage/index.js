@@ -8,7 +8,7 @@ function addToken (language, token) {
 }
 
 function associateNameWithObject ([ name, token ]) {
-  const object = this.interpretToken(token.object)
+  const object = this.interpretToken(token)
 
   return { name, object }
 }

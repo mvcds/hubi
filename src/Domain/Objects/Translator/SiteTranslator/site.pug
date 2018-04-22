@@ -22,7 +22,7 @@ mixin withTokenDeprecation({ message, error })
 mixin withToken({ name, object })
   details(id=name, name=name, class="token")
     summary(class="token__title")
-      span(class="token__name") #{object.name}
+      span(class="token__name") #{object.rawName}
       if (object.deprecated)
         +withDeprecation("token", object.deprecated)
 

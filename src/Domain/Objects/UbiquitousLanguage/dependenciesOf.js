@@ -9,17 +9,17 @@ function isKnownAttribute ({ type }) {
 function fromAttributeToobject ({ type }) {
   const name = NormalizeName(type)
 
-  return this.language.get(name).object
+  return this.language.get(name)
 }
 
-function countDependencies (acc, object) {
-  const { language, objects } = acc
+function countDependencies (acc, token) {
+  const { language, tokens } = acc
 
-  const dependencies = dependenciesOf({ language }, object.name)
+  const dependencies = dependenciesOf({ language }, token.name)
 
   return {
     ...acc,
-    objects: [ ...objects, ...dependencies, object ]
+    tokens: [ ...tokens, ...dependencies, token ]
   }
 }
 
@@ -30,12 +30,12 @@ function dependenciesOf ({ language, normalizeName }, objectName) {
 
   if (token.dependencies) return token.dependencies
 
-  const { objects } = token.object.attributes
+  const { tokens } = token.attributes
     .filter(isKnownAttribute, { language })
     .map(fromAttributeToobject, { language })
-    .reduce(countDependencies, { objects: [], language })
+    .reduce(countDependencies, { tokens: [], language })
 
-  token.dependencies = objects
+  token.dependencies = tokens
 
   return token.dependencies
 }

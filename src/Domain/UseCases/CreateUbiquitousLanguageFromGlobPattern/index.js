@@ -1,7 +1,7 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const { log } = require('../../Services/LogConditionally')
 
-const DomainFile = require('../../Entities/DomainFile')
+const UbiquitousToken = require('../../Entities/DomainFile/UbiquitousToken')
 
 const UbiquitousLanguage = require('../../Objects/UbiquitousLanguage')
 
@@ -15,14 +15,16 @@ const READ_OPTIONS = {
   encoding: 'utf8'
 }
 
-async function readDomainFile (filePath) {
+async function tokenize (filePath) {
   const { fs, yaml } = this
 
   const file = fs.readFileSync(filePath, READ_OPTIONS)
 
-  const asJSON = yaml.safeLoad(file)
+  const data = yaml.safeLoad(file)
 
-  return new DomainFile(asJSON).tokenize()
+  log(`Tokenizing "${data.rawName}"`)
+
+  return new UbiquitousToken({ ...data, filePath })
 }
 
 async function CreateUbiquitousLanguageFromGlobPattern (data, injection) {
@@ -37,7 +39,7 @@ async function CreateUbiquitousLanguageFromGlobPattern (data, injection) {
   log(`Found ${files.length} domain files`)
 
   const tokens = await Promise.all(
-    files.map(readDomainFile, injected)
+    files.map(tokenize, injected)
   )
 
   log('Tokens have been created')

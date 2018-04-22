@@ -1,11 +1,28 @@
 const NormalizeName = require('../../Services/NormalizeName')
+const RequiresAttribute = require('../../Services/RequiresAttribute')
 
 const Deprecated = require('../../Objects/Deprecated')
 
-function UbiquitousToken ({ object }) {
-  this.object = Object.assign({}, object, new Deprecated(object))
+const DEPENDENCIES = {
+  AttributeParser: require('../../Objects/AttributeParser')
+}
 
-  this.name = NormalizeName(object.name)
+function UbiquitousToken (data, injection) {
+  RequiresAttribute(data, {
+    name: 'name',
+    description: 'description',
+    attributes: 'attributes',
+    filePath: 'file to path'
+  })
+
+  const { AttributeParser } = Object.assign({}, DEPENDENCIES, injection)
+
+  const attributes = data.attributes.map(AttributeParser)
+
+  Object.assign(this, data, { attributes }, new Deprecated(data))
+  this.filePath = data.filePath
+  this.name = NormalizeName(data.name)
+  this.rawName = data.name
 }
 
 module.exports = UbiquitousToken
