@@ -1,5 +1,5 @@
 name: Domain File
-description: A file containing information about a particular piece of the ubiquitous language which will be transformed into a token
+description: An YAML file containing information about a particular piece of the ubiquitous language which will be transformed into a token
 attributes:
   - name: name
     description: How people refer to the token (should be unique across the domain to avoid ambiguity)
@@ -12,3 +12,4 @@ attributes:
     type: array
     of: Attribute
     required: true
+deprecated: It does not map to a source file

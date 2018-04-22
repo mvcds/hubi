@@ -1,7 +1,18 @@
 name: Ubiquitous Token
 description: A piece of the ubiquitous language (phrase, expression, term, etc) extracted from the domain file
+# it should "extend domain-file"
 attributes:
-  - name: object
-    description: The object held by the token
-    type: Domain File
+  - name: name
+    description: How people refer to the token (should be unique across the domain to avoid ambiguity)
+    required: true
+  - name: description
+    description: A short sentence to teach or remind everyone what that token means
+    required: true
+  - name: attributes
+    description: A collection of attributes a token is associated with (this collection is specially useful for developers)
+    type: array
+    of: Attribute
+    required: true
+  - name: filePath
+    description: The path to its file domain
     required: true
