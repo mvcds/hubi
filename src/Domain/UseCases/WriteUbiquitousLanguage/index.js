@@ -16,7 +16,7 @@ async function WriteUbiquitousLanguage (data, injection) {
 
   const { pattern: globPattern, translator: translatorName, output, verbose } = data
   const { write, ...injected } = Object.assign({}, DEPENDENCIES, injection)
-  const { target } = this
+  const { action } = this
 
   LogConditionally({ canLog: verbose })
 
@@ -28,7 +28,7 @@ async function WriteUbiquitousLanguage (data, injection) {
 
   LogConditionally.log(`Translator for "${translatorName}" was found`)
 
-  await translator.translate({ target, output }, { write })
+  await translator.translate({ action, output }, { write })
 }
 
 module.exports = WriteUbiquitousLanguage

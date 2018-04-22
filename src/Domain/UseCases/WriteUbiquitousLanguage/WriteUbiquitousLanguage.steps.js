@@ -22,9 +22,9 @@ Given('some output', function () {
   })
 })
 
-Given('set target function', function () {
+Given('set action function', function () {
   this.aux = Object.assign({}, this.aux, {
-    target: mock('target')
+    action: mock('action')
   })
 })
 
@@ -35,34 +35,34 @@ Given('set write dependency', function () {
 })
 
 When('I call WriteUbiquitousLanguage', async function () {
-  const { target } = this.aux
+  const { action } = this.aux
 
-  target.withExactArgs(match.object)
+  action.withExactArgs(match.object)
 
-  this.result = await WriteUbiquitousLanguage.call({ target }, this.args, this.injection)
+  this.result = await WriteUbiquitousLanguage.call({ action }, this.args, this.injection)
 })
 
 Then('the translation is written', function () {
-  this.aux.target.verify()
+  this.aux.action.verify()
 })
 
 Then('translation was precise', function () {
   const filePath = `${__dirname}/fixture/file.${this.args.translator}.fixture`
 
-  const [ [ { object } ] ] = this.aux.target.args
+  const [ [ { object } ] ] = this.aux.action.args
   const expectation = fs.readFileSync(filePath, 'utf8')
 
   assert.equal(object, expectation.trim())
 })
 
 Then('write was invoked', function () {
-  const [ [ { write } ] ] = this.aux.target.args
+  const [ [ { write } ] ] = this.aux.action.args
 
   assert.equal(write, this.injection.write)
 })
 
 Then('a filePath was provided', function () {
-  const [ [ { filePath } ] ] = this.aux.target.args
+  const [ [ { filePath } ] ] = this.aux.action.args
 
   assert.ok(filePath.includes(this.args.output))
 })
