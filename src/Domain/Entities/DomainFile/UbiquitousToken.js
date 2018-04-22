@@ -3,10 +3,9 @@ const NormalizeName = require('../../Services/NormalizeName')
 const Deprecated = require('../../Objects/Deprecated')
 
 function UbiquitousToken ({ object }) {
-  this.object = object
-  this.name = NormalizeName(object.name)
+  this.object = Object.assign({}, object, new Deprecated(object))
 
-  Object.assign(this, new Deprecated(this, object))
+  this.name = NormalizeName(object.name)
 }
 
 module.exports = UbiquitousToken

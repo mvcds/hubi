@@ -14,7 +14,7 @@ function Attribute (data) {
   this.description = data.description
   this.default = data.default
 
-  Object.assign(this, new Deprecated(this, data.deprecated))
+  Object.assign(this, new Deprecated(data))
 }
 
 Attribute.includes = function includes (...types) {

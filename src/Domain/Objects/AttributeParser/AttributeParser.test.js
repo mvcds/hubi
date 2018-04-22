@@ -76,7 +76,7 @@ describe('AttributeParser', () => {
     })
   })
 
-  context.skip('Deprecation', () => {
+  context('Deprecation', () => {
     const testDeprecation = ({ deprecated }, message, error) => {
       it('Matches the message', () => assert.equal(deprecated.message, message))
 
