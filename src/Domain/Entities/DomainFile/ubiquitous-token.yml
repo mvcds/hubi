@@ -5,3 +5,5 @@ attributes:
     description: The object held by the token
     type: Domain File
     required: true
+  - name: filePath
+    description: A path to its object

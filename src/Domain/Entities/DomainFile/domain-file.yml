@@ -12,3 +12,5 @@ attributes:
     type: array
     of: Attribute
     required: true
+  - name: filePath
+    description: A path to it

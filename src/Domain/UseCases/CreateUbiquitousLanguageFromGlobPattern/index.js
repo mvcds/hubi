@@ -20,9 +20,9 @@ async function readDomainFile (filePath) {
 
   const file = fs.readFileSync(filePath, READ_OPTIONS)
 
-  const asJSON = yaml.safeLoad(file)
+  const data = yaml.safeLoad(file)
 
-  return new DomainFile(asJSON).tokenize()
+  return new DomainFile({ ...data, filePath }).tokenize()
 }
 
 async function CreateUbiquitousLanguageFromGlobPattern (data, injection) {
