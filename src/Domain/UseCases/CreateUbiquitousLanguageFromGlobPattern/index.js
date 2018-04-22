@@ -1,7 +1,7 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const { log } = require('../../Services/LogConditionally')
 
-const UbiquitousToken = require('../../Entities/DomainFile/UbiquitousToken')
+const UbiquitousToken = require('../../Entities/UbiquitousToken')
 
 const UbiquitousLanguage = require('../../Objects/UbiquitousLanguage')
 
