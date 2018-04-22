@@ -6,5 +6,5 @@ attributes:
     type: array
     of: Ubiquitous Token
 deprecated:
-  message: Renamed to "Translator", kept as deprecation example
+  message: Renamed to "Translator", kept as a deprecation example
   error: true
