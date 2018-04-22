@@ -14,3 +14,4 @@ attributes:
     required: true
   - name: filePath
     description: A path to it
+# deprecation can be a string, a boolean or an object
