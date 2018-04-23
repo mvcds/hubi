@@ -8,6 +8,7 @@ const DEPENDENCIES = {
   write: require('write')
 }
 
+//  TODO: rename it to TranslateUbiquitousLanguage
 async function WriteUbiquitousLanguage (data, injection) {
   RequiresAttribute(data, {
     pattern: 'pattern',
