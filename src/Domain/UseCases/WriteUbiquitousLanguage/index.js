@@ -29,7 +29,7 @@ async function WriteUbiquitousLanguage (data, injection) {
 
   LogConditionally.log(`Translator for "${translatorName}" was found`)
 
-  await translator.translate({ action, output }, { write })
+  return translator.translate({ action, output }, { write })
 }
 
 module.exports = WriteUbiquitousLanguage
