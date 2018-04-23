@@ -23,23 +23,18 @@ function forEach ({ translation, action }) {
   log('Translation handled')
 }
 
-function useDefaultName ({ name }) {
+function useDefaulttName ({ name }) {
   return `${name}.hubi.js`
 }
 
-async function translate (data, { action, output }, { write }) {
-  const { ubiquitousLanguage, interpretToken, handleTranslation, nameFile } = Object.assign({}, {
-    handleTranslation: forEach,
-    nameFile: useDefaultName
-  }, data)
-
-  const translation = ubiquitousLanguage.withEachToken({ interpretToken })
+async function translate ({ ubiquitousLanguage }, { action, output }, { write }) {
+  const translation = ubiquitousLanguage.withEachToken({ interpretToken: this.interpretToken })
 
   log('Translation has finished')
 
-  await handleTranslation({
+  await this.handleTranslation({
     translation,
-    action: takeAction.bind({ action, output, write, nameFile })
+    action: takeAction.bind({ action, output, write, nameFile: this.nameFile })
   })
 }
 
@@ -49,7 +44,13 @@ function Translator (data) {
     interpretToken: 'interpret token function'
   })
 
-  this.translate = translate.bind(null, data)
+  const { interpretToken, handleTranslation, nameFile, ...rest } = data
+
+  this.interpretToken = interpretToken
+  this.handleTranslation = handleTranslation || forEach
+  this.nameFile = nameFile || useDefaulttName
+
+  this.translate = translate.bind(this, rest)
 }
 
 module.exports = Translator
