@@ -22,7 +22,7 @@ async function tokenize (filePath) {
 
   const data = yaml.safeLoad(file)
 
-  log(`Tokenizing "${data.rawName}"`)
+  log(`Tokenizing "${data.name}"`)
 
   return new UbiquitousToken({ ...data, filePath })
 }
