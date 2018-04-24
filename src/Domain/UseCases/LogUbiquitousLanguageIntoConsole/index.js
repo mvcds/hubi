@@ -3,7 +3,7 @@ const RequiresAttribute = require('../../Services/RequiresAttribute')
 const DEPENDENCIES = {
   log: console.log,
   UsesTranslator: require('../../Services/UsesTranslator'),
-  WriteUbiquitousLanguage: require('../WriteUbiquitousLanguage')
+  TranslateFiles: require('../TranslateFiles')
 }
 
 //  TODO: rename object to translation
@@ -12,7 +12,7 @@ function show ({ object }) {
 }
 
 async function LogUbiquitousLanguageIntoConsole (data, injection) {
-  const { log, UsesTranslator, WriteUbiquitousLanguage } = Object.assign({}, DEPENDENCIES, injection)
+  const { log, UsesTranslator, TranslateFiles } = Object.assign({}, DEPENDENCIES, injection)
 
   RequiresAttribute(data, {
     pattern: 'pattern',
@@ -23,7 +23,7 @@ async function LogUbiquitousLanguageIntoConsole (data, injection) {
 
   const translator = UsesTranslator({ translatorName })
 
-  const translation = await WriteUbiquitousLanguage({ pattern, translator })
+  const translation = await TranslateFiles({ pattern, translator })
 
   translation.forEach(show, { log })
 }

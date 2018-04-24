@@ -1,7 +1,7 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const UsesTranslator = require('../../Services/UsesTranslator')
 
-const WriteUbiquitousLanguage = require('../WriteUbiquitousLanguage')
+const TranslateFiles = require('../TranslateFiles')
 
 const DEPENDENCIES = {
   write: require('write')
@@ -29,7 +29,7 @@ async function SaveUbiquitousLanguageIntoFile (data, injection) {
 
   const translator = UsesTranslator({ translatorName })
 
-  const translation = await WriteUbiquitousLanguage({ pattern, translator })
+  const translation = await TranslateFiles({ pattern, translator })
 
   translation.forEach(save, { translator, output, write })
 }

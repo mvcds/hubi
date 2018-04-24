@@ -3,9 +3,8 @@ const LogConditionally = require('../../Services/LogConditionally')
 
 const CreateUbiquitousLanguage = require('../CreateUbiquitousLanguageFromGlobPattern')
 
-//  TODO: rename it to TranslateFilesFromGlobPattern
 //  TODO: move CreateUbiquitousLanguage as its step?
-async function WriteUbiquitousLanguage (data, injection) {
+async function TranslateFiles (data, injection) {
   RequiresAttribute(data, {
     pattern: 'pattern',
     translator: 'translator'
@@ -22,4 +21,4 @@ async function WriteUbiquitousLanguage (data, injection) {
   return Array.isArray(translation) ? translation : [ translation ]
 }
 
-module.exports = WriteUbiquitousLanguage
+module.exports = TranslateFiles

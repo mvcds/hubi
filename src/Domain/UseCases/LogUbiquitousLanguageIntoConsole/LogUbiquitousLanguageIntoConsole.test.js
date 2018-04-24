@@ -7,12 +7,12 @@ const test = () => {
   return {
     log: mock('log'),
     UsesTranslator: mock('UsesTranslator'),
-    WriteUbiquitousLanguage: mock('WriteUbiquitousLanguage')
+    TranslateFiles: mock('TranslateFiles')
   }
 }
 
 describe('LogUbiquitousLanguageIntoConsole', () => {
-  const { UsesTranslator, WriteUbiquitousLanguage, log } = test()
+  const { UsesTranslator, TranslateFiles, log } = test()
 
   before(async () => {
     const pattern = lorem.word()
@@ -26,19 +26,19 @@ describe('LogUbiquitousLanguageIntoConsole', () => {
     UsesTranslator.withExactArgs({ translatorName: translator })
       .returns(translator)
 
-    WriteUbiquitousLanguage.withExactArgs({ pattern, translator })
+    TranslateFiles.withExactArgs({ pattern, translator })
       .resolves(translation)
 
     await LogUbiquitousLanguageIntoConsole({ pattern, translator }, {
       log,
       UsesTranslator,
-      WriteUbiquitousLanguage
+      TranslateFiles
     })
   })
 
   it('Uses the correct translator', () => UsesTranslator.verify())
 
-  it('Writes the translation', () => WriteUbiquitousLanguage.verify())
+  it('Writes the translation', () => TranslateFiles.verify())
 
   it('Logs the object', () => log.verify())
 })
