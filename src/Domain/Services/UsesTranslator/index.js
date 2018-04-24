@@ -1,5 +1,6 @@
 //  TODO: move it to objects when bumping major
 const RequiresAttribute = require('../RequiresAttribute')
+const LogConditionally = require('../../Services/LogConditionally')
 
 const ubi = require('../../Objects/Translator/UbiTranslator')
 const log = require('../../Objects/Translator/LogTranslator')
@@ -15,17 +16,18 @@ const TRANSLATORS = {
 
 function UsesTranslator (data) {
   RequiresAttribute(data, {
-    translatorName: 'translator name',
-    ubiquitousLanguage: 'ubiquitous language'
+    translatorName: 'translator name'
   })
 
-  const { translatorName, ubiquitousLanguage } = data
+  const { translatorName } = data
 
   const Translator = TRANSLATORS[translatorName]
 
   if (!Translator) throw new Error(`It is not possible to use "${translatorName}" as a translator yet`)
 
-  return new Translator({ ubiquitousLanguage })
+  LogConditionally.log(`Translator for "${translatorName}" was found`)
+
+  return new Translator()
 }
 
 module.exports = UsesTranslator

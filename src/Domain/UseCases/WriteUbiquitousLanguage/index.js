@@ -1,35 +1,25 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
-const UsesTranslator = require('../../Services/UsesTranslator')
 const LogConditionally = require('../../Services/LogConditionally')
 
 const CreateUbiquitousLanguage = require('../CreateUbiquitousLanguageFromGlobPattern')
 
-const DEPENDENCIES = {
-  write: require('write')
-}
-
-//  TODO: rename it to TranslateUbiquitousLanguage
+//  TODO: rename it to TranslateFilesFromGlobPattern
+//  TODO: move CreateUbiquitousLanguage as its step?
 async function WriteUbiquitousLanguage (data, injection) {
   RequiresAttribute(data, {
     pattern: 'pattern',
     translator: 'translator'
   })
 
-  const { pattern: globPattern, translator: translatorName, output, verbose } = data
-  const { write, ...injected } = Object.assign({}, DEPENDENCIES, injection)
-  const { action } = this
+  const { pattern: globPattern, translator, verbose } = data
 
   LogConditionally({ canLog: verbose })
 
-  const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, injected)
+  const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, injection)
 
-  LogConditionally.log('Hubi knows your ubiquitous language')
+  const translation = await translator.translate({ ubiquitousLanguage })
 
-  const translator = UsesTranslator({ translatorName, ubiquitousLanguage })
-
-  LogConditionally.log(`Translator for "${translatorName}" was found`)
-
-  return translator.translate({ action, output }, { write })
+  return Array.isArray(translation) ? translation : [ translation ]
 }
 
 module.exports = WriteUbiquitousLanguage

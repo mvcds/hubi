@@ -16,15 +16,14 @@ function interpretToken (token) {
   return token
 }
 
-async function handleTranslation ({ translation: tokens, action }) {
+async function handleTranslation ({ translation: tokens }) {
   const file = `${__dirname}/site.pug`
 
   const html = pug.renderFile(file, { tokens })
 
-  action({
-    name: 'hubi',
-    object: await formatHTML(html, TIDY)
-  })
+  const object = await formatHTML(html, TIDY)
+
+  return { name: 'index', object }
 }
 
 function nameFile ({ name }) {

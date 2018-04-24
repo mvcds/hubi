@@ -68,7 +68,7 @@
     "release:major": "yarn release:pre && release-it major --non-interactive && yarn release:pos",
     "release:pre": "git checkout . && git clean -fd && git push -u && yarn validate",
     "release:pos": "yarn document && git add . && git commit --no-verify -m \"fix version\" && git push",
-    "document": "node src/CLI/hubi s -t site -o docs && mv docs/hubi.hubi.html docs/index.html",
+    "document": "node src/CLI/hubi s -t site -o docs && mv docs/index.hubi.html docs/index.html",
     "document:watch": "npm-watch document",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test:release": "find src -type f \\( -iname \\*.feature -o -iname \\*.test.js \\)"

@@ -1,18 +1,31 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
-const WriteUbiquitousLanguage = require('../WriteUbiquitousLanguage')
+const DEPENDENCIES = {
+  log: console.log,
+  UsesTranslator: require('../../Services/UsesTranslator'),
+  WriteUbiquitousLanguage: require('../WriteUbiquitousLanguage')
+}
 
-function log ({ object }) {
-  console.log(object)
+//  TODO: rename object to translation
+function show ({ object }) {
+  this.log(object)
 }
 
 async function LogUbiquitousLanguageIntoConsole (data, injection) {
+  const { log, UsesTranslator, WriteUbiquitousLanguage } = Object.assign({}, DEPENDENCIES, injection)
+
   RequiresAttribute(data, {
     pattern: 'pattern',
-    translator: 'translator'
+    translator: 'translator name'
   })
 
-  return WriteUbiquitousLanguage.call({ action: log }, data)
+  const { pattern, translator: translatorName } = data
+
+  const translator = UsesTranslator({ translatorName })
+
+  const translation = await WriteUbiquitousLanguage({ pattern, translator })
+
+  translation.forEach(show, { log })
 }
 
 module.exports = LogUbiquitousLanguageIntoConsole
