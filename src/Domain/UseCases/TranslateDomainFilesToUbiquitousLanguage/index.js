@@ -1,10 +1,17 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const LogConditionally = require('../../Services/LogConditionally')
 
-const CreateUbiquitousLanguage = require('../CreateUbiquitousLanguageFromGlobPattern')
+const CreateUbiquitousLanguage = require('./CreateUbiquitousLanguage')
 
-//  TODO: move CreateUbiquitousLanguage as its step?
-async function TranslateFiles (data, injection) {
+const DEPENDENCIES = {
+  glob: require('glob'),
+  fs: require('fs'),
+  yaml: require('js-yaml')
+}
+
+async function TranslateDomainFilesToUbiquitousLanguage (data, injection) {
+  const resolved = Object.assign({}, DEPENDENCIES, injection)
+
   RequiresAttribute(data, {
     pattern: 'pattern',
     translator: 'translator'
@@ -14,11 +21,11 @@ async function TranslateFiles (data, injection) {
 
   LogConditionally({ canLog: verbose })
 
-  const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, injection)
+  const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, resolved)
 
   const translation = await translator.translate({ ubiquitousLanguage })
 
   return Array.isArray(translation) ? translation : [ translation ]
 }
 
-module.exports = TranslateFiles
+module.exports = TranslateDomainFilesToUbiquitousLanguage

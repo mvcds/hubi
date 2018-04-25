@@ -5,12 +5,6 @@ const UbiquitousToken = require('../../Entities/UbiquitousToken')
 
 const UbiquitousLanguage = require('../../Objects/UbiquitousLanguage')
 
-const DEPENDENCIES = {
-  glob: require('glob'),
-  fs: require('fs'),
-  yaml: require('js-yaml')
-}
-
 const READ_OPTIONS = {
   encoding: 'utf8'
 }
@@ -27,12 +21,10 @@ async function tokenize (filePath) {
   return new UbiquitousToken({ ...data, filePath })
 }
 
-async function CreateUbiquitousLanguageFromGlobPattern (data, injection) {
+async function CreateUbiquitousLanguage (data, { glob, ...injected }) {
   RequiresAttribute(data, {
     globPattern: 'glob pattern'
   })
-
-  const { glob, ...injected } = Object.assign({}, DEPENDENCIES, injection)
 
   const files = glob.sync(data.globPattern)
 
@@ -47,4 +39,4 @@ async function CreateUbiquitousLanguageFromGlobPattern (data, injection) {
   return new UbiquitousLanguage({ tokens })
 }
 
-module.exports = CreateUbiquitousLanguageFromGlobPattern
+module.exports = CreateUbiquitousLanguage

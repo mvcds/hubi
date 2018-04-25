@@ -1,7 +1,7 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const UsesTranslator = require('../../Services/UsesTranslator')
 
-const TranslateFiles = require('../TranslateFiles')
+const TranslateFiles = require('../TranslateDomainFilesToUbiquitousLanguage')
 
 const DEPENDENCIES = {
   write: require('write')

@@ -3,7 +3,7 @@ const RequiresAttribute = require('../../Services/RequiresAttribute')
 const DEPENDENCIES = {
   log: console.log,
   UsesTranslator: require('../../Services/UsesTranslator'),
-  TranslateFiles: require('../TranslateFiles')
+  TranslateFiles: require('../TranslateDomainFilesToUbiquitousLanguage')
 }
 
 //  TODO: rename object to translation

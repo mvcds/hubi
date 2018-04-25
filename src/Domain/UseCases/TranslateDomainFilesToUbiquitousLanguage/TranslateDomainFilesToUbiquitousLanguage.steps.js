@@ -3,7 +3,11 @@ const { Given, When, Then } = require('cucumber')
 const { mock } = require('sinon')
 const { lorem } = require('faker')
 
-const CreateUbiquitousLanguageFromGlobPattern = require('./')
+const UsesTranslator = require('../../Services/UsesTranslator')
+
+const TranslateDomainFilesToUbiquitousLanguage = require('./')
+
+const TRANSLATOR = UsesTranslator({ translatorName: 'log' })
 
 Given('a pattern to {string}', function (file) {
   const { aux = { files: [] } } = this
@@ -15,7 +19,7 @@ Given('a pattern to {string}', function (file) {
   })
 })
 
-When('I run CreateUbiquitousLanguageFromGlobPattern', async function () {
+When('I run TranslateDomainFilesToUbiquitousLanguage', async function () {
   const globPattern = lorem.word()
 
   this.injection = Object.assign({}, this.injection, {
@@ -28,7 +32,10 @@ When('I run CreateUbiquitousLanguageFromGlobPattern', async function () {
     .withExactArgs(globPattern)
     .returns(this.aux.files)
 
-  this.result = await CreateUbiquitousLanguageFromGlobPattern({ globPattern }, this.injection)
+  this.result = await TranslateDomainFilesToUbiquitousLanguage({
+    pattern: globPattern,
+    translator: TRANSLATOR
+  }, this.injection)
 })
 
 Then('the glob pattern is read', function () {
@@ -36,6 +43,7 @@ Then('the glob pattern is read', function () {
 })
 
 Then('the token {string} has {int} dependencies', function (token, expectation) {
+  // console.log(this.result, token)
   const dependencies = this.result.dependenciesOf(token)
 
   assert.equal(dependencies.length, expectation)
