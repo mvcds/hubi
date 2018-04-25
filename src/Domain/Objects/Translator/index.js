@@ -1,6 +1,8 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const { log } = require('../../Services/LogConditionally')
 
+const Translation = require('./Translation')
+
 //  TODO: rename object to translation
 function normalize ({ name, object }) {
   const value = typeof object === 'object' ? JSON.stringify(object, null, 2) : object
@@ -21,11 +23,12 @@ async function translate ({ ubiquitousLanguage }) {
 
   log(`Handling ${translation.length} translations`)
 
-  const handledTranslations = await this.handleTranslation({ translation })
+  const lexicon = await this.handleTranslation({ translation })
 
   log('Translation handled')
 
-  return handledTranslations
+  //  TODO: add language type?
+  return new Translation({ lexicon })
 }
 
 function Translator (data) {
@@ -36,6 +39,7 @@ function Translator (data) {
   const { interpretToken, handleTranslation, nameFile } = data
 
   this.interpretToken = interpretToken
+  //  TODO: handleTranslation => createLexicon
   this.handleTranslation = handleTranslation || useSameTranslation
   this.nameFile = nameFile || useDefaulttName
 

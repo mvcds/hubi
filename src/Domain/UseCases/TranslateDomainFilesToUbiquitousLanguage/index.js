@@ -23,9 +23,7 @@ async function TranslateDomainFilesToUbiquitousLanguage (data, injection) {
 
   const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, resolved)
 
-  const translation = await translator.translate({ ubiquitousLanguage })
-
-  return Array.isArray(translation) ? translation : [ translation ]
+  return translator.translate({ ubiquitousLanguage })
 }
 
 module.exports = TranslateDomainFilesToUbiquitousLanguage
