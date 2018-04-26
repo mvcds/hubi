@@ -11,13 +11,12 @@ function UbiquitousToken (data, injection) {
   RequiresAttribute(data, {
     name: 'name',
     description: 'description',
-    attributes: 'attributes',
     filePath: 'file to path'
   })
 
   const { AttributeParser } = Object.assign({}, DEPENDENCIES, injection)
 
-  const attributes = data.attributes.map(AttributeParser)
+  const attributes = data.attributes ? data.attributes.map(AttributeParser) : []
 
   Object.assign(this, data, { attributes }, new Deprecated(data))
   this.filePath = data.filePath
