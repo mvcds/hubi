@@ -13,7 +13,7 @@ function associateNameWithObject ([ name, token ]) {
   return { name, object }
 }
 
-function withEachToken ({ language }, { interpretToken }) {
+function mapInterpretation ({ language }, { interpretToken }) {
   return Array.from(language)
     .map(associateNameWithObject, { interpretToken })
 }
@@ -28,7 +28,7 @@ function UbiquitousLanguage (data) {
 
   this.dependenciesOf = dependenciesOf.bind(this, { language })
   this.dependentsOf = dependentsOf.bind(this, { language })
-  this.withEachToken = withEachToken.bind(this, { language })
+  this.mapInterpretation = mapInterpretation.bind(this, { language })
 }
 
 module.exports = UbiquitousLanguage

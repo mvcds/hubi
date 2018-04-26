@@ -16,7 +16,7 @@ function interpretToken (token) {
   return token
 }
 
-async function createLexicon ({ translation: tokens }) {
+async function createLexicon ({ interpretation: tokens }) {
   const file = `${__dirname}/site.pug`
 
   const html = pug.renderFile(file, { tokens })

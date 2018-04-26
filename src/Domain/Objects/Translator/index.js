@@ -10,24 +10,25 @@ function normalize ({ name, object }) {
   return { name, object: value }
 }
 
-function useSameTranslation ({ translation }) {
-  return translation
+function useSameInterpretation ({ interpretation }) {
+  return interpretation
 }
 
+//  TODO: add the type as extension?
 function useDefaulttName ({ name }) {
   return `${name}.hubi.js`
 }
 
 async function translate ({ ubiquitousLanguage }) {
-  const translation = ubiquitousLanguage.withEachToken({ interpretToken: this.interpretToken })
+  const interpretation = ubiquitousLanguage.mapInterpretation({ interpretToken: this.interpretToken })
 
-  log(`Handling ${translation.length} translations`)
+  log(`Handling ${interpretation.length} interpretations`)
 
-  const lexicon = await this.createLexicon({ translation })
+  const lexicon = await this.createLexicon({ interpretation })
 
   const normalizedLexicon = Array.isArray(lexicon) ? lexicon : [ lexicon ]
 
-  log('Translation handled')
+  log('Translating')
 
   //  TODO: add language type?
   return new Translation({
@@ -43,7 +44,7 @@ function Translator (data) {
   const { interpretToken, createLexicon, nameFile } = data
 
   this.interpretToken = interpretToken
-  this.createLexicon = createLexicon || useSameTranslation
+  this.createLexicon = createLexicon || useSameInterpretation
   this.nameFile = nameFile || useDefaulttName
 
   this.translate = translate.bind(this)
