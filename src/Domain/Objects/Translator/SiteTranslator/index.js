@@ -16,7 +16,7 @@ function interpretToken (token) {
   return token
 }
 
-async function handleTranslation ({ translation: tokens }) {
+async function createLexicon ({ translation: tokens }) {
   const file = `${__dirname}/site.pug`
 
   const html = pug.renderFile(file, { tokens })
@@ -34,7 +34,7 @@ function SiteTranslator (data) {
   Object.assign(this, new Translator({
     ...data,
     interpretToken,
-    handleTranslation,
+    createLexicon,
     nameFile
   }))
 }

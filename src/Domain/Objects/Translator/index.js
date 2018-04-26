@@ -11,6 +11,7 @@ function normalize ({ name, object }) {
 }
 
 function useSameTranslation ({ translation }) {
+  //  TODO: normalize after creating lexicon?
   return translation.map(normalize)
 }
 
@@ -23,7 +24,7 @@ async function translate ({ ubiquitousLanguage }) {
 
   log(`Handling ${translation.length} translations`)
 
-  const lexicon = await this.handleTranslation({ translation })
+  const lexicon = await this.createLexicon({ translation })
 
   log('Translation handled')
 
@@ -36,11 +37,10 @@ function Translator (data) {
     interpretToken: 'interpret token function'
   })
 
-  const { interpretToken, handleTranslation, nameFile } = data
+  const { interpretToken, createLexicon, nameFile } = data
 
   this.interpretToken = interpretToken
-  //  TODO: handleTranslation => createLexicon
-  this.handleTranslation = handleTranslation || useSameTranslation
+  this.createLexicon = createLexicon || useSameTranslation
   this.nameFile = nameFile || useDefaulttName
 
   this.translate = translate.bind(this)
