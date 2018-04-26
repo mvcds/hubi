@@ -11,8 +11,7 @@ function normalize ({ name, object }) {
 }
 
 function useSameTranslation ({ translation }) {
-  //  TODO: normalize after creating lexicon?
-  return translation.map(normalize)
+  return translation
 }
 
 function useDefaulttName ({ name }) {
@@ -26,10 +25,14 @@ async function translate ({ ubiquitousLanguage }) {
 
   const lexicon = await this.createLexicon({ translation })
 
+  const normalizedLexicon = Array.isArray(lexicon) ? lexicon : [ lexicon ]
+
   log('Translation handled')
 
   //  TODO: add language type?
-  return new Translation({ lexicon })
+  return new Translation({
+    lexicon: normalizedLexicon.map(normalize)
+  })
 }
 
 function Translator (data) {

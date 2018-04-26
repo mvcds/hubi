@@ -7,7 +7,7 @@ function Translation (data) {
 
   const { lexicon } = data
 
-  return Array.isArray(lexicon) ? lexicon : [ lexicon ]
+  return lexicon
 }
 
 module.exports = Translation
