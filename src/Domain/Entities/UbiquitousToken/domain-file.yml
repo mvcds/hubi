@@ -1,18 +1,3 @@
 name: Domain File
 description: An YAML file containing information about a particular piece of the ubiquitous language which will be transformed into a token
-attributes:
-  - name: name
-    description: How people refer to the token (should be unique across the domain to avoid ambiguity)
-    required: true
-  - name: description
-    description: A short sentence to teach or remind everyone what that token means
-    required: true
-  - name: attributes
-    description: A collection of attributes a token is associated with (this collection is specially useful for developers)
-    type: array
-    of: Attribute
-    required: true
-  - name: filePath
-    description: A path to it
-  # - name: deprecation # can be a string, a boolean or an object
 deprecated: It does not map to a source file

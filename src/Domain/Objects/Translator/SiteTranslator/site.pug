@@ -27,9 +27,11 @@ mixin withToken({ name, object })
         +withDeprecation("token", object.deprecated)
 
     p(class="token__description") #{object.description}
-    ul(class="token__attributes")
-      each attribute in object.attributes
-        +withAttribute(attribute)
+
+    if (object.attributes.length)
+      ul(class="token__attributes")
+        each attribute in object.attributes
+          +withAttribute(attribute)
 
 doctype html
 html(lang="en")
