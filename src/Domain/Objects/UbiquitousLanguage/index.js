@@ -7,15 +7,20 @@ function addToken (language, token) {
   return language.set(token.name, token)
 }
 
-function associateNameWithObject ([ name, token ]) {
-  const object = this.interpretToken(token)
+function interpret ({ interpretToken, interpretation }, [ name, token ]) {
+  const interpreted = interpretToken(token)
 
-  return { name, object }
+  return {
+    interpretToken,
+    interpretation: interpretation.set(name, interpreted)
+  }
 }
 
 function mapInterpretation ({ language }, { interpretToken }) {
-  return Array.from(language)
-    .map(associateNameWithObject, { interpretToken })
+  const { interpretation } = Array.from(language)
+    .reduce(interpret, { interpretToken, interpretation: new Map() })
+
+  return interpretation
 }
 
 function UbiquitousLanguage (data) {
