@@ -1,7 +1,7 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const { log } = require('../../Services/LogConditionally')
 
-const Translation = require('./Translation')
+const Translation = require('../Translation')
 
 //  TODO: rename object to translation
 function normalize ({ name, object }) {

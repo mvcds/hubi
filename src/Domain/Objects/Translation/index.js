@@ -1,5 +1,9 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
+function dependenciesOf () {
+  return []
+}
+
 function Translation (data) {
   RequiresAttribute(data, {
     lexicon: 'lexicon'
@@ -7,7 +11,7 @@ function Translation (data) {
 
   const { lexicon } = data
 
-  return lexicon
+  this.dependenciesOf = dependenciesOf.bind(this, { lexicon })
 }
 
 module.exports = Translation

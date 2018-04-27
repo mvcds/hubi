@@ -1,0 +1,8 @@
+name: Translation
+description: The result a Translator produces
+attributes:
+  - name: lexicon
+    description: The translated's vocabulary
+    type: Array
+    of: object
+    required: true

@@ -43,7 +43,6 @@ Then('the glob pattern is read', function () {
 })
 
 Then('the token {string} has {int} dependencies', function (token, expectation) {
-  // console.log(this.result, token)
   const dependencies = this.result.dependenciesOf(token)
 
   assert.equal(dependencies.length, expectation)
