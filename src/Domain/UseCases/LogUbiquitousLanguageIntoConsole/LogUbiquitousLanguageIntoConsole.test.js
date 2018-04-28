@@ -1,5 +1,5 @@
 const { lorem } = require('faker')
-const { mock } = require('sinon')
+const { mock, match } = require('sinon')
 
 const LogUbiquitousLanguageIntoConsole = require('./')
 
@@ -20,7 +20,9 @@ describe('LogUbiquitousLanguageIntoConsole', () => {
     const translated = lorem.word()
 
     const translation = {
-      lexicon: [ { translated } ]
+      forEachLexiconItem: mock('forEachLexiconItem')
+        .withExactArgs(match.func, { log })
+        .callsArgOnWith(0, { log }, { translated })
     }
 
     log.withExactArgs(translated)

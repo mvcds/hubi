@@ -10,6 +10,10 @@ function stringify ([ name, translation ]) {
   return [ name, { token, translated: stringified } ]
 }
 
+function forEachLexiconItem (fn, thisArgs) {
+  this.lexicon.forEach(fn, thisArgs)
+}
+
 function Translation (data) {
   RequiresAttribute(data, {
     lexicon: 'lexicon'
@@ -20,7 +24,7 @@ function Translation (data) {
 
   const lexicon = new Map(stringified)
 
-  this.lexicon = lexicon
+  this.forEachLexiconItem = forEachLexiconItem.bind({ lexicon })
 }
 
 module.exports = Translation

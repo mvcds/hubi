@@ -30,7 +30,7 @@ async function SaveUbiquitousLanguageIntoFile (data, injection) {
 
   const translation = await TranslateFiles({ pattern, translator })
 
-  translation.lexicon.forEach(save, { translator, output, write })
+  translation.forEachLexiconItem(save, { translator, output, write })
 }
 
 module.exports = SaveUbiquitousLanguageIntoFile

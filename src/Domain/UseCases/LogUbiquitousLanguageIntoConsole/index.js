@@ -24,7 +24,7 @@ async function LogUbiquitousLanguageIntoConsole (data, injection) {
 
   const translation = await TranslateFiles({ pattern, translator })
 
-  translation.lexicon.forEach(print, { log })
+  translation.forEachLexiconItem(print, { log })
 }
 
 module.exports = LogUbiquitousLanguageIntoConsole
