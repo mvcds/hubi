@@ -1,5 +1,7 @@
 name: Attribute
-description: A token's characteristic
+description: |
+  A token's characteristic.
+  Programming-wise, it is an object's member.
 attributes:
   - name: name
     description: How the attribute is referenced relativelly to its token
@@ -12,6 +14,6 @@ attributes:
     type: boolean
     default: false
   - name: description
-    description: A short sentence to teach or remind everyone what that attribute means
+    description: A short sentence to teach/remind everyone what that attribute means
   # - name: default # its type depends on the attribute's type
   # - name: deprecated # can be a string, a boolean or an object

@@ -1,11 +1,8 @@
 name: Translation
-description: The result a Translator produces
+description: Holds information relevant to create source files in given translation
 attributes:
   - name: lexicon
-    description: The translated's vocabulary
+    description: A collection of translated tokens i.e. the translation's vocabulary
     type: Array
     of: object
     required: true
-deprecated:
-  message: a Map object is enough
-  error: true

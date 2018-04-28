@@ -5,10 +5,12 @@ attributes:
     description: How people refer to the token (should be unique across the domain to avoid ambiguity)
     required: true
   - name: description
-    description: A short sentence to teach or remind everyone what that token means
+    description: A short sentence to teach/remind everyone what the token means
     required: true
   - name: attributes
-    description: A collection of attributes a token is associated with (this collection is specially useful for developers)
+    description: |
+      A collection of attributes a token is associated with.
+      This collection is specially useful for developers and is where translators are expected to work more often.
     type: array
     of: Attribute
     required: false

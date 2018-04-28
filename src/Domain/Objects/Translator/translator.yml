@@ -1,5 +1,5 @@
 name: Translator
-description: An object which translates the ubiquitous language's tokens relevant source files for developers
+description: Interpret the ubiquitous language's tokens in order to write source files automatically.
 attributes:
   - name: ubiquitousLanguage
     description: The language the translator will work on
@@ -10,7 +10,9 @@ attributes:
     type: array
     of: Ubiquitous Token
     deprecated:
-      message: Use "ubiquitousLanguage" instead
+      message: |
+        Use "ubiquitousLanguage" instead.
+        This was kept as an attribute's deprecation exemple.
       error: true
   # - name: interpretToken
   #   type: function
