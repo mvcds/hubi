@@ -15,6 +15,6 @@ Feature: Save Ubiquitous Language Into File
     Examples:
       | translator |
       | "ubi" |
-      # | "log" |
-      # | "site" |
-      # | "joi" |
+      | "log" |
+      | "site" |
+      | "joi" |

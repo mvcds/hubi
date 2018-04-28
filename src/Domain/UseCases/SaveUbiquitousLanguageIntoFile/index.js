@@ -7,13 +7,12 @@ const DEPENDENCIES = {
   write: require('write')
 }
 
-//  TODO: rename object to translation
-function save ({ name, object }) {
-  const file = this.translator.nameFile({ name })
+function save ({ token, translated }) {
+  const file = this.translator.nameFile(token)
 
   const filePath = `${process.env.PWD}/${this.output}/${file}`
 
-  this.write(filePath, object)
+  this.write(filePath, translated)
 }
 
 async function SaveUbiquitousLanguageIntoFile (data, injection) {
@@ -31,7 +30,7 @@ async function SaveUbiquitousLanguageIntoFile (data, injection) {
 
   const translation = await TranslateFiles({ pattern, translator })
 
-  translation.forEach(save, { translator, output, write })
+  translation.lexicon.forEach(save, { translator, output, write })
 }
 
 module.exports = SaveUbiquitousLanguageIntoFile

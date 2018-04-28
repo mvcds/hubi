@@ -6,3 +6,6 @@ attributes:
     type: Array
     of: object
     required: true
+deprecated:
+  message: a Map object is enough
+  error: true

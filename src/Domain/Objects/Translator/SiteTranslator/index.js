@@ -12,22 +12,32 @@ const TIDY = {
   indent: true
 }
 
+const FILE = `${__dirname}/site.pug`
+
 function interpretToken (token) {
   return token
 }
 
-async function createLexicon ({ interpretation: tokens }) {
-  const file = `${__dirname}/site.pug`
-
-  const html = pug.renderFile(file, { tokens })
-
-  const object = await formatHTML(html, TIDY)
-
-  return { name: 'index', object }
+function getTranslation ({ token }) {
+  return {
+    name: token.name,
+    object: token
+  }
 }
 
-function nameFile ({ name }) {
-  return `${name}.hubi.html`
+async function createLexicon ({ translation }) {
+  const tokens = Array.from(translation.values())
+    .map(getTranslation)
+
+  const html = pug.renderFile(FILE, { tokens })
+
+  const translated = await formatHTML(html, TIDY)
+
+  return new Map().set('site', { translated })
+}
+
+function nameFile () {
+  return 'index.hubi.html'
 }
 
 function SiteTranslator (data) {

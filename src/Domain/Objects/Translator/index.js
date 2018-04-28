@@ -3,15 +3,8 @@ const { log } = require('../../Services/LogConditionally')
 
 const Translation = require('../Translation')
 
-//  TODO: rename object to translation
-function normalize ({ name, object }) {
-  const value = typeof object === 'object' ? JSON.stringify(object, null, 2) : object
-
-  return { name, object: value }
-}
-
-function useSameInterpretation ({ interpretation }) {
-  return interpretation
+function useTheSameTranslation ({ translation }) {
+  return translation
 }
 
 //  TODO: add the type as extension?
@@ -20,11 +13,11 @@ function useDefaulttName ({ name }) {
 }
 
 async function translate ({ ubiquitousLanguage }) {
-  const interpretation = ubiquitousLanguage.mapInterpretation({ interpretToken: this.interpretToken })
+  const translation = ubiquitousLanguage.translateEachToken({ interpretToken: this.interpretToken })
 
-  log(`${interpretation.length} tokens insterpreted`)
+  log(`${translation.length} tokens translated`)
 
-  const lexicon = await this.createLexicon({ interpretation })
+  const lexicon = await this.createLexicon({ translation })
 
   log('Translating')
 
@@ -40,7 +33,7 @@ function Translator (data) {
   const { interpretToken, createLexicon, nameFile } = data
 
   this.interpretToken = interpretToken
-  this.createLexicon = createLexicon || useSameInterpretation
+  this.createLexicon = createLexicon || useTheSameTranslation
   this.nameFile = nameFile || useDefaulttName
 
   this.translate = translate.bind(this)

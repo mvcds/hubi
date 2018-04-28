@@ -7,20 +7,23 @@ function addToken (language, token) {
   return language.set(token.name, token)
 }
 
-function interpret ({ interpretToken, interpretation }, [ name, token ]) {
-  const interpreted = interpretToken(token)
+function interpret ({ interpretToken, translation }, [ name, token ]) {
+  const wrappedToken = {
+    token,
+    translated: interpretToken(token)
+  }
 
   return {
     interpretToken,
-    interpretation: interpretation.set(name, interpreted)
+    translation: translation.set(name, wrappedToken)
   }
 }
 
-function mapInterpretation ({ language }, { interpretToken }) {
-  const { interpretation } = Array.from(language)
-    .reduce(interpret, { interpretToken, interpretation: new Map() })
+function translateEachToken ({ language }, { interpretToken }) {
+  const { translation } = Array.from(language)
+    .reduce(interpret, { interpretToken, translation: new Map() })
 
-  return interpretation
+  return translation
 }
 
 function UbiquitousLanguage (data) {
@@ -33,7 +36,7 @@ function UbiquitousLanguage (data) {
 
   this.dependenciesOf = dependenciesOf.bind(this, { language })
   this.dependentsOf = dependentsOf.bind(this, { language })
-  this.mapInterpretation = mapInterpretation.bind(this, { language })
+  this.translateEachToken = translateEachToken.bind(this, { language })
 }
 
 module.exports = UbiquitousLanguage

@@ -17,11 +17,13 @@ describe('LogUbiquitousLanguageIntoConsole', () => {
   before(async () => {
     const pattern = lorem.word()
     const translator = lorem.word()
-    const object = lorem.word()
+    const translated = lorem.word()
 
-    const translation = [ { object } ]
+    const translation = {
+      lexicon: [ { translated } ]
+    }
 
-    log.withExactArgs(object)
+    log.withExactArgs(translated)
 
     UsesTranslator.withExactArgs({ translatorName: translator })
       .returns(translator)
@@ -40,5 +42,5 @@ describe('LogUbiquitousLanguageIntoConsole', () => {
 
   it('Writes the translation', () => TranslateFiles.verify())
 
-  it('Logs the object', () => log.verify())
+  it('Logs the translated object', () => log.verify())
 })
