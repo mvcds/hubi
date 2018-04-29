@@ -1,3 +1,5 @@
 name: Domain File
-description: An YAML file containing information about a particular piece of the ubiquitous language which will be transformed into a token
-deprecated: It does not map to a source file
+description: |
+  An YAML file containing information about a particular piece of the ubiquitous language.
+deprecated: | # TODO: should be a note or message, instead of deprecated
+  Not all domain files translate to  source files e.g. this very one!

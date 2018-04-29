@@ -9,7 +9,7 @@ const DEPENDENCIES = {
     require('./Attributes/JSONAttribute'),
     require('./Attributes/ArrayAttribute')
   ],
-  defaultAttribute: require('./Attributes/Attribute')
+  defaultAttribute: require('./Attributes/InstanceAttribute')
 }
 
 function isMatch (parser) {

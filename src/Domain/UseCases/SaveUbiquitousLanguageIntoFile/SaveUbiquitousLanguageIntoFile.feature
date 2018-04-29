@@ -1,19 +1,16 @@
-Feature: Write Ubiquitous Language
+Feature: Save Ubiquitous Language Into File
   As a use case
   I want translate domain files into source files
   In order to be able to use them
 
-  Scenario Outline: Write Ubiquitous Language
+  Scenario Outline: Save Ubiquitous Language Into File
     Given the <translator> translator
       And a pattern
       And some output
-      And set action function
       And set write dependency
-    When I call WriteUbiquitousLanguage
+    When I call SaveUbiquitousLanguageIntoFile
     Then the translation is written
       And translation was precise
-      And write was invoked
-      And a filePath was provided
 
     Examples:
       | translator |

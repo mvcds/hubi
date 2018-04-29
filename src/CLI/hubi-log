@@ -6,7 +6,7 @@ const { log } = require('../../')
 
 program
   .option('-p, --pattern [pattern]', 'Glob pattern pointing to domain files', 'src/**/*.yml')
-  .option('-t, --translator [translator]', 'Language translator (log|ubi|site|joi)', 'log')
+  .option('-t, --translator [translatorName]', 'Language translator (log|ubi|site|joi)', 'log')
   .option('--verbose', 'When activated shows text on cli')
   .parse(process.argv)
 

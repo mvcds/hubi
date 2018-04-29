@@ -1,55 +1,42 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const { log } = require('../../Services/LogConditionally')
 
-async function takeAction ({ name, object }) {
-  const translatorName = this.nameFile({ name })
+const Translation = require('../Translation')
 
-  const filePath = `${process.env.PWD}/${this.output}/${translatorName}`
-
-  const value = typeof object === 'object' ? JSON.stringify(object, null, 2) : object
-
-  return this.action({
-    object: value.trim(),
-    write: this.write,
-    filePath
-  })
+function useTheSameTranslation ({ translation }) {
+  return translation
 }
 
-function forEach ({ translation, action }) {
-  log(`Handling ${translation.length} translations`)
-
-  translation.forEach(action)
-
-  log('Translation handled')
-}
-
-function useDefaultName ({ name }) {
+//  TODO: add the type as extension?
+function useDefaulttName ({ name }) {
   return `${name}.hubi.js`
 }
 
-async function translate (data, { action, output }, { write }) {
-  const { ubiquitousLanguage, interpretToken, handleTranslation, nameFile } = Object.assign({}, {
-    handleTranslation: forEach,
-    nameFile: useDefaultName
-  }, data)
+async function translate ({ ubiquitousLanguage }) {
+  const translation = ubiquitousLanguage.translateEachToken({ interpretToken: this.interpretToken })
 
-  const translation = ubiquitousLanguage.withEachToken({ interpretToken })
+  log(`${translation.length} tokens translated`)
 
-  log('Translation has finished')
+  const lexicon = await this.createLexicon({ translation })
 
-  await handleTranslation({
-    translation,
-    action: takeAction.bind({ action, output, write, nameFile })
-  })
+  log('Translating')
+
+  //  TODO: add language type?
+  return new Translation({ lexicon })
 }
 
 function Translator (data) {
   RequiresAttribute(data, {
-    ubiquitousLanguage: 'ubiquitous language',
     interpretToken: 'interpret token function'
   })
 
-  this.translate = translate.bind(null, data)
+  const { interpretToken, createLexicon, nameFile } = data
+
+  this.interpretToken = interpretToken
+  this.createLexicon = createLexicon || useTheSameTranslation
+  this.nameFile = nameFile || useDefaulttName
+
+  this.translate = translate.bind(this)
 }
 
 module.exports = Translator

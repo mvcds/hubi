@@ -28,13 +28,13 @@
       <summary class="token__title">
         <span class="token__name">Domain File</span><span class=
         "token__deprecation-note"><span class=
-        "token__deprecation-note__icon">⚠</span><span>It does not
-        map to a source file</span></span>
+        "token__deprecation-note__icon">⚠</span><span>Not all
+        domain files translate to source files e.g. this very
+        one!</span></span>
       </summary>
       <p class="token__description">
         An YAML file containing information about a particular
-        piece of the ubiquitous language which will be transformed
-        into a token
+        piece of the ubiquitous language.
       </p>
     </details>
     <details class="token" id="ubiquitous-token" name=
@@ -56,15 +56,16 @@
         <li class="attribute">
           <strong class=
           "attribute__name">description</strong><span class=
-          "attribute__description">: A short sentence to teach or
-          remind everyone what that token means</span>
+          "attribute__description">: A short sentence to
+          teach/remind everyone what the token means</span>
         </li>
         <li class="attribute">
           <strong class=
           "attribute__name">attributes</strong><span class=
           "attribute__description">: A collection of attributes a
-          token is associated with (this collection is specially
-          useful for developers)</span>
+          token is associated with. This collection is specially
+          useful for developers and is where translators are
+          expected to work more often.</span>
         </li>
         <li class="attribute">
           <strong class=
@@ -79,7 +80,8 @@
         <span class="token__name">Attribute</span>
       </summary>
       <p class="token__description">
-        A token's characteristic
+        A token's characteristic. Programming-wise, it is an
+        object's member.
       </p>
       <ul class="token__attributes">
         <li class="attribute">
@@ -103,8 +105,25 @@
         <li class="attribute">
           <strong class=
           "attribute__name">description</strong><span class=
-          "attribute__description">: A short sentence to teach or
-          remind everyone what that attribute means</span>
+          "attribute__description">: A short sentence to
+          teach/remind everyone what that attribute means</span>
+        </li>
+      </ul>
+    </details>
+    <details class="token" id="translation" name="translation">
+      <summary class="token__title">
+        <span class="token__name">Translation</span>
+      </summary>
+      <p class="token__description">
+        Holds information relevant to create/analyse source files
+        in given translation
+      </p>
+      <ul class="token__attributes">
+        <li class="attribute">
+          <strong class=
+          "attribute__name">lexicon</strong><span class=
+          "attribute__description">: A collection of translated
+          tokens i.e. the translation's vocabulary</span>
         </li>
       </ul>
     </details>
@@ -113,8 +132,8 @@
         <span class="token__name">Translator</span>
       </summary>
       <p class="token__description">
-        An object which translates the ubiquitous language's tokens
-        relevant source files for developers
+        Interpret the ubiquitous language's tokens in order to
+        write source files automatically.
       </p>
       <ul class="token__attributes">
         <li class="attribute">
@@ -130,7 +149,8 @@
           work on</span><span class=
           "attribute__deprecation-note"><span class=
           "attribute__deprecation-note__icon attribute__deprecation-note__icon--error">⚠</span><span>Use
-          "ubiquitousLanguage" instead</span></span>
+          "ubiquitousLanguage" instead. This was kept as an
+          attribute's deprecation exemple.</span></span>
         </li>
       </ul>
     </details>
@@ -140,14 +160,15 @@
         <span class="token__name">Ubiquitous Language</span>
       </summary>
       <p class="token__description">
-        A common language for everybody
+        A common language for everybody, its tokens will be used
+        differently by each translator
       </p>
       <ul class="token__attributes">
         <li class="attribute">
           <strong class=
           "attribute__name">tokens</strong><span class=
-          "attribute__description">: A collection of ubiquitous
-          tokens</span>
+          "attribute__description">: A collection of tokens to be
+          interpreted</span>
         </li>
       </ul>
     </details>

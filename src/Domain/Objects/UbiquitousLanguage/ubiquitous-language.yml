@@ -1,8 +1,8 @@
 name: Ubiquitous Language
-description: A common language for everybody
+description: A common language for everybody, its tokens will be used differently by each translator
 attributes:
   - name: tokens
-    description: A collection of ubiquitous tokens
+    description: A collection of tokens to be interpreted
     required: true
     type: array
     of: Ubiquitous Token

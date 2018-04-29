@@ -1,21 +1,26 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
-const dependenciesOf = require('./dependenciesOf')
-const dependentsOf = require('./dependentsOf')
-
 function addToken (language, token) {
   return language.set(token.name, token)
 }
 
-function associateNameWithObject ([ name, token ]) {
-  const object = this.interpretToken(token)
+function interpret ({ interpretToken, translation }, [ name, token ]) {
+  const wrappedToken = {
+    token,
+    translated: interpretToken(token)
+  }
 
-  return { name, object }
+  return {
+    interpretToken,
+    translation: translation.set(name, wrappedToken)
+  }
 }
 
-function withEachToken ({ language }, { interpretToken }) {
-  return Array.from(language)
-    .map(associateNameWithObject, { interpretToken })
+function translateEachToken ({ language }, { interpretToken }) {
+  const { translation } = Array.from(language)
+    .reduce(interpret, { interpretToken, translation: new Map() })
+
+  return translation
 }
 
 function UbiquitousLanguage (data) {
@@ -26,9 +31,7 @@ function UbiquitousLanguage (data) {
   const language = data.tokens
     .reduce(addToken, new Map())
 
-  this.dependenciesOf = dependenciesOf.bind(this, { language })
-  this.dependentsOf = dependentsOf.bind(this, { language })
-  this.withEachToken = withEachToken.bind(this, { language })
+  this.translateEachToken = translateEachToken.bind(this, { language })
 }
 
 module.exports = UbiquitousLanguage
