@@ -1,5 +1,8 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
+const dependenciesOf = require('./dependenciesOf')
+const dependentsOf = require('./dependentsOf')
+
 function stringify ([ name, translation ]) {
   if (typeof translation.translated === 'string') return [ name, translation ]
 
@@ -23,6 +26,9 @@ function Translation (data) {
     .map(stringify)
 
   const lexicon = new Map(stringified)
+
+  this.dependenciesOf = dependenciesOf.bind(this, { lexicon })
+  this.dependentsOf = dependentsOf.bind(this, { lexicon })
 
   this.forEachLexiconItem = forEachLexiconItem.bind(null, { lexicon })
 }

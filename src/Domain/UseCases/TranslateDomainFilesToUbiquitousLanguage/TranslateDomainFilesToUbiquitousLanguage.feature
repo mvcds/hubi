@@ -7,15 +7,15 @@ Feature: Translate Domain Files To Ubiquitous Language
     Given a pattern to "file"
     When I run TranslateDomainFilesToUbiquitousLanguage
     Then the glob pattern is read
-  #     And the token "file" has 0 dependencies
-      # And the token "file" has 0 dependents
+      And the token "file" has 0 dependencies
+      And the token "file" has 0 dependents
 
   Scenario: Missing referenced token
     Given a pattern to "computer"
     When I run TranslateDomainFilesToUbiquitousLanguage
     Then the glob pattern is read
-  #     And the token "computer" has 0 dependencies
-  #     And the token "computer" has 0 dependents
+      And the token "computer" has 0 dependencies
+      And the token "computer" has 0 dependents
 
   Scenario Outline: Simple references
     Given a pattern to <first>
@@ -23,12 +23,12 @@ Feature: Translate Domain Files To Ubiquitous Language
       And a pattern to <third>
     When I run TranslateDomainFilesToUbiquitousLanguage
     Then the glob pattern is read
-      # And the token "engine" has 0 dependencies
-      # And the token "car" has 1 dependencies
-      # And the token "driver" has 2 dependencies
-      # And the token "driver" has 0 dependents
-      # And the token "car" has 1 dependents
-      # And the token "engine" has 2 dependents
+      And the token "engine" has 0 dependencies
+      And the token "car" has 1 dependencies
+      And the token "driver" has 2 dependencies
+      And the token "driver" has 0 dependents
+      And the token "car" has 1 dependents
+      And the token "engine" has 2 dependents
 
     Examples:
       | first | second | third |

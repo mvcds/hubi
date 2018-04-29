@@ -1,5 +1,5 @@
 name: Translation
-description: Holds information relevant to create source files in given translation
+description: Holds information relevant to create/analyse source files in given translation
 attributes:
   - name: lexicon
     description: A collection of translated tokens i.e. the translation's vocabulary

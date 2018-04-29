@@ -1,8 +1,5 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 
-const dependenciesOf = require('./dependenciesOf')
-const dependentsOf = require('./dependentsOf')
-
 function addToken (language, token) {
   return language.set(token.name, token)
 }
@@ -34,8 +31,6 @@ function UbiquitousLanguage (data) {
   const language = data.tokens
     .reduce(addToken, new Map())
 
-  this.dependenciesOf = dependenciesOf.bind(this, { language })
-  this.dependentsOf = dependentsOf.bind(this, { language })
   this.translateEachToken = translateEachToken.bind(this, { language })
 }
 

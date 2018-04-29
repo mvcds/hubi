@@ -7,6 +7,14 @@ const DEPENDENCIES = {
   AttributeParser: require('../../Objects/AttributeParser')
 }
 
+function isInstance ({ isInstance }) {
+  return isInstance
+}
+
+function getMyTokens () {
+  return this.attributes.filter(isInstance)
+}
+
 function UbiquitousToken (data, injection) {
   RequiresAttribute(data, {
     name: 'name',
@@ -22,6 +30,8 @@ function UbiquitousToken (data, injection) {
   this.filePath = data.filePath
   this.name = NormalizeName(data.name)
   this.rawName = data.name
+
+  Object.defineProperty(this, 'myTokens', { get: getMyTokens })
 }
 
 module.exports = UbiquitousToken
