@@ -22,6 +22,8 @@ What follows is a list of definitions you should know when configuring a domain 
 
 Each [Translator](https://mvcds.github.io/hubi/#translator)'s job is to interpret the token, its attribute and decorators associated with them based on how the domain file was configured.
 
+Because of that, some types and decorators may be introduced or work with some translator but not the other.
+
 ### Common to Tokens and Attribute
 
 ```yaml
