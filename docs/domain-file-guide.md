@@ -31,18 +31,14 @@ name: a required string which identifies the token across your ubiquitous langua
 
 description: a string which teaches or reminds what the token/attribute is about
 
-deprecated: a string |boolean | object marking the token/attribute as deprecated
+deprecated: a string, a bboolean or an object marking the token/attribute as deprecated
   - string: the string becomes the message for the deprecation warning
   - boolean: `true` value means error and a `false` means warning, using a default message
   - object: gives you complete control over which message to show and how to exhibit it (error or warning?)
-```
-
-```javascript
-#deprecated as object
-{
-  message: string,
-  error: boolean
-}
+  # {
+  #   message: string,
+  #   error: boolean
+  # }
 ```
 
 ### Token
@@ -51,7 +47,7 @@ deprecated: a string |boolean | object marking the token/attribute as deprecated
 attributes: an array of attributes associated with that token
 ```
 
-### Attributes
+### Attribute
 
 ```yaml
 required: a boolean value indicating if the attribute should be always present on the token
