@@ -20,6 +20,8 @@ What follows is a list of definitions you should know when configuring a domain 
 
 ## Configurations
 
+Each [Translator](https://mvcds.github.io/hubi/#translator)'s job is to interpret the token, its attribute and decorators associated with them based on how the domain file was configured.
+
 ### Common to Tokens and Attribute
 
 ```yaml
