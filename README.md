@@ -1,4 +1,4 @@
-# Hubi [![Build Status](https://travis-ci.org/mvcds/hubi.svg?branch=master)](https://travis-ci.org/mvcds/hubi) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/mvcds/hubi/badge.svg?branch=master)](https://coveralls.io/github/mvcds/hubi?branch=master)
+# Hubi [![Build Status](https://travis-ci.org/mvcds/hubi.svg?branch=master)](https://travis-ci.org/mvcds/hubi) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/mvcds/hubi/badge.svg?branch=master)](https://coveralls.io/github/mvcds/hubi?branch=master) [![GitHub license](https://img.shields.io/github/license/mvcds/hubi.svg?style=flat-square)](https://github.com/mvcds/hubi/blob/master/LICENSE) [![npm](https://img.shields.io/npm/dw/localeval.svg?style=plastic)](https://github.com/mvcds/hubi)
 
 > Teach `hubi` your [ubiquitous language](https://martinfowler.com/bliki/UbiquitousLanguage.html) and it will write relevant source files for you
 
