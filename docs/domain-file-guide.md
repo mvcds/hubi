@@ -8,6 +8,8 @@ Even if you don't DDD, you can still use `hubi`, because it's been built around 
 
 Realize that even when the concept does not translate to a source file, you still may want to document it as part of your ubiquitous language, e.g. [domain files](https://mvcds.github.io/hubi/#domain-file) on `hubi` itself.
 
+By convention, all configurations should be written in lower case.
+
 ### Core Definitions
 
 What follows is a list of definitions you should know when configuring a domain file, please refer to `hubi`'s [main page](https://mvcds.github.io/hubi) for the complete definitions.
@@ -20,41 +22,61 @@ What follows is a list of definitions you should know when configuring a domain 
 
 ### Common to Tokens and Attribute
 
- - name: a required string which identifies the token across your ubiquitous language (must be unique) or an attribute relatively to its token
- - description: a required string which teaches or reminds what the token/attribute is about
- - deprecated: a string|boolean|object marking the token/attribute as deprecated
-   - string: the string becomes the message for the deprecation warning
-   - boolean: `true` value means error and a `false` means warning, using a default message
-   - object: gives you complete control over which message to show and how to exhibit it (error or warning?)
+```yaml
+name: a required string which identifies the token across your ubiquitous language (must be unique) or an attribute relatively to its token
 
-    ```
-    {
-      message: string,
-      error: boolean
-    }
-    ```
+description: a required string which teaches or reminds what the token/attribute is about
+
+deprecated: a string |boolean | object marking the token/attribute as deprecated
+  - string: the string becomes the message for the deprecation warning
+  - boolean: `true` value means error and a `false` means warning, using a default message
+  - object: gives you complete control over which message to show and how to exhibit it (error or warning?)
+```
+
+```javascript
+#deprecated as object
+{
+  message: string,
+  error: boolean
+}
+```
 
 ### Token
 
- - attributes: an array of attributes associated with that token
+```yaml
+attributes: an array of attributes associated with that token
+```
 
 ### Attributes
 
- - required: a boolean value indicating if the attribute should be always present on the token
- - type: a required string indicating how to use the attribute on source files, may be one of the following
-   - `string` which is the default, if type is ommited
-   - `boolean` though you can also write `bool`
-   - `integer` though you can also write `int`
-   - `date`
-   - `float` though you can also write `number` or `decimal`
-   - `object` though you can also write `shape`
-   - `json`
-   - `array`
-   - a token's name
- - default: a value indicating what to fill the token's attribute, when it is undefined (or null)
+```yaml
+required: a boolean value indicating if the attribute should be always present on the token
+
+type: a required string indicating how to use the attribute on source files, may be one of the following
+  - string: which is the default, if type is ommited
+  - boolean: though you can also write bool
+  - integer: though you can also write int
+  - date
+  - float: though you can also write number or decimal
+  - object: though you can also write shape
+  - json
+  - array
+  - a token's name: you may use the same name defined into the token's domain file which may not exist yet, or the normalized name (lowercase kebab) - refered as "token" type, hereafter
+
+default: a value indicating what to fill the token's attribute, when it is undefined (or null)
+```
 
 ### Decorators
 
-Each attribute type may have some decorators associated with it, enhancing what it can do.
+Each attribute type may have some decorators associated with it, enhancing how they are translated.
 
-- Range: allows to specify a minimum and/or maximum value for `array`'s number of items, `date`, `float`, `integer` and `string`'s length.
+```yaml
+range: allows to specify a minimum and/or maximum value for the attribute.
+  - accepts: [string, integer, date, float, array]
+  - api: may be a number indicating its limit or an object which has a numberical limit property
+    - min: the lower limit
+    - max: the upper limit
+
+of: associates the attribute with another type. Hubi doesn't nest arrays yet.
+  - accepts: [string, boolean, integer, date, float, object, json, token]
+```
