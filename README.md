@@ -4,6 +4,8 @@
 
 The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain files](https://mvcds.github.io/hubi/#domain-file) to learn your ubiquitous language and then generates relevant source files, so you don't have to manually change your [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
 
+<img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
+
 :warning: work in progress which currently only partially supports [joi](https://github.com/hapijs/joi), and generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
 
 ## Getting started
