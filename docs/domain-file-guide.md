@@ -29,7 +29,7 @@ Because of that, some types and decorators may be introduced or work with some t
 ```yaml
 name: a required string which identifies the token across your ubiquitous language (must be unique) or an attribute relatively to its token
 
-description: a required string which teaches or reminds what the token/attribute is about
+description: a string which teaches or reminds what the token/attribute is about
 
 deprecated: a string |boolean | object marking the token/attribute as deprecated
   - string: the string becomes the message for the deprecation warning
@@ -83,4 +83,27 @@ range: allows to specify a minimum and/or maximum value for the attribute.
 
 of: associates the attribute with another type. Hubi doesn't nest arrays yet.
   - accepts: [string, boolean, integer, date, float, object, json, token]
+```
+
+## Sample
+
+What follows is an example of a domain file, which tries to illustrate some configurations listed above.
+
+```yaml
+name: Domain File Sample
+description: The domain file of a sample becomes a token associated with "domain-file-sample"
+deprecated: Please change my values # yields an object { message: 'Please change my values', error: false }
+attributes:
+  - label # yields a string-typed attribute, named "label"
+  - name: tolerance
+    type: number
+    required: true
+    default: 25.8
+  - name: tests
+    type: array
+    of: object
+    description: validades the sample
+    min: 1
+    max: 5
+  ...
 ```
