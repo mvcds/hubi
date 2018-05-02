@@ -43,6 +43,8 @@ attributes:
   ...
 ```
 
+Learn how to configure your domain files at the [:green_book: domain file guide](./docs/domain-file-guide.md).
+
 ### Generate relevant source files
 
 Add a new npm script to your `package.json`, so you can run it on a whim:
