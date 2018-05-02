@@ -24,11 +24,11 @@ async function SaveUbiquitousLanguageIntoFile (data, injection) {
     output: 'output'
   })
 
-  const { pattern, translator: translatorName, output } = data
+  const { output } = data
 
-  const translator = UsesTranslator({ translatorName })
+  const translator = UsesTranslator({ translatorName: data.translator })
 
-  const translation = await TranslateFiles({ pattern, translator })
+  const translation = await TranslateFiles({ ...data, translator })
 
   translation.forEachLexiconItem(save, { translator, output, write })
 }

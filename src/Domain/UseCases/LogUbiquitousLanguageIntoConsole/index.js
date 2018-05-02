@@ -18,11 +18,9 @@ async function LogUbiquitousLanguageIntoConsole (data, injection) {
     translator: 'translator name'
   })
 
-  const { pattern, translator: translatorName } = data
+  const translator = UsesTranslator({ translatorName: data.translator })
 
-  const translator = UsesTranslator({ translatorName })
-
-  const translation = await TranslateFiles({ pattern, translator })
+  const translation = await TranslateFiles({ ...data, translator })
 
   translation.forEachLexiconItem(print, { log })
 }
