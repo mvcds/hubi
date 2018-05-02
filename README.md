@@ -1,14 +1,14 @@
-# Hubi [![Build Status](https://travis-ci.org/mvcds/hubi.svg?branch=master)](https://travis-ci.org/mvcds/hubi) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/mvcds/hubi/badge.svg?branch=master)](https://coveralls.io/github/mvcds/hubi?branch=master)
+# Hubi [![Build Status](https://travis-ci.org/mvcds/hubi.svg?branch=master)](https://travis-ci.org/mvcds/hubi) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/mvcds/hubi/badge.svg?branch=master)](https://coveralls.io/github/mvcds/hubi?branch=master) [![GitHub license](https://img.shields.io/github/license/mvcds/hubi.svg?style=flat-square)](https://github.com/mvcds/hubi/blob/master/LICENSE)
 
 > Teach `hubi` your [ubiquitous language](https://martinfowler.com/bliki/UbiquitousLanguage.html) and it will write relevant source files for you
 
-The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain files](https://mvcds.github.io/hubi/#domain-file) to learn your ubiquitous language and then generates relevant source files, so you don't have to manually change your [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
+The humanitarian ubiquitous language helper, or `hubi` for short, reads your [domain files](https://mvcds.github.io/hubi/#domain-file) to learn the ubiquitous language behind your domain, and then generates relevant source files, so you don't have to manually change your [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
 
-:warning: work in progress which currently only partially supports [joi](https://github.com/hapijs/joi), and generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
+<img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
+
+:warning: currently, it only partially supports [joi](https://github.com/hapijs/joi), and fully generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
 
 ## Getting started
-
-For some reason, NPM is not showing the link to the [github repository](https://github.com/mvcds/hubi) 🤷
 
 ### Install
 
@@ -42,6 +42,8 @@ attributes:
     required: true
   ...
 ```
+
+Learn how to configure your domain files at the [:green_book: domain file guide](./docs/domain-file-guide.md).
 
 ### Generate relevant source files
 
