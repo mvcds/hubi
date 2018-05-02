@@ -45,6 +45,8 @@ deprecated: a string, a boolean or an object marking the token/attribute as depr
 
 ```yaml
 attributes: an array of attributes associated with that token
+
+abstract: a boolean value which controls if the token should be generated
 ```
 
 ### Attribute

@@ -33,7 +33,7 @@ async function createLexicon ({ translation }) {
 
   const translated = await formatHTML(html, TIDY)
 
-  return new Map().set('site', { translated })
+  return new Map().set('site', { translated, token: {} })
 }
 
 function nameFile () {
@@ -46,7 +46,10 @@ function SiteTranslator (data) {
     interpretToken,
     createLexicon,
     nameFile
-  }), { ignoreSameFolder: true })
+  }), {
+    ignoreSameFolder: true,
+    ignoreAbstract: true
+  })
 }
 
 module.exports = SiteTranslator

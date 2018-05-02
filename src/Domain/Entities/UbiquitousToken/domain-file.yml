@@ -3,3 +3,4 @@ description: |
   An YAML file containing information about a particular piece of the ubiquitous language.
 deprecated: | # TODO: should be a note or message, instead of deprecated
   Not all domain files translate to  source files e.g. this very one!
+abstract: true

@@ -6,7 +6,9 @@ const DEPENDENCIES = {
   TranslateFiles: require('../TranslateDomainFilesToUbiquitousLanguage')
 }
 
-function print ({ translated }) {
+function print ({ token, translated }) {
+  if (token.isAbstract && !this.translator.ignoreAbstract) return
+
   this.log(translated)
 }
 

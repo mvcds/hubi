@@ -10,6 +10,8 @@ const DEPENDENCIES = {
 }
 
 function save ({ token, translated }) {
+  if (token.isAbstract && !this.translator.ignoreAbstract) return
+
   const file = this.translator.nameFile(token)
 
   const base = this.sameFolder ? path.dirname(token.filePath) : `${process.env.PWD}/${this.output}`
