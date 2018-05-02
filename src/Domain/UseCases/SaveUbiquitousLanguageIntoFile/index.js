@@ -31,6 +31,8 @@ async function SaveUbiquitousLanguageIntoFile (data, injection) {
 
   const translator = UsesTranslator({ translatorName: data.translator })
 
+  if (sameFolder && translator.ignoreSameFolder) throw new Error(`"${data.translator}" does not generate on same folder`)
+
   const translation = await TranslateFiles({ ...data, translator })
 
   translation.forEachLexiconItem(save, { translator, output, write, sameFolder })

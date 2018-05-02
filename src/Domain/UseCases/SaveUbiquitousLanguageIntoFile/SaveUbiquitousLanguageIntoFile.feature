@@ -18,3 +18,16 @@ Feature: Save Ubiquitous Language Into File
       | "log" |
       | "site" |
       | "joi" |
+
+  Scenario Outline: Ignores same folder flag
+    Given the <translator> translator
+      And a pattern
+      And some output
+      And set write dependency
+      And the same folder flag
+    When I call SaveUbiquitousLanguageIntoFile
+    Then an error '<translator> does not generate on same folder' happens
+
+    Examples:
+      | translator |
+      | "site" |

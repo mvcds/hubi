@@ -46,7 +46,7 @@ function SiteTranslator (data) {
     interpretToken,
     createLexicon,
     nameFile
-  }))
+  }), { ignoreSameFolder: true })
 }
 
 module.exports = SiteTranslator
