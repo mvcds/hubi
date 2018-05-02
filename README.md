@@ -6,7 +6,7 @@ The humanitarian ubiquitous language helper, or `hubi` for short, reads [domain 
 
 <img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
 
-:warning: work in progress which currently only partially supports [joi](https://github.com/hapijs/joi), and generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
+:warning: currently, it only partially supports [joi](https://github.com/hapijs/joi), and fully generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
 
 ## Getting started
 
