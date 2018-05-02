@@ -8,8 +8,6 @@ The humanitarian ubiquitous language helper, or `hubi` for short, reads your [do
 
 :warning: currently, it only partially supports [joi](https://github.com/hapijs/joi), and fully generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
 
-:warning: For some reason, NPM is not showing the link to the [github repository](https://github.com/mvcds/hubi)
-
 ## Getting started
 
 ### Install
