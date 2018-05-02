@@ -56,11 +56,11 @@ required: a boolean value indicating if the attribute should be always present o
 
 type: a required string indicating how to use the attribute on source files, may be one of the following
   - string: which is the default, if type is ommited
-  - boolean: though you can also write bool
-  - integer: though you can also write int
+  - boolean: though you can also write "bool"
+  - integer: though you can also write "int"
   - date
-  - float: though you can also write number or decimal
-  - object: though you can also write shape
+  - float: though you can also write "number" or "decimal"
+  - object: though you can also write "shape".
   - json
   - array
   - a token's name: you may use the same name defined into the token's domain file which may not exist yet, or the normalized name (lowercase kebab) - refered as "token" type, hereafter
