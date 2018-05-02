@@ -29,9 +29,9 @@ Because of that, some types and decorators may be introduced or work with some t
 ```yaml
 name: a required string which identifies the token across your ubiquitous language (must be unique) or an attribute relatively to its token
 
-description: a string which teaches or reminds what the token/attribute is about
+description: a string which teaches or reminds what the token/attribute is about. For tokens, is required.
 
-deprecated: a string, a boolean or an object marking the token/attribute as deprecated
+deprecated: a string, a boolean or an object marking the token/attribute as deprecated. Totally optional.
   - string: the string becomes the message for the deprecation warning
   - boolean: `true` value means error and a `false` means warning, using a default message
   - object: gives you complete control over which message to show and how to exhibit it (error or warning?)
@@ -44,15 +44,15 @@ deprecated: a string, a boolean or an object marking the token/attribute as depr
 ### Token
 
 ```yaml
-attributes: an array of attributes associated with that token
+attributes: an optional array of attributes associated with that token. If ommited, an empty array is used instead.
 
-abstract: a boolean value which controls if the token should be generated
+abstract: an optional boolean value which controls if the token should be generated.
 ```
 
 ### Attribute
 
 ```yaml
-required: a boolean value indicating if the attribute should be always present on the token
+required: an optional boolean value indicating if the attribute should be always present on the token
 
 type: a required string indicating how to use the attribute on source files, may be one of the following
   - string: which is the default, if type is ommited
@@ -65,7 +65,7 @@ type: a required string indicating how to use the attribute on source files, may
   - array
   - a token's name: you may use the same name defined into the token's domain file which may not exist yet, or the normalized name (lowercase kebab) - refered as "token" type, hereafter
 
-default: a value indicating what to fill the token's attribute, when it is undefined (or null)
+default: an optional value indicating what to fill the token's attribute, when it is undefined (or null)
 ```
 
 ### Decorators
