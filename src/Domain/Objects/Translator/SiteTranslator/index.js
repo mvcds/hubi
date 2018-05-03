@@ -52,7 +52,7 @@ function SiteTranslator (data) {
     createLexicon,
     nameFile
   }), {
-    ignoreAbstract: true
+    useAbstractAsConcreate: true
   })
 }
 

@@ -18,7 +18,7 @@ describe('LogUbiquitousLanguageIntoConsole', () => {
 
   before(async () => {
     const pattern = lorem.word()
-    const translator = { ignoreAbstract: true }
+    const translator = { useAbstractAsConcreate: true }
     const translated = lorem.word()
 
     const translation = {

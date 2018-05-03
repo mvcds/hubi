@@ -14,7 +14,7 @@ function stringify ([ name, translation ]) {
 }
 
 function isConcreate ([ , { token } ]) {
-  return !token.isAbstract || this.translator.ignoreAbstract
+  return !token.isAbstract || this.translator.useAbstractAsConcreate
 }
 
 function forEachLexiconItem ({ lexicon }, fn, thisArgs) {
