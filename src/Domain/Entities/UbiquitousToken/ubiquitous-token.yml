@@ -17,3 +17,6 @@ attributes:
   - name: filePath
     description: The path to its file domain
     required: true
+  - name: abstract
+    description: A flag to inform translators if they should or not translate the token
+    type: boolean
