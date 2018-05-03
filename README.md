@@ -84,7 +84,7 @@ Logs the ubiquitous language entities to the console, in order to allow you to r
 Saves the ubiquitous language entities into source files, the whole point of this project!
 
 * the same arguments as `log`, plus
-* `--output | -o` is the folder to which files will be saved, defaults to `domain`, it is literally a single folder at the moment 😞 - in the future you should be able tell `hubi` where to save files with more precision
+* `--output | -o` is the folder to which files will be saved, defaults to `domain`
 * `--same-folder | -s` overides the output flag, by geneating the source file on the same folder as the token's domain file.
 
 ## More
