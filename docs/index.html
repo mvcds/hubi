@@ -26,15 +26,15 @@
     </header>
     <details class="token" id="domain-file" name="domain-file">
       <summary class="token__title">
-        <span class="token__name">Domain File</span><span class=
-        "token__deprecation-note"><span class=
-        "token__deprecation-note__icon">⚠</span><span>Not all
-        domain files translate to source files e.g. this very
-        one!</span></span>
+        <span class="token__name">Domain File</span>
       </summary>
       <p class="token__description">
         An YAML file containing information about a particular
         piece of the ubiquitous language.
+      </p>
+      <p class="token__comment">
+        Not all domain files translate to source files due to the
+        "abstract" configuration e.g. this very one!
       </p>
     </details>
     <details class="token" id="ubiquitous-token" name=
@@ -49,9 +49,9 @@
       <ul class="token__attributes">
         <li class="attribute">
           <strong class="attribute__name">name</strong><span class=
-          "attribute__description">: How people refer to the token
-          (should be unique across the domain to avoid
-          ambiguity)</span>
+          "attribute__description">: How people refer to the
+          token</span><span class="attribute__comment">(Should be
+          unique across the domain to avoid ambiguity)</span>
         </li>
         <li class="attribute">
           <strong class=
@@ -63,15 +63,28 @@
           <strong class=
           "attribute__name">attributes</strong><span class=
           "attribute__description">: A collection of attributes a
-          token is associated with. This collection is specially
-          useful for developers and is where translators are
-          expected to work more often.</span>
+          token is associated with.</span><span class=
+          "attribute__comment">This collection is specially useful
+          for developers and is where translators are expected to
+          work more often.</span>
         </li>
         <li class="attribute">
           <strong class=
           "attribute__name">filePath</strong><span class=
           "attribute__description">: The path to its file
           domain</span>
+        </li>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">abstract</strong><span class=
+          "attribute__description">: A flag to inform translators
+          if they should or not translate the token</span>
+        </li>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">comment</strong><span class=
+          "attribute__description">: An extra message, for
+          developers, about the token</span>
         </li>
       </ul>
     </details>
@@ -107,6 +120,12 @@
           "attribute__name">description</strong><span class=
           "attribute__description">: A short sentence to
           teach/remind everyone what that attribute means</span>
+        </li>
+        <li class="attribute">
+          <strong class=
+          "attribute__name">comment</strong><span class=
+          "attribute__description">: An extra message, for
+          developers, about the attribute</span>
         </li>
       </ul>
     </details>

@@ -56,9 +56,20 @@ body {
   content: "error";
 }
 
+.token__comment {
+  margin: 0;
+  padding: 8px;
+  font-family: fantasy;
+}
+
 .attribute__default {
   margin-left: 4px;
   font-family: monospace, serif;
+}
+
+.attribute__comment {
+  margin-left: 4px;
+  font-family: fantasy;
 }
 
 .hubi__info {

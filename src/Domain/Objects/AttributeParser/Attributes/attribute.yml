@@ -17,3 +17,5 @@ attributes:
     description: A short sentence to teach/remind everyone what that attribute means
   # - name: default # its type depends on the attribute's type
   # - name: deprecated # can be a string, a boolean or an object
+  - name: comment
+    description: An extra message, for developers, about the attribute
