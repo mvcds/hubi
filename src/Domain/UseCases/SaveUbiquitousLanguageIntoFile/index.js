@@ -1,3 +1,5 @@
+const path = require('path')
+
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const UsesTranslator = require('../../Services/UsesTranslator')
 
@@ -10,7 +12,9 @@ const DEPENDENCIES = {
 function save ({ token, translated }) {
   const file = this.translator.nameFile(token)
 
-  const filePath = `${process.env.PWD}/${this.output}/${file}`
+  const base = this.sameFolder ? path.dirname(token.filePath) : `${process.env.PWD}/${this.output}`
+
+  const filePath = `${base}/${file}`
 
   this.write(filePath, translated)
 }
@@ -20,17 +24,16 @@ async function SaveUbiquitousLanguageIntoFile (data, injection) {
 
   RequiresAttribute(data, {
     pattern: 'pattern',
-    translator: 'translator name',
-    output: 'output'
+    translator: 'translator name'
   })
 
-  const { output } = data
+  const { output, sameFolder } = data
 
   const translator = UsesTranslator({ translatorName: data.translator })
 
   const translation = await TranslateFiles({ ...data, translator })
 
-  translation.forEachLexiconItem(save, { translator, output, write })
+  translation.forEachLexiconItem(save, { translator, output, write, sameFolder })
 }
 
 module.exports = SaveUbiquitousLanguageIntoFile

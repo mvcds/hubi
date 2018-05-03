@@ -28,6 +28,10 @@ Given('set write dependency', function () {
   })
 })
 
+Given('the same folder flag', function () {
+  this.args = Object.assign({}, this.args, { sameFolder: true })
+})
+
 When('I call SaveUbiquitousLanguageIntoFile', async function () {
   this.injection.write
     .withExactArgs(match.string, match.string)

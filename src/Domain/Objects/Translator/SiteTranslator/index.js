@@ -13,6 +13,11 @@ const TIDY = {
 }
 
 const FILE = `${__dirname}/site.pug`
+const NAME = 'index.hubi.html'
+
+const TOKEN = {
+  filePath: `${process.env.PWD}/${NAME}`
+}
 
 function interpretToken (token) {
   return token
@@ -33,11 +38,11 @@ async function createLexicon ({ translation }) {
 
   const translated = await formatHTML(html, TIDY)
 
-  return new Map().set('site', { translated })
+  return new Map().set('site', { translated, token: TOKEN })
 }
 
 function nameFile () {
-  return 'index.hubi.html'
+  return NAME
 }
 
 function SiteTranslator (data) {
@@ -46,7 +51,9 @@ function SiteTranslator (data) {
     interpretToken,
     createLexicon,
     nameFile
-  }))
+  }), {
+    useAbstractAsConcreate: true
+  })
 }
 
 module.exports = SiteTranslator

@@ -30,6 +30,7 @@ function UbiquitousToken (data, injection) {
   this.filePath = data.filePath
   this.name = NormalizeName(data.name)
   this.rawName = data.name
+  this.isAbstract = !!data.abstract
 
   Object.defineProperty(this, 'myTokens', { get: getMyTokens })
 }
