@@ -13,8 +13,17 @@ function stringify ([ name, translation ]) {
   return [ name, { token, translated: stringified } ]
 }
 
+function isConcreate ([ , { token } ]) {
+  return !token.isAbstract || this.translator.ignoreAbstract
+}
+
 function forEachLexiconItem ({ lexicon }, fn, thisArgs) {
-  lexicon.forEach(fn, thisArgs)
+  const { translator } = thisArgs
+
+  const temp = Array.from(lexicon)
+    .filter(isConcreate, { translator })
+
+  new Map(temp).forEach(fn, thisArgs)
 }
 
 function Translation (data) {

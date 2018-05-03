@@ -36,11 +36,7 @@ When('I call SaveUbiquitousLanguageIntoFile', async function () {
   this.injection.write
     .withExactArgs(match.string, match.string)
 
-  try {
-    this.result = await SaveUbiquitousLanguageIntoFile(this.args, this.injection)
-  } catch (e) {
-    this.result = e
-  }
+  return SaveUbiquitousLanguageIntoFile(this.args, this.injection)
 })
 
 Then('the translation is written', function () {
@@ -54,8 +50,4 @@ Then('translation was precise', function () {
   const expectation = fs.readFileSync(filePath, 'utf8')
 
   assert.equal(object.trim(), expectation.trim())
-})
-
-Then('an error {string} happens', function (error) {
-  assert.equal(this.result.message, error)
 })

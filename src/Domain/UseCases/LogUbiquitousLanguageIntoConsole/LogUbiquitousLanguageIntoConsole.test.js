@@ -3,6 +3,8 @@ const { mock, match } = require('sinon')
 
 const LogUbiquitousLanguageIntoConsole = require('./')
 
+const TOKEN = { isAbstract: true }
+
 const test = () => {
   return {
     log: mock('log'),
@@ -16,13 +18,13 @@ describe('LogUbiquitousLanguageIntoConsole', () => {
 
   before(async () => {
     const pattern = lorem.word()
-    const translator = lorem.word()
+    const translator = { ignoreAbstract: true }
     const translated = lorem.word()
 
     const translation = {
       forEachLexiconItem: mock('forEachLexiconItem')
-        .withExactArgs(match.func, { log })
-        .callsArgOnWith(0, { log }, { translated })
+        .withExactArgs(match.func, { log, translator })
+        .callsArgOnWith(0, { log, translator }, { translated, token: TOKEN })
     }
 
     log.withExactArgs(translated)
@@ -33,7 +35,7 @@ describe('LogUbiquitousLanguageIntoConsole', () => {
     TranslateFiles.withExactArgs({ pattern, translator })
       .resolves(translation)
 
-    await LogUbiquitousLanguageIntoConsole({ pattern, translator }, {
+    return LogUbiquitousLanguageIntoConsole({ pattern, translator }, {
       log,
       UsesTranslator,
       TranslateFiles

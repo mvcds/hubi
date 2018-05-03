@@ -10,8 +10,6 @@ const DEPENDENCIES = {
 }
 
 function save ({ token, translated }) {
-  if (token.isAbstract && !this.translator.ignoreAbstract) return
-
   const file = this.translator.nameFile(token)
 
   const base = this.sameFolder ? path.dirname(token.filePath) : `${process.env.PWD}/${this.output}`
@@ -32,8 +30,6 @@ async function SaveUbiquitousLanguageIntoFile (data, injection) {
   const { output, sameFolder } = data
 
   const translator = UsesTranslator({ translatorName: data.translator })
-
-  if (sameFolder && translator.ignoreSameFolder) throw new Error(`"${data.translator}" does not generate on same folder`)
 
   const translation = await TranslateFiles({ ...data, translator })
 

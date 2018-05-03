@@ -6,9 +6,7 @@ const DEPENDENCIES = {
   TranslateFiles: require('../TranslateDomainFilesToUbiquitousLanguage')
 }
 
-function print ({ token, translated }) {
-  if (token.isAbstract && !this.translator.ignoreAbstract) return
-
+function print ({ translated }) {
   this.log(translated)
 }
 
@@ -24,7 +22,7 @@ async function LogUbiquitousLanguageIntoConsole (data, injection) {
 
   const translation = await TranslateFiles({ ...data, translator })
 
-  translation.forEachLexiconItem(print, { log })
+  translation.forEachLexiconItem(print, { log, translator })
 }
 
 module.exports = LogUbiquitousLanguageIntoConsole

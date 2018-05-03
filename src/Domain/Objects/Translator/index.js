@@ -15,8 +15,6 @@ function useDefaulttName ({ name }) {
 async function translate ({ ubiquitousLanguage }) {
   const translation = ubiquitousLanguage.translateEachToken({ interpretToken: this.interpretToken })
 
-  log(`${translation.length} tokens translated`)
-
   const lexicon = await this.createLexicon({ translation })
 
   log('Translating')
