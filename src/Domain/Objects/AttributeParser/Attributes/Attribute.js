@@ -13,6 +13,7 @@ function Attribute (data) {
   this.isRequired = data.required || false
   this.description = data.description
   this.default = data.default
+  this.comment = data.comment
 
   Object.assign(this, new Deprecated(data))
 }

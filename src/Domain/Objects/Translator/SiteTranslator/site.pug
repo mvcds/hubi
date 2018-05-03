@@ -4,12 +4,18 @@ mixin withDeprecation (type, { message, error })
     span(class=classes) ⚠
     span #{message}
 
-mixin withAttribute({ name, description, deprecated, default: standard })
+mixin withAttribute({ name, description, deprecated, default: standard, comment })
   li(class="attribute")
     strong(class="attribute__name") #{name}
+
     if (standard !== undefined)
       span(class="attribute__default") (#{standard})
+
     span(class="attribute__description") : #{description}
+
+    if (comment !== undefined)
+      span(class="attribute__comment") #{comment}
+
     if (deprecated !== undefined)
       +withDeprecation("attribute", deprecated)
 
@@ -27,6 +33,9 @@ mixin withToken({ name, object })
         +withDeprecation("token", object.deprecated)
 
     p(class="token__description") #{object.description}
+
+    if (object.comment)
+      p(class="token__comment") #{object.comment}
 
     if (object.attributes.length)
       ul(class="token__attributes")

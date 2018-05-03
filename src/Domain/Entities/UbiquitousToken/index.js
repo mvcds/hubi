@@ -31,6 +31,7 @@ function UbiquitousToken (data, injection) {
   this.name = NormalizeName(data.name)
   this.rawName = data.name
   this.isAbstract = !!data.abstract
+  this.comment = data.comment
 
   Object.defineProperty(this, 'myTokens', { get: getMyTokens })
 }

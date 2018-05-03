@@ -39,6 +39,8 @@ deprecated: a string, a boolean or an object marking the token/attribute as depr
   #   message: string,
   #   error: boolean
   # }
+
+comment: a string which informs developers about something
 ```
 
 ### Token

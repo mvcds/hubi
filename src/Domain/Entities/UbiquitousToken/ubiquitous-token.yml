@@ -2,15 +2,15 @@ name: Ubiquitous Token
 description: A piece of the ubiquitous language (phrase, expression, term, etc) extracted from the domain file
 attributes:
   - name: name
-    description: How people refer to the token (should be unique across the domain to avoid ambiguity)
+    description: How people refer to the token
+    comment: (Should be unique across the domain to avoid ambiguity)
     required: true
   - name: description
     description: A short sentence to teach/remind everyone what the token means
     required: true
   - name: attributes
-    description: |
-      A collection of attributes a token is associated with.
-      This collection is specially useful for developers and is where translators are expected to work more often.
+    description: A collection of attributes a token is associated with.
+    comment: This collection is specially useful for developers and is where translators are expected to work more often.
     type: array
     of: Attribute
     required: false
@@ -20,3 +20,5 @@ attributes:
   - name: abstract
     description: A flag to inform translators if they should or not translate the token
     type: boolean
+  - name: comment
+    description: An extra message, for developers, about the token
