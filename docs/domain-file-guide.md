@@ -29,7 +29,7 @@ Because of that, some types and decorators may be introduced or work with some t
 ```yaml
 name: a required string which identifies the token across your ubiquitous language (must be unique) or an attribute relatively to its token
 
-description: a string which teaches or reminds what the token/attribute is about. For tokens, is required.
+description: a string which teaches or reminds what the token/attribute is about. For tokens, it is required.
 
 deprecated: a string, a boolean or an object marking the token/attribute as deprecated. Totally optional.
   - string: the string becomes the message for the deprecation warning
@@ -54,7 +54,7 @@ abstract: an optional boolean value which controls if the token should be genera
 ```yaml
 required: an optional boolean value indicating if the attribute should be always present on the token
 
-type: a required string indicating how to use the attribute on source files, may be one of the following
+type: a string indicating how to use the attribute on source files, may be one of the following
   - string: which is the default, if type is ommited
   - boolean: though you can also write "bool"
   - integer: though you can also write "int"
@@ -65,7 +65,7 @@ type: a required string indicating how to use the attribute on source files, may
   - array
   - a token's name: you may use the same name defined into the token's domain file which may not exist yet, or the normalized name (lowercase kebab) - refered as "token" type, hereafter
 
-default: an optional value indicating what to fill the token's attribute, when it is undefined (or null)
+default: an optional value indicating what to fill the token's attribute with, when the value is not defined
 ```
 
 ### Decorators
