@@ -2,12 +2,11 @@ const NormalizeName = require('../../../Services/NormalizeName')
 
 const Attribute = require('./Attribute')
 
-//  TODO: InstanceAttribute => TokenAttribute
-function InstanceAttribute (data) {
+function TokenAttribute (data) {
   Object.assign(this, new Attribute({
     ...data,
     type: NormalizeName(data.type)
-  }), { isInstance: true })
+  }), { isToken: true })
 }
 
-module.exports = InstanceAttribute
+module.exports = TokenAttribute
