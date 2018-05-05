@@ -5,7 +5,7 @@ const SCHEMA = {
   'description': Joi.string().required(),
   'attributes': Joi.array().items(Joi.Attribute()),
   'filePath': Joi.string().required(),
-  'abstract': Joi.boolean(),
+  'abstract': Joi.boolean().default(false),
   'comment': Joi.string(),
 }
 
