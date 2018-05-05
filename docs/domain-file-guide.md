@@ -76,13 +76,13 @@ Each attribute type may have some decorators associated with it, enhancing how t
 
 ```yaml
 range: allows to specify a minimum and/or maximum value for the attribute.
-  - accepts: [string, integer, date, float, array]
+  - decorate: [string, integer, date, float, array]
   - api: may be a number indicating its limit or an object which has a numberical limit property
     - min: the lower limit
     - max: the upper limit
 
-of: associates the attribute with another type. Hubi doesn't nest arrays yet. Defaults to "object".
-  - accepts: [string, boolean, integer, date, float, object, json, token]
+of: associates the attribute with another type. Hubi doesn't nest arrays yet. Its value defaults to "object".
+  - decorate: [array]
 ```
 
 ## Sample
