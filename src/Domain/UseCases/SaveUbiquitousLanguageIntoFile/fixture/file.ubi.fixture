@@ -1,6 +1,6 @@
 const SCHEMA = {
   'name': 'string.required',
-  'content': '[number]',
+  'content': '[float]',
   'size': 'integer'
 }
 
