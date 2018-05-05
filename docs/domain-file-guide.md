@@ -81,7 +81,7 @@ range: allows to specify a minimum and/or maximum value for the attribute.
     - min: the lower limit
     - max: the upper limit
 
-of: associates the attribute with another type. Hubi doesn't nest arrays yet. Its value defaults to "object".
+of: associates the attribute with another attribute type, its value defaults to "object". When dealing with arrays, hubi doesn't nest them yet.
   - decorate: [array]
 ```
 
