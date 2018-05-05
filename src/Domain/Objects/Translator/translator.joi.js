@@ -1,8 +1,8 @@
 const Joi = require('joi')
 
 const SCHEMA = {
-  'ubiquitousLanguage': Joi.ubiquitous-language().required(),
-  'tokens': Joi.array().items(Joi.Ubiquitous Token()),
+  'ubiquitousLanguage': Joi.object().required(),
+  'tokens': Joi.array().items(Joi.object()),
 }
 
 module.exports = SCHEMA

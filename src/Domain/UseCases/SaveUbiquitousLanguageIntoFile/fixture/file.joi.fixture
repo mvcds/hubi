@@ -2,7 +2,7 @@ const Joi = require('joi')
 
 const SCHEMA = {
   'name': Joi.string().required().max(255),
-  'content': Joi.array().items(Joi.float()),
+  'content': Joi.array().items(Joi.number()),
   'size': Joi.number().integer().default(0),
 }
 
