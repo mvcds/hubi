@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "4.4.0",
+  "version": "4.4.3",
   "description": "Humanitarian ubiquitous language helper",
   "main": "index.js",
   "repository": {
@@ -74,18 +74,21 @@
     "release": "yarn release:pre && release-it --non-interactive && yarn release:pos",
     "release:minor": "yarn release:pre && release-it minor --non-interactive && yarn release:pos",
     "release:major": "yarn release:pre && release-it major --non-interactive && yarn release:pos",
-    "release:pre": "git checkout . && git clean -fd && git push -u && yarn validate",
-    "release:pos": "yarn document && git add . && git commit --no-verify -m \"fix version\" && git push",
+    "release:pre": "yarn clean && yarn validate && git push -u",
+    "release:pos": "yarn build && git add . && git commit --no-verify -m \"dogfood on release\" && git push",
     "document": "node src/CLI/hubi s -t site -o docs && mv docs/index.hubi.html docs/index.html",
     "document:watch": "npm-watch document",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "dogfood": "node src/CLI/hubi s -st joi",
-    "dogfood:watch": "npm-watch dogfood"
+    "dogfood:watch": "npm-watch dogfood",
+    "clean": "git reset . && git checkout . && git clean -fd",
+    "build": "yarn dogfood & yarn document"
   },
   "dependencies": {
     "commander": "^2.15.1",
     "glob": "^7.1.2",
     "htmltidy": "^0.0.6",
+    "joi": "^13.2.0",
     "js-yaml": "^3.11.0",
     "pug": "^2.0.3",
     "write": "^1.0.3"

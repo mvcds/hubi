@@ -1,4 +1,6 @@
-const RequiresAttribute = require('../../Services/RequiresAttribute')
+const Joi = require('joi')
+
+const SCHEMA = require('./translation.joi.js')
 
 const dependenciesOf = require('./dependenciesOf')
 const dependentsOf = require('./dependentsOf')
@@ -27,9 +29,7 @@ function forEachLexiconItem ({ lexicon }, fn, thisArgs) {
 }
 
 function Translation (data) {
-  RequiresAttribute(data, {
-    lexicon: 'lexicon'
-  })
+  Joi.assert(data, SCHEMA)
 
   const stringified = Array.from(data.lexicon)
     .map(stringify)

@@ -1,7 +1,7 @@
 const Joi = require('joi')
 
 const SCHEMA = {
-  'lexicon': Joi.array().items(Joi.object()).required(),
+  'lexicon': Joi.object().required(),
 }
 
 module.exports = SCHEMA

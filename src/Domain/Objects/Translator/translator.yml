@@ -1,19 +1,7 @@
 name: Translator
 description: Interpret the ubiquitous language's tokens in order to write source files automatically.
-attributes:
-  - name: ubiquitousLanguage
-    description: The language the translator will work on
-    type: Ubiquitous Language
-    required: true
-  - name: tokens
-    description: The tokens the translator will work on
-    type: array
-    of: Ubiquitous Token
-    deprecated:
-      message: |
-        Use "ubiquitousLanguage" instead.
-        This was kept as an attribute's deprecation exemple.
-      error: true
+attributes: []
   # - name: interpretToken
   #   type: function
   #   arguments:
+abstract: true
