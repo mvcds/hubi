@@ -2,31 +2,29 @@
 
 > Teach `hubi` your [ubiquitous language](https://martinfowler.com/bliki/UbiquitousLanguage.html) and it will write relevant source files for you
 
-The humanitarian ubiquitous language helper, or `hubi` for short, reads your [domain files](https://mvcds.github.io/hubi/#domain-file) to learn the ubiquitous language behind your domain, and then generates relevant source files, so you don't have to manually change your [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
+The humanitarian ubiquitous language helper, or `hubi` for short, reads some of your files and learns the ubiquitous language behind your domain. With that knowledge, it writes source files for you, so you don't have to.
 
 <img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
 
-:warning: currently, it only partially supports [joi](https://github.com/hapijs/joi), and fully generates a site about your [ubiquitous langauge](https://mvcds.github.io/hubi/#ubiquitous-language)
+You'll be able to automatize writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), and many more. Though at the moment we partially support two [translators](https://mvcds.github.io/hubi/#translator).
 
 ## Getting started
 
-### Install
+You need to create at least one domain file before being able to use `hubi`efficiently.
 
-Use your favorite package manager to install `hubi` locally, mine is [`yarn`](https://yarnpkg.com/).
+### 1. Install
+
+> As `hubi` is a developing tool, it is recommended that each project have it installed by using the developer flag.
 
 ```
-yarn add hubi --dev
+& npm i hubi --save-dev
 ```
 
-You may also use `npm` to install it, the only important part is that it should be installed with the developer flag, so packages depending on yours won't download it.
+### 2. Define an ubiquitous language
 
-> In case you're working on a personal project, it is okay to have it installed globally but with teams, the ideal is that everyone is using the same version, thus a local installation is best recommended.
+Teaching `hubi` your ubiquitous language requires creating YAML files, refered to as [domain files](https://mvcds.github.io/hubi/#domain-file) which follow some configuration rules that you can learn at our [:green_book: domain file guide](./docs/domain-file-guide.md).
 
-### Define an ubiquitous language
-
-Teaching `hubi` your ubiquitous language is a matter of creating domain files (YAML). You can take a look at `hubi`'s own domain file as a [sample](src/Domain/Entities/DomainFile/domain-file.yml).
-
-Let's pretend our ubiquitous language has a custumer [token](https://mvcds.github.io/hubi/#ubiquitous-token):
+So, if we were about to create a custumer object we would simply add the file below to our project.
 
 ```yaml
 # src/domain/entities/custumer.yml
@@ -35,33 +33,41 @@ description: A person who has an account and therefore can buy stuff
 attributes:
   - name: name
     description: How to address the person
-    type: string # if type is ommited, then "string" is used
     required: true
-  - name: email
-    description: The external unique identifier of a custumer
+  - name: birthday
+    type: date
     required: true
   ...
 ```
 
-Learn how to configure your domain files at the [:green_book: domain file guide](./docs/domain-file-guide.md).
+### 3. Watch some magic
 
-### Generate relevant source files
-
-Add a new npm script to your `package.json`, so you can run it on a whim:
+We recommend adding an npm script into your `package.json`, so you document how `hubi` should be run:
 
 ```json
 {
   ...
-  "hubi:log": "hubi save --pattern src/**/*.yml --output domain --translator log"
+  "build:hubi": "npm run hubi:joi && npm run hubi:site",
+  "hubi:joi": "hubi save --same-folder --translator joi",
+  "hubi:site": "hubi save --output documents --translator site"
   ...
 }
 ```
 
-And from the command line call it to generate files you can use:
+And from the command line, you'll be able to call the command.
 
 ```shell
-yarn hubi:log
+& npm run build:hubi
+npm run hubi:joi & npm run hubi:site
+node hubi save --same-folder --translator joi
+node hubi hubi save --output documents --translator site
 ```
+
+Using the previous domain file as part of our example:
+
+* `build:hubi` will run `hubi:joi` and `hubi:site`
+* `hubi:joi` will create a `src/domain/entities/custumer.joi.js` file
+* `hubi:site` will create a `documents/index.hubi.html` file which is your ubiquitous language documented as part of a site which may be exposed to stackholders
 
 ## CLI
 
@@ -76,8 +82,10 @@ Show the commands bellow
 Logs the ubiquitous language entities to the console, in order to allow you to read it before saving it
 
 * `--pattern | -p` is a glob pattern to your domain files, defaults to `src/**/*.yml`
-* `--translator | -t` which [translator](https://mvcds.github.io/hubi/#translator) will be use to put the domain files into the console, defaults to `log`, a value used when developing the proof of concept but rather useless - at this version, a better choice for you is `site` or `joi`.
+* `--translator | -t` which [translator](https://mvcds.github.io/hubi/#translator) will be use to put the domain files into the console, defaults to `log`
 * `--verbose | -v` which allows debugging
+
+> Two translators were used as a proof of concept, `ubi` and `log`. They are rather useless. You should be using `site` or `joi`
 
 ### save
 
@@ -91,7 +99,11 @@ Saves the ubiquitous language entities into source files, the whole point of thi
 
 ### Dogfood
 
-As a proof of concept, [`hubi`'s doc site](https://mvcds.github.io/hubi#all) is generated by `hubi` itself.
+The term is used by technologies (ideas, products, etc) used by their own makers, here are some ways `hubi` dogfoods:
+
+* [`hubi`'s doc site](https://mvcds.github.io/hubi#all) is generated by `hubi` itself
+* The Domain File's YAML is a [sample](src/Domain/Entities/DomainFile/domain-file.yml) of a domain file
+* The source files `hubi` has generated are [imported into](https://github.com/mvcds/hubi/blob/523eb385e8f950224ee7791c8fd4edb47986ee4c/src/Domain/Objects/AttributeParser/Attributes/Attribute.js#L3) non-automatized source files i.e. we're using what we've done!
 
 ### Contributing
 
