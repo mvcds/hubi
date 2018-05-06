@@ -3,6 +3,6 @@ description: Holds information relevant to create/analyse source files in given 
 attributes:
   - name: lexicon
     description: A collection of translated tokens i.e. the translation's vocabulary
-    type: Array
-    of: object
+    # TODO: make possible to use Maps and Sets as types
+    type: object
     required: true

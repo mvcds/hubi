@@ -1,21 +1,33 @@
-const RequiresAttribute = require('../../../Services/RequiresAttribute')
+const Joi = require('joi')
+
+const SCHEMA = require('./attribute.joi.js')
 
 const Deprecated = require('../../Deprecated')
 
+const KEYS = Object.keys(SCHEMA)
+const NIL = {
+  schema: {},
+  rest: {}
+}
+
+function allowUnkownKeys (nil, [ key, value ]) {
+  const override = KEYS.includes(key) ? 'schema' : 'rest'
+
+  return {
+    ...nil,
+    [override]: { ...nil[override], [key]: value }
+  }
+}
+
 function Attribute (data) {
-  RequiresAttribute(data, {
-    name: 'name',
-    type: 'type'
-  })
+  const { schema, rest } = Object.entries(data)
+    .reduce(allowUnkownKeys, NIL)
 
-  this.name = data.name
-  this.type = data.type
-  this.isRequired = data.required || false
-  this.description = data.description
-  this.default = data.default
-  this.comment = data.comment
+  Object.assign(this, rest, Joi.attempt(schema, SCHEMA), new Deprecated(data))
 
-  Object.assign(this, new Deprecated(data))
+  //  TODO: allow to rename before using attempt
+  this.isRequired = this.required
+  delete this.required
 }
 
 Attribute.includes = function includes (...types) {

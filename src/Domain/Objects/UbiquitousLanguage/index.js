@@ -1,4 +1,6 @@
-const RequiresAttribute = require('../../Services/RequiresAttribute')
+const Joi = require('joi')
+
+const SCHEMA = require('./ubiquitous-language.joi.js')
 
 function addToken (language, token) {
   return language.set(token.name, token)
@@ -24,9 +26,7 @@ function translateEachToken ({ language }, { interpretToken }) {
 }
 
 function UbiquitousLanguage (data) {
-  RequiresAttribute(data, {
-    tokens: 'tokens'
-  })
+  Joi.assert(data, SCHEMA)
 
   const language = data.tokens
     .reduce(addToken, new Map())

@@ -1,7 +1,10 @@
+const Joi = require('joi')
+
 const NormalizeName = require('../../Services/NormalizeName')
-const RequiresAttribute = require('../../Services/RequiresAttribute')
 
 const Deprecated = require('../../Objects/Deprecated')
+
+const SCHEMA = require('./ubiquitous-token.joi.js')
 
 const DEPENDENCIES = {
   AttributeParser: require('../../Objects/AttributeParser')
@@ -16,22 +19,19 @@ function getMyTokens () {
 }
 
 function UbiquitousToken (data, injection) {
-  RequiresAttribute(data, {
-    name: 'name',
-    description: 'description',
-    filePath: 'file to path'
-  })
-
   const { AttributeParser } = Object.assign({}, DEPENDENCIES, injection)
 
   const attributes = data.attributes ? data.attributes.map(AttributeParser) : []
 
-  Object.assign(this, data, { attributes }, new Deprecated(data))
-  this.filePath = data.filePath
-  this.name = NormalizeName(data.name)
-  this.rawName = data.name
-  this.isAbstract = !!data.abstract
-  this.comment = data.comment
+  Object.assign(this, Joi.attempt(data, SCHEMA), {
+    attributes,
+    name: NormalizeName(data.name),
+    rawName: data.name
+  }, new Deprecated(data))
+
+  //  TODO: allow to rename before using attempt
+  this.isAbstract = this.abstract
+  delete this.abstract
 
   Object.defineProperty(this, 'myTokens', { get: getMyTokens })
 }
