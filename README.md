@@ -6,7 +6,7 @@ The humanitarian ubiquitous language helper, or `hubi` for short, reads some of 
 
 <img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
 
-You'll be able to automatize writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), and many more. Though at the moment we partially support two [translators](https://mvcds.github.io/hubi/#translator).
+You'll be able to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), and many more. Though at the moment we partially support two [translators](https://mvcds.github.io/hubi/#translator).
 
 ## Getting started
 
