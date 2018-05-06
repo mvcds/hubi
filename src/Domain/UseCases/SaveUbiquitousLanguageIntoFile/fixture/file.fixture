@@ -12,7 +12,7 @@
     {
       "name": "content",
       "type": "array",
-      "of": "number",
+      "of": "float",
       "description": "numbers representing its content to be converted"
     },
     {

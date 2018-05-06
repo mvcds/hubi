@@ -1,2 +1,3 @@
 yarn.lock binary
 docs/index.html binary
+#src/**/*.joi.js binary

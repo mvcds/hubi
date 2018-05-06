@@ -1,6 +1,6 @@
 {
   "name": "hubi",
-  "version": "4.3.1",
+  "version": "4.4.0",
   "description": "Humanitarian ubiquitous language helper",
   "main": "index.js",
   "repository": {
@@ -47,6 +47,13 @@
       ],
       "extensions": "js,feature,fixture,pug,css,yml",
       "quiet": true
+    },
+    "dogfood": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js,feature,fixture,pug,yml",
+      "quiet": true
     }
   },
   "scripts": {
@@ -56,6 +63,7 @@
     "test:unit": "mocha \"src/**/*.test.js\" --colors --sort --bail --recursive",
     "test:unit:watch": "npm-watch test:unit",
     "test:watch": "npm-watch test",
+    "test:release": "find src -type f \\( -iname \\*.feature -o -iname \\*.test.js \\)",
     "coverage": "nyc yarn test",
     "coverage:watch": "npm-watch coverage",
     "standard": "standard --env mocha",
@@ -71,7 +79,8 @@
     "document": "node src/CLI/hubi s -t site -o docs && mv docs/index.hubi.html docs/index.html",
     "document:watch": "npm-watch document",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "test:release": "find src -type f \\( -iname \\*.feature -o -iname \\*.test.js \\)"
+    "dogfood": "node src/CLI/hubi s -st joi",
+    "dogfood:watch": "npm-watch dogfood"
   },
   "dependencies": {
     "commander": "^2.15.1",
@@ -108,6 +117,7 @@
     "exclude": [
       "src/**/*.steps.js",
       "src/**/*.test.js",
+      "src/**/*.joi.js",
       "src/CLI/*.js"
     ],
     "reporter": [

@@ -7,12 +7,12 @@ const DEPENDENCIES = {
   AttributeParser: require('../../Objects/AttributeParser')
 }
 
-function isInstance ({ isInstance }) {
-  return isInstance
+function isToken ({ isToken }) {
+  return isToken
 }
 
 function getMyTokens () {
-  return this.attributes.filter(isInstance)
+  return this.attributes.filter(isToken)
 }
 
 function UbiquitousToken (data, injection) {
