@@ -81,7 +81,7 @@
     "dogfood": "node src/CLI/hubi s -st joi",
     "dogfood:watch": "npm-watch dogfood",
     "dogfood:release": "yarn clean && yarn build && yarn validate && git add . && git commit --no-verify -m \"dogfood on release\"",
-    "clean": "git checkout . && git clean -fd",
+    "clean": "git reset . && git checkout . && git clean -fd",
     "build": "yarn dogfood & yarn document"
   },
   "dependencies": {
