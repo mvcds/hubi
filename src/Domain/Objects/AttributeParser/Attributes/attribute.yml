@@ -1,7 +1,6 @@
 name: Attribute
-description: |
-  A token's characteristic.
-  Programming-wise, it is an object's member.
+description: A token's characteristic.
+comment: Programming-wise, it is an object's member.
 attributes:
   - name: name
     description: How the attribute is referenced relativelly to its token
