@@ -6,7 +6,7 @@ The humanitarian ubiquitous language helper, or `hubi` for short, reads some of 
 
 <img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
 
-You'll be able to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), and many more. Though at the moment we partially support two [translators](https://mvcds.github.io/hubi/#translator).
+You'll be able to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), and many more.
 
 ## Getting started
 
@@ -85,7 +85,7 @@ Logs the ubiquitous language entities to the console, in order to allow you to r
 * `--translator | -t` which [translator](https://mvcds.github.io/hubi/#translator) will be use to put the domain files into the console, defaults to `log`
 * `--verbose | -v` which allows debugging
 
-> Two translators were used as a proof of concept, `ubi` and `log`. They are rather useless. You should be using `site` or `joi`
+>  :warning: At the moment we partially support two **real** [translators](https://mvcds.github.io/hubi/#translator), `site` or `joi`. But you can also play with `ubi` and `log` which served as proof of concept to `hubi`.
 
 ### save
 
