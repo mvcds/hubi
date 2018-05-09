@@ -2,7 +2,8 @@ name: Translation
 description: Holds information relevant to create/analyse source files in given translation
 attributes:
   - name: lexicon
-    description: A collection of translated tokens i.e. the translation's vocabulary
+    description: The translation's vocabulary which is a collection of token-like objects
+    comment: It is a map to be more precise
     # TODO: make possible to use Maps and Sets as types
     type: object
     required: true

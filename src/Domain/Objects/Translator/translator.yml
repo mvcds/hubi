@@ -1,6 +1,7 @@
 name: Translator
 description: Interpret the ubiquitous language's tokens in order to write source files automatically.
 attributes: []
+  # TODO: add functions as attributes
   # - name: interpretToken
   #   type: function
   #   arguments:

@@ -1,5 +1,6 @@
 name: Ubiquitous Token
-description: A piece of the ubiquitous language (phrase, expression, term, etc) extracted from the domain file
+description: A piece of the ubiquitous language extracted from its domain file
+comment: It represents a phrase, expression, term, etc
 attributes:
   - name: name
     description: How people refer to the token

@@ -6,11 +6,28 @@ The humanitarian ubiquitous language helper, or `hubi` for short, reads some of 
 
 <img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
 
-You'll be able to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), and many more. Though at the moment we partially support two [translators](https://mvcds.github.io/hubi/#translator).
+## How to use it
 
-## Getting started
+### Use Case (example)
 
-You need to create at least one domain file before being able to use `hubi`efficiently.
+Imagine you are assigned to the task of showing the custumer's birthday on its profile page. Here is a list of possible places you'd need to change within an imaginary JS stack in order to accomplish it (your stack may be a little different):
+
+* Back-end repository
+  - Sequelize Model
+  - Domain schema
+  - GraphQL type
+  - Fixture factory
+* Front-end repository
+  - GraphQL query
+  - Domain model
+  - Prop Types
+  - Fixture factory (in an ideal world it would be shared with its back-end repository, but here is not)
+* Othere repository where the new data is relevant
+  - C# class
+  - ...
+* ...
+
+Instead of updating each item individually, you could use `hubi` to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
 
 ### 1. Install
 
@@ -20,29 +37,27 @@ You need to create at least one domain file before being able to use `hubi`effic
 & npm i hubi --save-dev
 ```
 
-### 2. Define an ubiquitous language
+### 2. Define your ubiquitous language
 
-Teaching `hubi` your ubiquitous language requires creating YAML files, refered to as [domain files](https://mvcds.github.io/hubi/#domain-file) which follow some configuration rules that you can learn at our [:green_book: domain file guide](./docs/domain-file-guide.md).
-
-So, if we were about to create a custumer object we would simply add the file below to our project.
+Create a YAML file, refered to as [domain file](https://mvcds.github.io/hubi/#domain-file), which configures some rules to create your source files. You can learn them at `hubi`'s [domain file guide :green_book:](./docs/domain-file-guide.md).
 
 ```yaml
-# src/domain/entities/custumer.yml
-name: Custumer
-description: A person who has an account and therefore can buy stuff
+# src/domain/entities/user.yml
+name: User
+description: A person who has an account
 attributes:
   - name: name
     description: How to address the person
     required: true
   - name: birthday
+    comment: This field was added later
     type: date
-    required: true
-  ...
+    required: false
 ```
 
 ### 3. Watch some magic
 
-We recommend adding an npm script into your `package.json`, so you document how `hubi` should be run:
+Add an npm script into your `package.json`, to facilitate running `hubi`:
 
 ```json
 {
@@ -54,7 +69,7 @@ We recommend adding an npm script into your `package.json`, so you document how 
 }
 ```
 
-And from the command line, you'll be able to call the command.
+After calling the command below, you are going to have your user-related source files updated.
 
 ```shell
 & npm run build:hubi
@@ -66,7 +81,7 @@ node hubi hubi save --output documents --translator site
 Using the previous domain file as part of our example:
 
 * `build:hubi` will run `hubi:joi` and `hubi:site`
-* `hubi:joi` will create a `src/domain/entities/custumer.joi.js` file
+* `hubi:joi` will create a `src/domain/entities/user.joi.js` file
 * `hubi:site` will create a `documents/index.hubi.html` file which is your ubiquitous language documented as part of a site which may be exposed to stackholders
 
 ## CLI
@@ -85,7 +100,7 @@ Logs the ubiquitous language entities to the console, in order to allow you to r
 * `--translator | -t` which [translator](https://mvcds.github.io/hubi/#translator) will be use to put the domain files into the console, defaults to `log`
 * `--verbose | -v` which allows debugging
 
-> Two translators were used as a proof of concept, `ubi` and `log`. They are rather useless. You should be using `site` or `joi`
+>  :warning: At the moment we partially support two **real** [translators](https://mvcds.github.io/hubi/#translator), `site` or `joi`. But you can also play with `ubi` and `log` which served as proof of concept to `hubi`.
 
 ### save
 
@@ -107,13 +122,21 @@ The term is used by technologies (ideas, products, etc) used by their own makers
 
 ### Contributing
 
-Showing the project to your peers is itself an amazing way of contribute but as `hubi` is an open-source project, you are also able to submit issues and pull requests. [Take a look at our contributing guide.](CONTRIBUTING.md)
+Take a look at our [:green_book: contributing guide](CONTRIBUTING.md) to a more complete version of this section.
 
-Even **if you don't want to code**, you can always feedback us about non-clear documentation, showcase your domain and even inform us about bugs.
+#### With no code
 
-One of our most urgent needs is that we [miss useful Translators](https://github.com/mvcds/hubi/projects/2), so people may not use `hubi` because it does not attend their needs **yet**.
+Staring the project is an amazing help :star:, as well as fork it and talking to your peers about it.
 
-Improving the [HTML generated by the site translator](https://github.com/mvcds/hubi/issues/35) is also a wonderful initiative!
+We are also looking for ideas to improve `hubi`, so submiting bug reports, showcases, and clearer documentation & feature requests, are more than welcome.
+
+Non-code-related stuff, as logos and translations, are needed to.
+
+### With some code
+
+This project relies on [useful Translators](https://github.com/mvcds/hubi/projects/2), so feel free to create your owns and open PRs about it.
+
+We'd also like to improve the [HTML generated by the site translator](https://github.com/mvcds/hubi/issues/35) and add some functionalities on top of it.
 
 ### For those who don't know/use [domain-driven design [DDD]](https://airbrake.io/blog/software-design/domain-driven-design)
 
