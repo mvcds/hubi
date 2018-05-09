@@ -6,11 +6,28 @@ The humanitarian ubiquitous language helper, or `hubi` for short, reads some of 
 
 <img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
 
-You'll be able to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), and many more.
+## How to use it
 
-## Getting started
+### Use Case (example)
 
-You need to create at least one domain file before being able to use `hubi`efficiently.
+Imagine you are assigned to the task of showing the custumer's birthday on its profile page. Here is a list of possible places you'd need to change within an imaginary JS stack in order to accomplish it (your stack may be a little different):
+
+* Back-end repository
+  - Sequelize Model
+  - Domain schema
+  - GraphQL type
+  - Fixture factory
+* Front-end repository
+  - GraphQL query
+  - Domain model
+  - Prop Types
+  - Fixture factory (in an ideal world it would be shared with its back-end repository, but here is not)
+* Othere repository where the new data is relevant
+  - C# class
+  - ...
+* ...
+
+Instead of updating each item individually, you could use `hubi` to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
 
 ### 1. Install
 
@@ -20,29 +37,27 @@ You need to create at least one domain file before being able to use `hubi`effic
 & npm i hubi --save-dev
 ```
 
-### 2. Define an ubiquitous language
+### 2. Define your ubiquitous language
 
-Teaching `hubi` your ubiquitous language requires creating YAML files, refered to as [domain files](https://mvcds.github.io/hubi/#domain-file) which follow some configuration rules that you can learn at our [:green_book: domain file guide](./docs/domain-file-guide.md).
-
-So, if we were about to create a custumer object we would simply add the file below to our project.
+Create a YAML file, refered to as [domain file](https://mvcds.github.io/hubi/#domain-file), which configures some rules to create your source files. You can learn them at `hubi`'s [domain file guide :green_book:](./docs/domain-file-guide.md).
 
 ```yaml
-# src/domain/entities/custumer.yml
-name: Custumer
-description: A person who has an account and therefore can buy stuff
+# src/domain/entities/user.yml
+name: User
+description: A person who has an account
 attributes:
   - name: name
     description: How to address the person
     required: true
   - name: birthday
+    comment: This field was added later
     type: date
-    required: true
-  ...
+    required: false
 ```
 
 ### 3. Watch some magic
 
-We recommend adding an npm script into your `package.json`, so you document how `hubi` should be run:
+Add an npm script into your `package.json`, to facilitate running `hubi`:
 
 ```json
 {
@@ -54,7 +69,7 @@ We recommend adding an npm script into your `package.json`, so you document how 
 }
 ```
 
-And from the command line, you'll be able to call the command.
+After calling the command below, you are going to have your user-related source files updated.
 
 ```shell
 & npm run build:hubi
@@ -66,7 +81,7 @@ node hubi hubi save --output documents --translator site
 Using the previous domain file as part of our example:
 
 * `build:hubi` will run `hubi:joi` and `hubi:site`
-* `hubi:joi` will create a `src/domain/entities/custumer.joi.js` file
+* `hubi:joi` will create a `src/domain/entities/user.joi.js` file
 * `hubi:site` will create a `documents/index.hubi.html` file which is your ubiquitous language documented as part of a site which may be exposed to stackholders
 
 ## CLI
