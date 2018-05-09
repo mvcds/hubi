@@ -43,8 +43,11 @@
         <span class="token__name">Ubiquitous Token</span>
       </summary>
       <p class="token__description">
-        A piece of the ubiquitous language (phrase, expression,
-        term, etc) extracted from the domain file
+        A piece of the ubiquitous language extracted from its
+        domain file
+      </p>
+      <p class="token__comment">
+        It represents a phrase, expression, term, etc
       </p>
       <ul class="token__attributes">
         <li class="attribute">
@@ -94,8 +97,10 @@
         <span class="token__name">Attribute</span>
       </summary>
       <p class="token__description">
-        A token's characteristic. Programming-wise, it is an
-        object's member.
+        A token's characteristic.
+      </p>
+      <p class="token__comment">
+        Programming-wise, it is an object's member.
       </p>
       <ul class="token__attributes">
         <li class="attribute">
@@ -142,8 +147,10 @@
         <li class="attribute">
           <strong class=
           "attribute__name">lexicon</strong><span class=
-          "attribute__description">: A collection of translated
-          tokens i.e. the translation's vocabulary</span>
+          "attribute__description">: The translation's vocabulary
+          which is a collection of token-like
+          objects</span><span class="attribute__comment">It is a
+          map to be more precise</span>
         </li>
       </ul>
     </details>
@@ -162,15 +169,16 @@
         <span class="token__name">Ubiquitous Language</span>
       </summary>
       <p class="token__description">
-        A common language for everybody, its tokens will be used
-        differently by each translator
+        A common language for everybody
+      </p>
+      <p class="token__comment">
+        Each translator will interpret its token diffetently
       </p>
       <ul class="token__attributes">
         <li class="attribute">
           <strong class=
           "attribute__name">tokens</strong><span class=
-          "attribute__description">: A collection of tokens to be
-          interpreted</span>
+          "attribute__description">: A collection of tokens</span>
         </li>
       </ul>
     </details>
