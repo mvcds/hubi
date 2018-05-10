@@ -25,12 +25,12 @@ mixin withTokenDeprecation({ message, error })
     span(class=classes) ⚠
     span #{message}
 
-mixin withAliases(aliases)
+mixin withAliases(aliases, rawAliases)
   if (aliases)
     small(class="token__aliases")
       | (A.K.A&nbsp;
       each alias, index in aliases
-        span(name=alias) #{alias}
+        span(name=alias) #{rawAliases[index]}
         if (index !== aliases.length - 1)
           | ,&nbsp;
       | )
@@ -40,7 +40,7 @@ mixin withToken({ name, object })
     summary(class="token__title")
       span(class="token__name") #{object.rawName}
 
-      +withAliases(object.aliases)
+      +withAliases(object.aliases, object.rawAliases)
 
       if (object.deprecated)
         +withDeprecation("token", object.deprecated)

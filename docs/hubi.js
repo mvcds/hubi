@@ -1,12 +1,14 @@
 //  eslint-disable-next-line
 const j = $
 
-function open (detail) {
-  detail.prop('open', true)
+function open (details) {
+  if (!details || !details.length) return
+
+  details.prop('open', true)
 }
 
 j(document).ready(function () {
-  var hash = window.location.hash.substr(1)
+  var hash = window.location.hash.substr(1).toLowerCase()
 
   if (!hash.length) return
 
@@ -14,7 +16,7 @@ j(document).ready(function () {
 
   const token = j('[name=' + hash + ']')
 
-  if (!token || !token.length) return
+  const details = token.is('details') ? token : token.parents('details')
 
-  open(j(token))
+  open(details)
 })
