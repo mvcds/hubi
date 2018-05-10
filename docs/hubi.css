@@ -62,6 +62,10 @@ body {
   font-family: fantasy;
 }
 
+.token__aliases {
+  margin-left: 4px;
+}
+
 .attribute__default {
   margin-left: 4px;
   font-family: monospace, serif;
