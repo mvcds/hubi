@@ -22,11 +22,14 @@ function UbiquitousToken (data, injection) {
   const { AttributeParser } = Object.assign({}, DEPENDENCIES, injection)
 
   const attributes = data.attributes ? data.attributes.map(AttributeParser) : []
+  const aliases = data.aliases && data.aliases.map(NormalizeName)
 
   Object.assign(this, Joi.attempt(data, SCHEMA), {
     attributes,
+    aliases,
     name: NormalizeName(data.name),
-    rawName: data.name
+    rawName: data.name,
+    rawAliases: data.aliases
   }, new Deprecated(data))
 
   //  TODO: allow to rename before using attempt

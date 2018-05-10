@@ -6,3 +6,5 @@ attributes: []
   #   type: function
   #   arguments:
 abstract: true
+aliases:
+  - Plugin

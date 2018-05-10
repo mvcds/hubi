@@ -24,3 +24,13 @@ attributes:
     default: false
   - name: comment
     description: An extra message, for developers, about the token
+  - name: aliases
+    description: Alternative names, abbreviations, etc
+    comment: Other ways to refer to the token itself
+    type: array
+    of: string
+aliases:
+  - Token
+  - Domain Object
+  - Object Value
+  - Entity

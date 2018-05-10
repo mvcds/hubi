@@ -7,3 +7,5 @@ attributes:
     # TODO: make possible to use Maps and Sets as types
     type: object
     required: true
+aliases:
+  - Result
