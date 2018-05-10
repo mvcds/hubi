@@ -14,7 +14,7 @@ j(document).ready(function () {
 
   const token = j('[name=' + hash + ']')
 
-  if (!token) return
+  if (!token || !token.length) return
 
   open(j(token))
 })
