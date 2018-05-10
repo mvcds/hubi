@@ -49,6 +49,8 @@ comment: a string which informs developers about something
 attributes: an optional array of attributes associated with that token. If ommited, an empty array is used instead.
 
 abstract: an optional boolean value which controls if the token should be generated.
+
+aliases: a list of strings containing alternative names/references to the token.
 ```
 
 ### Attribute

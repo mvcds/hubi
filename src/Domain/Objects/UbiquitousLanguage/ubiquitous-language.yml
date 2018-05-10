@@ -7,3 +7,5 @@ attributes:
     required: true
     type: array
     of: Ubiquitous Token
+aliases:
+  - Domain Language
