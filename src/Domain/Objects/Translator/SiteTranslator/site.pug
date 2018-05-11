@@ -4,20 +4,20 @@ mixin withDeprecation (type, { message, error })
     span(class=classes) ⚠
     span #{message}
 
-mixin withAttribute({ name, description, deprecated, default: standard, comment })
+mixin withAttribute(attribute)
   li(class="attribute")
-    strong(class="attribute__name") #{name}
+    strong(class="attribute__name") #{attribute.name}
 
-    if (standard !== undefined)
-      span(class="attribute__default") (#{standard})
+    if (attribute.default !== undefined)
+      span(class="attribute__default") (#{attribute.default})
 
-    span(class="attribute__description") : #{description}
+    span(class="attribute__description") : #{attribute.description}
 
-    if (comment !== undefined)
-      span(class="attribute__comment") #{comment}
+    if (attribute.comment !== undefined)
+      span(class="attribute__comment") #{attribute.comment}
 
-    if (deprecated !== undefined)
-      +withDeprecation("attribute", deprecated)
+    if (attribute.deprecated !== undefined)
+      +withDeprecation("attribute", attribute.deprecated)
 
 mixin withTokenDeprecation({ message, error })
   - var classes = error ? "token__deprecation-note__icon token__deprecation-note__icon--error" : "token__deprecation-note__icon"
