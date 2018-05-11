@@ -67,6 +67,7 @@ type: a string indicating how to use the attribute on source files, may be one o
   - object: though you can also write "shape".
   - json
   - array
+  - function: though you can also write "func", "method" or "procedure"
   - a token's name: you may use the same name defined into the token's domain file which may not exist yet, or the normalized name (lowercase kebab) - refered as "token" type, hereafter
 
 default: an optional value indicating what to fill the token's attribute with, when the value is not defined
