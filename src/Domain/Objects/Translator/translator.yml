@@ -6,6 +6,7 @@ attributes:
     required: true
     description: How each ubiquitous language's token is interpreted during translation
     comment: ("Interface")
+    return: object
 abstract: true
 aliases:
   - Plugin

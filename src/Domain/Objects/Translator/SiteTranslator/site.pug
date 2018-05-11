@@ -8,6 +8,9 @@ mixin withAttribute(attribute)
   li(class="attribute")
     strong(class="attribute__name") #{attribute.name}
 
+    if (attribute.type === 'function')
+      | &nbsp;→ #{attribute.return || '?'}
+
     if (attribute.default !== undefined)
       span(class="attribute__default") (#{attribute.default})
 

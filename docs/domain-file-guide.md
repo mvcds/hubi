@@ -90,6 +90,11 @@ of: associates the attribute with another type. Hubi doesn't nest arrays yet.
   - api: a string indicating the type that the attribute will be associated with.
   - default:
     - array: "object"
+
+return: should be one of the attribute types. Hubi doesn't return functions yet.
+  - decorate: [function]
+  - api: an attribute type or a token
+  - default: undefined
 ```
 
 ## Sample
