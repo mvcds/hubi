@@ -106,9 +106,9 @@ Staring the project is an amazing help :star:, as well as fork it and talking to
 
 We are also looking for ideas to improve `hubi`, so submiting bug reports, showcases, and clearer documentation & feature requests, are more than welcome.
 
-Non-code-related stuff, as logos and translations, are needed to.
+Other non-code-related stuff, as logos and translations, are needed too.
 
-### With some code
+#### With some code
 
 This project relies on [useful Translators](https://github.com/mvcds/hubi/projects/2), so feel free to create your owns and open PRs about it.
 
