@@ -84,31 +84,7 @@ Using the previous domain file as part of our example:
 * `hubi:joi` will create a `src/domain/entities/user.joi.js` file
 * `hubi:site` will create a `documents/index.hubi.html` file which is your ubiquitous language documented as part of a site which may be exposed to stackholders
 
-## CLI
-
-At the moment, `hubi` can only be used via command line, and thus you can script upon it.
-
-### help
-
-Show the commands bellow
-
-### log
-
-Logs the ubiquitous language entities to the console, in order to allow you to read it before saving it
-
-* `--pattern | -p` is a glob pattern to your domain files, defaults to `src/**/*.yml`
-* `--translator | -t` which [translator](https://mvcds.github.io/hubi/#translator) will be use to put the domain files into the console, defaults to `log`
-* `--verbose | -v` which allows debugging
-
->  :warning: At the moment we partially support two **real** [translators](https://mvcds.github.io/hubi/#translator), `site` or `joi`. But you can also play with `ubi` and `log` which served as proof of concept to `hubi`.
-
-### save
-
-Saves the ubiquitous language entities into source files, the whole point of this project!
-
-* the same arguments as `log`, plus
-* `--output | -o` is the folder to which files will be saved, defaults to `domain`
-* `--same-folder | -s` overides the output flag, by geneating the source file on the same folder as the token's domain file.
+Read the [API guide :green_book:](./docs/api.md) in order to discover the commands `hubi` can follow.
 
 ## More
 
