@@ -31,7 +31,7 @@ Instead of updating each item individually, you could use `hubi` to automate wri
 
 ### 1. Install
 
-> As `hubi` is a developing tool, it is recommended that each project have it installed by using the developer flag.
+> As `hubi` is a development tool, it is recommended that each project have it installed by using the developer flag.
 
 ```
 & npm i hubi --save-dev
