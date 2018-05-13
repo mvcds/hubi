@@ -34,7 +34,7 @@ Instead of updating each item individually, you could use `hubi` to automate wri
 > As `hubi` is a development tool, it is recommended that each project have it installed by using the developer flag.
 
 ```
-& npm i hubi --save-dev
+$ npm i hubi --save-dev
 ```
 
 ### 2. Define your ubiquitous language
@@ -72,7 +72,7 @@ Add an npm script into your `package.json`, to facilitate running `hubi`:
 After calling the command below, you are going to have your user-related source files updated.
 
 ```shell
-& npm run build:hubi
+$ npm run build:hubi
 npm run hubi:joi & npm run hubi:site
 node hubi save --same-folder --translator joi
 node hubi hubi save --output documents --translator site
