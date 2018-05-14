@@ -31,10 +31,10 @@ Instead of updating each item individually, you could use `hubi` to automate wri
 
 ### 1. Install
 
-> As `hubi` is a developing tool, it is recommended that each project have it installed by using the developer flag.
+> As `hubi` is a development tool, it is recommended that each project have it installed by using the developer flag.
 
 ```
-& npm i hubi --save-dev
+$ npm i hubi --save-dev
 ```
 
 ### 2. Define your ubiquitous language
@@ -72,7 +72,7 @@ Add an npm script into your `package.json`, to facilitate running `hubi`:
 After calling the command below, you are going to have your user-related source files updated.
 
 ```shell
-& npm run build:hubi
+$ npm run build:hubi
 npm run hubi:joi & npm run hubi:site
 node hubi save --same-folder --translator joi
 node hubi hubi save --output documents --translator site
@@ -84,31 +84,7 @@ Using the previous domain file as part of our example:
 * `hubi:joi` will create a `src/domain/entities/user.joi.js` file
 * `hubi:site` will create a `documents/index.hubi.html` file which is your ubiquitous language documented as part of a site which may be exposed to stackholders
 
-## CLI
-
-At the moment, `hubi` can only be used via command line, and thus you can script upon it.
-
-### help
-
-Show the commands bellow
-
-### log
-
-Logs the ubiquitous language entities to the console, in order to allow you to read it before saving it
-
-* `--pattern | -p` is a glob pattern to your domain files, defaults to `src/**/*.yml`
-* `--translator | -t` which [translator](https://mvcds.github.io/hubi/#translator) will be use to put the domain files into the console, defaults to `log`
-* `--verbose | -v` which allows debugging
-
->  :warning: At the moment we partially support two **real** [translators](https://mvcds.github.io/hubi/#translator), `site` or `joi`. But you can also play with `ubi` and `log` which served as proof of concept to `hubi`.
-
-### save
-
-Saves the ubiquitous language entities into source files, the whole point of this project!
-
-* the same arguments as `log`, plus
-* `--output | -o` is the folder to which files will be saved, defaults to `domain`
-* `--same-folder | -s` overides the output flag, by geneating the source file on the same folder as the token's domain file.
+Read the [API guide :green_book:](./docs/api.md) in order to discover the commands `hubi` can follow.
 
 ## More
 
@@ -130,9 +106,9 @@ Staring the project is an amazing help :star:, as well as fork it and talking to
 
 We are also looking for ideas to improve `hubi`, so submiting bug reports, showcases, and clearer documentation & feature requests, are more than welcome.
 
-Non-code-related stuff, as logos and translations, are needed to.
+Other non-code-related stuff, as logos and translations, are needed too.
 
-### With some code
+#### With some code
 
 This project relies on [useful Translators](https://github.com/mvcds/hubi/projects/2), so feel free to create your owns and open PRs about it.
 
