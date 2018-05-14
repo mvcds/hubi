@@ -95,6 +95,11 @@ return: should be one of the attribute types. Hubi doesn't return functions yet.
   - decorate: [function]
   - api: an attribute type or a token
   - default: undefined
+
+arguments: a list of token-like entities which will be injected into the function. Hubi doesn't accept functions nor arrays as arguments yet.
+  - decorate: [function]
+  - api: a list of token-like entities
+  - default: []
 ```
 
 ## Sample

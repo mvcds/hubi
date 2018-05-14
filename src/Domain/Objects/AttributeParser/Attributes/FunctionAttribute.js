@@ -7,6 +7,7 @@ function FunctionAttribute (data) {
   }))
 
   this.return = data.return
+  this.arguments = data.arguments
 }
 
 FunctionAttribute.isMatch = Attribute.includes('function', 'func', 'method', 'procedure')

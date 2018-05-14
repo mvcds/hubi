@@ -7,6 +7,10 @@ attributes:
     description: How each ubiquitous language's token is interpreted during translation
     comment: ("Interface")
     return: object
+    arguments:
+      - name: token
+        type: Ubiquitous Token
+        required: true
 abstract: true
 aliases:
   - Plugin

@@ -4,6 +4,19 @@ mixin withDeprecation (type, { message, error })
     span(class=classes) ⚠
     span #{message}
 
+mixin withFunction({ arguments: args })
+  ul
+    each argument in args
+      li
+        strong #{argument.name}
+        | : #{argument.type}
+        if (argument.required)
+          span(title="required")
+            | !
+        else
+          span(title="optional")
+            | ?
+
 mixin withAttribute(attribute)
   li(class="attribute")
     strong(class="attribute__name") #{attribute.name}
@@ -21,6 +34,9 @@ mixin withAttribute(attribute)
 
     if (attribute.deprecated !== undefined)
       +withDeprecation("attribute", attribute.deprecated)
+
+    if (attribute.type === 'function')
+      +withFunction(attribute)
 
 mixin withTokenDeprecation({ message, error })
   - var classes = error ? "token__deprecation-note__icon token__deprecation-note__icon--error" : "token__deprecation-note__icon"
