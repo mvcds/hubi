@@ -51,7 +51,11 @@ const PRIMITIVES = {
   Integer: typedAttribute.bind({ type: 'integer' }),
   JSON: typedAttribute.bind({ type: 'json' }),
   Object: typedAttribute.bind({ type: 'object' }),
-  Shape: typedAttribute.bind({ type: 'object' })
+  Shape: typedAttribute.bind({ type: 'object' }),
+  Function: typedAttribute.bind({ type: 'function' }),
+  Func: typedAttribute.bind({ type: 'function' }),
+  Method: typedAttribute.bind({ type: 'function' }),
+  Procedure: typedAttribute.bind({ type: 'function' })
 }
 
 module.exports = {

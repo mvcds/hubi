@@ -1,11 +1,8 @@
 const DECORATORS = {
   max: require('./range.js'),
-  min: require('./range.js')
+  min: require('./range.js'),
+  arguments: require('./args.js')
 }
-
-const NUMBERS = ['float', 'integer']
-
-const ARRAYIFYABLE = ['boolean', 'date', ...NUMBERS, 'json', 'object', 'string']
 
 function decorate (decorations, [ kind, data ]) {
   const decorate = DECORATORS[kind]
@@ -20,28 +17,46 @@ function decorate (decorations, [ kind, data ]) {
   ]
 }
 
-function fixNumber ({ type }) {
-  const base = 'Joi.number()'
+const NUMBER = {
+  types: ['float', 'integer'],
+  fix: function ({ type }) {
+    const base = 'Joi.number()'
 
-  return type === 'integer' ? `${base}.integer()` : base
+    return type === 'integer' ? `${base}.integer()` : base
+  }
 }
 
-function fixArray ({ of: type, ...data }) {
-  const joi = joify({ ...data, type })
+const COMPOSABLE = {
+  types: ['array'],
+  fix: function ({ of: type, ...data }) {
+    const joi = joify({ ...data, type })
 
-  return `Joi.array().items(${joi})`
+    return `Joi.array().items(${joi})`
+  }
+}
+
+const ARRAYIFYABLE = {
+  types: ['boolean', 'date', ...NUMBER.types, 'json', 'object', 'string', 'function'],
+  fix: function ({ type }) {
+    return `Joi.${type}()`
+  }
+}
+
+const JOI_TYPES = {
+  NUMBER,
+  COMPOSABLE,
+  ARRAYIFYABLE
+}
+
+function isOfType ({ types }) {
+  return types.includes(this.type)
 }
 
 function joify (data) {
-  const { type } = data
+  const type = Object.values(JOI_TYPES)
+    .find(isOfType, data)
 
-  if (NUMBERS.includes(type)) return fixNumber(data)
-
-  if (type === 'array') return fixArray(data)
-
-  const joi = ARRAYIFYABLE.includes(type) ? type : 'object'
-
-  return `Joi.${joi}()`
+  return type ? type.fix(data) : 'Joi.object()'
 }
 
 function parse () {

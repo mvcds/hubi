@@ -76,6 +76,7 @@ describe('AttributeParser', () => {
     })
   })
 
+  //  TODO: fix intermitence
   context.skip('Deprecation', () => {
     const testDeprecation = ({ deprecated }, message, error) => {
       it('Matches the message', () => assert.equal(deprecated.message, message))
@@ -106,5 +107,15 @@ describe('AttributeParser', () => {
 
       testDeprecation(attribute, `"${name}" is marked as deprecated`, true)
     })
+  })
+
+  context('Function', () => {
+    it('Parsers function value to function attribute', () => testType(AttributeFactory.Function(), 'function'))
+
+    it('Parsers func value to function attribute', () => testType(AttributeFactory.Func(), 'function'))
+
+    it('Parsers method value to function attribute', () => testType(AttributeFactory.Method(), 'function'))
+
+    it('Parsers procedure value to function attribute', () => testType(AttributeFactory.Procedure(), 'function'))
   })
 })

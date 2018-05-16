@@ -67,6 +67,7 @@ type: a string indicating how to use the attribute on source files, may be one o
   - object: though you can also write "shape".
   - json
   - array
+  - function: though you can also write "func", "method" or "procedure"
   - a token's name: you may use the same name defined into the token's domain file which may not exist yet, or the normalized name (lowercase kebab) - refered as "token" type, hereafter
 
 default: an optional value indicating what to fill the token's attribute with, when the value is not defined
@@ -89,6 +90,16 @@ of: associates the attribute with another type. Hubi doesn't nest arrays yet.
   - api: a string indicating the type that the attribute will be associated with.
   - default:
     - array: "object"
+
+return: should be one of the attribute types. Hubi doesn't return functions yet.
+  - decorate: [function]
+  - api: an attribute type or a token
+  - default: undefined
+
+arguments: a list of token-like entities which will be injected into the function. Hubi doesn't accept functions nor arrays as arguments yet.
+  - decorate: [function]
+  - api: a list of token-like entities
+  - default: []
 ```
 
 ## Sample

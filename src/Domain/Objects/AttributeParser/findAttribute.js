@@ -7,7 +7,8 @@ const DEPENDENCIES = {
     require('./Attributes/FloatAttribute'),
     require('./Attributes/ObjectAttribute'),
     require('./Attributes/JSONAttribute'),
-    require('./Attributes/ArrayAttribute')
+    require('./Attributes/ArrayAttribute'),
+    require('./Attributes/FunctionAttribute')
   ],
   defaultAttribute: require('./Attributes/TokenAttribute')
 }
