@@ -56,7 +56,7 @@ aliases: a list of strings containing alternative names/references to the token.
 ### Attribute
 
 ```yaml
-required: an optional boolean value indicating if the attribute should be always present on the token
+required: an optional boolean value indicating if the attribute should be always present on the token, defaults to false
 
 type: a string indicating how to use the attribute on source files, may be one of the following
   - string: which is the default, if type is ommited
