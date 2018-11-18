@@ -4,9 +4,64 @@
 
 <img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
 
-## How to use it
+## When to use `hubi`
 
-### Use Case (example)
+Use it in one or more of the following situations:
+
+1. If you want to have a documentated language for your domain, especially when it needs to be consulted by non-technical stakeholders.
+
+2. Your domain allows (or requires) you to share domain knowledge accross projects.
+
+3. You want to reuse a project's slice of the domain elsewhere - this is the least advisable scenario, as each project generally has a slightly perspective on how the domain looks like
+
+## Installation
+
+> As `hubi` is a development tool, it is recommended that each project have it installed by using the developer flag.
+
+```
+$ npm i hubi --save-dev
+```
+
+## Basic Use
+
+Declare how your domain should look like in a YAML file, refered to as [domain file](domain-file), and then execute `hubi` with the options provided by its [API :star:][api].
+
+Each one of this files is responsible for a piece of the domain. Its rules can be found at `hubi`'s [domain file guide :green_book:](./docs/domain-file-guide.md).
+
+### Example
+
+A user could be represented like this:
+
+```yaml
+# src/domain/user.yml
+name: User
+description: A person who has an account
+attributes:
+  - name: name
+    description: How to address the person
+    required: true
+  - name: eyes
+  - description: The color of the user's eyes
+  - deprecated:
+    - message:
+        We've discovered that this is a useless information for us.
+        Will be deprecated soon
+    - error: false
+    required: false
+  - name: birthday
+    comment: This field was added later
+    type: date
+    required: false
+```
+
+And turned into part of the site's source code and documentation by running:
+
+```
+$ npm run my-custom-hubi-script
+> hubi save --same-folder --translator joi & hubi save --output documents --translator site
+```
+
+### Use Case
 
 Imagine you are assigned to the task of showing the custumer's birthday on its profile page. Here is a list of possible places you'd need to change within an imaginary JS stack in order to accomplish it (your stack may be a little different):
 
@@ -26,63 +81,6 @@ Imagine you are assigned to the task of showing the custumer's birthday on its p
 * ...
 
 Instead of updating each item individually, you could use `hubi` to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
-
-### 1. Install
-
-> As `hubi` is a development tool, it is recommended that each project have it installed by using the developer flag.
-
-```
-$ npm i hubi --save-dev
-```
-
-### 2. Define your ubiquitous language
-
-Create a YAML file, refered to as [domain file](https://mvcds.github.io/hubi/#domain-file), which configures some rules to create your source files. You can learn them at `hubi`'s [domain file guide :green_book:](./docs/domain-file-guide.md).
-
-```yaml
-# src/domain/entities/user.yml
-name: User
-description: A person who has an account
-attributes:
-  - name: name
-    description: How to address the person
-    required: true
-  - name: birthday
-    comment: This field was added later
-    type: date
-    required: false
-```
-
-### 3. Watch some magic
-
-Add an npm script into your `package.json`, to facilitate running `hubi`:
-
-```json
-{
-  ...
-  "build:hubi": "npm run hubi:joi && npm run hubi:site",
-  "hubi:joi": "hubi save --same-folder --translator joi",
-  "hubi:site": "hubi save --output documents --translator site"
-  ...
-}
-```
-
-After calling the command below, you are going to have your user-related source files updated.
-
-```shell
-$ npm run build:hubi
-npm run hubi:joi & npm run hubi:site
-node hubi save --same-folder --translator joi
-node hubi hubi save --output documents --translator site
-```
-
-Using the previous domain file as part of our example:
-
-* `build:hubi` will run `hubi:joi` and `hubi:site`
-* `hubi:joi` will create a `src/domain/entities/user.joi.js` file
-* `hubi:site` will create a `documents/index.hubi.html` file which is your ubiquitous language documented as part of a site which may be exposed to stackholders
-
-Read the [API guide :green_book:](./docs/api.md) in order to discover the commands `hubi` can follow.
 
 ## More
 
