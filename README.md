@@ -1,8 +1,6 @@
 # Hubi [![Build Status][ci-badge]][ci] [![JavaScript Style Guide][js-standard-badge]][js-standard] [![Coverage Status][coverage-badge]][coverage] [![GitHub license][license-badge]][license]
 
-> Teach `hubi` your [ubiquitous language](https://martinfowler.com/bliki/UbiquitousLanguage.html) and it will write relevant source files for you
-
-The humanitarian ubiquitous language helper, or `hubi` for short, reads some of your files and learns the ubiquitous language behind your domain. With that knowledge, it writes source files for you, so you don't have to.
+`Hubi` is like a [database migration tool][ORM] but for [ubiquitous language][UbiquitousLanguage] i.e. it reads some of your versioned files to write code, data schema and documents.
 
 <img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
 
@@ -120,6 +118,10 @@ I don’t know if Eric Evans, the author of domain-driven design book, coined th
 
 But you can still use ubiquitous language regardless of DDD because it stands on its own. So, even if you don't know/use DDD you can still use `hubi` to reap the benefits of speaking a single language - at the same time you [document your code](https://developers.redhat.com/blog/2017/06/21/documentation-as-code/).
 
+## What `hubi` stands for?
+
+It simply means "humanitarian ubiquitous language [helper]", because `hubi` is a helper tool intended to make writing code using ubiquitous language easier.
+
 ### Should I pronounce the "h"?
 
 No. The package name was supposed to be "ubi" (as in ubiquitous) but the name was already taken on npm, so I've used the only mute letter we have in Portuguese.
@@ -134,3 +136,5 @@ By pronouncing the "h" most Brazilians will never understand if you're referring
 [coverage]: https://coveralls.io/github/mvcds/hubi?branch=master
 [license-badge]: https://img.shields.io/github/license/mvcds/hubi.svg?style=flat-square
 [license]: https://github.com/mvcds/hubi/blob/master/LICENSE
+[ORM]: https://en.wikipedia.org/wiki/Schema_migration
+[UbiquitousLanguage]: https://martinfowler.com/bliki/UbiquitousLanguage.html
