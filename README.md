@@ -1,4 +1,4 @@
-# Hubi [![Build Status](https://travis-ci.org/mvcds/hubi.svg?branch=master)](https://travis-ci.org/mvcds/hubi) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/mvcds/hubi/badge.svg?branch=master)](https://coveralls.io/github/mvcds/hubi?branch=master) [![GitHub license](https://img.shields.io/github/license/mvcds/hubi.svg?style=flat-square)](https://github.com/mvcds/hubi/blob/master/LICENSE)
+# Hubi [![Build Status][ci-badge]][ci] [![JavaScript Style Guide][js-standard-badge]][js-standard] [![Coverage Status][coverage-badge]][coverage] [![GitHub license][license-badge]][license]
 
 > Teach `hubi` your [ubiquitous language](https://martinfowler.com/bliki/UbiquitousLanguage.html) and it will write relevant source files for you
 
@@ -125,3 +125,12 @@ But you can still use ubiquitous language regardless of DDD because it stands on
 No. The package name was supposed to be "ubi" (as in ubiquitous) but the name was already taken on npm, so I've used the only mute letter we have in Portuguese.
 
 By pronouncing the "h" most Brazilians will never understand if you're referring to the Ruby programming language or this project. That sound ~~in that position~~ is not natural for us, so most of us simply can't tell "rot" and "hot", or "ruby" and "hubi", apart, for instance.
+
+[ci-badge]: https://travis-ci.org/mvcds/hubi.svg?branch=master
+[ci]: https://travis-ci.org/mvcds/hubi
+[js-standard-badge]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[js-standard]: https://standardjs.com
+[coverage-badge]: https://coveralls.io/repos/github/mvcds/hubi/badge.svg?branch=master
+[coverage]: https://coveralls.io/github/mvcds/hubi?branch=master
+[license-badge]: https://img.shields.io/github/license/mvcds/hubi.svg?style=flat-square
+[license]: https://github.com/mvcds/hubi/blob/master/LICENSE
