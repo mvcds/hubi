@@ -30,7 +30,9 @@ Each one of this files is responsible for a piece of the domain. Its rules can b
 
 ### Example
 
-A user could be represented like this:
+(Based on this [use case](https://github.com/mvcds/hubi/wiki/Use-Case))
+
+When a project depends on touching some other projects to achieve a goal, `hubi` allows you to change one file, and propagate it to the entire domain. So the use case below has users declared like this.
 
 ```yaml
 # src/domain/user.yml
@@ -60,27 +62,6 @@ And turned into part of the site's source code and documentation by running:
 $ npm run my-custom-hubi-script
 > hubi save --same-folder --translator joi & hubi save --output documents --translator site
 ```
-
-### Use Case
-
-Imagine you are assigned to the task of showing the custumer's birthday on its profile page. Here is a list of possible places you'd need to change within an imaginary JS stack in order to accomplish it (your stack may be a little different):
-
-* Back-end repository
-  - Sequelize Model
-  - Domain schema
-  - GraphQL type
-  - Fixture factory
-* Front-end repository
-  - GraphQL query
-  - Domain model
-  - Prop Types
-  - Fixture factory (in an ideal world it would be shared with its back-end repository, but here is not)
-* Othere repository where the new data is relevant
-  - C# class
-  - ...
-* ...
-
-Instead of updating each item individually, you could use `hubi` to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
 
 ## More
 
