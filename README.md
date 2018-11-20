@@ -30,9 +30,7 @@ Each one of this files is responsible for a piece of the domain. Its rules can b
 
 ### Example
 
-(Based on this [use case](https://github.com/mvcds/hubi/wiki/Use-Case))
-
-When a project depends on touching some other projects to achieve a goal, `hubi` allows you to change one file, and propagate it to the entire domain. So the use case below has users declared like this.
+When a project depends on touching some other projects to achieve a goal, `hubi` allows you to change one file, and propagate it to the entire domain. So the [use case](https://github.com/mvcds/hubi/wiki/Use-Case) below has the concept of a user declared like this.
 
 ```yaml
 # src/domain/user.yml
