@@ -18,19 +18,19 @@ Use it in one or more of the following situations:
 
 4. You want to reuse a repository's slice of the domain (the way you've coded the model) in another repository from different projects. This is the least advisable scenario, as each repository generally has a slightly different perspective on how the domain looks like.
 
-## Installation
+## Basic Use
+
+Declare how your domain should look like in a YAML file, refered to as [domain file](domain-file), and then execute `hubi` with the options provided by its [API :star:](./docs/api.md).
+
+Each one of this files is responsible for a piece of the domain. Its rules can be found at `hubi`'s [domain file guide :green_book:](./docs/domain-file-guide.md).
+
+### Installation
 
 > As `hubi` is a development tool, it is recommended that each project have it installed by using the developer flag.
 
 ```
 $ npm i hubi --save-dev
 ```
-
-## Basic Use
-
-Declare how your domain should look like in a YAML file, refered to as [domain file](domain-file), and then execute `hubi` with the options provided by its [API :star:](./docs/api.md).
-
-Each one of this files is responsible for a piece of the domain. Its rules can be found at `hubi`'s [domain file guide :green_book:](./docs/domain-file-guide.md).
 
 ### Example
 
