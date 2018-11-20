@@ -12,7 +12,7 @@ Use it in one or more of the following situations:
 
 2. Your domain allows (or requires) you to share domain knowledge accross projects.
 
-3. You want to reuse a project's slice of the domain elsewhere. This is the least advisable scenario, as each project generally has a slightly perspective on how the domain looks like - unless they are different ends of the same project.
+3. You want to reuse a project's slice of the domain elsewhere. This is the least advisable scenario, as each project generally has a slightly different perspective on how the domain looks like - unless they complement each other e.g. front- and back-ends for a webapp.
 
 ## Installation
 
