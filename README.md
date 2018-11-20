@@ -10,9 +10,13 @@ Use it in one or more of the following situations:
 
 1. If you want to have a documentated language for your domain, especially when it needs to be consulted by non-technical stakeholders.
 
-2. Your domain allows (or requires) you to share domain knowledge accross repositories.
+2. When working on a project spread into different repositories e.g. back- and front-ends, so changes in one of them needs to be repeatead in the other ones in order to make the end-result work.
 
-3. You want to reuse a repository's slice of the domain in another repository. This is the least advisable scenario, as each repository generally has a slightly different perspective on how the domain looks like - unless they belong to the same project e.g. front- and back-ends for a webapp.
+:warning: **`Hubi` does not connect, or tell you how to connect, the project's repositories.**
+
+3. Your repositories are modeled in a way where it is possible to share domain knowledge across them interchangeably.
+
+4. You want to reuse a repository's slice of the domain (the way you've coded the model) in another repository from different projects. This is the least advisable scenario, as each repository generally has a slightly different perspective on how the domain looks like.
 
 ## Installation
 
