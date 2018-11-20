@@ -72,9 +72,9 @@ In the example below, a [Joi schema][joi] and an entry into the project's site w
 
 Take a look at our [:green_book: contributing guide][contributing] to improve `hubi`.
 
-### How does `hubi` relates to [domain-driven design [DDD]][ddd]?
+## How does `hubi` relates to [domain driven design (DDD)][ddd]?
 
-The only relation is that `hubi` is based on the concept of [“ubiquitous language”][ubiquitous-language], something Eric Evans presents in his book about [DDD][ddd].
+The only relation is that `hubi` is based on the concept of “[ubiquitous language][ubiquitous-language]”, something Eric Evans presents in his book about [DDD][ddd].
 
 I don't know if he come up with this idea or only used it as his book's initial seed. A *language-to-rule-them-all* is a communication tool that simply states that we should encode domain knowledge (terms, phrases, etc) into the codebase in order to bridge the gap between developers and domain experts.
 
