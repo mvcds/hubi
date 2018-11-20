@@ -10,9 +10,9 @@ Use it in one or more of the following situations:
 
 1. If you want to have a documentated language for your domain, especially when it needs to be consulted by non-technical stakeholders.
 
-2. Your domain allows (or requires) you to share domain knowledge accross projects.
+2. Your domain allows (or requires) you to share domain knowledge accross repositories.
 
-3. You want to reuse a project's slice of the domain elsewhere. This is the least advisable scenario, as each project generally has a slightly different perspective on how the domain looks like - unless they complement each other e.g. front- and back-ends for a webapp.
+3. You want to reuse a repository's slice of the domain in another repository. This is the least advisable scenario, as each repository generally has a slightly different perspective on how the domain looks like - unless they belong to the same project e.g. front- and back-ends for a webapp.
 
 ## Installation
 
@@ -30,7 +30,7 @@ Each one of this files is responsible for a piece of the domain. Its rules can b
 
 ### Example
 
-When a project depends on touching some other projects to achieve a goal, `hubi` allows you to change one file, and propagate it to the entire domain. So the [use case](https://github.com/mvcds/hubi/wiki/Use-Case) below has the concept of a user declared like this.
+When a repository depends on touching some other repositories to achieve a goal, `hubi` allows you to change one file, and propagate it to the entire domain. So the [use case](https://github.com/mvcds/hubi/wiki/Use-Case) below has the concept of a user declared like this.
 
 ```yaml
 # src/domain/user.yml
