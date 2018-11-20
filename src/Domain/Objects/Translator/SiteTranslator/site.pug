@@ -21,10 +21,10 @@ mixin withAttributeTable(attribute)
   tr
     td(class="attribute__name") #{attribute.name}
     td(class="attribute__type")
-      span #{attribute.type}
+      | #{attribute.type}
 
       if (attribute.type === 'function')
-        span &nbsp; → #{attribute.return || '?'}
+        | &nbsp; → #{attribute.return || '?'}
 
     td(class="attribute__description") #{attribute.description}
     td(class="attribute__comment")
