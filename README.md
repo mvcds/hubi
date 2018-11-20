@@ -34,36 +34,39 @@ Each one of this files is responsible for a piece of the domain. Its rules can b
 
 ### Example
 
-When a repository depends on touching some other repositories to achieve a goal, `hubi` allows you to change one file, and propagate it to the entire domain. So the [use case](https://github.com/mvcds/hubi/wiki/Use-Case) below has the concept of a user declared like this.
+In an imaginary project, the stakeholders have decided that it is necessary to show the user's birthday in their profile page. So the file relative to the user concept is changed:
 
-```yaml
-# src/domain/user.yml
-name: User
-description: A person who has an account
-attributes:
-  - name: name
-    description: How to address the person
-    required: true
-  - name: eyes
-  - description: The color of the user's eyes
-  - deprecated:
-    - message:
-        We've discovered that this is a useless information for us.
-        Will be deprecated soon
-    - error: false
-    required: false
-  - name: birthday
-    comment: This field was added later
-    type: date
-    required: false
+```diff
+ # Domain file @ project/src/domain/user.yml
+ name: User
+ description: A person who has an account
+ attributes:
+   - name: name
+     description: How to address the person
+     required: true
+   - name: eyes
+     description: The color of the user's eyes
++    deprecated:
++    - message:
++        We've discovered that this is a useless information for us.
++        Will be deprecated soon
++    - error: false
+-    required: true
++    required: false
++  - name: birthday
++    comment: This field was added later
++    type: date
++    required: false
 ```
 
-And turned into part of the site's source code and documentation by running:
+With one command, it is possible to spread this change to the code, data schema and documentation. You decide which [translations](https://mvcds.github.io/hubi/#translation) `hubi` writes:
 
 ```
 $ npm run my-custom-hubi-script
 > hubi save --same-folder --translator joi & hubi save --output documents --translator site
 ```
+
+In the example below, a [Joi schema](https://www.npmjs.com/package/joi) and an entry into the project's site were changed to reflect that change.
 
 ## More
 
