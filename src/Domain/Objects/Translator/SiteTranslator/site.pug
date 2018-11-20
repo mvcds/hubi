@@ -26,7 +26,6 @@ mixin withAttributeTable(attribute)
       if (attribute.type === 'function')
         span &nbsp; → #{attribute.return || '?'}
 
-    td(class="attribute__default") #{attribute.default}
     td(class="attribute__description") #{attribute.description}
     td(class="attribute__comment")
       div #{attribute.comment}
@@ -38,6 +37,8 @@ mixin withAttributeTable(attribute)
         div
           span Arguments
           +withFunction(attribute)
+
+    td(class="attribute__default") #{attribute.default}
 
 mixin withTokenDeprecation({ message, error })
   - var classes = error ? "token__deprecation-note__icon token__deprecation-note__icon--error" : "token__deprecation-note__icon"
@@ -76,9 +77,9 @@ mixin withToken({ name, object })
           tr
             th Name
             th Type
-            th Default
             th Description
             th Comment
+            th Default
         tbody
           each attribute in object.attributes
             +withAttributeTable(attribute)
