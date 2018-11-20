@@ -66,13 +66,33 @@ body {
   margin-left: 4px;
 }
 
+.attributes_table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.attributes_table tbody tr:nth-child(odd) {
+  background: #CCC;
+}
+
+.attributes_table tr {
+  margin-bottom: 4px;
+}
+
+.attributes_table th,
+.attributes_table td {
+  padding: 8px;
+}
+
+.attributes_table tr td:first-child {
+  font-weight: bold;
+}
+
 .attribute__default {
-  margin-left: 4px;
   font-family: monospace, serif;
 }
 
 .attribute__comment {
-  margin-left: 4px;
   font-family: fantasy;
 }
 
