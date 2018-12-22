@@ -48,6 +48,10 @@ Check for feature requests as someone may be already working on something simila
 1. Issue a pull requst compliant with its [template](.github/PULL_REQUEST_TEMPLATE.md)
 1. Wait for merging
 
+## Known issues
+
+* You may have to manually create a `.nyc_output` folder at root level so your coverage can be run.
+
 ## Contributions not mentioned here
 
 Contact us at marvinc.silva@gmail.com, and communicate what you're plannning.
