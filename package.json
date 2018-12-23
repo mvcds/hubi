@@ -65,7 +65,7 @@
     "test:unit:watch": "npm-watch test:unit",
     "test:watch": "npm-watch test",
     "test:release": "find src -type f \\( -iname \\*.feature -o -iname \\*.test.js \\)",
-    "coverage": "nyc yarn test",
+    "coverage": "nyc ./test.sh",
     "coverage:watch": "npm-watch coverage",
     "standard": "standard --env mocha",
     "lint": "(yarn standard) | snazzy",
