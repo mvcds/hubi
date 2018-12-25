@@ -52,6 +52,12 @@ Check for feature requests as someone may be already working on something simila
 
 * You may have to manually create a `.nyc_output` folder at root level so your coverage can be run.
 
+## Release
+
+This repo uses [semantic release](https://github.com/semantic-release/semantic-release) configured on [CI](https://travis-ci.org/mvcds/hubi) to deploy withouth human intervation.
+
+When a pull request is merged into master, the release process kicks.
+
 ## Contributions not mentioned here
 
 Contact us at marvinc.silva@gmail.com, and communicate what you're plannning.
