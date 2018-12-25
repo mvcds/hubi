@@ -104,6 +104,7 @@
     "npm-watch": "^0.3.0",
     "nyc": "^11.6.0",
     "release-it": "^7.3.0",
+    "semantic-release": "^15.13.1",
     "sinon": "^4.4.8",
     "snazzy": "^7.1.1",
     "standard": "^11.0.1"
