@@ -88,6 +88,7 @@
     "write": "^1.0.3"
   },
   "devDependencies": {
+    "@semantic-release/git": "^7.0.6",
     "@semantic-release/npm": "^5.1.2",
     "coveralls": "^3.0.0",
     "cucumber": "^4.0.0",
