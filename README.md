@@ -1,4 +1,4 @@
-# Hubi [![Build Status][ci-badge]][ci] [![JavaScript Style Guide][js-standard-badge]][js-standard] [![Coverage Status][coverage-badge]][coverage] [![GitHub license][license-badge]][license]
+# Hubi [![Build Status][ci-badge]][ci] [![JavaScript Style Guide][js-standard-badge]][js-standard] [![Coverage Status][coverage-badge]][coverage] [![GitHub license][license-badge]][license][![BCH compliance](https://bettercodehub.com/edge/badge/mvcds/hubi?branch=master)](https://bettercodehub.com/)
 
 `Hubi` is like a [database migration tool][ORM] but for [ubiquitous language][ubiquitous-language] i.e. it reads some of your versioned files to write code, data schema and documents.
 
