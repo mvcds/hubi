@@ -7,3 +7,15 @@ before_install:
 cache:
   yarn: true
 after_success: 'yarn coveralls'
+jobs:
+  include:
+    - stage: release
+      if: branch = master
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - yarn build
+          - git add . && git commit --no-verify -m \"dogfood pre-release\"
+          - npx semantic-release

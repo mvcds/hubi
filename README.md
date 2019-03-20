@@ -1,35 +1,30 @@
-# Hubi [![Build Status](https://travis-ci.org/mvcds/hubi.svg?branch=master)](https://travis-ci.org/mvcds/hubi) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/mvcds/hubi/badge.svg?branch=master)](https://coveralls.io/github/mvcds/hubi?branch=master) [![GitHub license](https://img.shields.io/github/license/mvcds/hubi.svg?style=flat-square)](https://github.com/mvcds/hubi/blob/master/LICENSE)
+# Hubi [![Build Status][ci-badge]][ci] [![JavaScript Style Guide][js-standard-badge]][js-standard] [![Coverage Status][coverage-badge]][coverage] [![GitHub license][license-badge]][license][![BCH compliance](https://bettercodehub.com/edge/badge/mvcds/hubi?branch=master)](https://bettercodehub.com/)
 
-> Teach `hubi` your [ubiquitous language](https://martinfowler.com/bliki/UbiquitousLanguage.html) and it will write relevant source files for you
-
-The humanitarian ubiquitous language helper, or `hubi` for short, reads some of your files and learns the ubiquitous language behind your domain. With that knowledge, it writes source files for you, so you don't have to.
+`Hubi` is like a [database migration tool][ORM] but for [ubiquitous language][ubiquitous-language] i.e. it reads some of your versioned files to write code, data schema and documents.
 
 <img src="./assets/hubi.gif" alt="how to use hubi" title="how to use hubi" />
 
-## How to use it
+## When to use `hubi`
 
-### Use Case (example)
+Use it in one or more of the following situations:
 
-Imagine you are assigned to the task of showing the custumer's birthday on its profile page. Here is a list of possible places you'd need to change within an imaginary JS stack in order to accomplish it (your stack may be a little different):
+1. If you want to have a documentated language for your domain, especially when it needs to be consulted by non-technical stakeholders.
 
-* Back-end repository
-  - Sequelize Model
-  - Domain schema
-  - GraphQL type
-  - Fixture factory
-* Front-end repository
-  - GraphQL query
-  - Domain model
-  - Prop Types
-  - Fixture factory (in an ideal world it would be shared with its back-end repository, but here is not)
-* Othere repository where the new data is relevant
-  - C# class
-  - ...
-* ...
+2. When working on a project spread into different repositories e.g. back- and front-ends, so changes in one of them needs to be repeatead in the other ones in order to make the end-result work.
 
-Instead of updating each item individually, you could use `hubi` to automate writing your code: [Joi Schemas](https://github.com/mvcds/hubi/issues/17), [Sequelize Models](https://github.com/mvcds/hubi/issues/26), [GraphQL types](https://github.com/mvcds/hubi/issues/27), [C# classes](https://github.com/mvcds/hubi/issues/28), etc.
+:warning: **`Hubi` does not connect, or tell you how to connect, the project's repositories.**
 
-### 1. Install
+3. Your repositories are modeled in a way where it is possible to share domain knowledge across them interchangeably.
+
+4. You want to reuse a repository's slice of the domain (the way you've coded the model) in another repository from different projects. This is the least advisable scenario, as each repository generally has a slightly different perspective on how the domain looks like.
+
+## Basic Use
+
+Declare how your domain should look like in a YAML file, refered to as [domain file][domain-file], and then execute `hubi` with the options provided by its [API :star:][api].
+
+Each one of this files is responsible for a piece of the domain. Its rules can be found at `hubi`'s [domain file guide :green_book:][domain-file-guide].
+
+### Installation
 
 > As `hubi` is a development tool, it is recommended that each project have it installed by using the developer flag.
 
@@ -37,91 +32,69 @@ Instead of updating each item individually, you could use `hubi` to automate wri
 $ npm i hubi --save-dev
 ```
 
-### 2. Define your ubiquitous language
+### Example
 
-Create a YAML file, refered to as [domain file](https://mvcds.github.io/hubi/#domain-file), which configures some rules to create your source files. You can learn them at `hubi`'s [domain file guide :green_book:](./docs/domain-file-guide.md).
+In an imaginary project, the stakeholders have decided that it is necessary to show the user's birthday in their profile page. So the file relative to the user concept is changed:
 
-```yaml
-# src/domain/entities/user.yml
-name: User
-description: A person who has an account
-attributes:
-  - name: name
-    description: How to address the person
-    required: true
-  - name: birthday
-    comment: This field was added later
-    type: date
-    required: false
+```diff
+ # Domain file @ project/src/domain/user.yml
+ name: User
+ description: A person who has an account
+ attributes:
+   - name: name
+     description: How to address the person
+     required: true
+   - name: eyes
+     description: The color of the user's eyes
++    deprecated:
++    - message:
++        We've discovered that this is a useless information for us.
++        Will be deprecated soon
++    - error: false
+-    required: true
++    required: false
++  - name: birthday
++    comment: This field was added later
++    type: date
++    required: false
 ```
 
-### 3. Watch some magic
+With one command, it is possible to spread this change to the code, data schema and documentation. You decide which [translations][translation] `hubi` writes:
 
-Add an npm script into your `package.json`, to facilitate running `hubi`:
-
-```json
-{
-  ...
-  "build:hubi": "npm run hubi:joi && npm run hubi:site",
-  "hubi:joi": "hubi save --same-folder --translator joi",
-  "hubi:site": "hubi save --output documents --translator site"
-  ...
-}
+```
+$ npm run my-custom-hubi-script
+> hubi save --same-folder --translator joi & hubi save --output documents --translator site
 ```
 
-After calling the command below, you are going to have your user-related source files updated.
+In the example below, a [Joi schema][joi] and an entry into the project's site were changed to reflect that change.
 
-```shell
-$ npm run build:hubi
-npm run hubi:joi & npm run hubi:site
-node hubi save --same-folder --translator joi
-node hubi hubi save --output documents --translator site
-```
+## Contributing
 
-Using the previous domain file as part of our example:
+Take a look at our [:green_book: contributing guide][contributing] to improve `hubi`.
 
-* `build:hubi` will run `hubi:joi` and `hubi:site`
-* `hubi:joi` will create a `src/domain/entities/user.joi.js` file
-* `hubi:site` will create a `documents/index.hubi.html` file which is your ubiquitous language documented as part of a site which may be exposed to stackholders
+## How does `hubi` relates to [domain driven design (DDD)][ddd]?
 
-Read the [API guide :green_book:](./docs/api.md) in order to discover the commands `hubi` can follow.
+The only relation is that `hubi` is based on the concept of “[ubiquitous language][ubiquitous-language]”, something Eric Evans presents in his book about [DDD][ddd].
 
-## More
+I don't know if he come up with this idea or only used it as his book's initial seed. A *language-to-rule-them-all* is a communication tool that simply states that we should encode domain knowledge (terms, phrases, etc) into the codebase in order to bridge the gap between developers and domain experts.
 
-### Dogfood
+But you can still use ubiquitous language regardless of [DDD][ddd] because it stands on its own. So, **even if you don't know/use it**, you can still use `hubi` to reap the benefits of speaking a single language - at the same time you [document your domain as code][documentation-as-code].
 
-The term is used by technologies (ideas, products, etc) used by their own makers, here are some ways `hubi` dogfoods:
-
-* [`hubi`'s doc site](https://mvcds.github.io/hubi#all) is generated by `hubi` itself
-* The Domain File's YAML is a [sample](src/Domain/Entities/UbiquitousToken/domain-file.yml) of a domain file
-* The source files `hubi` has generated are [imported into](https://github.com/mvcds/hubi/blob/523eb385e8f950224ee7791c8fd4edb47986ee4c/src/Domain/Objects/AttributeParser/Attributes/Attribute.js#L3) non-automatized source files i.e. we're using what we've done!
-
-### Contributing
-
-Take a look at our [:green_book: contributing guide](CONTRIBUTING.md) to a more complete version of this section.
-
-#### With no code
-
-Staring the project is an amazing help :star:, as well as fork it and talking to your peers about it.
-
-We are also looking for ideas to improve `hubi`, so submiting bug reports, showcases, and clearer documentation & feature requests, are more than welcome.
-
-Other non-code-related stuff, as logos and translations, are needed too.
-
-#### With some code
-
-This project relies on [useful Translators](https://github.com/mvcds/hubi/projects/2), so feel free to create your owns and open PRs about it.
-
-We'd also like to improve the [HTML generated by the site translator](https://github.com/mvcds/hubi/issues/35) and add some functionalities on top of it.
-
-### For those who don't know/use [domain-driven design [DDD]](https://airbrake.io/blog/software-design/domain-driven-design)
-
-I don’t know if Eric Evans, the author of domain-driven design book, coined the term “ubiquitous language” or if he only used it as his books' initial seed. But I see *the-language-to-rule-them-all* as a communication tool that simply states that we should encode domain knowledge (terms, phrases, etc) into the codebase in order to bridge the gap between developers and domain experts.
-
-But you can still use ubiquitous language regardless of DDD because it stands on its own. So, even if you don't know/use DDD you can still use `hubi` to reap the benefits of speaking a single language - at the same time you [document your code](https://developers.redhat.com/blog/2017/06/21/documentation-as-code/).
-
-### Should I pronounce the "h"?
-
-No. The package name was supposed to be "ubi" (as in ubiquitous) but the name was already taken on npm, so I've used the only mute letter we have in Portuguese.
-
-By pronouncing the "h" most Brazilians will never understand if you're referring to the Ruby programming language or this project. That sound ~~in that position~~ is not natural for us, so most of us simply can't tell "rot" and "hot", or "ruby" and "hubi", apart, for instance.
+[ci-badge]: https://travis-ci.org/mvcds/hubi.svg?branch=master
+[ci]: https://travis-ci.org/mvcds/hubi
+[js-standard-badge]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[js-standard]: https://standardjs.com
+[coverage-badge]: https://coveralls.io/repos/github/mvcds/hubi/badge.svg?branch=master
+[coverage]: https://coveralls.io/github/mvcds/hubi?branch=master
+[license-badge]: https://img.shields.io/github/license/mvcds/hubi.svg?style=flat-square
+[license]: https://github.com/mvcds/hubi/blob/master/LICENSE
+[ORM]: https://en.wikipedia.org/wiki/Schema_migration
+[ubiquitous-language]: https://martinfowler.com/bliki/UbiquitousLanguage.html
+[domain-file]: https://mvcds.github.io/hubi#domain-file
+[api]: ./docs/api.md
+[domain-file-guide]: ./docs/domain-file-guide.md
+[translation]: https://mvcds.github.io/hubi/#translation
+[joi]: https://www.npmjs.com/package/joi
+[contributing]: CONTRIBUTING.md
+[ddd]: https://airbrake.io/blog/software-design/domain-driven-design
+[documentation-as-code]: https://developers.redhat.com/blog/2017/06/21/documentation-as-code/
