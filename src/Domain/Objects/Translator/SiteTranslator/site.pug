@@ -17,26 +17,28 @@ mixin withFunction({ arguments: args })
           span(title="optional")
             | ?
 
-mixin withAttribute(attribute)
-  li(class="attribute")
-    strong(class="attribute__name") #{attribute.name}
+mixin withAttributeTable(attribute)
+  tr
+    td(class="attribute__name") #{attribute.name}
+    td(class="attribute__type")
+      | #{attribute.type}
 
-    if (attribute.type === 'function')
-      | &nbsp;→ #{attribute.return || '?'}
+      if (attribute.type === 'function')
+        | &nbsp; → #{attribute.return || '?'}
 
-    if (attribute.default !== undefined)
-      span(class="attribute__default") (#{attribute.default})
+    td(class="attribute__description") #{attribute.description}
+    td(class="attribute__comment")
+      div #{attribute.comment}
 
-    span(class="attribute__description") : #{attribute.description}
+      if (attribute.deprecated !== undefined)
+        +withDeprecation("attribute", attribute.deprecated)
 
-    if (attribute.comment !== undefined)
-      span(class="attribute__comment") #{attribute.comment}
+      if (attribute.type === 'function')
+        div
+          span Arguments
+          +withFunction(attribute)
 
-    if (attribute.deprecated !== undefined)
-      +withDeprecation("attribute", attribute.deprecated)
-
-    if (attribute.type === 'function')
-      +withFunction(attribute)
+    td(class="attribute__default") #{attribute.default}
 
 mixin withTokenDeprecation({ message, error })
   - var classes = error ? "token__deprecation-note__icon token__deprecation-note__icon--error" : "token__deprecation-note__icon"
@@ -70,9 +72,17 @@ mixin withToken({ name, object })
       p(class="token__comment") #{object.comment}
 
     if (object.attributes.length)
-      ul(class="token__attributes")
-        each attribute in object.attributes
-          +withAttribute(attribute)
+      table(class="attributes_table")
+        thead
+          tr
+            th Name
+            th Type
+            th Description
+            th Comment
+            th Default
+        tbody
+          each attribute in object.attributes
+            +withAttributeTable(attribute)
 
 doctype html
 html(lang="en")
