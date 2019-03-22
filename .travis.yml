@@ -6,7 +6,6 @@ before_install:
   - sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 cache:
   yarn: true
-# after_success: "yarn coveralls"
 jobs:
   include:
     - stage: release
@@ -16,7 +15,11 @@ jobs:
       deploy:
         provider: script
         skip_cleanup: true
+        before_deploy:
+          - mkdir ./.nyc_output
+        after_success:
+          - yarn coveralls
         script:
-          - yarn build & yarn test
+          - yarn build
           - git add . && git commit --no-verify -m \"dogfood pre-release\"
           - npx semantic-release
