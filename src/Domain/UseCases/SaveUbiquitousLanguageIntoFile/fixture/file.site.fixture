@@ -31,29 +31,75 @@
       <p class="token__description">
         The abstraction of a file on your system
       </p>
-      <ul class="token__attributes">
-        <li class="attribute">
-          <strong class="attribute__name">name</strong><span class=
-          "attribute__description">: the complete system path to
-          the file</span>
-        </li>
-        <li class="attribute">
-          <strong class=
-          "attribute__name">content</strong><span class=
-          "attribute__description">: numbers representing its
-          content to be converted</span>
-        </li>
-        <li class="attribute">
-          <strong class="attribute__name">size</strong><span class=
-          "attribute__default">(0)</span><span class=
-          "attribute__description">: content's size in
-          bytes</span><span class=
-          "attribute__deprecation-note"><span class=
-          "attribute__deprecation-note__icon">⚠</span><span>its
-          size will be calculated from content in
-          vX.Y.Z</span></span>
-        </li>
-      </ul>
+      <table class="attributes_table">
+        <thead>
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Type
+            </th>
+            <th>
+              Description
+            </th>
+            <th>
+              Comment
+            </th>
+            <th>
+              Default
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="attribute__name">
+              name
+            </td>
+            <td class="attribute__type">
+              string
+            </td>
+            <td class="attribute__description">
+              the complete system path to the file
+            </td>
+            <td class="attribute__comment"></td>
+            <td class="attribute__default"></td>
+          </tr>
+          <tr>
+            <td class="attribute__name">
+              content
+            </td>
+            <td class="attribute__type">
+              array
+            </td>
+            <td class="attribute__description">
+              numbers representing its content to be converted
+            </td>
+            <td class="attribute__comment"></td>
+            <td class="attribute__default"></td>
+          </tr>
+          <tr>
+            <td class="attribute__name">
+              size
+            </td>
+            <td class="attribute__type">
+              integer
+            </td>
+            <td class="attribute__description">
+              content's size in bytes
+            </td>
+            <td class="attribute__comment">
+              <span class=
+              "attribute__deprecation-note"><span class="attribute__deprecation-note__icon">
+              ⚠</span><span>its size will be calculated from
+              content in vX.Y.Z</span></span>
+            </td>
+            <td class="attribute__default">
+              0
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </details>
   </body>
 </html>
