@@ -9,7 +9,8 @@
   },
   "author": "Marcos Vinícius C. da Silva <marvinc.silva@gmail.com>",
   "homepage": "https://mvcds.github.io/hubi",
-  "license": "MIT", "private": false,
+  "license": "MIT",
+  "private": false,
   "reveal": true,
   "watch": {
     "test": {
