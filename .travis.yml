@@ -25,7 +25,7 @@ jobs:
           # - mv settings.xml $HOME/.m2/settings.xml
         after_success:
           - yarn coveralls
-        script: >-
+        script: |
           yarn build &&
           git add . &&
           git commit --no-verify -m \"dogfood pre-release\" &&
