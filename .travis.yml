@@ -12,6 +12,7 @@ jobs:
       if: branch = master
       node_js:
         - "8.9.4"
+      script: skip
       deploy:
         provider: script
         skip_cleanup: true
