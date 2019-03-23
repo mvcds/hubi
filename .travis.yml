@@ -17,11 +17,11 @@ jobs:
         - yarn build
         - git add .
         - git commit --no-verify -m \"dogfood pre-release\"
-        - npx semantic-release
       deploy:
         provider: script
         skip_cleanup: true
         after_deploy:
           - mkdir ./.nyc_output
           - yarn coveralls
+          - npx semantic-release
 
