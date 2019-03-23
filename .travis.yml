@@ -13,22 +13,15 @@ jobs:
       node_js:
         - "8.9.4"
       script: skip
+      after_success:
+        - yarn build
+        - git add .
+        - git commit --no-verify -m \"dogfood pre-release\"
+        - npx semantic-release
       deploy:
         provider: script
         skip_cleanup: true
-        before_deploy:
+        after_deploy:
           - mkdir ./.nyc_output
-          - sudo apt-get install git
-          # - openssl aes-256-cbc -K $encrypted_dc2adf587a89_key -iv $encrypted_dc2adf587a89_iv -in .travis.secrets.tar.enc -out .travis.secrets.tar -d
-          # - tar -xvf .travis.secrets.tar
-          # - rm .travis.secrets.tar
-          # - gpg --import travis.gpg
-          # - rm travis.gpg
-          # - mv settings.xml $HOME/.m2/settings.xml
-        after_success:
           - yarn coveralls
-        script:
-          - yarn build
-          # - git add .
-          # git commit --no-verify -m \"dogfood pre-release\" &&
-          # npx semantic-release
+
