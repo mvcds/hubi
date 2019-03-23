@@ -73,6 +73,12 @@ mixin withToken({ name, object })
 
     if (object.attributes.length)
       table(class="attributes_table")
+        colgroup
+          col(width="1%")
+          col(width="1%")
+          col(width="auto")
+          col(width="auto")
+          col(width="1%")
         thead
           tr
             th Name
