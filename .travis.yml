@@ -16,7 +16,7 @@ jobs:
       after_success:
         - yarn build
         - git add .
-        - git commit --no-verify -m \"dogfood pre-release\"
+        - git commit --no-verify -m \"dogfood\"
       deploy:
         provider: script
         skip_cleanup: true
