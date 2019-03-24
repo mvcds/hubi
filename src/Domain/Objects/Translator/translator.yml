@@ -5,7 +5,7 @@ attributes:
     type: function
     required: true
     description: How each ubiquitous language's token is interpreted during translation
-    comment: ("Interface")
+    comment: Like an interface for making translating possible
     return: object
     arguments:
       - name: token

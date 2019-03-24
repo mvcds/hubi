@@ -1,6 +1,8 @@
 name: Domain File
 description: An YAML file containing information about a particular piece of the ubiquitous language.
-comment: Not all domain files translate to  source files due to the "abstract" configuration e.g. this very one!
+comment: >+
+  Not all domain files translate to  source files due to the "abstract" configuration e.g. this very one!
+  This can be useful when you're drafiting a model or even when you want to share it across different projects.
 abstract: true
 aliases:
   - Configuration File

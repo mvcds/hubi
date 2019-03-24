@@ -36,7 +36,9 @@
       </p>
       <p class="token__comment">
         Not all domain files translate to source files due to the
-        "abstract" configuration e.g. this very one!
+        "abstract" configuration e.g. this very one! This can be
+        useful when you're drafiting a model or even when you want
+        to share it across different projects.
       </p>
     </details>
     <details class="token" id="ubiquitous-token" name=
@@ -58,19 +60,18 @@
         It represents a phrase, expression, term, etc
       </p>
       <table class="attributes_table">
+        <colgroup>
+          <col width="1%">
+          <col width="auto">
+          <col width="1%">
+        </colgroup>
         <thead>
           <tr>
             <th>
               Name
             </th>
             <th>
-              Type
-            </th>
-            <th>
               Description
-            </th>
-            <th>
-              Comment
             </th>
             <th>
               Default
@@ -80,114 +81,91 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              name
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>name</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
-              How people refer to the token
-            </td>
-            <td class="attribute__comment">
-              <div>
-                (Should be unique across the domain to avoid
-                ambiguity)
-              </div>
+              How people refer to the token<span class=
+              "comment-bubble"><span>?</span><span class=
+              "comment-bubble__comment">Should be unique across the
+              domain to avoid ambiguity</span></span>
             </td>
             <td class="attribute__default"></td>
           </tr>
           <tr>
             <td class="attribute__name">
-              description
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>description</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
               A short sentence to teach/remind everyone what the
-              token means
+              token means<span class=
+              "comment-bubble"><span>?</span><span class=
+              "comment-bubble__comment">You're reading it right
+              now</span></span>
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default"></td>
           </tr>
           <tr>
             <td class="attribute__name">
-              attributes
-            </td>
-            <td class="attribute__type">
-              array
+              <strong>attributes</strong>:&nbsp;[Attribute]?
             </td>
             <td class="attribute__description">
               A collection of attributes a token is associated
-              with.
+              with.<span class=
+              "comment-bubble"><span>?</span><span class=
+              "comment-bubble__comment">This collection is
+              specially useful for developers and is where
+              translators are expected to work more
+              often.</span></span>
             </td>
-            <td class="attribute__comment">
-              <div>
-                This collection is specially useful for developers
-                and is where translators are expected to work more
-                often.
-              </div>
+            <td class="attribute__default">
+              []
             </td>
-            <td class="attribute__default"></td>
           </tr>
           <tr>
             <td class="attribute__name">
-              filePath
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>filePath</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
               The path to its file domain
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default"></td>
           </tr>
           <tr>
             <td class="attribute__name">
-              abstract
-            </td>
-            <td class="attribute__type">
-              boolean
+              <strong>abstract</strong>:&nbsp;boolean?
             </td>
             <td class="attribute__description">
               A flag to inform translators if they should or not
               translate the token
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default">
               false
             </td>
           </tr>
           <tr>
             <td class="attribute__name">
-              comment
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>comment</strong>:&nbsp;string?
             </td>
             <td class="attribute__description">
               An extra message, for developers, about the token
             </td>
-            <td class="attribute__comment"></td>
-            <td class="attribute__default"></td>
+            <td class="attribute__default">
+              null
+            </td>
           </tr>
           <tr>
             <td class="attribute__name">
-              aliases
-            </td>
-            <td class="attribute__type">
-              array
+              <strong>aliases</strong>:&nbsp;[string]?
             </td>
             <td class="attribute__description">
-              Alternative names, abbreviations, etc
+              Alternative names, abbreviations, etc<span class=
+              "comment-bubble"><span>?</span><span class=
+              "comment-bubble__comment">Other ways to refer to the
+              token itself</span></span>
             </td>
-            <td class="attribute__comment">
-              <div>
-                Other ways to refer to the token itself
-              </div>
+            <td class="attribute__default">
+              []
             </td>
-            <td class="attribute__default"></td>
           </tr>
         </tbody>
       </table>
@@ -206,19 +184,18 @@
         Programming-wise, it is an object's member.
       </p>
       <table class="attributes_table">
+        <colgroup>
+          <col width="1%">
+          <col width="auto">
+          <col width="1%">
+        </colgroup>
         <thead>
           <tr>
             <th>
               Name
             </th>
             <th>
-              Type
-            </th>
-            <th>
               Description
-            </th>
-            <th>
-              Comment
             </th>
             <th>
               Default
@@ -228,74 +205,62 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              name
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>name</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
               How the attribute is referenced relativelly to its
               token
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default"></td>
           </tr>
           <tr>
             <td class="attribute__name">
-              type
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>type</strong>:&nbsp;string?
             </td>
             <td class="attribute__description">
               What kind of token it is
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default">
               "string"
             </td>
           </tr>
           <tr>
             <td class="attribute__name">
-              required
-            </td>
-            <td class="attribute__type">
-              boolean
+              <strong>required</strong>:&nbsp;boolean?
             </td>
             <td class="attribute__description">
               A flag to mark the attribute as required
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default">
               false
             </td>
           </tr>
           <tr>
             <td class="attribute__name">
-              description
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>description</strong>:&nbsp;string?
             </td>
             <td class="attribute__description">
               A short sentence to teach/remind everyone what that
               attribute means
             </td>
-            <td class="attribute__comment"></td>
-            <td class="attribute__default"></td>
+            <td class="attribute__default">
+              null
+            </td>
           </tr>
           <tr>
             <td class="attribute__name">
-              comment
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>comment</strong>:&nbsp;string?
             </td>
             <td class="attribute__description">
-              An extra message, for developers, about the attribute
+              An extra message, for developers, about the
+              attribute<span class=
+              "comment-bubble"><span>?</span><span class=
+              "comment-bubble__comment">This very sentence is a
+              comment itself</span></span>
             </td>
-            <td class="attribute__comment"></td>
-            <td class="attribute__default"></td>
+            <td class="attribute__default">
+              null
+            </td>
           </tr>
         </tbody>
       </table>
@@ -311,19 +276,18 @@
         in given translation
       </p>
       <table class="attributes_table">
+        <colgroup>
+          <col width="1%">
+          <col width="auto">
+          <col width="1%">
+        </colgroup>
         <thead>
           <tr>
             <th>
               Name
             </th>
             <th>
-              Type
-            </th>
-            <th>
               Description
-            </th>
-            <th>
-              Comment
             </th>
             <th>
               Default
@@ -333,19 +297,14 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              lexicon
-            </td>
-            <td class="attribute__type">
-              object
+              <strong>lexicon</strong>:&nbsp;object
             </td>
             <td class="attribute__description">
               The translation's vocabulary which is a collection of
-              token-like objects
-            </td>
-            <td class="attribute__comment">
-              <div>
-                It is a map to be more precise
-              </div>
+              token-like objects<span class=
+              "comment-bubble"><span>?</span><span class=
+              "comment-bubble__comment">It is a map to be more
+              precise</span></span>
             </td>
             <td class="attribute__default"></td>
           </tr>
@@ -363,19 +322,18 @@
         write source files automatically.
       </p>
       <table class="attributes_table">
+        <colgroup>
+          <col width="1%">
+          <col width="auto">
+          <col width="1%">
+        </colgroup>
         <thead>
           <tr>
             <th>
               Name
             </th>
             <th>
-              Type
-            </th>
-            <th>
               Description
-            </th>
-            <th>
-              Comment
             </th>
             <th>
               Default
@@ -385,28 +343,15 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              interpretToken
-            </td>
-            <td class="attribute__type">
-              function&nbsp; → object
+              <strong>interpretToken</strong>:&nbsp;(<strong>token</strong>:Ubiquitous
+              Token)&nbsp;→ object
             </td>
             <td class="attribute__description">
               How each ubiquitous language's token is interpreted
-              during translation
-            </td>
-            <td class="attribute__comment">
-              <div>
-                ("Interface")
-              </div>
-              <div>
-                <span>Arguments</span>
-                <ul>
-                  <li>
-                    <strong>token</strong>: Ubiquitous
-                    Token<span title="required">!</span>
-                  </li>
-                </ul>
-              </div>
+              during translation<span class=
+              "comment-bubble"><span>?</span><span class=
+              "comment-bubble__comment">Like an interface for
+              making translating possible</span></span>
             </td>
             <td class="attribute__default"></td>
           </tr>
@@ -428,19 +373,18 @@
         Each translator will interpret its token diffetently
       </p>
       <table class="attributes_table">
+        <colgroup>
+          <col width="1%">
+          <col width="auto">
+          <col width="1%">
+        </colgroup>
         <thead>
           <tr>
             <th>
               Name
             </th>
             <th>
-              Type
-            </th>
-            <th>
               Description
-            </th>
-            <th>
-              Comment
             </th>
             <th>
               Default
@@ -450,15 +394,11 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              tokens
-            </td>
-            <td class="attribute__type">
-              array
+              <strong>tokens</strong>:&nbsp;[Ubiquitous Token]
             </td>
             <td class="attribute__description">
               A collection of tokens
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default"></td>
           </tr>
         </tbody>

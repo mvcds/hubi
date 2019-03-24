@@ -4,17 +4,19 @@ comment: It represents a phrase, expression, term, etc
 attributes:
   - name: name
     description: How people refer to the token
-    comment: (Should be unique across the domain to avoid ambiguity)
+    comment: Should be unique across the domain to avoid ambiguity
     required: true
   - name: description
     description: A short sentence to teach/remind everyone what the token means
     required: true
+    comment: You're reading it right now
   - name: attributes
     description: A collection of attributes a token is associated with.
     comment: This collection is specially useful for developers and is where translators are expected to work more often.
     type: array
     of: Attribute
     required: false
+    default: "[]"
   - name: filePath
     description: The path to its file domain
     required: true
@@ -24,11 +26,13 @@ attributes:
     default: false
   - name: comment
     description: An extra message, for developers, about the token
+    default: "null"
   - name: aliases
     description: Alternative names, abbreviations, etc
     comment: Other ways to refer to the token itself
     type: array
     of: string
+    default: "[]"
 aliases:
   - Token
   - Domain Object

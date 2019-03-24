@@ -37,8 +37,4 @@ _github even allow you to (un)check them on the PR_
 - [ ] I have added necessary documentation (if appropriate)
 - [ ] I have merged the last version into my PR (if appropriate)
 - [ ] I have reviewed the PR and consider it to be small (to make reviewing it easier)
-- Select one from the following about your PR, it...
-  - [ ] is a non-breaking change (patch)
-  - [ ] adds functionality withouth breaking changes (minor)
-  - [ ] cause existing functionalities to not work as expected (major)
 

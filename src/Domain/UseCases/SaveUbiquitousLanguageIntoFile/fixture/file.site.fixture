@@ -32,19 +32,18 @@
         The abstraction of a file on your system
       </p>
       <table class="attributes_table">
+        <colgroup>
+          <col width="1%">
+          <col width="auto">
+          <col width="1%">
+        </colgroup>
         <thead>
           <tr>
             <th>
               Name
             </th>
             <th>
-              Type
-            </th>
-            <th>
               Description
-            </th>
-            <th>
-              Comment
             </th>
             <th>
               Default
@@ -54,45 +53,32 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              name
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>name</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
               the complete system path to the file
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default"></td>
           </tr>
           <tr>
             <td class="attribute__name">
-              content
-            </td>
-            <td class="attribute__type">
-              array
+              <strong>content</strong>:&nbsp;[float]?
             </td>
             <td class="attribute__description">
               numbers representing its content to be converted
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default"></td>
           </tr>
           <tr>
             <td class="attribute__name">
-              size
-            </td>
-            <td class="attribute__type">
-              integer
+              <strong>size</strong>:&nbsp;integer?
             </td>
             <td class="attribute__description">
-              content's size in bytes
-            </td>
-            <td class="attribute__comment">
-              <span class=
-              "attribute__deprecation-note"><span class="attribute__deprecation-note__icon">
-              ⚠</span><span>its size will be calculated from
-              content in vX.Y.Z</span></span>
+              content's size in bytes<span class=
+              "attribute__deprecation-note"><span class=
+              "attribute__deprecation-note__icon">⚠</span><span>its
+              size will be calculated from content in
+              vX.Y.Z</span></span>
             </td>
             <td class="attribute__default">
               0
