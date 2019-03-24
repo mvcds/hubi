@@ -27,8 +27,11 @@ mixin withAttributeTable(attribute)
         | &nbsp; → #{attribute.return || '?'}
 
     td(class="attribute__description") #{attribute.description}
-    td(class="attribute__comment")
-      div #{attribute.comment}
+
+      if(attribute.comment)
+        span(class="comment-bubble")
+          span ?
+          span(class="comment-bubble__comment") #{attribute.comment}
 
       if (attribute.deprecated !== undefined)
         +withDeprecation("attribute", attribute.deprecated)
@@ -77,14 +80,12 @@ mixin withToken({ name, object })
           col(width="1%")
           col(width="1%")
           col(width="auto")
-          col(width="auto")
           col(width="1%")
         thead
           tr
             th Name
             th Type
             th Description
-            th Comment
             th Default
         tbody
           each attribute in object.attributes

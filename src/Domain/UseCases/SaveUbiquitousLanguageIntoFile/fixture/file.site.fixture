@@ -36,7 +36,6 @@
           <col width="1%">
           <col width="1%">
           <col width="auto">
-          <col width="auto">
           <col width="1%">
         </colgroup>
         <thead>
@@ -49,9 +48,6 @@
             </th>
             <th>
               Description
-            </th>
-            <th>
-              Comment
             </th>
             <th>
               Default
@@ -69,7 +65,6 @@
             <td class="attribute__description">
               the complete system path to the file
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default"></td>
           </tr>
           <tr>
@@ -82,7 +77,6 @@
             <td class="attribute__description">
               numbers representing its content to be converted
             </td>
-            <td class="attribute__comment"></td>
             <td class="attribute__default"></td>
           </tr>
           <tr>
@@ -93,13 +87,11 @@
               integer
             </td>
             <td class="attribute__description">
-              content's size in bytes
-            </td>
-            <td class="attribute__comment">
-              <span class=
-              "attribute__deprecation-note"><span class="attribute__deprecation-note__icon">
-              ⚠</span><span>its size will be calculated from
-              content in vX.Y.Z</span></span>
+              content's size in bytes<span class=
+              "attribute__deprecation-note"><span class=
+              "attribute__deprecation-note__icon">⚠</span><span>its
+              size will be calculated from content in
+              vX.Y.Z</span></span>
             </td>
             <td class="attribute__default">
               0

@@ -111,3 +111,37 @@ body {
 .hubi__info a:focus-within {
   color: #000;
 }
+
+.comment-bubble {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  cursor: help;
+}
+
+.attributes_table tbody tr:nth-child(even) .comment-bubble {
+  background-color: #CCC;
+}
+
+.attribute__description {
+  position: relative;
+}
+
+.comment-bubble__comment {
+  position: absolute;
+  border: 1px solid black;
+  background: white;
+  top: -20px;
+  padding: 10px;
+  max-width: 50vw;
+  display: none;
+}
+
+.comment-bubble:hover .comment-bubble__comment {
+  display: block;
+}
