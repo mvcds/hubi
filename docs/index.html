@@ -62,7 +62,6 @@
       <table class="attributes_table">
         <colgroup>
           <col width="1%">
-          <col width="1%">
           <col width="auto">
           <col width="1%">
         </colgroup>
@@ -70,9 +69,6 @@
           <tr>
             <th>
               Name
-            </th>
-            <th>
-              Type
             </th>
             <th>
               Description
@@ -85,10 +81,7 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              name
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>name</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
               How people refer to the token<span class=
@@ -100,10 +93,7 @@
           </tr>
           <tr>
             <td class="attribute__name">
-              description
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>description</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
               A short sentence to teach/remind everyone what the
@@ -116,10 +106,7 @@
           </tr>
           <tr>
             <td class="attribute__name">
-              attributes
-            </td>
-            <td class="attribute__type">
-              array
+              <strong>attributes</strong>:&nbsp;[Attribute]?
             </td>
             <td class="attribute__description">
               A collection of attributes a token is associated
@@ -130,14 +117,13 @@
               translators are expected to work more
               often.</span></span>
             </td>
-            <td class="attribute__default"></td>
+            <td class="attribute__default">
+              []
+            </td>
           </tr>
           <tr>
             <td class="attribute__name">
-              filePath
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>filePath</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
               The path to its file domain
@@ -146,10 +132,7 @@
           </tr>
           <tr>
             <td class="attribute__name">
-              abstract
-            </td>
-            <td class="attribute__type">
-              boolean
+              <strong>abstract</strong>:&nbsp;boolean?
             </td>
             <td class="attribute__description">
               A flag to inform translators if they should or not
@@ -161,22 +144,18 @@
           </tr>
           <tr>
             <td class="attribute__name">
-              comment
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>comment</strong>:&nbsp;string?
             </td>
             <td class="attribute__description">
               An extra message, for developers, about the token
             </td>
-            <td class="attribute__default"></td>
+            <td class="attribute__default">
+              null
+            </td>
           </tr>
           <tr>
             <td class="attribute__name">
-              aliases
-            </td>
-            <td class="attribute__type">
-              array
+              <strong>aliases</strong>:&nbsp;[string]?
             </td>
             <td class="attribute__description">
               Alternative names, abbreviations, etc<span class=
@@ -184,7 +163,9 @@
               "comment-bubble__comment">Other ways to refer to the
               token itself</span></span>
             </td>
-            <td class="attribute__default"></td>
+            <td class="attribute__default">
+              []
+            </td>
           </tr>
         </tbody>
       </table>
@@ -205,7 +186,6 @@
       <table class="attributes_table">
         <colgroup>
           <col width="1%">
-          <col width="1%">
           <col width="auto">
           <col width="1%">
         </colgroup>
@@ -213,9 +193,6 @@
           <tr>
             <th>
               Name
-            </th>
-            <th>
-              Type
             </th>
             <th>
               Description
@@ -228,10 +205,7 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              name
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>name</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
               How the attribute is referenced relativelly to its
@@ -241,10 +215,7 @@
           </tr>
           <tr>
             <td class="attribute__name">
-              type
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>type</strong>:&nbsp;string?
             </td>
             <td class="attribute__description">
               What kind of token it is
@@ -255,10 +226,7 @@
           </tr>
           <tr>
             <td class="attribute__name">
-              required
-            </td>
-            <td class="attribute__type">
-              boolean
+              <strong>required</strong>:&nbsp;boolean?
             </td>
             <td class="attribute__description">
               A flag to mark the attribute as required
@@ -269,28 +237,30 @@
           </tr>
           <tr>
             <td class="attribute__name">
-              description
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>description</strong>:&nbsp;string?
             </td>
             <td class="attribute__description">
               A short sentence to teach/remind everyone what that
               attribute means
             </td>
-            <td class="attribute__default"></td>
+            <td class="attribute__default">
+              null
+            </td>
           </tr>
           <tr>
             <td class="attribute__name">
-              comment
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>comment</strong>:&nbsp;string?
             </td>
             <td class="attribute__description">
-              An extra message, for developers, about the attribute
+              An extra message, for developers, about the
+              attribute<span class=
+              "comment-bubble"><span>?</span><span class=
+              "comment-bubble__comment">This very sentence is a
+              comment itself</span></span>
             </td>
-            <td class="attribute__default"></td>
+            <td class="attribute__default">
+              null
+            </td>
           </tr>
         </tbody>
       </table>
@@ -308,7 +278,6 @@
       <table class="attributes_table">
         <colgroup>
           <col width="1%">
-          <col width="1%">
           <col width="auto">
           <col width="1%">
         </colgroup>
@@ -316,9 +285,6 @@
           <tr>
             <th>
               Name
-            </th>
-            <th>
-              Type
             </th>
             <th>
               Description
@@ -331,10 +297,7 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              lexicon
-            </td>
-            <td class="attribute__type">
-              object
+              <strong>lexicon</strong>:&nbsp;object
             </td>
             <td class="attribute__description">
               The translation's vocabulary which is a collection of
@@ -361,7 +324,6 @@
       <table class="attributes_table">
         <colgroup>
           <col width="1%">
-          <col width="1%">
           <col width="auto">
           <col width="1%">
         </colgroup>
@@ -369,9 +331,6 @@
           <tr>
             <th>
               Name
-            </th>
-            <th>
-              Type
             </th>
             <th>
               Description
@@ -384,10 +343,8 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              interpretToken
-            </td>
-            <td class="attribute__type">
-              function&nbsp; → object
+              <strong>interpretToken</strong>:&nbsp;(<strong>token</strong>:Ubiquitous
+              Token)&nbsp;→ object
             </td>
             <td class="attribute__description">
               How each ubiquitous language's token is interpreted
@@ -395,15 +352,6 @@
               "comment-bubble"><span>?</span><span class=
               "comment-bubble__comment">Like an interface for
               making translating possible</span></span>
-              <div>
-                <span>Arguments</span>
-                <ul>
-                  <li>
-                    <strong>token</strong>: Ubiquitous
-                    Token<span title="required">!</span>
-                  </li>
-                </ul>
-              </div>
             </td>
             <td class="attribute__default"></td>
           </tr>
@@ -427,7 +375,6 @@
       <table class="attributes_table">
         <colgroup>
           <col width="1%">
-          <col width="1%">
           <col width="auto">
           <col width="1%">
         </colgroup>
@@ -435,9 +382,6 @@
           <tr>
             <th>
               Name
-            </th>
-            <th>
-              Type
             </th>
             <th>
               Description
@@ -450,10 +394,7 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              tokens
-            </td>
-            <td class="attribute__type">
-              array
+              <strong>tokens</strong>:&nbsp;[Ubiquitous Token]
             </td>
             <td class="attribute__description">
               A collection of tokens

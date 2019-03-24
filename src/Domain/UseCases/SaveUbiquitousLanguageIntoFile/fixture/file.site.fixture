@@ -34,7 +34,6 @@
       <table class="attributes_table">
         <colgroup>
           <col width="1%">
-          <col width="1%">
           <col width="auto">
           <col width="1%">
         </colgroup>
@@ -42,9 +41,6 @@
           <tr>
             <th>
               Name
-            </th>
-            <th>
-              Type
             </th>
             <th>
               Description
@@ -57,10 +53,7 @@
         <tbody>
           <tr>
             <td class="attribute__name">
-              name
-            </td>
-            <td class="attribute__type">
-              string
+              <strong>name</strong>:&nbsp;string
             </td>
             <td class="attribute__description">
               the complete system path to the file
@@ -69,10 +62,7 @@
           </tr>
           <tr>
             <td class="attribute__name">
-              content
-            </td>
-            <td class="attribute__type">
-              array
+              <strong>content</strong>:&nbsp;[float]?
             </td>
             <td class="attribute__description">
               numbers representing its content to be converted
@@ -81,10 +71,7 @@
           </tr>
           <tr>
             <td class="attribute__name">
-              size
-            </td>
-            <td class="attribute__type">
-              integer
+              <strong>size</strong>:&nbsp;integer?
             </td>
             <td class="attribute__description">
               content's size in bytes<span class=

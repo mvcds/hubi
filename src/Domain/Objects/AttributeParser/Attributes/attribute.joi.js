@@ -4,8 +4,8 @@ const SCHEMA = {
   'name': Joi.string().required(),
   'type': Joi.string().default('string'),
   'required': Joi.boolean().default(false),
-  'description': Joi.string(),
-  'comment': Joi.string(),
+  'description': Joi.string().default(null),
+  'comment': Joi.string().default(null),
 }
 
 module.exports = SCHEMA

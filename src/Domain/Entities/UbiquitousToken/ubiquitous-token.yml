@@ -16,6 +16,7 @@ attributes:
     type: array
     of: Attribute
     required: false
+    default: "[]"
   - name: filePath
     description: The path to its file domain
     required: true
@@ -25,11 +26,13 @@ attributes:
     default: false
   - name: comment
     description: An extra message, for developers, about the token
+    default: "null"
   - name: aliases
     description: Alternative names, abbreviations, etc
     comment: Other ways to refer to the token itself
     type: array
     of: string
+    default: "[]"
 aliases:
   - Token
   - Domain Object

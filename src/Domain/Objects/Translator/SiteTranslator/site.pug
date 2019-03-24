@@ -5,26 +5,36 @@ mixin withDeprecation (type, { message, error })
     span #{message}
 
 mixin withFunction({ arguments: args })
-  ul
-    each argument in args
-      li
-        strong #{argument.name}
-        | : #{argument.type}
-        if (argument.required)
-          span(title="required")
-            | !
-        else
-          span(title="optional")
-            | ?
+  - var last = (args|| []).length - 1
+  each argument, index in (args|| [])
+    strong #{argument.name}
+    | :
+    +withAttributeType(argument)
+    if (index !== last)
+      | ,&nbsp;
+
+mixin withAttributeType(attribute)
+  if (attribute.type === 'function')
+    | (
+    +withFunction(attribute)
+    | )&nbsp;
+    if (!attribute.isRequired && !attribute.required)
+      | ?&nbsp;
+    | → #{attribute.return || 'null'}
+  else
+    if (attribute.type === 'array')
+      | [#{attribute.of || 'A'}]
+    else
+      | #{attribute.type}
+    if (!attribute.isRequired && !attribute.required)
+      | ?
 
 mixin withAttributeTable(attribute)
   tr
-    td(class="attribute__name") #{attribute.name}
-    td(class="attribute__type")
-      | #{attribute.type}
-
-      if (attribute.type === 'function')
-        | &nbsp; → #{attribute.return || '?'}
+    td(class="attribute__name")
+      strong #{attribute.name}
+      | :&nbsp;
+      +withAttributeType(attribute)
 
     td(class="attribute__description") #{attribute.description}
 
@@ -35,11 +45,6 @@ mixin withAttributeTable(attribute)
 
       if (attribute.deprecated !== undefined)
         +withDeprecation("attribute", attribute.deprecated)
-
-      if (attribute.type === 'function')
-        div
-          span Arguments
-          +withFunction(attribute)
 
     td(class="attribute__default") #{attribute.default}
 
@@ -78,13 +83,11 @@ mixin withToken({ name, object })
       table(class="attributes_table")
         colgroup
           col(width="1%")
-          col(width="1%")
           col(width="auto")
           col(width="1%")
         thead
           tr
             th Name
-            th Type
             th Description
             th Default
         tbody

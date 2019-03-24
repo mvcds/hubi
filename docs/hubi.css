@@ -3,6 +3,11 @@ body {
   padding: 0;
 }
 
+colgroup {
+  width: 100%;
+  float: left;
+}
+
 .token {
   padding: 8px;
   border-top: 1px solid black;
@@ -84,16 +89,8 @@ body {
   padding: 8px;
 }
 
-.attributes_table tr td:first-child {
-  font-weight: bold;
-}
-
 .attribute__default {
   font-family: monospace, serif;
-}
-
-.attribute__comment {
-  font-family: fantasy;
 }
 
 .hubi__info {
