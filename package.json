@@ -76,7 +76,8 @@
     "dogfood": "node src/CLI/hubi s -st joi",
     "dogfood:watch": "npm-watch dogfood",
     "build": "yarn dogfood & yarn document",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "release": "npx semantic-release --debug --no-ci"
   },
   "dependencies": {
     "commander": "^2.15.1",
