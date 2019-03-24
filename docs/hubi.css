@@ -137,6 +137,7 @@ colgroup {
   padding: 10px;
   max-width: 50vw;
   display: none;
+  border-radius: 8px;
 }
 
 .comment-bubble:hover .comment-bubble__comment {
