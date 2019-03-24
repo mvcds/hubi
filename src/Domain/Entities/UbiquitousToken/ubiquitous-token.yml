@@ -4,11 +4,12 @@ comment: It represents a phrase, expression, term, etc
 attributes:
   - name: name
     description: How people refer to the token
-    comment: (Should be unique across the domain to avoid ambiguity)
+    comment: Should be unique across the domain to avoid ambiguity
     required: true
   - name: description
     description: A short sentence to teach/remind everyone what the token means
     required: true
+    comment: You're reading it right now
   - name: attributes
     description: A collection of attributes a token is associated with.
     comment: This collection is specially useful for developers and is where translators are expected to work more often.
