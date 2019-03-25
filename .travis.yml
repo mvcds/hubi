@@ -15,13 +15,12 @@ jobs:
       after_script:
         - yarn build
         - mkdir ./.nyc_output && yarn coverage
-        - ls -a
         - yarn coveralls
-      # deploy:
-      #   provider: script
-      #   skip_cleanup: true
-      #   after_deploy:
-      #     - yarn build
+      deploy:
+        provider: script
+        skip_cleanup: true
+        after_deploy:
+          - ls -a
       #     - git add . && git commit --no-verify -m \"dogfood for release\"
       #     - npx semantic-release
       #     - mkdir ./.nyc_output
