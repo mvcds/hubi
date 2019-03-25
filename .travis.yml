@@ -16,10 +16,5 @@ jobs:
         - yarn build
         - mkdir ./.nyc_output && yarn coverage
         - yarn coveralls
-      deploy:
-        script: skip
-        provider: script
-        skip_cleanup: true
-        after_deploy:
-          - npx semantic-release
+        - npx semantic-release
 
