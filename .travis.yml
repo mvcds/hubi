@@ -17,6 +17,7 @@ jobs:
         - mkdir ./.nyc_output && yarn coverage
         - yarn coveralls
       deploy:
+        script: skip
         provider: script
         skip_cleanup: true
         after_deploy:
