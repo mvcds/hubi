@@ -14,7 +14,7 @@ jobs:
       script: skip
       after_script:
         - yarn build
-        - mkdir ./.nyc_output
+        - mkdir ./.nyc_output && yarn coverage
         - ls -a
         - yarn coveralls
       # deploy:

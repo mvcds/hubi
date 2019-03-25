@@ -72,7 +72,7 @@
     "validate": "yarn lint:fix && yarn coverage",
     "document": "node src/CLI/hubi s -t site -o docs && mv docs/index.hubi.html docs/index.html",
     "document:watch": "npm-watch document",
-    "coveralls": "cat ./nyc_output/lcov.info | coveralls",
+    "coveralls": "npx nyc report --reporter=text-lcov | coveralls",
     "dogfood": "node src/CLI/hubi s -st joi",
     "dogfood:watch": "npm-watch dogfood",
     "build": "yarn dogfood & yarn document",
