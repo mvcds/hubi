@@ -6,8 +6,6 @@ before_install:
   - sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 cache:
   yarn: true
-after_success:
-  - ls
 jobs:
   include:
     - stage: release
@@ -17,7 +15,7 @@ jobs:
       after_script:
         - yarn build
         - mkdir ./.nyc_output
-        - ls
+        - ls -a
         - yarn coveralls
       # deploy:
       #   provider: script
