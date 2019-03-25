@@ -20,9 +20,5 @@ jobs:
         provider: script
         skip_cleanup: true
         after_deploy:
-          - ls -a
-      #     - git add . && git commit --no-verify -m \"dogfood for release\"
-      #     - npx semantic-release
-      #     - mkdir ./.nyc_output
-      #     - yarn coveralls
+          - npx semantic-release
 
