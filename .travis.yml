@@ -15,7 +15,9 @@ jobs:
       node_js: "8.9.4"
       script: skip
       after_script:
+        - yarn build
         - mkdir ./.nyc_output
+        - ls
         - yarn coveralls
       # deploy:
       #   provider: script
