@@ -12,6 +12,56 @@
   "license": "MIT",
   "private": false,
   "reveal": true,
+  "scripts": {
+    "test": "yarn test:unit && yarn test:integration",
+    "test:integration": "cucumber-js \"src/Domain/UseCases/**/*.feature\"",
+    "test:integration:watch": "npm-watch test:integration",
+    "test:unit": "mocha \"src/**/*.test.js\" --colors --sort --bail --recursive",
+    "test:unit:watch": "npm-watch test:unit",
+    "test:watch": "npm-watch test",
+    "coverage": "nyc scripts/coverage.sh",
+    "coverage:watch": "npm-watch coverage",
+    "standard": "standard --env mocha",
+    "lint": "(yarn standard) | snazzy",
+    "lint:fix": "(yarn standard --fix) | snazzy",
+    "validate": "yarn lint:fix && yarn coverage",
+    "document": "node src/CLI/hubi s -t site -o docs && mv docs/index.hubi.html docs/index.html",
+    "document:watch": "npm-watch document",
+    "coveralls": "npx nyc report --reporter=text-lcov | coveralls",
+    "dogfood": "node src/CLI/hubi s -st joi",
+    "dogfood:watch": "npm-watch dogfood",
+    "build": "yarn dogfood & yarn document",
+    "commit": "npx git-cz",
+    "release": "npx semantic-release --debug --no-ci"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 50,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/**/*.steps.js",
+      "src/**/*.test.js",
+      "src/**/*.joi.js",
+      "src/CLI/*.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "cache": true,
+    "all": true
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "watch": {
     "test": {
       "patterns": [
@@ -57,28 +107,6 @@
       "quiet": true
     }
   },
-  "scripts": {
-    "test": "yarn test:unit && yarn test:integration",
-    "test:integration": "cucumber-js \"src/Domain/UseCases/**/*.feature\"",
-    "test:integration:watch": "npm-watch test:integration",
-    "test:unit": "mocha \"src/**/*.test.js\" --colors --sort --bail --recursive",
-    "test:unit:watch": "npm-watch test:unit",
-    "test:watch": "npm-watch test",
-    "coverage": "nyc scripts/coverage.sh",
-    "coverage:watch": "npm-watch coverage",
-    "standard": "standard --env mocha",
-    "lint": "(yarn standard) | snazzy",
-    "lint:fix": "(yarn standard --fix) | snazzy",
-    "validate": "yarn lint:fix && yarn coverage",
-    "document": "node src/CLI/hubi s -t site -o docs && mv docs/index.hubi.html docs/index.html",
-    "document:watch": "npm-watch document",
-    "coveralls": "npx nyc report --reporter=text-lcov | coveralls",
-    "dogfood": "node src/CLI/hubi s -st joi",
-    "dogfood:watch": "npm-watch dogfood",
-    "build": "yarn dogfood & yarn document",
-    "commit": "npx git-cz",
-    "release": "npx semantic-release --debug --no-ci"
-  },
   "dependencies": {
     "commander": "^2.15.1",
     "glob": "^7.1.2",
@@ -109,29 +137,6 @@
     "snazzy": "^7.1.1",
     "standard": "^11.0.1"
   },
-  "nyc": {
-    "check-coverage": true,
-    "per-file": true,
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 50,
-    "include": [
-      "src/**/*.js"
-    ],
-    "exclude": [
-      "src/**/*.steps.js",
-      "src/**/*.test.js",
-      "src/**/*.joi.js",
-      "src/CLI/*.js"
-    ],
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ],
-    "cache": true,
-    "all": true
-  },
   "bin": {
     "hubi": "./src/CLI/hubi"
   },
@@ -159,10 +164,5 @@
     "developer-tools",
     "domain-driven-design",
     "command-line"
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
+  ]
 }
