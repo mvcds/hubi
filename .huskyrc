@@ -1,6 +1,6 @@
 {
   "hooks": {
-    "pre-commit": "yarn validate",
+    "pre-commit": "lint-staged",
     "commit-msg": "npx commitlint -E HUSKY_GIT_PARAMS"
   }
 }
