@@ -1,0 +1,7 @@
+linters:
+  "*.js":
+    - yarn validate
+    - yarn build
+    - git add
+ignore:
+  - src/**/*.joi.js
