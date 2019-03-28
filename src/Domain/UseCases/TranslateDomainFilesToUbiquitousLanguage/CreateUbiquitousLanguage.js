@@ -16,9 +16,11 @@ async function tokenize (filePath) {
 
   const data = yaml.safeLoad(file)
 
-  log(`Tokenizing "${data.name}"`)
+  const token = new UbiquitousToken({ ...data, filePath })
 
-  return new UbiquitousToken({ ...data, filePath })
+  log(`Tokenized "${data.name}" as "${token.name}"`)
+
+  return token
 }
 
 async function CreateUbiquitousLanguage (data, { glob, ...injected }) {
