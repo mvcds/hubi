@@ -28,6 +28,7 @@ attributes:
     description: An extra message, for developers, about the token
     default: "null"
   - name: aliases
+    required: false
     description: Alternative names, abbreviations, etc
     comment: Other ways to refer to the token itself
     type: array

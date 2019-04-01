@@ -1,7 +1,8 @@
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const LogConditionally = require('../../Services/LogConditionally')
+const LoadsTokens = require('../../Services/LoadsTokens')
 
-const CreateUbiquitousLanguage = require('./CreateUbiquitousLanguage')
+const UbiquitousLanguage = require('../../Objects/UbiquitousLanguage')
 
 const DEPENDENCIES = {
   glob: require('glob'),
@@ -21,7 +22,9 @@ async function TranslateDomainFilesToUbiquitousLanguage (data, injection) {
 
   LogConditionally({ canLog: verbose })
 
-  const ubiquitousLanguage = await CreateUbiquitousLanguage({ globPattern }, resolved)
+  const tokens = await LoadsTokens({ globPattern }, resolved)
+
+  const ubiquitousLanguage = new UbiquitousLanguage({ tokens })
 
   return translator.translate({ ubiquitousLanguage })
 }

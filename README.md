@@ -32,6 +32,12 @@ Each one of this files is responsible for a piece of the domain. Its rules can b
 $ npm i hubi --save-dev
 ```
 
+or
+
+```
+$ yarn add hubi --dev
+```
+
 ### Example
 
 In an imaginary project, the stakeholders have decided that it is necessary to show the user's birthday in their profile page. So the file relative to the user concept is changed:

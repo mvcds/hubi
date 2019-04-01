@@ -1,0 +1,6 @@
+name: Bubbles
+description: She's a powerpuff girl
+attributes:
+  - name: color
+    required: true
+    default: 'blue'
