@@ -12,12 +12,12 @@ const READ_OPTIONS = {
   encoding: 'utf8'
 }
 
-async function LoadsTokens (data, dependencies) {
+async function LoadsTokens (data, injection) {
   RequiresAttribute(data, {
     globPattern: 'glob pattern'
   })
 
-  const { glob, ...injected } = { ...DEPENDENCIES, dependencies }
+  const { glob, ...injected } = Object.assign({}, DEPENDENCIES, injection)
 
   const files = await readFiles(data, glob)
 
