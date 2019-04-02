@@ -20,13 +20,17 @@ function save ({ token, translated }) {
 }
 
 async function SaveUbiquitousLanguageIntoFile (data, injection) {
-  const { write } = Object.assign({}, DEPENDENCIES, injection)
+  const resolved = Object.assign({}, DEPENDENCIES, injection)
 
   RequiresAttribute(data, {
     pattern: 'pattern',
     translator: 'translator name'
   })
 
+  await translate(data, resolved)
+}
+
+async function translate (data, { write }) {
   const { output, sameFolder } = data
 
   const translator = UsesTranslator({ translatorName: data.translator })
