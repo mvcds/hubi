@@ -27,17 +27,28 @@ async function SaveUbiquitousLanguageIntoFile (data, injection) {
     translator: 'translator name'
   })
 
-  await translate(data, resolved)
+  const { watch, ...rest } = data
+
+  const translate = createTranslation(rest, resolved)
+
+  await translate()
+
+  if (watch) {
+    //  TODO: watch for stuff to happen
+    console.log('watching')
+  }
 }
 
-async function translate (data, { write }) {
+function createTranslation (data, { write }) {
   const { output, sameFolder } = data
 
   const translator = UsesTranslator({ translatorName: data.translator })
 
-  const translation = await TranslateFiles({ ...data, translator })
+  return async () => {
+    const translation = await TranslateFiles({ ...data, translator })
 
-  translation.forEachLexiconItem(save, { translator, output, write, sameFolder })
+    translation.forEachLexiconItem(save, { translator, output, write, sameFolder })
+  }
 }
 
 module.exports = SaveUbiquitousLanguageIntoFile
