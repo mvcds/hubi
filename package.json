@@ -105,6 +105,7 @@
   "dependencies": {
     "commander": "^2.15.1",
     "glob": "^7.1.2",
+    "glob-watcher": "^5.0.3",
     "htmltidy": "^0.0.6",
     "joi": "^13.2.0",
     "js-yaml": "^3.11.0",

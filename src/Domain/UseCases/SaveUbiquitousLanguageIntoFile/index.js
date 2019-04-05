@@ -5,6 +5,8 @@ const UsesTranslator = require('../../Services/UsesTranslator')
 
 const TranslateFiles = require('../TranslateDomainFilesToUbiquitousLanguage')
 
+const watchForChanges = require('./watchForChanges')
+
 const DEPENDENCIES = {
   write: require('write')
 }
@@ -34,8 +36,7 @@ async function SaveUbiquitousLanguageIntoFile (data, injection) {
   await translate()
 
   if (watch) {
-    //  TODO: watch for stuff to happen
-    console.log('watching')
+    watchForChanges(data, translate)
   }
 }
 
@@ -45,9 +46,13 @@ function createTranslation (data, { write }) {
   const translator = UsesTranslator({ translatorName: data.translator })
 
   return async () => {
+    console.log('Started translating')
+
     const translation = await TranslateFiles({ ...data, translator })
 
     translation.forEachLexiconItem(save, { translator, output, write, sameFolder })
+
+    console.log('Finished translating')
   }
 }
 
