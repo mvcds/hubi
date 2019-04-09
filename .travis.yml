@@ -17,4 +17,5 @@ jobs:
         - mkdir ./.nyc_output && yarn coverage
         - yarn coveralls
         - npx semantic-release
-
+env:
+  - NODE_ENV=PRODUCTION
