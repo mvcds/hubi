@@ -2,13 +2,15 @@ const path = require('path')
 
 const RequiresAttribute = require('../../Services/RequiresAttribute')
 const UsesTranslator = require('../../Services/UsesTranslator')
+const LogConditionally = require('../../Services/LogConditionally')
 
 const TranslateFiles = require('../TranslateDomainFilesToUbiquitousLanguage')
 
 const watchForChanges = require('./watchForChanges')
 
 const DEPENDENCIES = {
-  write: require('write')
+  write: require('write'),
+  gw: require('glob-watcher')
 }
 
 function save ({ token, translated }) {
@@ -22,21 +24,23 @@ function save ({ token, translated }) {
 }
 
 async function SaveUbiquitousLanguageIntoFile (data, injection) {
-  const resolved = Object.assign({}, DEPENDENCIES, injection)
+  const { gw, ...resolved } = Object.assign({}, DEPENDENCIES, injection)
 
   RequiresAttribute(data, {
     pattern: 'pattern',
     translator: 'translator name'
   })
 
-  const { watch, ...rest } = data
+  const { watch, verbose, ...rest } = data
+
+  LogConditionally({ canLog: verbose })
 
   const translate = createTranslation(rest, resolved)
 
   await translate()
 
   if (watch) {
-    watchForChanges(data, translate)
+    watchForChanges(data, translate, gw)
   }
 }
 
@@ -46,13 +50,13 @@ function createTranslation (data, { write }) {
   const translator = UsesTranslator({ translatorName: data.translator })
 
   return async () => {
-    console.log('Started translating')
+    LogConditionally.env('Started translating', 'PRODUCTION')
 
     const translation = await TranslateFiles({ ...data, translator })
 
     translation.forEachLexiconItem(save, { translator, output, write, sameFolder })
 
-    console.log('Finished translating')
+    LogConditionally.env('Finished translating', 'PRODUCTION')
   }
 }
 

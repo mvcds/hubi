@@ -1,6 +1,6 @@
-const gw = require('glob-watcher')
+const LogConditionally = require('../../../Services/LogConditionally')
 
-function watchForChanges (data, callback) {
+function watchForChanges (data, callback, gw) {
   const watcher = gw([data.pattern])
 
   const watch = waitForEvent(callback)
@@ -9,13 +9,13 @@ function watchForChanges (data, callback) {
   watcher.on('add', watch('add'))
   watcher.on('unlink', watch('removed'))
 
-  console.log('Watching has been started')
+  LogConditionally.env('Watching has been started', 'PRODUCTION')
 }
 
 function waitForEvent (callback) {
   return (text) => {
     return async (path) => {
-      console.log(path, text)
+      LogConditionally.env(`${path} ${text}`, 'PRODUCTION')
 
       await callback()
     }

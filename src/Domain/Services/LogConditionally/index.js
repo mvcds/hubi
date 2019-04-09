@@ -11,4 +11,10 @@ LogConditionally.log = function (message) {
   LogConditionally.print(message)
 }
 
+LogConditionally.env = function (message, environment) {
+  if (process.env.NODE_ENV !== environment) return
+
+  LogConditionally.print(message)
+}
+
 module.exports = LogConditionally

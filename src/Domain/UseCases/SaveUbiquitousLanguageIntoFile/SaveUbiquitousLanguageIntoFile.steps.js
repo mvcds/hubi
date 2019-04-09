@@ -22,6 +22,27 @@ Given('some output', function () {
   })
 })
 
+Given('the watch flag', function () {
+  const gw = mock('glob-watcher')
+  const watcher = {
+    on: mock('watcher')
+  }
+
+  gw.withExactArgs([this.args.pattern])
+    .returns(watcher)
+
+  watcher.on.thrice().withExactArgs(match.string, match.func)
+
+  this.args = Object.assign({}, this.args, {
+    watch: true
+  })
+  this.injection = Object.assign({}, this.injection, {
+    gw
+  })
+
+  this.watcher = watcher
+})
+
 Given('set write dependency', function () {
   this.injection = Object.assign({}, this.injection, {
     write: mock('write')
@@ -41,6 +62,11 @@ When('I call SaveUbiquitousLanguageIntoFile', async function () {
 
 Then('the translation is written', function () {
   this.injection.write.verify()
+})
+
+Then('the watcher keeps watching', function () {
+  this.injection.gw.verify()
+  this.watcher.on.verify()
 })
 
 Then('translation was precise', function () {

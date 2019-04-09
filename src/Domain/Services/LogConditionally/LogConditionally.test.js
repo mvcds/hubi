@@ -4,18 +4,59 @@ const { lorem } = require('faker')
 const LogConditionally = require('./')
 
 describe('LogConditionally Service', () => {
-  const print = mock('print')
+  context('Logs based on flag', () => {
+    it('Prints the message', () => {
+      const print = mock('print')
+      const message = lorem.sentence()
 
-  before(() => {
-    const message = lorem.sentence()
-    print.withExactArgs(message)
+      print.withExactArgs(message)
 
-    LogConditionally({ canLog: true, print })
+      LogConditionally({ canLog: true, print })
 
-    LogConditionally.log(message)
+      LogConditionally.log(message)
+
+      print.verify()
+    })
+
+    it('Does not print the message', () => {
+      const print = mock('print')
+      const message = lorem.sentence()
+
+      print.never()
+
+      LogConditionally({ canLog: false, print })
+
+      LogConditionally.log(message)
+
+      print.verify()
+    })
   })
 
-  it('Prints the message', () => {
-    print.verify()
+  context('Logs based on environment', () => {
+    it('Prints the message', () => {
+      const print = mock('print')
+      const message = lorem.sentence()
+
+      print.withExactArgs(message)
+
+      LogConditionally({ print })
+
+      LogConditionally.env(message, process.env.NODE_ENV)
+
+      print.verify()
+    })
+
+    it('Does not print the message', () => {
+      const print = mock('print')
+      const message = lorem.sentence()
+
+      print.never()
+
+      LogConditionally({ print })
+
+      LogConditionally.env(message, message)
+
+      print.verify()
+    })
   })
 })

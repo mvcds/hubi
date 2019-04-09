@@ -18,3 +18,14 @@ Feature: Save Ubiquitous Language Into File
       | "log" |
       | "site" |
       | "joi" |
+
+  Scenario: Use the watch flag to change things
+    Given the "log" translator
+      And a pattern
+      And some output
+      And set write dependency
+      And the watch flag
+    When I call SaveUbiquitousLanguageIntoFile
+    Then the translation is written
+      And translation was precise
+      And the watcher keeps watching
