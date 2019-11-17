@@ -10,7 +10,6 @@ jobs:
   include:
     - stage: release
       if: branch = master
-      node_js: "8.9.4"
       script: skip
       after_script:
         - yarn build
