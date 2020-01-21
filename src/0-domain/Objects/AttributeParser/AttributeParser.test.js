@@ -76,9 +76,8 @@ describe('AttributeParser', () => {
     })
   })
 
-  //  TODO: fix intermitence
-  context.skip('Deprecation', () => {
-    const testDeprecation = ({ deprecated }, message, error) => {
+  context('Deprecation', () => {
+    const testDeprecation = ({ deprecated = {} }, message, error) => {
       it('Matches the message', () => assert.equal(deprecated.message, message))
 
       it('Matches the error', () => assert.equal(deprecated.error, error))
