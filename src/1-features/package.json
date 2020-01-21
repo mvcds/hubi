@@ -1,0 +1,8 @@
+{
+  "name": "hubi-features",
+  "version": "0.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "hubi-domain": "0.0.0"
+  }
+}

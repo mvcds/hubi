@@ -1,5 +1,5 @@
-const save = require('hubi-domain/UseCases/SaveUbiquitousLanguageIntoFile')
-const log = require('hubi-domain/UseCases/LogUbiquitousLanguageIntoConsole')
+const save = require('hubi-features/SaveUbiquitousLanguageIntoFile')
+const log = require('hubi-features/LogUbiquitousLanguageIntoConsole')
 
 const Hubi = {
   log,

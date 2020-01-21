@@ -1,8 +1,8 @@
-const RequiresAttribute = require('../../Services/RequiresAttribute')
-const LogConditionally = require('../../Services/LogConditionally')
-const LoadsTokens = require('../../Services/LoadsTokens')
+const RequiresAttribute = require('hubi-domain/Services/RequiresAttribute')
+const LogConditionally = require('hubi-domain/Services/LogConditionally')
+const LoadsTokens = require('hubi-domain/Services/LoadsTokens')
 
-const UbiquitousLanguage = require('../../Objects/UbiquitousLanguage')
+const UbiquitousLanguage = require('hubi-domain/Objects/UbiquitousLanguage')
 
 const DEPENDENCIES = {
   glob: require('glob'),

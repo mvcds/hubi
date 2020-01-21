@@ -1,8 +1,8 @@
-const RequiresAttribute = require('../../Services/RequiresAttribute')
+const RequiresAttribute = require('hubi-domain/Services/RequiresAttribute')
 
 const DEPENDENCIES = {
   log: console.log,
-  UsesTranslator: require('../../Services/UsesTranslator'),
+  UsesTranslator: require('hubi-domain/Services/UsesTranslator'),
   TranslateFiles: require('../TranslateDomainFilesToUbiquitousLanguage')
 }
 

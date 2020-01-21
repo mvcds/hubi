@@ -1,4 +1,4 @@
-const LogConditionally = require('../../../Services/LogConditionally')
+const LogConditionally = require('hubi-domain/Services/LogConditionally')
 
 function watchForChanges (data, callback, gw) {
   const watcher = gw([data.pattern])

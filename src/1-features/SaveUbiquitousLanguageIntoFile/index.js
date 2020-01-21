@@ -1,8 +1,8 @@
 const path = require('path')
 
-const RequiresAttribute = require('../../Services/RequiresAttribute')
-const UsesTranslator = require('../../Services/UsesTranslator')
-const LogConditionally = require('../../Services/LogConditionally')
+const RequiresAttribute = require('hubi-domain/Services/RequiresAttribute')
+const UsesTranslator = require('hubi-domain/Services/UsesTranslator')
+const LogConditionally = require('hubi-domain/Services/LogConditionally')
 
 const TranslateFiles = require('../TranslateDomainFilesToUbiquitousLanguage')
 

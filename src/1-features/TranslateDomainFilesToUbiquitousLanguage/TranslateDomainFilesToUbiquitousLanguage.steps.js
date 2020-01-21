@@ -3,7 +3,7 @@ const { Given, When, Then } = require('cucumber')
 const { mock } = require('sinon')
 const { lorem } = require('faker')
 
-const UsesTranslator = require('../../Services/UsesTranslator')
+const UsesTranslator = require('hubi-domain/Services/UsesTranslator')
 
 const TranslateDomainFilesToUbiquitousLanguage = require('./')
 
