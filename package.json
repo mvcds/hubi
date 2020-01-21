@@ -14,7 +14,7 @@
   "reveal": true,
   "scripts": {
     "test": "yarn test:unit && yarn test:integration",
-    "test:integration": "cucumber-js \"src/Domain/UseCases/**/*.feature\"",
+    "test:integration": "cucumber-js \"src/0-domain/UseCases/**/*.feature\"",
     "test:integration:watch": "npm-watch test:integration",
     "test:unit": "mocha \"src/**/*.test.js\" --colors --sort --bail --recursive",
     "test:unit:watch": "npm-watch test:unit",
