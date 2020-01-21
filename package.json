@@ -10,7 +10,7 @@
   "author": "Marcos Vinícius C. da Silva <marvinc.silva@gmail.com>",
   "homepage": "https://mvcds.github.io/hubi",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "reveal": true,
   "scripts": {
     "test": "yarn test:unit && yarn test:integration",
@@ -160,5 +160,8 @@
     "developer-tools",
     "domain-driven-design",
     "command-line"
+  ],
+  "workspaces": [
+    "src/*"
   ]
 }
