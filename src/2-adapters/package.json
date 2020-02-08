@@ -1,0 +1,8 @@
+{
+  "name": "hubi-adapters",
+  "version": "0.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "hubi-features": "0.0.0"
+  }
+}
