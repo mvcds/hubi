@@ -7,7 +7,7 @@ const SCHEMA = {
   'filePath': Joi.string().required(),
   'abstract': Joi.boolean().default(false),
   'comment': Joi.string().default(null),
-  'aliases': Joi.array().items(Joi.string()).default([])
+  'aliases': Joi.array().items(Joi.string()).default([]),
 }
 
 module.exports = SCHEMA

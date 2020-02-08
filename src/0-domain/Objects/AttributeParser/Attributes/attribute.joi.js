@@ -5,7 +5,7 @@ const SCHEMA = {
   'type': Joi.string().default('string'),
   'required': Joi.boolean().default(false),
   'description': Joi.string().default(null),
-  'comment': Joi.string().default(null)
+  'comment': Joi.string().default(null),
 }
 
 module.exports = SCHEMA
