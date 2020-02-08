@@ -1,0 +1,8 @@
+{
+  "name": "hubi-cli",
+  "version": "0.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "hubi-adapters": "0.0.0"
+  }
+}

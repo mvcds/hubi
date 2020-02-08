@@ -2,7 +2,7 @@
 
 const program = require('commander')
 
-const { log } = require('../../')
+const log = require('hubi-adapters/LogUbiquitousLanguageIntoConsole')
 
 program
   .option('-p, --pattern [pattern]', 'Glob pattern pointing to domain files', 'src/**/*.yml')

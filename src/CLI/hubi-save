@@ -2,7 +2,7 @@
 
 const program = require('commander')
 
-const { save } = require('../../')
+const save = require('hubi-adapters/SaveUbiquitousLanguageIntoFile')
 
 program
   .option('-p, --pattern [pattern]', 'Glob pattern pointing to domain files', 'src/**/*.yml')

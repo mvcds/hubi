@@ -2,7 +2,7 @@
   "name": "hubi",
   "version": "4.9.1",
   "description": "Humanitarian ubiquitous language helper",
-  "main": "index.js",
+  "main": "./src/CLI/hubi",
   "repository": {
     "type": "git",
     "url": "git@github.com:mvcds/hubi.git"
